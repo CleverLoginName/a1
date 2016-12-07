@@ -63,12 +63,6 @@
                         <span class="main-menu-item-text">View</span>
                     </a>
                 </li>@endif
-            <li>
-                <a class="main-menu-item" id="Products" href="{!! url("/products") !!}">
-                    <img class="main-menu-icon" src="{{ URL::asset('resources/images/products_ico_white.png') }}">
-                    <span class="main-menu-item-text">Edit</span>
-                </a>
-            </li>
 
             <li>
                 <a class="main-menu-item" id="Products" href="{!! url("/packs") !!}">

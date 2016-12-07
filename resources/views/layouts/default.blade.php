@@ -74,7 +74,9 @@
         text_escape: false,
         styling: "bootstrap3",
         type: "{!! $alert['level'] !!}",
-        icon: true
+        icon: true,
+        addclass: "stack-bottomright",
+        delay:1500
     });
 
 

@@ -6,8 +6,10 @@
         <section class="box-header"></section>
         <section class="box-body">
             <form class="row new-item-from-wrapper" role="form" method="post" id="new-prod-form"
-                  enctype="multipart/form-data" novalidate="novalidate" action="{!! url('/catalogs') !!}">
+                  enctype="multipart/form-data" novalidate="novalidate" action="{!! url('/categories/'.$category->id) !!}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                {{ method_field('PUT') }}
+                {{Form::hidden('id',$category->id)}}
                 <section class="row form-group">
                     <section class="col-md-12">
                         @if ($errors->has())
@@ -21,16 +23,31 @@
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Catalog</label></section>
+                    <section class="col-md-6">
+                        <select class="form-control required"
+                                id="prod-frm-sub-cat" name="catalog_id" aria-required="true"
+                                aria-invalid="true">
+                            <?php $catalogs = App\Catalog::all(); ?>
+                            @foreach($catalogs as $catalog)
+                                <option value="{!! $catalog->id !!}">{!! $catalog->name !!}</option>
+                            @endforeach
+                        </select>
+                    </section>
+                    <section class="col-md-2"></section>
+                </section>
+                <section class="row form-group">
+                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Name</label></section>
                     <section class="col-md-6"><input class="form-control required" id="name"
-                                                     name="name" aria-required="true" type="text"></section>
+                                                     name="name" aria-required="true" type="text" value="{!! $category->name !!}"></section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Description</label></section>
                     <section class="col-md-6"><input class="form-control required" id="description"
-                                                     name="description" aria-required="true" type="text"></section>
+                                                     name="description" aria-required="true" type="text" value="{!! $category->description !!}"></section>
                     <section class="col-md-2"></section>
                 </section>
 
@@ -40,7 +57,7 @@
                                                               class="loading-img-btn" style="display:none;"
                                                               id="1bf1a6a6-757b-921f-0a96-f95ffc63c6bc-new-product-loading">
                     </button>
-                    <a id="prod-frm-reset" href="{!! url('catalogs') !!}" class="btn add-item-btn" style="margin-right:10px;">Reset</a>
+                    <a id="prod-frm-reset" href="{!! url('categories') !!}" class="btn add-item-btn" style="margin-right:10px;">Reset</a>
                 </section>
             </form>
         </section>
@@ -69,10 +86,10 @@
     <button data-ref="sub-menu-items" data-index="1" class="breadcrumb-btn cursor-normal" type="submit" id="1-bc">
             <span class="bc-img-wrap"><img class="breadcrumb-main-icon"
                                            src="{{ URL::asset('resources/images/home_ico_black.png') }}"></span><span
-                class="breadcrumb-text">Catalogs</span></button>
+                class="breadcrumb-text">Categories</span></button>
     <i class="fa fa-chevron-right breadcrumb-icn " id="1-ic"></i>
 
     <button data-ref="sub-menu-items" data-index="2" class="breadcrumb-btn font-blue" type="submit" id="2-bc"><span
-                class="breadcrumb-text">New</span></button>
+                class="breadcrumb-text">Edit</span></button>
     <i class="fa fa-chevron-right breadcrumb-icn font-blue" id="3-ic"></i>
 @stop

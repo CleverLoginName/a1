@@ -350,7 +350,7 @@ class DummyDataSeeder extends Seeder
 
 
 
-/*
+
         for ($i=1;$i<=25;$i++){
             DB::table('products')->insert([
                 'name' => 'Name for Product '.$i,
@@ -371,7 +371,7 @@ class DummyDataSeeder extends Seeder
 
             DB::table('sub_category_products')->insert(['sub_category_id' => 1 ,'product_id' => $i]);
         }
-*/
+
 
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');

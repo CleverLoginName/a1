@@ -53,7 +53,7 @@
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>User Role</label></section>
                     <section class="col-md-6">
-                        <select class="form-control required notselected error"
+                        <select class="form-control required"
                                 id="prod-frm-sub-cat" name="role_id" aria-required="true"
                                 aria-invalid="true">
                             {!! \App\Role::find(DB::table('role_user')->where('user_id','=',$user->id)->first()->role_id)->display_name !!}
@@ -108,6 +108,6 @@
     <i class="fa fa-chevron-right breadcrumb-icn " id="1-ic"></i>
 
     <button data-ref="sub-menu-items" data-index="2" class="breadcrumb-btn font-blue" type="submit" id="2-bc"><span
-                class="breadcrumb-text">New</span></button>
+                class="breadcrumb-text">Edit</span></button>
     <i class="fa fa-chevron-right breadcrumb-icn font-blue" id="3-ic"></i>
 @stop

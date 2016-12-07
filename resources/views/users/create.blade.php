@@ -51,7 +51,7 @@
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>User Role</label></section>
                     <section class="col-md-6">
-                        <select class="form-control required notselected error"
+                        <select class="form-control required"
                                 id="prod-frm-sub-cat" name="role_id" aria-required="true"
                                 aria-invalid="true">
                             @foreach($roles as $role)

@@ -1,72 +1,80 @@
 @extends('layouts.default')
 
-@sectcatalogsle', 'Test')
-
-
-@section('main-menu')
-    @parent
-
-@endsection
-
-
-@section('sub-menu')
-    @parent
-
-@endsection
-
-
 
 @section('main-content')
-    <div class="row">
-        <div class="col-md-12">
-            <div class="x_panel">
-                <div class="x_title">
-                    <h2>Edit a Catalog<small>{!! $catalog->name !!}</small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>
-                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <br>
-                    {{ Form::open(['url' => 'catalogs/'.$catalog->id, 'method' => 'post',"class"=>"form-horizontal form-label-left"])}}
-                    {{ method_field('PUT') }}
-                    {{Form::hidden('id',$catalog->id)}}
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Name</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Name" name="name" value="{!! $catalog->name !!}">
-                        </div>
-                    </div>
+    <section class="box new-item-wrapper">
+        <section class="box-header"></section>
+        <section class="box-body">
+            <form class="row new-item-from-wrapper" role="form" method="post" id="new-prod-form"
+                  enctype="multipart/form-data" novalidate="novalidate" action="{!! url('/catalogs/'.$catalog->id) !!}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                {{ method_field('PUT') }}
+                {{Form::hidden('id',$catalog->id)}}
+                <section class="row form-group">
+                    <section class="col-md-12">
+                        @if ($errors->has())
+                            <div class="alert alert-danger">
+                                @foreach ($errors->all() as $error)
+                                    {{ $error }}<br>
+                                @endforeach
+                            </div>
+                        @endif
+                    </section>
+                </section>
+                <section class="row form-group">
+                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Name</label></section>
+                    <section class="col-md-6"><input class="form-control required" id="name"
+                                                     name="name" aria-required="true" type="text" value="{!! $catalog->name !!}"></section>
+                    <section class="col-md-2"></section>
+                </section>
+                <section class="row form-group">
+                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Description</label></section>
+                    <section class="col-md-6"><input class="form-control required" id="description"
+                                                     name="description" aria-required="true" type="text" value="{!! $catalog->description !!}"></section>
+                    <section class="col-md-2"></section>
+                </section>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Description" name="description" value="{!! $catalog->description !!}">
-                        </div>
-                    </div>
+                <section class="row box-footer" id="form-footer">
+                    <button type="submit"
+                            class="btn add-item-btn">Add <img src="resources/images/spinning-circles.svg"
+                                                              class="loading-img-btn" style="display:none;"
+                                                              id="1bf1a6a6-757b-921f-0a96-f95ffc63c6bc-new-product-loading">
+                    </button>
+                    <a id="prod-frm-reset" href="{!! url('catalogs') !!}" class="btn add-item-btn" style="margin-right:10px;">Reset</a>
+                </section>
+            </form>
+        </section>
+    </section>
+@stop
 
-
-
-                    <div class="ln_solid"></div>
-                    <div class="form-group">
-                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                            <button type="submit" class="btn btn-primary">Cancel</button>
-                            <button type="submit" class="btn btn-success">Submit</button>
-                        </div>
-                    </div>
-                </div>
-
-
-                {{ Form::close() }}
-            </div>
-        </div>
-    </div>
-@endsection
 
 @section('sub-content')
-    <p>This is my sub content.</p>
-@endsection
+    <section class="details-outer-wrapper">
+        <section class="details-inner-wrapper">
+            <div class="info-img-wrapper"><img src="{{ URL::asset('resources/images/home.jpg') }}"
+                                               class="img-responsive"/>
+            </div>
+            <div class="info-img-wrapper">
+                <h3><img src="{{ URL::asset('resources/images/cus_logo.png') }}" class="img-responsive"
+                         style="width:60%;margin:0 auto;"/></h3>
+            </div>
+        </section>
+    </section>
+@stop
+
+@section('bread-crumb')
+    <a href="{!! url('/logout') !!}" class="custom-login-button">
+        <span>Logout</span>
+    </a>
+    <button data-ref="sub-menu-items" data-index="1" class="breadcrumb-btn cursor-normal" type="submit" id="1-bc">
+            <span class="bc-img-wrap"><img class="breadcrumb-main-icon"
+                                           src="{{ URL::asset('resources/images/home_ico_black.png') }}"></span><span
+                class="breadcrumb-text">Catalogs</span></button>
+    <i class="fa fa-chevron-right breadcrumb-icn " id="1-ic"></i>
+
+    <button data-ref="sub-menu-items" data-index="2" class="breadcrumb-btn font-blue" type="submit" id="2-bc"><span
+                class="breadcrumb-text">Edit</span></button>
+    <i class="fa fa-chevron-right breadcrumb-icn font-blue" id="3-ic"></i>
+@stop
