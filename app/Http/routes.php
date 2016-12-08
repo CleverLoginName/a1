@@ -26,8 +26,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('categories/{id}/delete', 'CategoriesController@destroy');
     Route::resource('sub-categories', 'SubCategoriesController');
     Route::get('sub-categories/{id}/delete', 'SubCategoriesController@destroy');
+
     Route::resource('products', 'ProductsController');
     Route::get('products/{id}/delete', 'ProductsController@destroy');
+    Route::get('products/create/product', 'ProductsController@createProduct');
+
+    Route::resource('packs', 'PacksController');
+    Route::get('packs/{id}/delete', 'PacksController@destroy');
+    Route::resource('composite-products', 'CompositeProductsController');
+    Route::get('composite-products/{id}/delete', 'CompositeProductsController@destroy');
 });
 
 

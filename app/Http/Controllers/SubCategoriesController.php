@@ -7,6 +7,9 @@ use App\SubCategory;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
+use Szykra\Notifications\Flash;
 
 class SubCategoriesController extends Controller
 {
@@ -42,9 +45,15 @@ class SubCategoriesController extends Controller
     public function store(Request $request)
     {
 
-        $this->validate($request,[
-            'name'=>'required|max:255',
-        ]);
+        $rules = array(
+            'name'   => 'required',
+            'description'    => 'required'
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails())
+            return Redirect::to('/sub-categories/create')
+                ->withErrors($validator);
 
         $subCategories = new SubCategory();
         $subCategories->name = $request->get('name');
@@ -52,6 +61,7 @@ class SubCategoriesController extends Controller
         $subCategories->category_id = $request->get('category_id');
         $subCategories->is_pack = 0;
         $subCategories->save();
+        Flash::success('Sub-Category Added', 'Sub-Category has been added successfully.');
 
         return redirect()->action('SubCategoriesController@index');
     }
@@ -93,6 +103,17 @@ class SubCategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $rules = array(
+            'name'   => 'required',
+            'description'    => 'required'
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails())
+            return Redirect::to('/sub-categories/create')
+                ->withErrors($validator);
+
         $subCategory = SubCategory::find($id);
         $categories = Category::all();
 
@@ -101,6 +122,7 @@ class SubCategoriesController extends Controller
         $subCategory->category_id = $request->get('category_id');
         $subCategory->save();
 
+        Flash::success('Sub-Category Updated', 'Sub-Category has been updated successfully.');
         return view('sub-categories.edit')
             ->with('subCategory', $subCategory)
             ->with('categories', $categories);
@@ -117,6 +139,7 @@ class SubCategoriesController extends Controller
 
         $subCategory = SubCategory::find($id);
         $subCategory->delete();
+        Flash::success('Sub-Category Deleted', 'Sub-Category has been deleted successfully.');
         return redirect()->action('SubCategoriesController@index');
     }
 }

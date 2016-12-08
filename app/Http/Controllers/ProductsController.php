@@ -37,6 +37,8 @@ class ProductsController extends Controller
      */
     public function create()
     {
+
+        return view('products.create_main');
         $subCategories = SubCategory::all();
         $categories = Category::all();
         $catalogs = Catalog::all();
@@ -45,6 +47,19 @@ class ProductsController extends Controller
             ->with('categories', $categories)
             ->with('subCategories', $subCategories);
     }
+    
+    public function createProduct()
+    {
+        $subCategories = SubCategory::all();
+        $categories = Category::all();
+        $catalogs = Catalog::all();
+        return view('products.create')
+            ->with('catalogs', $catalogs)
+            ->with('categories', $categories)
+            ->with('subCategories', $subCategories);
+    }
+    
+    
 
     /**
      * Store a newly created resource in storage.
@@ -72,7 +87,7 @@ class ProductsController extends Controller
 
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails())
-            return Redirect::to('/products/create')
+            return Redirect::to('/products/create/product')
                 ->withErrors($validator);
 
 

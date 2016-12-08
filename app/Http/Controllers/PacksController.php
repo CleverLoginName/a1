@@ -76,7 +76,7 @@ class PacksController extends Controller
         $subCategoryProducts = SubCategoryProduct::where('sub_category_id','=',$subCategory->id)->get();
         return view('packs.show')
             ->with('subCategoryProducts', $subCategoryProducts)
-            ->with('subCategory', $subCategory);
+            ->with('pack', $subCategory);
     }
 
     /**
