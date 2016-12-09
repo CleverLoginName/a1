@@ -35,6 +35,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('packs/{id}/delete', 'PacksController@destroy');
     Route::resource('composite-products', 'CompositeProductsController');
     Route::get('composite-products/{id}/delete', 'CompositeProductsController@destroy');
+
+    Route::resource('templates', 'TemplatesController');
+    Route::get('templates/{id}/delete', 'TemplatesController@destroy');
+    Route::post('templates/create/plans', 'TemplatesController@addTemplatePlans');
 });
 
 

@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="578" height="500"></canvas>
+    <script>
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+
+
+      context.beginPath();
+      context.arc(288, 150, 100, 0, Math.PI, true);
+      context.closePath();
+      context.lineWidth = 5;
+      context.fillStyle = 'red';
+      context.fill();
+
+      context.beginPath();
+      context.arc(288, 150, 60, 0, Math.PI, true);
+      context.closePath();
+      context.lineWidth = 5;
+      context.fillStyle = 'white';
+      context.fill();
+
+	  context.fillStyle = "white";
+	  context.font = "bold 24px Arial";
+	  context.fillText("5", 280, 80);
+
+      context.beginPath();
+      context.rect(185, 150, 206, 60);
+      context.closePath();
+      context.lineWidth = 5;
+      context.fillStyle = 'black';
+      context.fill();
+
+      context.beginPath();
+      context.rect(185, 205, 206, 30);
+      context.closePath();
+      context.lineWidth = 5;
+      context.fillStyle = 'yellow';
+      context.fill();
+
+	  context.fillStyle = "white";
+	  context.font = "bold 24px Arial";
+	  context.fillText("Energy", 250, 175);
+
+	  context.fillStyle = "white";
+	  context.font = "bold 24px Arial";
+	  context.fillText("Rating", 250, 195);
+    </script>
+  </body>
+</html> 
