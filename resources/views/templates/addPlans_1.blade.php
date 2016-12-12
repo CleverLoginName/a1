@@ -35,19 +35,19 @@
                                     <section class="col-md-4">Design</section>
                                     <section class="col-md-8">
                                         <input class="form-control required" id="design"
-                                               name="design" aria-required="true" type="text" placeholder="" value="{!! $templatesPlan->design !!}"></section>
+                                               name="design" aria-required="true" type="text" placeholder=""></section>
                                 </section>
                                 <section class="row form-group">
                                     <section class="col-md-4">Level</section>
                                     <section class="col-md-8"><input class="form-control required" id="level"
                                                                      name="level" aria-required="true" type="text"
-                                                                     placeholder="" value="{!! $templatesPlan->level !!}"></section>
+                                                                     placeholder=""></section>
                                 </section>
                                 <section class="row form-group">
                                     <section class="col-md-4">Catalog</section>
-                                    <section class="col-md-8"><input class="form-control required" id="catalog_id"
-                                                                     name="catalog_id" aria-required="true" type="text"
-                                                                     placeholder="" value="{!! $templatesPlan->catalog_id !!}"></section>
+                                    <section class="col-md-8"><input class="form-control required" id="catalog"
+                                                                     name="catalog" aria-required="true" type="text"
+                                                                     placeholder=""></section>
                                 </section>
                                 <section class="row form-group">
                                     <section class="col-md-12">
@@ -64,49 +64,13 @@
                         </section>
                     @endforeach
                 @else
-                    @foreach($templatesPlans as $templatesPlan)
-                        <section class="row form-group">
-                            <section class="col-md-6">
+                    <section class="row form-group">
+                        <section class="col-md-8">
 
-                                <img src="{!! asset($templatesPlan->img) !!}"/>
-
-                            </section>
-                            <section class="col-md-6">
-                                {!! Form::open(['url' => 'templates/create/plan-data','method'=>'POST']) !!}
-
-                                {{Form::hidden('id',$templatesPlan->id)}}
-                                <section class="row form-group">
-                                    <section class="col-md-4">Design</section>
-                                    <section class="col-md-8">
-                                        <input class="form-control required" id="design"
-                                               name="design" aria-required="true" type="text" placeholder="" value="{!! $templatesPlan->design !!}"></section>
-                                </section>
-                                <section class="row form-group">
-                                    <section class="col-md-4">Level</section>
-                                    <section class="col-md-8"><input class="form-control required" id="level"
-                                                                     name="level" aria-required="true" type="text"
-                                                                     placeholder="" value="{!! $templatesPlan->level !!}"></section>
-                                </section>
-                                <section class="row form-group">
-                                    <section class="col-md-4">Catalog</section>
-                                    <section class="col-md-8"><input class="form-control required" id="catalog_id"
-                                                                     name="catalog_id" aria-required="true" type="text"
-                                                                     placeholder="" value="{!! $templatesPlan->catalog_id !!}"></section>
-                                </section>
-                                <section class="row form-group">
-                                    <section class="col-md-12">
-                                        <button type="submit"
-                                                class="btn add-item-btn">Add <img
-                                                    src="resources/images/spinning-circles.svg"
-                                                    class="loading-img-btn" style="display:none;"
-                                                    id="1bf1a6a6-757b-921f-0a96-f95ffc63c6bc-new-product-loading">
-                                        </button>
-                                    </section>
-                                </section>
-                                {!! Form::close() !!}
-                            </section>
                         </section>
-                    @endforeach
+                        <section class="col-md-4">
+                        </section>
+                    </section>
                 @endif
             </section>
         </section>

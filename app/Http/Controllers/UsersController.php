@@ -38,6 +38,12 @@ class UsersController extends Controller
         return view('users.show')
             ->with('user', $user);
     }
+    public function profile()
+    {
+        $user = Auth::user();
+        return view('users.show')
+            ->with('user', $user);
+    }
 
     public function store(Request $request){
 

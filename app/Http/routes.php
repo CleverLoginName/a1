@@ -18,6 +18,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/users/roles', 'UsersController@updateRolesNUsers');
     Route::resource('users', 'UsersController');
     Route::get('users/{id}/delete', 'UsersController@destroy');
+    Route::get('/profile', 'UsersController@profile');
 
 
     Route::resource('catalogs', 'CatalogsController');
@@ -38,7 +39,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('templates', 'TemplatesController');
     Route::get('templates/{id}/delete', 'TemplatesController@destroy');
-    Route::post('templates/create/plans', 'TemplatesController@addTemplatePlans');
+    Route::post('templates/create/plan-image', 'TemplatesController@addTemplatePlansImage');
+    Route::post('templates/create/plan-data', 'TemplatesController@addTemplatePlansData');
+    Route::get('templates/create/add-plans', 'TemplatesController@addPlan');
+
+    Route::resource('projects', 'ProjectsController');
+    Route::get('projects/{id}/delete', 'ProjectsController@destroy');
 });
 
 

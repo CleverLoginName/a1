@@ -16,7 +16,8 @@ class CreateTemplatePlansTable extends Migration
             $table->increments('id');
             $table->string('design');
             $table->string('level');
-            $table->integer('Catalogue');
+            $table->string('img');
+            $table->integer('catalog_id');
             $table->integer('template_id');
             $table->timestamps();
         });

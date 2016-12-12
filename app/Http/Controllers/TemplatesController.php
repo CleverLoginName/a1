@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Template;
+use App\TemplatePlan;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -66,9 +67,29 @@ class TemplatesController extends Controller
         $template->save();
 
         Flash::success('Template Added', 'Template has been added successfully.');
+        session(['template' => $template]);
+        session(['is_first' => true]);
+        return Redirect::to('/templates/create/add-plans');
 
-        return  view('templates.addPlans')
-            ->with('template',$template);
+    }
+
+    public function addPlan(Request $request){
+        $templatesPlans = TemplatePlan::where('template_id','=',session('template')->id)->get();
+        if(session('is_first')){
+            session(['is_first' => false]);
+            return  view('templates.addPlans')
+                ->with('template',session('template'))
+                ->with('templatesPlans',$templatesPlans)
+                ->with('empty_form',false);
+        }else{
+
+
+            return  view('templates.addPlans')
+                ->with('template',session('template'))
+                ->with('templatesPlans',$templatesPlans)
+                ->with('empty_form',true);
+        }
+
     }
 
     /**
@@ -77,10 +98,10 @@ class TemplatesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function addTemplatePlans(Request $request)
+    public function addTemplatePlansImage(Request $request)
     {//dd($request->all());
         $file = $request->file('file');
-
+/*
         //Display File Name
         echo 'File Name: '.$file->getClientOriginalName();
         echo '<br>';
@@ -99,11 +120,46 @@ class TemplatesController extends Controller
 
         //Display File Mime Type
         echo 'File Mime Type: '.$file->getMimeType();
-
+*/
         $randFileName = Str::random(16).'.'.$file->getClientOriginalExtension();
         //Move Uploaded File
         $destinationPath = 'uploads/templates/'.$request->get('template_id').'/originals/';
         $file->move($destinationPath,$randFileName);
+
+        //if($request->get('save_plan')=='Y'){
+            $templatePlan = new TemplatePlan();
+            $templatePlan->design = 0;
+            $templatePlan->level = 0;
+            $templatePlan->catalog_id = 0;
+            $templatePlan->img = $destinationPath.$randFileName;
+            $templatePlan->template_id = session('template')->id;
+            $templatePlan->save();
+        //}
+
+/*
+        return  view('templates.addPlans')
+            ->with('template',session('template'))
+            ->with('empty_form',true);*/
+        Flash::success('Image Added', 'Image has been added successfully.');
+    }
+
+
+    public function addTemplatePlansData(Request $request){
+        $templatePlan = TemplatePlan::find($request->get('id'));
+        $templatePlan->design = $request->get('design');
+        $templatePlan->level = $request->get('level');
+        $templatePlan->catalog_id = $request->get('catalog_id');
+        $templatePlan->save();
+
+        $templatesPlans = TemplatePlan::where('template_id','=',session('template')->id)->get();
+
+        Flash::success('Data Added', 'Data has been added successfully.');
+        return Redirect::to('/templates/create/add-plans');
+        return  view('templates.addPlans')
+            ->with('template',session('template'))
+            ->with('templatesPlans',$templatesPlans)
+            ->with('empty_form',false);
+
     }
     public function show($id)
     {

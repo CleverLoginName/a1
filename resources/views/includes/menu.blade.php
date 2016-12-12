@@ -11,33 +11,25 @@
             <span class="main-menu-item-text">Home</span>
             <span class="menu-selected-item"></span></a>
     </li>
-    <li class="users">
-        <a class="main-menu-item tree-toggle" id="Users">
+    <li class="projects">
+        <a class="main-menu-item tree-toggle" id="Projects">
             <img class="main-menu-icon" src="{{ URL::asset('resources/images/project_ico_white.png') }}">
-            <span class="main-menu-item-text">Users</span>
+            <span class="main-menu-item-text">Projects</span>
             <span class="menu-selected-item"></span>
         </a>
-
-
         <ul class="nav nav-list tree">
-            <li>
-                <a class="main-menu-item" id="Users" href="{!! url("/users/create") !!}">
-                    <img class="main-menu-icon" src="{{ URL::asset('resources/images/products_ico_white.png') }}">
-                    <span class="main-menu-item-text">New</span>
-                </a>
-            </li>
-            <li>
-                <a class="main-menu-item" id="Users" href="{!! url("/users") !!}">
-                    <img class="main-menu-icon" src="{{ URL::asset('resources/images/products_ico_white.png') }}">
-                    <span class="main-menu-item-text">View</span>
-                </a>
-            </li>
-            <li>
-                <a class="main-menu-item" id="Users" href="{!! url("/users/roles") !!}">
-                    <img class="main-menu-icon" src="{{ URL::asset('resources/images/products_ico_white.png') }}">
-                    <span class="main-menu-item-text">Roles</span>
-                </a>
-            </li>
+                <li>
+                    <a class="main-menu-item" id="Products" href="{!! url("/projects/create") !!}">
+                        <img class="main-menu-icon" src="{{ URL::asset('resources/images/products_ico_white.png') }}">
+                        <span class="main-menu-item-text">New</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="main-menu-item" id="Products" href="{!! url("/projects") !!}">
+                        <img class="main-menu-icon" src="{{ URL::asset('resources/images/products_ico_white.png') }}">
+                        <span class="main-menu-item-text">View</span>
+                    </a>
+                </li>
         </ul>
     </li>
     <li class=" products">
@@ -78,13 +70,62 @@
             </li>
         </ul>
     </li>
-    <li class="projects">
-        <a class="main-menu-item tree-toggle" id="Projects">
+
+    <li class="templates">
+        <a class="main-menu-item tree-toggle" id="Templates">
             <img class="main-menu-icon" src="{{ URL::asset('resources/images/project_ico_white.png') }}">
-            <span class="main-menu-item-text">Projects</span>
+            <span class="main-menu-item-text">Templates</span>
             <span class="menu-selected-item"></span>
         </a>
+
+
+        <ul class="nav nav-list tree">
+            <li>
+                <a class="main-menu-item" id="Users" href="{!! url("/templates/create") !!}">
+                    <img class="main-menu-icon" src="{{ URL::asset('resources/images/products_ico_white.png') }}">
+                    <span class="main-menu-item-text">New</span>
+                </a>
+            </li>
+            <li>
+                <a class="main-menu-item" id="Users" href="{!! url("/templates") !!}">
+                    <img class="main-menu-icon" src="{{ URL::asset('resources/images/products_ico_white.png') }}">
+                    <span class="main-menu-item-text">View</span>
+                </a>
+            </li>
+        </ul>
     </li>
+
+    <li class="users">
+        <a class="main-menu-item tree-toggle" id="Users">
+            <img class="main-menu-icon" src="{{ URL::asset('resources/images/project_ico_white.png') }}">
+            <span class="main-menu-item-text">Users</span>
+            <span class="menu-selected-item"></span>
+        </a>
+
+
+        <ul class="nav nav-list tree">
+            <li>
+                <a class="main-menu-item" id="Users" href="{!! url("/users/create") !!}">
+                    <img class="main-menu-icon" src="{{ URL::asset('resources/images/products_ico_white.png') }}">
+                    <span class="main-menu-item-text">New</span>
+                </a>
+            </li>
+            <li>
+                <a class="main-menu-item" id="Users" href="{!! url("/users") !!}">
+                    <img class="main-menu-icon" src="{{ URL::asset('resources/images/products_ico_white.png') }}">
+                    <span class="main-menu-item-text">View</span>
+                </a>
+            </li>
+            <li>
+                <a class="main-menu-item" id="Users" href="{!! url("/users/roles") !!}">
+                    <img class="main-menu-icon" src="{{ URL::asset('resources/images/products_ico_white.png') }}">
+                    <span class="main-menu-item-text">Roles</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+
     <li class="suppliers">
         <a class="main-menu-item tree-toggle" id="suppliers">
             <img class="main-menu-icon" src="{{ URL::asset('resources/images/sup_ico_white.png') }}">
@@ -93,7 +134,7 @@
         </a>
     </li>
     <li class="profile">
-        <a class="main-menu-item tree-toggle" id="profile">
+        <a class="main-menu-item tree-toggle" id="profile" href="{!! url("/profile") !!}">
             <img class="main-menu-icon" src="{{ URL::asset('resources/images/prof_ico_white.png') }}">
             <span class="main-menu-item-text">Profile</span>
             <span class="menu-selected-item"></span>
