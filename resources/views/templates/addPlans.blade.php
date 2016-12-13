@@ -24,7 +24,7 @@
                         <section class="row form-group">
                             <section class="col-md-6">
 
-                                <img src="{!! asset($templatesPlan->img) !!}"/>
+                                <img src="{!! asset($templatesPlan->img) !!}" class="col-md-12"/>
 
                             </section>
                             <section class="col-md-6">

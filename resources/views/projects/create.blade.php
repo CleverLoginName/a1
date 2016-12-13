@@ -21,122 +21,150 @@
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Catalog</label></section>
-                    <section class="col-md-6">
+                    <section class="col-md-2"><label>Job# / Consultant</label></section>
+                    <section class="col-md-3">
                         <select class="form-control required"
                                 id="prod-frm-sub-cat" name="catalog_id" aria-required="true"
                                 aria-invalid="true">
                         </select>
                     </section>
-                    <section class="col-md-2"><a href="{!! url('/catalogs/create') !!}">Can't find? Add New</a> </section>
-                </section>
-                <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Category</label></section>
-                    <section class="col-md-6">
-                        <select class="form-control required"
-                                id="prod-frm-sub-cat" name="category_id" aria-required="true"
-                                aria-invalid="true">
-
-                        </select>
-                    </section>
-                    <section class="col-md-2"><a href="{!! url('/categories/create') !!}">Can't find? Add New</a></section>
-                </section>
-                <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Sub-Category</label></section>
-                    <section class="col-md-6">
-                        <select class="form-control required"
-                                id="prod-frm-sub-cat" name="sub_category_id" aria-required="true"
-                                aria-invalid="true">
-                         
-                        </select>
-                    </section>
-                    <section class="col-md-2"><a href="{!! url('/sub-categories/create') !!}">Can't find? Add New</a></section>
-                </section>
-                <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Name</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="name"
+                    <section class="col-md-5"><input class="form-control required" id="name"
                                                      name="name" aria-required="true" type="text"></section>
-                    <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Description</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="description"
-                                                     name="description" aria-required="true" type="text"></section>
-                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Client Name 1</label></section>
+                    <section class="col-md-2">
+                        <select class="form-control required"
+                                id="prod-frm-sub-cat" name="title_1" aria-required="true"
+                                aria-invalid="true">
+                            <option value="Mr.">Mr</option>
+                            <option value="Miss.">Miss</option>
+                            <option value="Mrs.">Mrs</option>
+                        </select>
+                    </section>
+                    <section class="col-md-3"><input class="form-control required" id="first_name_1"
+                                                      name="first_name_1" aria-required="true" type="text" placeholder="First Name"></section>
+                    <section class="col-md-3"><input class="form-control required" id="last_name_1"
+                                                     name="first_name_1" aria-required="true" type="text" placeholder="Last Name"></section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Manufacturing Product Code</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="manufacturing_product_code"
-                                                     name="manufacturing_product_code" aria-required="true" type="text"></section>
                     <section class="col-md-2"></section>
+                    <section class="col-md-4">
+                        <input class="form-control required" id="mobile_1"
+                               name="first_name" aria-required="true" type="text" placeholder="Mobile">
+                    </section>
+                    <section class="col-md-4">
+                        <input class="form-control required" id="email_1"
+                               name="first_name" aria-required="true" type="text" placeholder="E-Mail">
+                    </section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Builders Product Code</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="builder_code"
-                                                     name="builder_code" aria-required="true" type="text"></section>
-                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Client Name 2</label></section>
+                    <section class="col-md-2">
+                        <select class="form-control required"
+                                id="prod-frm-sub-cat" name="title_2" aria-required="true"
+                                aria-invalid="true">
+                            <option value="Mr.">Mr</option>
+                            <option value="Miss.">Miss</option>
+                            <option value="Mrs.">Mrs</option>
+                        </select>
+                    </section>
+                    <section class="col-md-3"><input class="form-control required" id="first_name_2"
+                                                      name="first_name_1" aria-required="true" type="text" placeholder="First Name"></section>
+                    <section class="col-md-3"><input class="form-control required" id="last_name_2"
+                                                     name="first_name_1" aria-required="true" type="text" placeholder="Last Name"></section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Pronto Code</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="pronto_code"
-                                                     name="pronto_code" aria-required="true" type="text"></section>
                     <section class="col-md-2"></section>
+                    <section class="col-md-4">
+                        <input class="form-control required" id="mobile_2"
+                               name="first_name" aria-required="true" type="text" placeholder="Mobile">
+                    </section>
+                    <section class="col-md-4">
+                        <input class="form-control required" id="email_2"
+                               name="first_name" aria-required="true" type="text" placeholder="E-Mail">
+                    </section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Builders Price ($)</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="builders_price"
-                                                     name="builders_price" aria-required="true" type="text"></section>
-                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Design Template</label></section>
+                    <section class="col-md-6"><input class="form-control required" id="template"
+                                                     name="template" aria-required="true" type="text"></section>
+                    <section class="col-md-2"><input class="form-control required" id="scale"
+                                                     name="scale" aria-required="true" type="text" placeholder="Scale"></section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Sales Price ($)</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="sales_price"
-                                                     name="sales_price" aria-required="true" type="text"></section>
-                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Build Address</label></section>
+                    <section class="col-md-2"><input class="form-control required" id="lot"
+                                                     name="lot" aria-required="true" type="text" placeholder="Lot#">
+                    </section>
+                    <section class="col-md-2"><input class="form-control required" id="no_unit"
+                                                     name="no_unit" aria-required="true" type="text" placeholder="No/Unit">
+                    </section>
+                    <section class="col-md-4"><input class="form-control required" id="street_name"
+                                                     name="street_name" aria-required="true" type="text" placeholder="Street Name">
+                    </section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Discount (%)</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="discount"
-                                                     name="discount" aria-required="true" type="text"></section>
-                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label></label></section>
+                    <section class="col-md-4"><input class="form-control required" id="town" name="town" aria-required="true" type="text" placeholder="Suburb/Town">
+                    </section>
+                    <section class="col-md-2"><input class="form-control required" id="postal_code"
+                                                     name="postal_code" aria-required="true" type="text" placeholder="Postal Code">
+                    </section>
+                    <section class="col-md-2"><input class="form-control required" id="state"
+                                                     name="state" aria-required="true" type="text" placeholder="State">
+                    </section>
+
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Quantity</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="quantity"
-                                                     name="quantity" aria-required="true" type="text"></section>
-                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Budget/Energy</label></section>
+                    <section class="col-md-2"><input class="form-control required" id="lot"
+                                                     name="lot" aria-required="true" type="text" placeholder="$ Budget(If App)">
+                    </section>
+                    <section class="col-md-2"><input class="form-control required" id="no_unit"
+                                                     name="no_unit" aria-required="true" type="text" placeholder="Total Energy per SQM">
+                    </section>
+                    <section class="col-md-4"><input class="form-control required" id="rating"
+                                                     name="rating" aria-required="true" type="text" placeholder="Rating">
+                    </section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Energy Consumption (W)</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="energy_consumption"
-                                                     name="energy_consumption" aria-required="true" type="text"></section>
-                    <section class="col-md-2"></section>
-                </section>
-                <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Width</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="width"
-                                                     name="width" aria-required="true" type="text"></section>
-                    <section class="col-md-2"></section>
-                </section>
-                <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Height</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="height"
-                                                     name="height" aria-required="true" type="text"></section>
-                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label></label></section>
+                    <section class="col-md-1">
+                        House
+                    </section>
+                    <section class="col-md-1">
+                        <input class="form-control required" id="house" name="house" aria-required="true" type="text" placeholder="5w per SQM">
+                    </section>
+
+                    <section class="col-md-1"></section>
+
+                    <section class="col-md-1">
+                        Garage
+                    </section>
+                    <section class="col-md-1">
+                        <input class="form-control required" id="garage" name="garage" aria-required="true" type="text" placeholder="3w per SQM">
+                    </section>
+
+                    <section class="col-md-1"></section>
+
+                    <section class="col-md-1">
+                        House
+                    </section>
+                    <section class="col-md-1">
+                        <input class="form-control required" id="porch" name="porch" aria-required="true" type="text" placeholder="4w per SQM">
+                    </section>
+
+
                 </section>
                 <section class="row box-footer" id="form-footer">
                     <button type="submit"
