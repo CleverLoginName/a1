@@ -42,9 +42,20 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('templates/create/plan-image', 'TemplatesController@addTemplatePlansImage');
     Route::post('templates/create/plan-data', 'TemplatesController@addTemplatePlansData');
     Route::get('templates/create/add-plans', 'TemplatesController@addPlan');
+    Route::get('templates/create/add-plans/{id}/canvas', 'TemplatesController@editPlanInCanvas');
 
     Route::resource('projects', 'ProjectsController');
     Route::get('projects/{id}/delete', 'ProjectsController@destroy');
+
+    Route::get('temp', 'TempController@index');
+    Route::get('/products1', 'TempController@products');
+    Route::post('/save', 'TempController@save');
+    Route::get('/load', 'TempController@load');
+
+
+    Route::get('/canvas_', 'CanvasController@indexTemplate');
+
+
 });
 
 

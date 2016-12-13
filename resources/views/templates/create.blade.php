@@ -71,15 +71,22 @@
                                 Total
                             </section>
                             <section class="col-md-8">
-
+                            <span id="total"></span>
                             </section>
                             </section>
                         </section>
                         <section class="col-md-6">
+
+                            <section class="row">
                             <section class="col-md-12">
-                                <select class="form-control required"
-                                        id="prod-frm-sub-cat" name="energy_rating" aria-required="true"
-                                        aria-invalid="true">
+                                <canvas id="myCanvas" class="col-md-12"></canvas>
+                            </section>
+                            </section>
+                            <section class="row">
+                                <section class="col-md-12">
+                                    <select class="form-control required"
+                                            id="prod-frm-sub-cat" name="energy_rating" aria-required="true"
+                                            aria-invalid="true">
                                         <option value="1">1 Star</option>
                                         <option value="2">2 Star</option>
                                         <option value="3">3 Star</option>
@@ -93,7 +100,8 @@
                                         <option value="7.5">7.5 Star</option>
                                         <option value="8">8 Star</option>
                                         <option value="8.5">8.5 Star</option>
-                                </select>
+                                    </select>
+                                </section>
                             </section>
                         </section>
                     </section>
@@ -141,4 +149,59 @@
     <button data-ref="sub-menu-items" data-index="2" class="breadcrumb-btn font-blue" type="submit" id="2-bc"><span
                 class="breadcrumb-text">New</span></button>
     <i class="fa fa-chevron-right breadcrumb-icn font-blue" id="3-ic"></i>
+@stop
+
+@section('post-js')
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+
+
+        context.beginPath();
+        context.arc(150, 100, 100, 0, Math.PI, true);
+        context.closePath();
+        context.lineWidth = 5;
+        context.fillStyle = 'red';
+        context.fill();
+
+        context.beginPath();
+        context.arc(150, 100, 60, 0, Math.PI, true);
+        context.closePath();
+        context.lineWidth = 5;
+        context.fillStyle = 'white';
+        context.fill();
+
+        context.fillStyle = "white";
+        context.font = "bold 24px Arial";
+        context.fillText("5", 145, 80);
+
+        context.beginPath();
+        context.rect(50, 100, 200, 160);
+        context.closePath();
+        context.lineWidth = 5;
+        context.fillStyle = 'black';
+        context.fill();
+
+        context.beginPath();
+        context.rect(50, 130, 200, 50);
+        context.closePath();
+        context.lineWidth = 5;
+        context.fillStyle = 'yellow';
+        context.fill();
+
+        context.fillStyle = "white";
+        context.font = "bold 24px Arial";
+        context.fillText("Energy", 250, 175);
+
+        context.fillStyle = "white";
+        context.font = "bold 24px Arial";
+        context.fillText("Rating", 250, 195);
+
+        var total = 0;
+        $( "#target" ).keydown(function() {
+            total = parseInt(); $( "#target" ).val()
+        });
+
+
+    </script>
 @stop

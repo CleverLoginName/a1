@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Template;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
 
 class ProjectsController extends Controller
 {
@@ -25,7 +28,14 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        $consultants = DB::table('users')
+            ->join('role_user', 'role_user.user_id', '=', 'users.id')
+            ->where('role_id', '=', 2)
+            ->get();
+        $templates = Template::all();
+        return view('projects.create')
+            ->with('templates',$templates)
+            ->with('consultants',$consultants);
     }
 
     /**

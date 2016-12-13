@@ -177,6 +177,11 @@ class TemplatesController extends Controller
         //
     }
 
+    public function editPlanInCanvas($id)
+    {
+        
+    }
+
     /**
      * Update the specified resource in storage.
      *
