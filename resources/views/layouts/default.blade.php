@@ -12,7 +12,8 @@
     <aside class="left-side sidebar-offcanvas">
         <section class="sidebar">
             @include('includes.menu')
-            Adapto VB0.2
+
+            <center style="color: white;"><h4 >Adapto VB0.2 (20161214)</h4><br>Copyright © Adapto.<br> All Rights Reserved</center>
         </section>
     </aside>
     <aside class="right-side">
