@@ -5,270 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c1f29c4-92eb-4b95-b7ab-905a003d9996" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/dist/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/dist/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/adopto.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/chandelier-lamp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/cursor/bulb-icon.cur" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/cursor/bulb.cur" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/cursor/ceilinglight.cur" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/cursor/rsz_ceilinglight.cur" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/cursor/rsz_switch.cur" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/cursor/switch-icon.cur" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/deskLamp1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/expand-btn.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/floorplan-for-elevation-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/hangingLight.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/left-menu/ceilinglight.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/left-menu/switch.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/lightSwitch.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/lightdemo - Copy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/lightdemo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/logooo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/pined.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/porterdavis.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/priseTV.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/priseTelephonique.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/raw/bulb.xcf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/raw/switch.xcf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/stars.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/swtichdemo - Copy.PNG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/swtichdemo.PNG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/add-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/archived_plans.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/NewWallIcon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/archived_plans.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/eraser_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/handIcon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/home.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/infomationIcon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/logOffIcon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/plan.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/printIcon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/project_comment.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/redo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/saveIcon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/scale.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/scale_down.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/scale_up.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/selectIcon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/text.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/undo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/zoom_in.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/zoom_out.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/black/zoom_reset.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/NewWallIcon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/archived_plans.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/eraser_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/handIcon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/home.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/infomationIcon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/logOffIcon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/plan.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/printIcon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/project_comment.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/redo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/saveIcon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/scale.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/scale_down.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/scale_up.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/selectIcon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/text.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/undo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/zoom_in.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/zoom_out.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/blue/zoom_reset.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/draw_walls.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/eraser_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/home.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/icon_drawer.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/icon_drawer_alt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/icon_error-circle_alt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/icon_floppy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/icon_folder-open_alt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/infomationIcon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/logOffIcon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/pan.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/plans.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/print.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/project_comment.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/redo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/save.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/scale.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/scale_down.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/scale_up.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/select.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/text.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/undo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/zoom_in.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/zoom_out.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/tool-bar/zoom_reset.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/img/unpind.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/font-awesome/fonts/FontAwesome.otf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/font-awesome/fonts/fontawesome-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/font-awesome/fonts/fontawesome-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/font-awesome/fonts/fontawesome-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/font-awesome/fonts/fontawesome-webfont.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/images/ui-icons_444444_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/images/ui-icons_555555_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/images/ui-icons_777620_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/images/ui-icons_777777_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/images/ui-icons_cc0000_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/images/ui-icons_ffffff_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/css/bootstrap-theme.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/css/bootstrap-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/css/bootstrap.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/dist/css/bootstrap-theme.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/dist/css/bootstrap-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/dist/css/bootstrap.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/dist/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/dist/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/dist/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/dist/js/npm.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/js/npm.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/.csscomb.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/.csslintrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/alerts.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/badges.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/bootstrap.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/breadcrumbs.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/button-groups.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/buttons.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/carousel.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/close.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/code.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/component-animations.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/dropdowns.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/forms.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/glyphicons.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/grid.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/input-groups.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/jumbotron.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/labels.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/list-group.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/media.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/alerts.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/background-variant.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/border-radius.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/buttons.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/center-block.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/clearfix.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/forms.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/gradients.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/grid-framework.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/grid.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/hide-text.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/image.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/labels.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/list-group.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/nav-divider.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/nav-vertical-align.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/opacity.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/pagination.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/panels.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/progress-bar.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/reset-filter.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/reset-text.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/resize.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/responsive-visibility.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/size.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/tab-focus.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/table-row.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/text-emphasis.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/text-overflow.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/mixins/vendor-prefixes.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/modals.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/navbar.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/navs.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/normalize.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/pager.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/pagination.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/panels.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/popovers.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/print.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/progress-bars.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/responsive-embed.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/responsive-utilities.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/scaffolding.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/tables.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/theme.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/thumbnails.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/tooltip.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/type.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/utilities.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/variables.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/bootstrap/less/wells.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/css/draw-tool.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/css/left-menu.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/css/lobipanel.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/css/price_vice.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/css/product_vice.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/css/rating-stars.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/css/right-click-menu.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/css/tool-bar.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/css/tool-bar_BACKUP_25596.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/css/tool-bar_BASE_25596.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/css/tool-bar_LOCAL_25596.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/css/tool-bar_REMOTE_25596.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/demo/demo.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/demo/documentation.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/dist/css/lobipanel.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/dist/css/lobipanel.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/dist/js/lobipanel.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/dist/js/lobipanel.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/files/Drawing 2016-11-24-01-20-30.drf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/files/Drawing 2016-11-24-06-53-10.drf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/files/Drawing 2016-11-24-09-56-45.drf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/files/Drawing 2016-11-25-06-59-10.drf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/files/Drawing 2016-11-25-07-07-10.drf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/js/controllers.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/js/draw-object.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/js/draw-tool.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/js/functions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/js/jquery-3.1.0.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/js/jquery-ui.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/js/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/js/left-menu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/js/lobipanel.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/js/product-json.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/js/rays/ivank.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/js/rays/polyk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/js/reports.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/js/scripts-expand.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/less/loading-animation.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/less/lobipanel.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/less/main.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/less/variables.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/font-awesome/css/font-awesome.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/font-awesome/css/font-awesome.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/font-awesome/css/font-awesome.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/font-awesome/fonts/fontawesome-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/highlight/github.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/highlight/highlight.pack.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/jquery-ui.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/jquery-ui.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/jquery-ui.theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/jquery.1.11.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/jquery.ui.touch-punch.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/canvas/lib/jquery.ui.touch-punch.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/TemplatesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/TemplatesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Kernel.php" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/projects/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/projects/create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/templates/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/templates/create.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/canvas/js/draw-object.js" afterPath="$PROJECT_DIR$/public/canvas/js/draw-object.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/canvas/js/draw-tool.js" afterPath="$PROJECT_DIR$/public/canvas/js/draw-tool.js" />
     </list>
     <ignored path="a1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -300,8 +39,18 @@
       <file leaf-file-name="controllers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/canvas/js/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="125" column="14" selection-start-line="125" selection-start-column="14" selection-end-line="125" selection-end-column="14" />
+            <state relative-caret-position="220">
+              <caret line="240" column="36" selection-start-line="240" selection-start-column="24" selection-end-line="240" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="825">
+              <caret line="55" column="24" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -310,8 +59,8 @@
       <file leaf-file-name="draw-tool.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/canvas/js/draw-tool.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-555">
-              <caret line="592" column="14" selection-start-line="592" selection-start-column="8" selection-end-line="592" selection-end-column="14" />
+            <state relative-caret-position="385">
+              <caret line="1377" column="56" selection-start-line="1377" selection-start-column="56" selection-end-line="1377" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -320,8 +69,8 @@
       <file leaf-file-name="draw-object.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/canvas/js/draw-object.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="532" column="56" selection-start-line="532" selection-start-column="51" selection-end-line="532" selection-end-column="56" />
+            <state relative-caret-position="225">
+              <caret line="532" column="76" selection-start-line="532" selection-start-column="76" selection-end-line="532" selection-end-column="76" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#2625#3222#0" expanded="false" />
@@ -338,10 +87,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name=".env" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="controllers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1865">
+            <state relative-caret-position="3630">
               <caret line="242" column="60" selection-start-line="242" selection-start-column="52" selection-end-line="242" selection-end-column="60" />
               <folding />
             </state>
@@ -361,31 +120,9 @@
       <file leaf-file-name="product-json.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/product-json.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="10" selection-end-column="42" />
+            <state relative-caret-position="195">
+              <caret line="13" column="49" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Template.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Template.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TemplatePlanCanvas.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/TemplatePlanCanvas.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
-              <folding>
-                <element signature="e#23#62#0#PHP" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -393,22 +130,9 @@
       <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/canvas/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
+            <state relative-caret-position="12360">
               <caret line="824" column="46" selection-start-line="824" selection-start-column="46" selection-end-line="824" selection-end-column="46" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#ul#0;n#div#2;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#canvas#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -463,8 +187,8 @@
         <option value="$PROJECT_DIR$/public/canvas/js/product-json.js" />
         <option value="$PROJECT_DIR$/public/canvas/js/controllers.js" />
         <option value="$PROJECT_DIR$/public/js/draw-object.js" />
-        <option value="$PROJECT_DIR$/public/canvas/js/draw-object.js" />
         <option value="$PROJECT_DIR$/resources/views/canvas/index.blade.php" />
+        <option value="$PROJECT_DIR$/public/canvas/js/draw-object.js" />
         <option value="$PROJECT_DIR$/public/canvas/js/draw-tool.js" />
       </list>
     </option>
@@ -483,8 +207,8 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-1" />
-    <option name="width" value="1368" />
-    <option name="height" value="743" />
+    <option name="width" value="1922" />
+    <option name="height" value="1176" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -512,6 +236,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -720,9 +445,26 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="a1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="a1" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Http" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -797,18 +539,19 @@
       <workItem from="1481516304726" duration="597000" />
       <workItem from="1481518016606" duration="7178000" />
       <workItem from="1481597855642" duration="29241000" />
+      <workItem from="1481645980758" duration="3057000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85127000" />
+    <option name="totallyTimeSpent" value="88184000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1368" height="743" extended-state="6" />
+    <frame x="-1" y="0" width="1922" height="1176" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26969698" sideWeight="0.505618" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2780303" sideWeight="0.49438202" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27760416" sideWeight="0.49438202" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -877,14 +620,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/templates/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="80" column="81" selection-start-line="80" selection-start-column="81" selection-end-line="80" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_11_29_065105_create_templates_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1021,7 +756,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1047,7 +781,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="466">
           <caret line="201" column="31" selection-start-line="201" selection-start-column="31" selection-end-line="201" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1071,7 +804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1079,7 +811,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1087,7 +818,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="16" column="26" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1095,7 +825,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="30" column="14" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1103,7 +832,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="79" column="2" selection-start-line="79" selection-start-column="2" selection-end-line="79" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1123,19 +851,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Canvas.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Canvas.php" />
     <entry file="file://$PROJECT_DIR$/app/CompositeProductMap.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1143,7 +863,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1151,7 +870,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1159,7 +877,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="5" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1167,15 +884,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="55" column="24" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1183,6 +891,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="11" column="33" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/draw-object.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="541" column="25" selection-start-line="541" selection-start-column="25" selection-end-line="541" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/canvas/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12360">
+          <caret line="824" column="46" selection-start-line="824" selection-start-column="46" selection-end-line="824" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/canvas/js/product-json.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3630">
+          <caret line="242" column="60" selection-start-line="242" selection-start-column="52" selection-end-line="242" selection-end-column="60" />
           <folding />
         </state>
       </provider>
@@ -1192,7 +931,7 @@
         <state relative-caret-position="75">
           <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
           <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
+            <element signature="e#23#62#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1205,18 +944,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/draw-object.js">
+    <entry file="file://$PROJECT_DIR$/public/js/product-json.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="541" column="25" selection-start-line="541" selection-start-column="25" selection-end-line="541" selection-end-column="25" />
+        <state relative-caret-position="195">
+          <caret line="13" column="49" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/canvas/js/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="240" column="36" selection-start-line="240" selection-start-column="24" selection-end-line="240" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="55" column="24" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/canvas/js/draw-object.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="532" column="56" selection-start-line="532" selection-start-column="51" selection-end-line="532" selection-end-column="56" />
+        <state relative-caret-position="225">
+          <caret line="532" column="76" selection-start-line="532" selection-start-column="76" selection-end-line="532" selection-end-column="76" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#2625#3222#0" expanded="false" />
@@ -1232,63 +995,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/canvas/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="824" column="46" selection-start-line="824" selection-start-column="46" selection-end-line="824" selection-end-column="46" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ul#0;n#div#2;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#canvas#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/product-json.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="10" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/canvas/js/product-json.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/controllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1865">
-          <caret line="242" column="60" selection-start-line="242" selection-start-column="52" selection-end-line="242" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/canvas/js/controllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="125" column="14" selection-start-line="125" selection-start-column="14" selection-end-line="125" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/canvas/js/draw-tool.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-555">
-          <caret line="592" column="14" selection-start-line="592" selection-start-column="8" selection-end-line="592" selection-end-column="14" />
+        <state relative-caret-position="385">
+          <caret line="1377" column="56" selection-start-line="1377" selection-start-column="56" selection-end-line="1377" selection-end-column="56" />
           <folding />
         </state>
       </provider>

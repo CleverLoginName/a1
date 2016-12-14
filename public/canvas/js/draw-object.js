@@ -530,15 +530,15 @@ function LightBulb(){
 
 	this.rayLength = 200;
 //console.log(this);
-	if (typeof bname !== 'undefined') {this.name = bname;}else{this.name = name;}
-	if (typeof power !== 'undefined') {this.lightpower = power;}else{this.lightpower = lightpower;}
-	if (typeof bulbPrice !== 'undefined') {this.price = bulbPrice;}else{this.price = price;}
-	if (typeof b_tooltip !== 'undefined') { this.tooltip = b_tooltip;}else{ this.tooltip = tooltip;}
-	if (typeof lightImagePath !== 'undefined') { this.imgPath= lightImagePath;}else{ this.imgPath= imgPath;}
-	if (typeof visibility !== 'undefined') { this.visibility = true;}else{this.visibility = true;}
-	if (typeof set_itemCode !== 'undefined') { this.itemCode = set_itemCode;}else{this.itemCode = itemCode;}
-	if (typeof elev !== 'undefined') { this.elevation = elev;}else{this.elevation = elevation;}
-	if (typeof angle !== 'undefined') { this.angle = angle;}else{this.angle = angle;}
+	if (typeof bname !== 'undefined') {this.name = bname;}else{this.name = '';}
+	if (typeof power !== 'undefined') {this.lightpower = power;}else{this.lightpower = '';}
+	if (typeof bulbPrice !== 'undefined') {this.price = bulbPrice;}else{this.price = '';}
+	if (typeof b_tooltip !== 'undefined') { this.tooltip = b_tooltip;}else{ this.tooltip = '';}
+	if (typeof lightImagePath !== 'undefined') { this.imgPath= lightImagePath;}else{ this.imgPath= '';}
+	if (typeof visibility !== 'undefined') { this.visibility = true;}else{this.visibility = '';}
+	if (typeof set_itemCode !== 'undefined') { this.itemCode = set_itemCode;}else{this.itemCode = '';}
+	if (typeof elev !== 'undefined') { this.elevation = elev;}else{this.elevation = '';}
+	if (typeof angle !== 'undefined') { this.angle = angle;}else{this.angle = '';}
 }
 
 /* Set image path */
@@ -549,6 +549,16 @@ LightBulb.prototype.setImgPath = function (path) {
 /* Get image path */
 LightBulb.prototype.getImgPath = function () {
 	return this.imgPath;
+}
+
+/* Set image path */
+LightBulb.prototype.setLightPower = function (lightpower) {
+	this.power = lightpower;
+}
+
+/* Get image path */
+LightBulb.prototype.getLightPower = function () {
+	return this.power;
 }
 
 /* Scales up or down the object by a given factor */

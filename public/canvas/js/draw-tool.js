@@ -1364,7 +1364,7 @@ function clearDrawElements(){
 }
 
 /* Loads objects from saved files using read params */
-function generateAndLoadObjectFromParams(params){console.info('yyyyy'+params);
+function generateAndLoadObjectFromParams(params){
 	if (params.objType == ObjectType.SQUARE){
 		currentObj = new Square();
 	} else if (params.objType == ObjectType.CIRCLE){
@@ -1375,7 +1375,7 @@ function generateAndLoadObjectFromParams(params){console.info('yyyyy'+params);
 	} else if (params.objType == ObjectType.CONT_WALL){
 		currentObj = new CWall();
 		currentObj.setVertices(params.objVerticesArr);
-	} else if (params.objType == ObjectType.LIGHT_BULB){console.info('tttttttttttt');
+	} else if (params.objType == ObjectType.LIGHT_BULB){
 		currentObj = new LightBulb();
 		currentObj.setConnections(params.connections);
 		currentObj.setLabel(params.label);
