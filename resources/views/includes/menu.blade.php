@@ -27,7 +27,7 @@
                 <li>
                     <a class="main-menu-item" id="Products" href="{!! url("/projects") !!}">
                         <img class="main-menu-icon" src="{{ URL::asset('resources/images/products_ico_white.png') }}">
-                        <span class="main-menu-item-text">View</span>
+                        <span class="main-menu-item-text">Search</span>
                     </a>
                 </li>
         </ul>
@@ -52,7 +52,7 @@
                 <li>
                     <a class="main-menu-item" id="Products" href="{!! url("/products") !!}">
                         <img class="main-menu-icon" src="{{ URL::asset('resources/images/products_ico_white.png') }}">
-                        <span class="main-menu-item-text">View</span>
+                        <span class="main-menu-item-text">Search</span>
                     </a>
                 </li>@endif
 
@@ -89,7 +89,7 @@
             <li>
                 <a class="main-menu-item" id="Users" href="{!! url("/templates") !!}">
                     <img class="main-menu-icon" src="{{ URL::asset('resources/images/products_ico_white.png') }}">
-                    <span class="main-menu-item-text">View</span>
+                    <span class="main-menu-item-text">Search</span>
                 </a>
             </li>
         </ul>
@@ -113,7 +113,7 @@
             <li>
                 <a class="main-menu-item" id="Users" href="{!! url("/users") !!}">
                     <img class="main-menu-icon" src="{{ URL::asset('resources/images/products_ico_white.png') }}">
-                    <span class="main-menu-item-text">View</span>
+                    <span class="main-menu-item-text">Search</span>
                 </a>
             </li>
             <li>
