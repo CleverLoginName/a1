@@ -129,6 +129,8 @@ class TemplatesController extends Controller
         $destinationPath = 'uploads/templates/'.$request->get('template_id').'/originals/';
         $destinationPathThumb = 'uploads/templates/'.$request->get('template_id').'/300x200/';//dd(public_path().'/'.$destinationPath);
 
+        File::exists('uploads') or File::makeDirectory('uploads');
+        File::exists('uploads/templates') or File::makeDirectory('uploads/templates');
         File::exists('uploads/templates/'.$request->get('template_id')) or File::makeDirectory('uploads/templates/'.$request->get('template_id'));
         File::exists(public_path().'/'.$destinationPath) or File::makeDirectory(public_path().'/'.$destinationPath);
         File::exists(public_path().'/'.$destinationPathThumb) or File::makeDirectory(public_path().'/'.$destinationPathThumb);
@@ -140,7 +142,7 @@ class TemplatesController extends Controller
             $templatePlan = new TemplatePlan();
             $templatePlan->design = '';
             $templatePlan->level = 1;
-            $templatePlan->catalog_id =  1;
+            $templatePlan->catalog_id =  0;
             $templatePlan->template_data =  0;
             $templatePlan->img = $destinationPath.$randFileName;
             $templatePlan->img_300x200 = $destinationPath.$randFileName;
