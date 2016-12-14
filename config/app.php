@@ -160,8 +160,9 @@ return [
         Collective\Html\HtmlServiceProvider::class,
 
         Intervention\Image\ImageServiceProvider::class,
-        Szykra\Notifications\NotificationServiceProvider::class
+        Szykra\Notifications\NotificationServiceProvider::class,
 
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 
     ],
 

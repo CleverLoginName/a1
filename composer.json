@@ -10,7 +10,8 @@
         "zizaco/entrust": "5.2.x-dev",
         "laravelcollective/html": "^5.2.0",
         "intervention/image": "^2.3",
-        "szykra/laravel-flash-notifications": "~0.3"
+        "szykra/laravel-flash-notifications": "~0.3",
+        "rap2hpoutre/laravel-log-viewer": "^0.7.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
