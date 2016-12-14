@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('templates/create/plan-data', 'TemplatesController@addTemplatePlansData');
     Route::get('templates/create/add-plans', 'TemplatesController@addPlan');
     Route::get('templates/create/add-plans/{id}/canvas', 'TemplatesController@editPlanInCanvas');
+    Route::get('templates/create/add-plans/{id}/delete', 'TemplatesController@deletePlanInCanvas');
     Route::post('templates/create/add-plans/{id}/canvas/templates/updates', 'TemplatesController@updatePlanDataInCanvas');
     Route::get('templates/create/add-plans/{id}/canvas/templates/load-latest', 'TemplatesController@loadPlanDataInCanvas');
 

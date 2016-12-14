@@ -179,6 +179,14 @@ class TemplatesController extends Controller
             ->with('empty_form',false);
 
     }
+
+    public function deletePlanInCanvas($id){
+        $templatePlan = TemplatePlan::find($id);
+        $templatePlan->delete();
+        Flash::success('Data Added', 'Plan has been deleted successfully.');
+        return Redirect::to('/templates/create/add-plans');
+    }
+
     public function show($id)
     {
         //

@@ -38,7 +38,7 @@
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Watt Per SQM</label></section>
                     <section class="col-md-6">
-                        <section class="col-md-6">
+                        <section class="col-md-12">
                             <section class="row form-group">
                                 <section class="col-md-4">
                                     House
@@ -72,36 +72,9 @@
                             </section>
                             <section class="col-md-8">
                             <span id="total"></span>
-                            </section>
-                            </section>
-                        </section>
-                        <section class="col-md-6">
 
-                            <section class="row">
-                            <section class="col-md-12">
-                                <canvas id="myCanvas" class="col-md-12"></canvas>
+                                <input type="hidden" name="energy_rating" id="energy_rating" value="1">
                             </section>
-                            </section>
-                            <section class="row">
-                                <section class="col-md-12">
-                                    <select class="form-control required"
-                                            id="prod-frm-sub-cat" name="energy_rating" aria-required="true"
-                                            aria-invalid="true">
-                                        <option value="1">1 Star</option>
-                                        <option value="2">2 Star</option>
-                                        <option value="3">3 Star</option>
-                                        <option value="4">4 Star</option>
-                                        <option value="4.5">4.5 Star</option>
-                                        <option value="5">5 Star</option>
-                                        <option value="5.5">5.5 Star</option>
-                                        <option value="6">6 Star</option>
-                                        <option value="6.5">6.5 Star</option>
-                                        <option value="7">7 Star</option>
-                                        <option value="7.5">7.5 Star</option>
-                                        <option value="8">8 Star</option>
-                                        <option value="8.5">8.5 Star</option>
-                                    </select>
-                                </section>
                             </section>
                         </section>
                     </section>
@@ -153,7 +126,7 @@
 
 @section('post-js')
     <script>
-        var canvas = document.getElementById('myCanvas');
+ /*       var canvas = document.getElementById('myCanvas');
         var context = canvas.getContext('2d');
 
 
@@ -196,10 +169,21 @@
         context.fillStyle = "white";
         context.font = "bold 24px Arial";
         context.fillText("Rating", 250, 195);
+*/
 
-        var total = 0;
-        $( "#target" ).keydown(function() {
-            total = parseInt(); $( "#target" ).val()
+ function calTotal(){
+     var total = 0;
+     total = parseInt($( "#house_watts_per_sqm" ).val())+parseInt($( "#garage_watts_per_sqm" ).val())+parseInt($( "#porch_watts_per_sqm" ).val());
+     $('#total').html(total+'W');
+ }
+        $( "#house_watts_per_sqm" ).keyup(function() {
+            calTotal();
+        });
+        $( "#garage_watts_per_sqm" ).keyup(function() {
+            calTotal();
+        });
+        $( "#porch_watts_per_sqm" ).keyup(function() {
+            calTotal();
         });
 
 

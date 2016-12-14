@@ -29,7 +29,7 @@
                         <section class="row form-group">
                             <section class="col-md-6">
 
-                                <img src="{!! asset($templatesPlan->img) !!}" class="col-md-12"/>
+                                <a href="{!! url('templates/create/add-plans/'.$templatesPlan->id.'/canvas') !!}"><img src="{!! asset($templatesPlan->img) !!}" class="col-md-12"/></a>
 
                             </section>
                             <section class="col-md-6">
@@ -99,7 +99,7 @@
                                                     class="loading-img-btn" style="display:none;"
                                                     id="1bf1a6a6-757b-921f-0a96-f95ffc63c6bc-new-product-loading">
                                         </button></section>
-                                            <section class="col-md-6" ><a style="float: left"class="btn add-item-btn" href="{!! url('templates/create/add-plans/'.$templatesPlan->id.'/canvas') !!}">Edit <img
+                                            <section class="col-md-6" ><a style="float: left"class="btn add-item-btn" href="{!! url('templates/create/add-plans/'.$templatesPlan->id.'/delete') !!}">Delete <img
                                                     src="resources/images/spinning-circles.svg"
                                                     class="loading-img-btn" style="display:none;">
                                         </a></section>
