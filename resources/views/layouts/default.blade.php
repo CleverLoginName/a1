@@ -12,6 +12,7 @@
     <aside class="left-side sidebar-offcanvas">
         <section class="sidebar">
             @include('includes.menu')
+            Adapto VB0.2
         </section>
     </aside>
     <aside class="right-side">

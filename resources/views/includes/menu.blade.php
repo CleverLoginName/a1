@@ -133,20 +133,5 @@
             <span class="menu-selected-item"></span>
         </a>
     </li>
-    <li class="help">
-        <a class="main-menu-item tree-toggle" id="help">
-            <img class="main-menu-icon" src="{{ URL::asset('resources/images/help_ico_white.png') }}">
-            <span class="main-menu-item-text">Help Topics</span>
-            <span class="menu-selected-item"></span>
-        </a>
-    </li>
-
-    <li class="help">
-        <a class="main-menu-item tree-toggle" id="help" href="{!! url("/canvas_") !!}">
-            <img class="main-menu-icon" src="{{ URL::asset('resources/images/help_ico_white.png') }}">
-            <span class="main-menu-item-text">Canvas</span>
-            <span class="menu-selected-item"></span>
-        </a>
-    </li>
 
 </ul>
