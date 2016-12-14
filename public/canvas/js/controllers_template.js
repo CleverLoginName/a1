@@ -249,8 +249,8 @@ $(function () {
                 url: 'canvas/templates/updates',
                 data: 'file_data=' + JSON.stringify(saveData),
                 success: function (msg) {
-                    console.log(drawElements);
-                    window.open(msg, '_blank');
+                    //console.log(drawElements);
+                   // window.open(msg, '_blank');
                 },
                 error: function () {
                     alert('Network Error !');

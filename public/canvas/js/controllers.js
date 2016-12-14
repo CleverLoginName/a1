@@ -250,7 +250,7 @@ $(function () {
                 data: 'file_data=' + JSON.stringify(saveData),
                 success: function (msg) {
                     console.log(drawElements);
-                    window.open(msg, '_blank');
+                    //window.open(msg, '_blank');
                 },
                 error: function () {
                     alert('Network Error !');
