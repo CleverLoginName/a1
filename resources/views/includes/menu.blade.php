@@ -126,13 +126,6 @@
     </li>
 
 
-    <li class="suppliers">
-        <a class="main-menu-item tree-toggle" id="suppliers">
-            <img class="main-menu-icon" src="{{ URL::asset('resources/images/sup_ico_white.png') }}">
-            <span class="main-menu-item-text">Suppliers</span>
-            <span class="menu-selected-item"></span>
-        </a>
-    </li>
     <li class="profile">
         <a class="main-menu-item tree-toggle" id="profile" href="{!! url("/profile") !!}">
             <img class="main-menu-icon" src="{{ URL::asset('resources/images/prof_ico_white.png') }}">
@@ -149,7 +142,7 @@
     </li>
 
     <li class="help">
-        <a class="main-menu-item tree-toggle" id="help" href="{!! url("/canvas") !!}">
+        <a class="main-menu-item tree-toggle" id="help" href="{!! url("/canvas_") !!}">
             <img class="main-menu-icon" src="{{ URL::asset('resources/images/help_ico_white.png') }}">
             <span class="main-menu-item-text">Canvas</span>
             <span class="menu-selected-item"></span>

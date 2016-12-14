@@ -7,9 +7,12 @@ use App\TemplatePlan;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 use Szykra\Notifications\Flash;
 
 class TemplatesController extends Controller
@@ -124,18 +127,30 @@ class TemplatesController extends Controller
         $randFileName = Str::random(16).'.'.$file->getClientOriginalExtension();
         //Move Uploaded File
         $destinationPath = 'uploads/templates/'.$request->get('template_id').'/originals/';
+        $destinationPathThumb = 'uploads/templates/'.$request->get('template_id').'/300x200/';//dd(public_path().'/'.$destinationPath);
+
+        File::exists('uploads/templates/'.$request->get('template_id')) or File::makeDirectory('uploads/templates/'.$request->get('template_id'));
+        File::exists(public_path().'/'.$destinationPath) or File::makeDirectory(public_path().'/'.$destinationPath);
+        File::exists(public_path().'/'.$destinationPathThumb) or File::makeDirectory(public_path().'/'.$destinationPathThumb);
+
+
         $file->move($destinationPath,$randFileName);
 
         //if($request->get('save_plan')=='Y'){
             $templatePlan = new TemplatePlan();
-            $templatePlan->design = 0;
-            $templatePlan->level = 0;
-            $templatePlan->catalog_id = 0;
+            $templatePlan->design = '';
+            $templatePlan->level = 1;
+            $templatePlan->catalog_id =  1;
+            $templatePlan->template_data =  0;
             $templatePlan->img = $destinationPath.$randFileName;
+            $templatePlan->img_300x200 = $destinationPath.$randFileName;
             $templatePlan->template_id = session('template')->id;
             $templatePlan->save();
         //}
 
+        $img = Image::make($templatePlan->img);
+        $img->resize(300, 200);
+        $img->save($destinationPathThumb.$randFileName, 75);
 /*
         return  view('templates.addPlans')
             ->with('template',session('template'))
@@ -148,6 +163,7 @@ class TemplatesController extends Controller
         $templatePlan = TemplatePlan::find($request->get('id'));
         $templatePlan->design = $request->get('design');
         $templatePlan->level = $request->get('level');
+        $templatePlan->template_data =   0;
         $templatePlan->catalog_id = $request->get('catalog_id');
         $templatePlan->save();
 
@@ -179,7 +195,33 @@ class TemplatesController extends Controller
 
     public function editPlanInCanvas($id)
     {
-        
+        $template = DB::table('template_plans')->where('id','=',$id)->first();
+        $allPlans = DB::table('template_plans')->where('template_id','=',$template->template_id)->get();
+        session(['template_id' => $template->id ]);
+        session(['plan_id' => $id ]);
+        return view('canvas.index_new')
+            ->with('bgImg', $template->img)
+            ->with('plans', $allPlans);
+    }
+
+
+    public function updatePlanDataInCanvas(Request $request)
+    {
+
+        $templatePlan = TemplatePlan::find(session('plan_id'));
+        $templatePlan->template_data = $request->get('file_data') ;
+        $templatePlan->save();
+        //return view('canvas.index_new');
+
+    }
+
+    public function loadPlanDataInCanvas()
+    {
+
+        $templatePlan = TemplatePlan::find(session('plan_id'));
+        return $templatePlan->template_data;
+        //return view('canvas.index_new');
+
     }
 
     /**

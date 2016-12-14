@@ -16,10 +16,10 @@
                             colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending">#
                         </th>
                         <th class="sorting" tabindex="0" aria-controls="product-table-view" rowspan="1" colspan="1"
-                            aria-label="Product Code: activate to sort column ascending"> Name
+                            aria-label="Product Code: activate to sort column ascending"> Job#
                         </th>
                         <th class="sorting" tabindex="0" aria-controls="product-table-view" rowspan="1" colspan="1"
-                            aria-label="Product Name: activate to sort column ascending">Description
+                            aria-label="Product Name: activate to sort column ascending">Address
                         </th>
                         <th class="sorting" tabindex="0" aria-controls="product-table-view" rowspan="1" colspan="1"
                             aria-label="Product Name: activate to sort column ascending">Icon
@@ -31,21 +31,21 @@
                     </thead>
                     <tbody>
                     <?php $i = 1; ?>
-                    @foreach($products as $product)
+                    @foreach($projects as $project)
                         <tr data-product-id="2" role="row">
                             <td data-id="2-id" class="sorting_1">{!! $i++ !!}</td>
-                            <td data-id="2-code">{!! $product->name !!}</td>
-                            <td data-id="2-name">{!! $product->description !!}</td>
+                            <td data-id="2-code">{!! $project->job !!}</td>
+                            <td data-id="2-name">{!! $project->description !!}</td>
                             <td data-id="2-name"></td>
-                            <td data-id="2-actions"><a class="action-btn btn-app" href="{!! url('products/'.$product->id) !!}"
+                            <td data-id="2-actions"><a class="action-btn btn-app" href="{!! url('products/'.$project->id) !!}"
                                                        data-toggle="tooltip" data-placement="top" title=""
                                                        data-original-title="View Product"><i
                                             class="fa fa-folder-open-o green-font"></i></a>
-                                <a class="action-btn btn-app" data-product-id="2" id="2-edit-action" href="{!! url('products/'.$product->id.'/edit') !!}"
+                                <a class="action-btn btn-app" data-product-id="2" id="2-edit-action" href="{!! url('products/'.$project->id.'/edit') !!}"
                                    data-toggle="tooltip" data-placement="top" title=""
                                    data-original-title="Edit Product"><i class="fa fa-edit green-font"></i></a>
 
-                                <form method="GET" action="{!! url('products/'.$product->id.'/delete') !!}" accept-charset="UTF-8" style="display:inline">
+                                <form method="GET" action="{!! url('products/'.$project->id.'/delete') !!}" accept-charset="UTF-8" style="display:inline">
                                     <a class="action-btn btn-app"
                                        data-product-id="2"
                                        data-placement="top"

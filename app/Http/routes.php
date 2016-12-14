@@ -43,6 +43,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('templates/create/plan-data', 'TemplatesController@addTemplatePlansData');
     Route::get('templates/create/add-plans', 'TemplatesController@addPlan');
     Route::get('templates/create/add-plans/{id}/canvas', 'TemplatesController@editPlanInCanvas');
+    Route::post('templates/create/add-plans/{id}/canvas/templates/updates', 'TemplatesController@updatePlanDataInCanvas');
+    Route::get('templates/create/add-plans/{id}/canvas/templates/load-latest', 'TemplatesController@loadPlanDataInCanvas');
 
     Route::resource('projects', 'ProjectsController');
     Route::get('projects/{id}/delete', 'ProjectsController@destroy');
@@ -54,6 +56,14 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::get('/canvas_', 'CanvasController@indexTemplate');
+
+    http://192.168.33.10/projects/7/canvas
+
+
+    Route::get('projects/{id}/canvas', 'ProjectsController@editPlanInCanvas');
+    Route::post('projects/{id}/canvas/templates/updates', 'ProjectsController@updatePlanDataInCanvas');
+    Route::get('projects/{id}/canvas/templates/load-latest', 'ProjectsController@loadPlanDataInCanvas');
+
 
 
 });

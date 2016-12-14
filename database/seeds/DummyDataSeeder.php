@@ -40,6 +40,12 @@ class DummyDataSeeder extends Seeder
         $consultant->display_name = "Consultant";
         $consultant->description = "Consultant";
         $consultant->save();
+
+        $consultant = new \App\Role();
+        $consultant->name = "client";
+        $consultant->display_name = "Client";
+        $consultant->description = "Client";
+        $consultant->save();
 /*
         $msl = new \App\Role();
         $msl->name = "msl";

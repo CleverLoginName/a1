@@ -20,7 +20,6 @@ class CreateAddressesTable extends Migration
             $table->string('postal_code');
             $table->string('state');
             $table->string('lot');
-            $table->integer('user_id');
             $table->string('type');
             $table->timestamps();
         });

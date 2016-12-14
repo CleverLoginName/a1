@@ -14,7 +14,12 @@
                 {!! Form::close() !!}
             </section>
         </section>
-
+<?php
+            $catalogs = \App\Catalog::all();
+            $levels = [
+                'Basement','Ground Floor','1st Floor','2nd Floor','3rd Floor','4th Floor','5th Floor'
+            ];
+            ?>
 
         <section class="col-md-8">
             <section class="box-header"></section>
@@ -32,31 +37,72 @@
 
                                 {{Form::hidden('id',$templatesPlan->id)}}
                                 <section class="row form-group">
+                                    <section class="col-md-12"><h4>Save Template Plan</h4></section>
+                                </section>
+                                <section class="row form-group">
                                     <section class="col-md-4">Design</section>
                                     <section class="col-md-8">
-                                        <input class="form-control required" id="design"
-                                               name="design" aria-required="true" type="text" placeholder="" value="{!! $templatesPlan->design !!}"></section>
+                                        @if($templatesPlan->design != '')
+                                            <input class="form-control required" id="design"
+                                                   name="design" aria-required="true" type="text" placeholder="" value="{!! $templatesPlan->design !!}">
+                                                   @else
+                                                    <input class="form-control required" id="design"
+                                            name="design" aria-required="true" type="text" placeholder="" value="">
+                                        @endif
+                                        </section>
                                 </section>
                                 <section class="row form-group">
                                     <section class="col-md-4">Level</section>
-                                    <section class="col-md-8"><input class="form-control required" id="level"
-                                                                     name="level" aria-required="true" type="text"
-                                                                     placeholder="" value="{!! $templatesPlan->level !!}"></section>
+                                    <section class="col-md-8">
+<?php  $i = 0;$j = 0; ?>
+                                        <select class="form-control required"
+                                                id="prod-frm-sub-cat" name="level" aria-required="true"
+                                                aria-invalid="true">
+                                            @foreach($levels as $level)
+                                                <?php ++$i; ?>
+
+                                                    @if($templatesPlan->level == $i)
+                                                        <option value="{!! $i !!}" selected="selected">{!! $level !!}</option>
+                                                        @else
+                                                        <option value="{!! $i !!}">{!! $level !!}</option>
+                                                        @endif
+                                            @endforeach
+                                        </select>
+
+
+                                    </section>
                                 </section>
                                 <section class="row form-group">
                                     <section class="col-md-4">Catalog</section>
-                                    <section class="col-md-8"><input class="form-control required" id="catalog_id"
-                                                                     name="catalog_id" aria-required="true" type="text"
-                                                                     placeholder="" value="{!! $templatesPlan->catalog_id !!}"></section>
+                                    <section class="col-md-8">
+                                        <select class="form-control required"
+                                                id="catalog_id" name="catalog_id" aria-required="true"
+                                                aria-invalid="true">
+                                        @foreach($catalogs as $catalog)
+                                            <?php ++$j; ?>
+
+                                            @if($templatesPlan->catalog_id == $j)
+                                                <option value="{!! $catalog->id !!}" selected="selected">{!! $catalog->name !!}</option>
+                                            @else
+                                                <option value="{!! $catalog->id !!}">{!! $catalog->name !!}</option>
+                                            @endif
+                                        @endforeach
+                                            </select>
+                                    </section>
                                 </section>
                                 <section class="row form-group">
                                     <section class="col-md-12">
-                                        <button type="submit"
-                                                class="btn add-item-btn">Add <img
+                                        <section class="col-md-6">
+                                        <button type="submit" style="float: right"
+                                                class="btn add-item-btn">Save <img
                                                     src="resources/images/spinning-circles.svg"
                                                     class="loading-img-btn" style="display:none;"
                                                     id="1bf1a6a6-757b-921f-0a96-f95ffc63c6bc-new-product-loading">
-                                        </button>
+                                        </button></section>
+                                            <section class="col-md-6" ><a style="float: left"class="btn add-item-btn" href="{!! url('templates/create/add-plans/'.$templatesPlan->id.'/canvas') !!}">Edit <img
+                                                    src="resources/images/spinning-circles.svg"
+                                                    class="loading-img-btn" style="display:none;">
+                                        </a></section>
                                     </section>
                                 </section>
                                 {!! Form::close() !!}
@@ -68,7 +114,7 @@
                         <section class="row form-group">
                             <section class="col-md-6">
 
-                                <img src="{!! asset($templatesPlan->img) !!}"/>
+                                <img src="{!! asset($templatesPlan->img_300x200) !!}"/>
 
                             </section>
                             <section class="col-md-6">
@@ -166,10 +212,20 @@
         });
 
         myDropzone.on("success", function (file, resp) {
-            window.location.href = '{!! url('templates/create/add-plans') !!}';
+           window.location.href = '{!! url('templates/create/add-plans') !!}';
 //console.log('test');
         });
 
 
     </script>
+@stop
+@section('post-css')
+    <style>
+        .dz-success-mark{
+            display: none !important;
+        }
+        .dz-error-mark{
+            display: none !important;
+        }
+    </style>
 @stop

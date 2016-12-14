@@ -8,8 +8,8 @@
             <form class="row new-item-from-wrapper" role="form" method="post" id="new-prod-form"
                   enctype="multipart/form-data" novalidate="novalidate" action="{!! url('/projects') !!}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="hidden" name="consultant_id" value="">
-                <input type="hidden" name="template_id" value="">
+                <input type="hidden" name="consultant_id" id="consultant_id" value="">
+                <input type="hidden" name="template_id" id="template_id" value="">
                 <section class="row form-group">
                     <section class="col-md-12">
                         @if ($errors->has())
@@ -25,10 +25,8 @@
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Job# / Consultant</label></section>
                     <section class="col-md-3">
-                        <select class="form-control required"
-                                id="prod-frm-sub-cat" name="catalog_id" aria-required="true"
-                                aria-invalid="true">
-                        </select>
+                        <input class="form-control required" id="job"
+                               name="job" aria-required="true" type="text" placeholder="Job#">
                     </section>
                     <section class="col-md-5"><input class="form-control required" id="consultant"
                                                      name="consultant" aria-required="true" type="text" placeholder="Consultant"></section>
@@ -48,18 +46,18 @@
                     <section class="col-md-3"><input class="form-control required" id="first_name_1"
                                                       name="first_name_1" aria-required="true" type="text" placeholder="First Name"></section>
                     <section class="col-md-3"><input class="form-control required" id="last_name_1"
-                                                     name="first_name_1" aria-required="true" type="text" placeholder="Last Name"></section>
+                                                     name="last_name_1" aria-required="true" type="text" placeholder="Last Name"></section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"></section>
                     <section class="col-md-4">
                         <input class="form-control required" id="mobile_1"
-                               name="first_name" aria-required="true" type="text" placeholder="Mobile">
+                               name="mobile_1" aria-required="true" type="text" placeholder="Mobile">
                     </section>
                     <section class="col-md-4">
                         <input class="form-control required" id="email_1"
-                               name="first_name" aria-required="true" type="text" placeholder="E-Mail">
+                               name="email_1" aria-required="true" type="text" placeholder="E-Mail">
                     </section>
                 </section>
                 <section class="row form-group">
@@ -75,20 +73,20 @@
                         </select>
                     </section>
                     <section class="col-md-3"><input class="form-control required" id="first_name_2"
-                                                      name="first_name_1" aria-required="true" type="text" placeholder="First Name"></section>
+                                                      name="first_name_2" aria-required="true" type="text" placeholder="First Name"></section>
                     <section class="col-md-3"><input class="form-control required" id="last_name_2"
-                                                     name="first_name_1" aria-required="true" type="text" placeholder="Last Name"></section>
+                                                     name="last_name_2" aria-required="true" type="text" placeholder="Last Name"></section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"></section>
                     <section class="col-md-4">
                         <input class="form-control required" id="mobile_2"
-                               name="first_name" aria-required="true" type="text" placeholder="Mobile">
+                               name="mobile_2" aria-required="true" type="text" placeholder="Mobile">
                     </section>
                     <section class="col-md-4">
                         <input class="form-control required" id="email_2"
-                               name="first_name" aria-required="true" type="text" placeholder="E-Mail">
+                               name="email_2" aria-required="true" type="text" placeholder="E-Mail">
                     </section>
                 </section>
                 <section class="row form-group">
@@ -97,7 +95,7 @@
                     <section class="col-md-6"><input class="form-control required" id="template"
                                                      name="template" aria-required="true" type="text"></section>
                     <section class="col-md-2"><input class="form-control required" id="scale"
-                                                     name="scale" aria-required="true" type="text" placeholder="Scale"></section>
+                                                     name="scale" aria-required="true" type="text" placeholder="Scale" disabled="disabled"></section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
@@ -128,14 +126,14 @@
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Budget/Energy</label></section>
-                    <section class="col-md-2"><input class="form-control required" id="lot"
-                                                     name="lot" aria-required="true" type="text" placeholder="$ Budget(If App)">
+                    <section class="col-md-2"><input class="form-control required" id="budget"
+                                                     name="budget" aria-required="true" type="text" placeholder="$ Budget(If App)">
                     </section>
-                    <section class="col-md-2"><input class="form-control required" id="no_unit"
-                                                     name="no_unit" aria-required="true" type="text" placeholder="Total Energy per SQM">
+                    <section class="col-md-2"><input class="form-control required" id="energy_consumption"
+                                                     name="energy_consumption" aria-required="true" type="text" placeholder="Total Energy per SQM">
                     </section>
                     <section class="col-md-4"><input class="form-control required" id="rating"
-                                                     name="rating" aria-required="true" type="text" placeholder="Rating">
+                                                     name="rating" aria-required="true" type="text" placeholder="Rating" disabled="disabled">
                     </section>
                 </section>
                 <section class="row form-group">
@@ -145,7 +143,7 @@
                         House
                     </section>
                     <section class="col-md-1">
-                        <input class="form-control required" id="house" name="house" aria-required="true" type="text" placeholder="5w per SQM">
+                        <input class="form-control required" id="house" name="house" aria-required="true" type="text" placeholder="5w per SQM" disabled="disabled">
                     </section>
 
                     <section class="col-md-1"></section>
@@ -154,7 +152,7 @@
                         Garage
                     </section>
                     <section class="col-md-1">
-                        <input class="form-control required" id="garage" name="garage" aria-required="true" type="text" placeholder="3w per SQM">
+                        <input class="form-control required" id="garage" name="garage" aria-required="true" type="text" placeholder="3w per SQM" disabled="disabled">
                     </section>
 
                     <section class="col-md-1"></section>
@@ -163,7 +161,7 @@
                         House
                     </section>
                     <section class="col-md-1">
-                        <input class="form-control required" id="porch" name="porch" aria-required="true" type="text" placeholder="4w per SQM">
+                        <input class="form-control required" id="porch" name="porch" aria-required="true" type="text" placeholder="4w per SQM" disabled="disabled">
                     </section>
 
 
@@ -321,7 +319,7 @@
         $('.consultant_modal').modal('hide');
     });
 
-    $('.template-item').on('click', function () {
+    $('.template-item').on('click', function () {console.log($(this).data('template-id'));
         var template_name = $(this).data('template-name');
         var template_id = $(this).data('template-id');
         var scale = $(this).data('template-scale');

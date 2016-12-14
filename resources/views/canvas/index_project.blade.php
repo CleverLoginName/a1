@@ -1,61 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="canvas/css/draw-tool.css"/>
-    <link rel="stylesheet" href="canvas/css/tool-bar.css"/>
-    <link rel="stylesheet" href="canvas/css/left-menu.css"/>
-    <link rel="stylesheet" href="canvas/css/right-click-menu.css"/>
 
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-
-
-    <link rel="stylesheet" href="canvas/lib/jquery-ui.min.css"/>
-    <link rel="stylesheet" href="canvas/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="canvas/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="canvas/dist/css/lobipanel.min.css"/>
-    <link rel="stylesheet" href="canvas/lib/font-awesome/css/font-awesome.min.css"/>
-
-    <link rel="stylesheet" href="canvas/lib/highlight/github.css"/>
-    <link rel="stylesheet" href="canvas/demo/documentation.css"/>
-    <link rel="stylesheet" href="canvas/demo/demo.css"/>
-
-    <link rel="stylesheet" href="canvas/css/rating-stars.css">
+    {{ Html::style('canvas/css/draw-tool.css') }}
+    {{ Html::style('canvas/css/tool-bar.css') }}
+    {{ Html::style('canvas/css/left-menu.css') }}
+    {{ Html::style('canvas/css/right-click-menu.css') }}
+    {{ Html::style('canvas/lib/jquery-ui.min.css') }}
+    {{ Html::style('canvas/bootstrap/dist/css/bootstrap.min.css') }}
+    {{ Html::style('canvas/bootstrap/css/bootstrap.min.css') }}
+    {{ Html::style('canvas/dist/css/lobipanel.min.css') }}
+    {{ Html::style('canvas/lib/font-awesome/css/font-awesome.min.css') }}
+    {{ Html::style('canvas/lib/highlight/github.css') }}
+    {{ Html::style('canvas/demo/documentation.css') }}
+    {{ Html::style('canvas/demo/demo.css') }}
+    {{ Html::style('canvas/css/rating-stars.css') }}
 
 
-
-    <script>
-        var i = 0;
-        var dragging = false;
-        $('#dragbar').mousedown(function(e){
-            e.preventDefault();
-
-            dragging = true;
-            var main = $('#main');
-            var ghostbar = $('<div>',
-                    {id:'ghostbar',
-                        css: {
-                            height: main.outerHeight(),
-                            top: main.offset().top,
-                            left: main.offset().left
-                        }
-                    }).appendTo('body');
-
-            $(document).mousemove(function(e){
-                ghostbar.css("left",e.pageX+2);
-            });
-        });
-
-        $(document).mouseup(function(e){
-            if (dragging)
-            {
-                $('#sidebar').css("width",e.pageX+2);
-                $('#main').css("left",e.pageX+2);
-                $('#ghostbar').remove();
-                $(document).unbind('mousemove');
-                dragging = false;
-            }
-        });
-    </script>
 
 
 </head>
@@ -74,7 +35,7 @@
                 <div class="panel-title back-ground-colour-inner">
                     <div class="row left-align"  style="margin-top: 30px">
                         <div class="col-md-2=1 col-lg-2 col-sm-2 col-xs-2"   >
-                            <img class="pro-logo" src="img/logooo.png" align="right">
+                            <img class="pro-logo" src="{!! asset('img/logooo.png') !!}" align="right">
                         </div>
                         <div class="col-md-7 col-lg-7 col-sm-7 col-xs-7 title titel-text-size" align="right" id="plan-name">Fist Floor:Electrical</div>
                         <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 title titel-text-size" id="scale1" align="left">1:100</div>
@@ -124,7 +85,7 @@
                                     <div>
                                         <div class="row">
                                             <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
-                                                <img  src="img/expand-btn.png" >
+                                                <img  src="{!! asset('img/expand-btn.png') !!}" >
                                             </div>
                                             <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 inside-text" >
                                                 Search
@@ -150,7 +111,7 @@
                                         <div class="row">
                                             <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
                                                 <!--<button type="button" class="btn-min-search">+</button>-->
-                                                <img  src="img/expand-btn.png" >
+                                                <img  src="{!! asset('img/expand-btn.png') !!}" >
                                             </div>
                                             <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 inside-text" >
                                                 Category
@@ -163,7 +124,7 @@
                                             <div>
                                                 <div class="row">
                                                     <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
-                                                        <img  src="img/expand-btn.png" >
+                                                        <img  src="{!! asset('img/expand-btn.png') !!}" >
                                                     </div>
                                                     <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 inside-text" >
                                                         SubCategory
@@ -197,7 +158,7 @@
                                                                      data-evel="2.54" data-power="30" data-name="Down Light T1"
                                                                      data-tooltip="img/left-menu/ceilinglight.png">
                                                                     <div>
-                                                                        <img src="img/left-menu/ceilinglight.png">
+                                                                        <img src="{!! asset('img/left-menu/ceilinglight.png') !!}">
                                                                         <div class="pro-price-container">
                                                                             <span class="set-red">Sale</span> <span>$105.00</span> <span>Save</span>
                                                                             <span>$0.00</span>
@@ -214,7 +175,7 @@
                                                                      data-evel="2.54" data-power="30" data-name="Single Switch"
                                                                      data-tooltip="img/left-menu/switch.png">
                                                                     <div>
-                                                                        <img src="img/left-menu/switch.png">
+                                                                        <img src="{!! asset('img/left-menu/switch.png') !!}">
                                                                         <div class="pro-price-container">
                                                                             <span class="set-red">Sale</span> <span>$105.00</span> <span>Save</span>
                                                                             <span>$0.00</span>
@@ -379,40 +340,40 @@
         <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10">
             <ul id="tool-items-ul">
                 <li class="tool-item">
-                    <a href="javascript:void(0)" id="home-button">
-                        <img class="image-item" 		src="img/tool-bar/black/home.png">
-                        <img class="image-item-hover" 	src="img/tool-bar/blue/home.png">
+                    <a href="{!! url('templates/create/add-plans') !!}" id="home-button">
+                        <img class="image-item" 		src="{!! asset('img/tool-bar/black/home.png') !!}">
+                        <img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/home.png') !!}">
                     </a>
                     <span class="tooltiptext">Home</span>
                 </li>
 
                 <li class="tool-item">
                     <a href="javascript:void(0)" id="save-button">
-                        <img class="image-item" 		src="img/tool-bar/black/saveIcon.png">
-                        <img class="image-item-hover" 	src="img/tool-bar/blue/saveIcon.png">
+                        <img class="image-item" 		src="{!! asset('img/tool-bar/black/saveIcon.png') !!}">
+                        <img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/saveIcon.png') !!}">
                     </a>
                     <span class="tooltiptext">Save</span>
                 </li>
 
                 <li class="tool-item" id="print-btn">
                     <a href="javascript:void(0)">
-                        <img class="image-item" 		src="img/tool-bar/black/printIcon.png">
-                        <img class="image-item-hover" 	src="img/tool-bar/blue/printIcon.png">
+                        <img class="image-item" 		src="{!! asset('img/tool-bar/black/printIcon.png') !!}">
+                        <img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/printIcon.png') !!}">
                     </a>
                     <span class="tooltiptext">Print</span>
                 </li>
 
                 <!--<li class="tool-item">-->
                 <!--<a href="javascript:print_pdf();" id="open-button">-->
-                <!--<img class="image-item" src="img/tool-bar/folder-7.png">-->
+                <!--<img class="image-item" src="{!! asset('img/tool-bar/folder-7.png') !!}">-->
                 <!--</a>-->
                 <!--<span class="tooltiptext">Open</span>-->
                 <!--</li>-->
 
                 <li class="tool-item">
                     <a href="javascript:void(0)" id="proj-comment-button">
-                        <img class="image-item" 		src="img/tool-bar/black/project_comment.png">
-                        <img class="image-item-hover" 	src="img/tool-bar/blue/project_comment.png">
+                        <img class="image-item" 		src="{!! asset('img/tool-bar/black/project_comment.png') !!}">
+                        <img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/project_comment.png') !!}">
                     </a>
                     <span class="tooltiptext">Project Comment</span>
                 </li>
@@ -421,15 +382,15 @@
 
                 <li class="tool-item">
                     <a href="javascript:void(0)" id="plans-button">
-                        <img class="image-item" 		src="img/tool-bar/black/plan.png">
-                        <img class="image-item-hover" 	src="img/tool-bar/blue/plan.png">
+                        <img class="image-item" 		src="{!! asset('img/tool-bar/black/plan.png') !!}">
+                        <img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/plan.png') !!}">
                     </a>
                     <span class="tooltiptext">Plans</span>
                 </li>
                 <li class="tool-item">
                     <a href="javascript:void(0)" id="archived-plan-button">
-                        <img class="image-item" 		src="img/tool-bar/black/archived_plans.png">
-                        <img class="image-item-hover" 	src="img/tool-bar/blue/archived_plans.png">
+                        <img class="image-item" 		src="{!! asset('img/tool-bar/black/archived_plans.png') !!}">
+                        <img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/archived_plans.png') !!}">
                     </a>
                     <span class="tooltiptext">Archived Plans</span>
                 </li>
@@ -438,15 +399,15 @@
 
                 <li class="tool-item">
                     <a href="javascript:void(0);" id="undo">
-                        <img class="image-item" 		src="img/tool-bar/black/undo.png">
-                        <img class="image-item-hover" 	src="img/tool-bar/blue/undo.png">
+                        <img class="image-item" 		src="{!! asset('img/tool-bar/black/undo.png') !!}">
+                        <img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/undo.png') !!}">
                     </a>
                     <span class="tooltiptext">Undo</span>
                 </li>
                 <li class="tool-item">
                     <a href="javascript:void(0);" id="redo">
-                        <img class="image-item" 		src="img/tool-bar/black/redo.png">
-                        <img class="image-item-hover" 	src="img/tool-bar/blue/redo.png">
+                        <img class="image-item" 		src="{!! asset('img/tool-bar/black/redo.png') !!}">
+                        <img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/redo.png') !!}">
                     </a>
                     <span class="tooltiptext">Redo</span>
                 </li>
@@ -456,48 +417,48 @@
 
                 <li class="tool-item toggle-button">
                     <a href="javascript:void(0);" id="drag">
-                        <img class="image-item" 		src="img/tool-bar/black/selectIcon.png">
-                        <img class="image-item-hover" 	src="img/tool-bar/blue/selectIcon.png">
+                        <img class="image-item" 		src="{!! asset('img/tool-bar/black/selectIcon.png') !!}">
+                        <img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/selectIcon.png') !!}">
                     </a>
                     <span class="tooltiptext">Move</span>
                 </li>
 
                 <li class="tool-item toggle-button">
                     <a href="javascript:void(0);" id="cwall">
-                        <img class="image-item" 		src="img/tool-bar/black/NewWallIcon.png">
-                        <img class="image-item-hover" 	src="img/tool-bar/blue/NewWallIcon.png">
+                        <img class="image-item" 		src="{!! asset('img/tool-bar/black/NewWallIcon.png') !!}">
+                        <img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/NewWallIcon.png') !!}">
                     </a>
                     <span class="tooltiptext">Draw walls</span>
                 </li>
 
                 <li class="tool-item toggle-button">
                     <a href="javascript:void(0);" id="eraser">
-                        <img class="image-item" 		src="img/tool-bar/black/eraser_icon.png">
-                        <img class="image-item-hover" 	src="img/tool-bar/blue/eraser_icon.png">
+                        <img class="image-item" 		src="{!! asset('img/tool-bar/black/eraser_icon.png') !!}">
+                        <img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/eraser_icon.png') !!}">
                     </a>
                     <span class="tooltiptext">Draw walls</span>
                 </li>
 
                 <li id="add-text" class="tool-item toggle-button">
                     <a href="javascript:void(0)">
-                        <img class="image-item" 		src="img/tool-bar/black/text.png">
-                        <img class="image-item-hover" 	src="img/tool-bar/blue/text.png">
+                        <img class="image-item" 		src="{!! asset('img/tool-bar/black/text.png') !!}">
+                        <img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/text.png') !!}">
                     </a>
                     <span class="tooltiptext">Add Text</span>
                 </li>
 
                 <li class="tool-item toggle-button">
                     <a href="javascript:void(0);" id="scale">
-                        <img class="image-item" 		src="img/tool-bar/black/scale.png">
-                        <img class="image-item-hover" 	src="img/tool-bar/blue/scale.png">
+                        <img class="image-item" 		src="{!! asset('img/tool-bar/black/scale.png') !!}">
+                        <img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/scale.png') !!}">
                     </a>
                     <span class="tooltiptext">Scale</span>
                 </li>
 
                 <li class="tool-item toggle-button">
                     <a href="javascript:void(0);" id="pan">
-                        <img class="image-item" 		src="img/tool-bar/black/handIcon.png">
-                        <img class="image-item-hover" 	src="img/tool-bar/blue/handIcon.png">
+                        <img class="image-item" 		src="{!! asset('img/tool-bar/black/handIcon.png') !!}">
+                        <img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/handIcon.png') !!}">
                     </a>
                     <span class="tooltiptext">Pan</span>
                 </li>
@@ -506,51 +467,51 @@
 
                 <li class="tool-item">
                     <a href="javascript:void(0);" id="zoom-in" class="zoom-control" data-action="zoom-in">
-                        <img class="image-item" 		src="img/tool-bar/black/zoom_in.png">
-                        <img class="image-item-hover" 	src="img/tool-bar/blue/zoom_in.png">
+                        <img class="image-item" 		src="{!! asset('img/tool-bar/black/zoom_in.png') !!}">
+                        <img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/zoom_in.png') !!}">
                     </a>
                     <span class="tooltiptext">Zoom in</span>
                 </li>
                 <li class="tool-item">
                     <a href="javascript:void(0);" id="zoom-out" class="zoom-control" data-action="zoom-out">
-                        <img class="image-item" 		src="img/tool-bar/black/zoom_out.png">
-                        <img class="image-item-hover" 	src="img/tool-bar/blue/zoom_out.png">
+                        <img class="image-item" 		src="{!! asset('img/tool-bar/black/zoom_out.png') !!}">
+                        <img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/zoom_out.png') !!}">
                     </a>
                     <span class="tooltiptext">Zoom out</span>
                 </li>
                 <li class="tool-item">
                     <a href="javascript:void(0);" id="load" class="load" data-action="load">
-                        <img class="image-item" 		src="img/tool-bar/black/zoom_out.png">
-                        <img class="image-item-hover" 	src="img/tool-bar/blue/zoom_out.png">
+                        <img class="image-item" 		src="{!! asset('img/tool-bar/black/zoom_out.png') !!}">
+                        <img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/zoom_out.png') !!}">
                     </a>
                     <span class="tooltiptext">Zoom out</span>
                 </li>
                 <!--<li class="tool-item">-->
                 <!--<a href="javascript:void(0);" id="zoom-reset" class="zoom-control" data-action="zoom-reset">-->
-                <!--<img class="image-item" 		src="img/tool-bar/black/zoom_reset.png">-->
-                <!--<img class="image-item-hover" 	src="img/tool-bar/blue/zoom_reset.png">-->
+                <!--<img class="image-item" 		src="{!! asset('img/tool-bar/black/zoom_reset.png') !!}">-->
+                <!--<img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/zoom_reset.png') !!}">-->
                 <!--</a>-->
                 <!--<span class="tooltiptext">Zoom reset</span>-->
                 <!--</li>-->
                 <!---->
                 <!--<li class="tool-item">-->
                 <!--<a href="javascript:void(0);" id="scale-up" class="scale-item-control" data-action="scale-up">-->
-                <!--<img class="image-item" 		src="img/tool-bar/black/scale_up.png">-->
-                <!--<img class="image-item-hover" 	src="img/tool-bar/blue/scale_up.png">-->
+                <!--<img class="image-item" 		src="{!! asset('img/tool-bar/black/scale_up.png') !!}">-->
+                <!--<img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/scale_up.png') !!}">-->
                 <!--</a>-->
                 <!--<span class="tooltiptext">Scale Up</span>-->
                 <!--</li>-->
                 <!--<li class="tool-item">-->
                 <!--<a href="javascript:void(0);" id="scale-down" class="scale-item-control" data-action="scale-down">-->
-                <!--<img class="image-item" 		src="img/tool-bar/black/scale_down.png">-->
-                <!--<img class="image-item-hover" 	src="img/tool-bar/blue/scale_down.png">-->
+                <!--<img class="image-item" 		src="{!! asset('img/tool-bar/black/scale_down.png') !!}">-->
+                <!--<img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/scale_down.png') !!}">-->
                 <!--</a>-->
                 <!--<span class="tooltiptext">Scale Down</span>-->
                 <!--</li>-->
                 <!--				<li class="tool-item">
                                     <a href="javascript:void(0);" id="scale-reset" class="scale-item-control" data-action="scale-reset"><img
                                             class="image-item"
-                                            src="img/tool-bar/repeat.png"></a>
+                                            src="{!! asset('img/tool-bar/repeat.png') !!}"></a>
                                     <span class="tooltiptext">Scale reset</span>
                                 </li>
                                  -->
@@ -558,21 +519,21 @@
 
                 <!--<li class="tool-item">
                     <a href="javascript:void(0);" id="rotate">
-                        <img class="image-item" src="img/tool-bar/rotate.png">
+                        <img class="image-item" src="{!! asset('img/tool-bar/rotate.png') !!}">
                     </a>
                     <span class="tooltiptext">Rotate</span>
                 </li>-->
                 <!--
                                 <li class="tool-item">
                                     <a href="javascript:void(0);" id="prive_vice" onclick="javascript:print_report_price_vice();">
-                                        <img class="image-item" src="img/tool-bar/icon_drawer.png">
+                                        <img class="image-item" src="{!! asset('img/tool-bar/icon_drawer.png') !!}">
                                     </a>
                                     <span class="tooltiptext">Report price vice</span>
                                 </li>
 
                                 <li class="tool-item">
                                     <a href="javascript:void(0);" id="product_vice" onclick="javascript:print_report_product_vice();">
-                                        <img class="image-item" src="img/tool-bar/icon_drawer_alt.png">
+                                        <img class="image-item" src="{!! asset('img/tool-bar/icon_drawer_alt.png') !!}">
                                     </a>
                                     <span class="tooltiptext">Report product vice</span>
                                 </li>-->
@@ -582,15 +543,15 @@
             <ul id="tool-items-ul1" style="float:right">
                 <li class="tool-item">
                     <a href="javascript:void(0)" id="help-button">
-                        <img class="image-item" 		src="img/tool-bar/black/infomationIcon.png">
-                        <img class="image-item-hover" 	src="img/tool-bar/blue/infomationIcon.png">
+                        <img class="image-item" 		src="{!! asset('img/tool-bar/black/infomationIcon.png') !!}">
+                        <img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/infomationIcon.png') !!}">
                     </a>
                     <span class="tooltiptext">Help</span>
                 </li>
                 <li class="tool-item">
                     <a href="javascript:void(0)" id="logout-button">
-                        <img class="image-item" 		src="img/tool-bar/black/logOffIcon.png">
-                        <img class="image-item-hover" 	src="img/tool-bar/blue/logOffIcon.png">
+                        <img class="image-item" 		src="{!! asset('img/tool-bar/black/logOffIcon.png') !!}">
+                        <img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/logOffIcon.png') !!}">
                     </a>
                     <span class="tooltiptext">Settings/Logout</span>
                 </li>
@@ -610,7 +571,7 @@
             <!--side bar started-->
             <!--<div class="side-bar" id="menu-site-bar">-->
             <!--<div class="main-lab">-->
-            <!--<img class="pro-logo" src="img/logo.png">-->
+            <!--<img class="pro-logo" src="{!! asset('img/logo.png') !!}">-->
             <!--<button type="button" class="btn-min-mini" id="minimize-btn">-</button>-->
             <!--</div>-->
 
@@ -822,7 +783,7 @@
 
             <div class="input-container">
                 <div class="form-label">Light power (%) :</div>
-                <input type="number" id="powerll"/>
+                <input type="number" id="power"/>
             </div>
 
 
@@ -900,51 +861,77 @@
 			<img id="can-tool-image" alt="" src=""/>
 		</span>
 
-<!--switch pop up end-->
-<script type="text/javascript" src="canvas/js/jquery.js"></script>
-<script type="text/javascript" src="canvas/js/jquery-ui.min.js"></script>
-<!-- <script type="text/javascript" src="js/jspdf.min.js"></script> -->
-<script type="text/javascript" src="canvas/js/draw-object.js"></script>
-<script type="text/javascript" src="canvas/js/draw-tool.js"></script>
-<script type="text/javascript" src="canvas/js/controllers.js"></script>
-<script type="text/javascript" src="canvas/js/product-json.js"></script>
-<script type="text/javascript" src="canvas/js/functions.js"></script>
-<script type="text/javascript" src="canvas/js/rays/polyk.js"></script>
-<script type="text/javascript" src="canvas/js/rays/ivank.js"></script>
-<script type="text/javascript" src="canvas/js/left-menu.js"></script>
-<script type="text/javascript" src="canvas/js/reports.js"></script>
-<script type="text/javascript" src="canvas/js/scripts-expand.js"></script>
 
-<script src="canvas/lib/jquery.1.11.min.js"></script>
-<script src="canvas/lib/jquery-ui.min.js"></script>
-<script src="canvas/lib/jquery.ui.touch-punch.min.js"></script>
-<script src="canvas/bootstrap/js/bootstrap.min.js"></script>
 
-<!--Installation using bower. Preferred!!! -->
-<!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
-<!--<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>-->
-<!--<script src="bower_components/jquery-ui-touch-punch-improved/jquery.ui.touch-punch-improved.js"></script>-->
-<!--<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
+{{ Html::script('canvas/js/jquery.js') }}
+{{ Html::script('canvas/js/jquery-ui.min.js') }}
+{{ Html::script('canvas/js/draw-object.js') }}
+{{ Html::script('canvas/js/draw-tool.js') }}
+{{ Html::script('canvas/js/controllers_project.js') }}
+{{ Html::script('canvas/js/product-json.js') }}
+{{ Html::script('canvas/js/functions.js') }}
+{{ Html::script('canvas/js/rays/polyk.js') }}
+{{ Html::script('canvas/js/rays/ivank.js') }}
+{{ Html::script('canvas/js/left-menu.js') }}
+{{ Html::script('canvas/js/reports.js') }}
+{{ Html::script('canvas/js/scripts-expand.js') }}
+{{ Html::script('canvas/lib/jquery.1.11.min.js') }}
+{{ Html::script('canvas/lib/jquery-ui.min.js') }}
+{{ Html::script('canvas/lib/jquery.ui.touch-punch.min.js') }}
+{{ Html::script('canvas/bootstrap/js/bootstrap.min.js') }}
+{{ Html::script('canvas/dist/js/lobipanel.js') }}
+{{ Html::script('canvas/lib/highlight/highlight.pack.js') }}
+{{ Html::script('canvas/dist/js/lobipanel.js') }}
+{{ Html::script('canvas/lib/highlight/highlight.pack.js') }}
 
-<script src="canvas/dist/js/lobipanel.js"></script>
 
-<script src="canvas/lib/highlight/highlight.pack.js"></script>
 
-<!--Installation using bower. Preferred!!! -->
-<!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
-<!--<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>-->
-<!--<script src="bower_components/jquery-ui-touch-punch-improved/jquery.ui.touch-punch-improved.js"></script>-->
-<!--<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
+<script>
+    var i = 0;
+    var dragging = false;
+    $('#dragbar').mousedown(function(e){
+        e.preventDefault();
 
-<script src="canvas/dist/js/lobipanel.js"></script>
+        dragging = true;
+        var main = $('#main');
+        var ghostbar = $('<div>',
+                {id:'ghostbar',
+                    css: {
+                        height: main.outerHeight(),
+                        top: main.offset().top,
+                        left: main.offset().left
+                    }
+                }).appendTo('body');
 
-<script src="canvas/lib/highlight/highlight.pack.js"></script>
+        $(document).mousemove(function(e){
+            ghostbar.css("left",e.pageX+2);
+        });
+    });
+
+    $(document).mouseup(function(e){
+        if (dragging)
+        {
+            $('#sidebar').css("width",e.pageX+2);
+            $('#main').css("left",e.pageX+2);
+            $('#ghostbar').remove();
+            $(document).unbind('mousemove');
+            dragging = false;
+        }
+    });
+</script>
 <script>
     $('#sidebar').height(screen.height);
     //			document.getElementById("sidebar").setAttribute("style","height:"+screen.height+"px");
 </script>
 <script>
     $(function(){
+
+        @if($showPop)
+
+        $('.template_modal').modal('show');
+
+        @endif
+
 
         $('#main-pnnel-drag').lobiPanel({
             //Options go here
@@ -1055,8 +1042,61 @@
 
 
     });
+
+@if($showPop)
+    function drawBackgroundImage() {
+
+    }
+    @else
+    function drawBackgroundImage() {
+        var ctx = bg_Canvas.getContext("2d");
+        ctx.clearRect(0, 0, bg_Canvas.width, bg_Canvas.height);
+        var img = new Image();
+        var curZoom = this.zoom;
+        img.src = '{!! url($bgImg) !!}';
+        img.onload = function() {
+            ctx.drawImage(img, 0, 0, img.width * curZoom, img.height * curZoom);
+        }
+    }
+@endif
+    $('#plans-button').on('click', function () {
+
+        $('.template_modal').modal('show');
+    });
+
 </script>
 
+
+
+<div class="modal fade template_modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div id="templates">
+                <!-- Child elements of container with class="list" becomes list items -->
+                <ul class="list">
+                    @foreach($plans as $plan)
+
+                        <li>
+                            <div class="row">
+                                <div class="col-md-6"><img src="{!! asset($plan->img) !!}" class="col-md-12"></div>
+                                <div class="col-md-6">
+                                    <a href="{!! url('projects/'.$plan->id.'/canvas') !!}">Open</a>
+                                </div>
+                            </div>
+
+                            <h3 class="name_1 template-item"
+                                data-template-id="{!! $plan->id !!}"
+                                data-template-name="{!! $plan->design !!}"
+                            >{!! $plan->design !!}</h3>
+
+                        </li>
+                    @endforeach
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>

@@ -152,7 +152,7 @@ function init(){
 		return true;
 	}, false);	
 	
-	preloadAndCacheImages(['img/lightdemo.png','img/swtichdemo.PNG']);
+	preloadAndCacheImages(['/img/lightdemo.png','/img/swtichdemo.PNG']);
 	drawAllObjects();
 	drawBackgroundImage();
 }
@@ -867,7 +867,7 @@ function drawContWall(pointsArr, targetContext, curX, curY){
 function drawLightBulb(x,y,r,targetContext, w,h){
 	var curZoom = this.zoom;
     var imageObj = new Image();
-    imageObj.src = "img/lightdemo.png";
+    imageObj.src = "/img/lightdemo.png";
     targetContext.strokeStyle = '#000000';
     targetContext.drawImage(imageObj, x, y, w, h);
 }
@@ -875,7 +875,7 @@ function drawLightBulb(x,y,r,targetContext, w,h){
 /* Draws light switch */
 function drawLightSwitch(x,y,r,targetContext,w,h){
     var img = document.createElement('img');
-    img.src = 'img/swtichdemo.PNG';
+    img.src = '/img/swtichdemo.PNG';
     targetContext.strokeStyle = '#000000';
     targetContext.drawImage(img, x, y, w, h);
 }
@@ -991,16 +991,6 @@ function drawAllObjects(){
 	// console.log(drawElements);
 }
 
-function drawBackgroundImage() {
-    var ctx = bg_Canvas.getContext("2d");
-	ctx.clearRect(0, 0, bg_Canvas.width, bg_Canvas.height);
-	var img = new Image();
-	var curZoom = this.zoom;
-	img.src = 'img/floorplan-for-elevation-2.png';
-	img.onload = function() {
-		ctx.drawImage(img, 0, 0, img.width * curZoom, img.height * curZoom);
-	}
-}
 
 function getDrawElementIndexByObject(obj){
 	for (var i=0; i< drawElements.length; i++){

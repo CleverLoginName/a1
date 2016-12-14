@@ -14,10 +14,12 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->text('description');
+            $table->string('job');
             $table->integer('status_id');
-            $table->integer('user_id');
+            $table->integer('consultant_id');
+            $table->integer('template_id');
+            $table->integer('user_id_1');
+            $table->integer('user_id_2');
             $table->integer('address_id');
             $table->float('energy_consumption');
             $table->float('budget');
