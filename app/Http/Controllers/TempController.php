@@ -84,8 +84,12 @@ class TempController extends Controller
         $temp = new Temp();
         $temp->data = $request->get('file_data');
         $temp->save();
+        return $temp->id;
     }
     public function load(){
         return DB::table('temps')->orderBy('id', 'desc')->first()->data;
+    }
+    public function loadOne($id){
+        return DB::table('temps')->where('id','=',$id)->first()->data;
     }
 }
