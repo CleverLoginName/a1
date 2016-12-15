@@ -1,6 +1,11 @@
 <?php
 
 
+
+Route::get('rest/api/products', 'TempController@products');
+Route::get('rest/api/canvas/{id}', 'TempController@loadOne');
+Route::post('rest/api/canvas', 'TempController@save');
+
 Route::auth();
 
 
@@ -69,9 +74,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
 
-    Route::get('rest/api/products', 'TempController@products');
-    Route::get('rest/api/canvas/{id}', 'TempController@loadOne');
-    Route::post('rest/api/canvas', 'TempController@save');
 });
 
 
