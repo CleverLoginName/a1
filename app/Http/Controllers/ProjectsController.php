@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Szykra\Notifications\Flash;
 
 class ProjectsController extends Controller
 {
@@ -86,7 +87,7 @@ class ProjectsController extends Controller
                 ->withErrors($validator);
 
         $address = new Address();
-        $address->no = '';
+        $address->no = $request->get('no_unit');
         $address->street_name = $request->get('street_name');
         $address->town = $request->get('town');
         $address->postal_code = $request->get('postal_code');
@@ -148,6 +149,7 @@ class ProjectsController extends Controller
 
         session(['project_id' => $project->id ]);
         session(['project_plan_id' => $projectPlans[0]->id ]);
+        Flash::success('Project Added', 'Project has been added successfully.');
         return view('canvas.index_project')
             ->with('showPop', true)
             ->with('plans', $projectPlans);
@@ -195,7 +197,9 @@ class ProjectsController extends Controller
      */
     public function show($id)
     {
-        //
+        $project = Project::find($id);
+        return view('projects.show')
+            ->with('project', $project);
     }
 
     /**
@@ -206,7 +210,17 @@ class ProjectsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = Project::find($id);
+
+        $consultants = DB::table('users')
+            ->join('role_user', 'role_user.user_id', '=', 'users.id')
+            ->where('role_id', '=', 2)
+            ->get();
+        $templates = Template::all();
+        return view('projects.edit')
+            ->with('templates',$templates)
+            ->with('project', $project)
+            ->with('consultants',$consultants);
     }
 
     /**
@@ -218,7 +232,91 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $rules = array(
+            'street_name'   => 'required',
+            'town'    => 'required',
+            'postal_code'    => 'required',
+            'state'    => 'required',
+            'lot'    => 'required',
+            'title_1'    => 'required',
+            'first_name_1'    => 'required',
+            'last_name_1'    => 'required',
+            'email_1'    => 'required',
+            'mobile_1'    => 'required',
+            'title_2'    => 'required',
+            'first_name_2'    => 'required',
+            'last_name_2'    => 'required',
+            'email_2'    => 'required',
+            'mobile_2'    => 'required',
+            'job'    => 'required',
+            'energy_consumption'    => 'required',
+            'budget'    => 'required'
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails())
+            return Redirect::to('/projects/create')
+                ->withErrors($validator);
+
+        $address = Address::find($request->get('address_id'));
+        $address->no = $request->get('no_unit');
+        $address->street_name = $request->get('street_name');
+        $address->town = $request->get('town');
+        $address->postal_code = $request->get('postal_code');
+        $address->state = $request->get('state');
+        $address->lot = $request->get('lot');
+        $address->type = 'project';
+        $address->save();
+
+       // DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        $user_1 = User::find($request->get('user_id_1'));
+        $user_1->first_name = $request->get('first_name_1');
+        $user_1->last_name = $request->get('last_name_1');
+        $user_1->email = $request->get('email_1');
+        $user_1->mobile = $request->get('mobile_1');
+        $user_1->password = Hash::make(str_random(10));
+        $user_1->is_enabled = true;
+        $user_1->profile_pic = '';
+        $user_1->save();
+        //$user_1->attachRole(3);
+
+        $user_2 = User::find($request->get('user_id_2'));
+        $user_2->first_name = $request->get('first_name_2');
+        $user_2->last_name = $request->get('last_name_2');
+        $user_2->email = $request->get('email_2');
+        $user_2->mobile = $request->get('mobile_2');
+        $user_2->password = Hash::make(str_random(10));
+        $user_2->is_enabled = true;
+        $user_2->profile_pic = '';
+        $user_2->save();
+        ////$user_2->attachRole(3);
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+        $project = Project::find($id);
+        $project->consultant_id = $request->get('consultant_id');
+        $project->template_id = $request->get('template_id');
+        $project->job = $request->get('job');
+        $project->status_id = 1;
+        $project->user_id_1 = $user_1->id;
+        $project->user_id_2 = $user_2->id;
+        $project->address_id = $address->id;
+        $project->energy_consumption = $request->get('energy_consumption');
+        $project->budget = $request->get('budget');
+        $project->save();
+
+
+
+        $consultants = DB::table('users')
+            ->join('role_user', 'role_user.user_id', '=', 'users.id')
+            ->where('role_id', '=', 2)
+            ->get();
+        $templates = Template::all();
+        Flash::success('Project Updated', 'Project has been updated successfully.');
+        return view('projects.edit')
+            ->with('templates',$templates)
+            ->with('project', $project)
+            ->with('consultants',$consultants);
     }
 
     /**

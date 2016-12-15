@@ -158,7 +158,7 @@
                     <section class="col-md-1"></section>
 
                     <section class="col-md-1">
-                        House
+                        Porch
                     </section>
                     <section class="col-md-1">
                         <input class="form-control required" id="porch" name="porch" aria-required="true" type="text" placeholder="4w per SQM" disabled="disabled">

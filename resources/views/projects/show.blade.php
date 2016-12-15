@@ -10,61 +10,58 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <section class="row form-group">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Name</label></section>
-                    <section class="col-md-6">{!! $product->name !!}</section>
+                    <section class="col-md-2"><label>Job#</label></section>
+                    <section class="col-md-6">{!! $project->job !!}</section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Description</label></section>
-                    <section class="col-md-6">{!! $product->description !!}</section>
+                    <section class="col-md-2"><label>Consultant</label></section>
+                    <section class="col-md-6">{!! \App\User::find($project->consultant_id)->first_name.' '.\App\User::find($project->consultant_id)->last_name !!}</section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Manufacturing Product Code</label></section>
-                    <section class="col-md-6">{!! $product->manufacturing_product_code !!}</section>
+                    <section class="col-md-2"><label>Client 1</label></section>
+                    <section class="col-md-6">{!! \App\User::find($project->user_id_1)->first_name.' '.\App\User::find($project->user_id_1)->last_name !!}</section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Builders Product Code</label></section>
-                    <section class="col-md-6">{!! $product->builder_code !!}</section>
+                    <section class="col-md-2"><label>Client 2</label></section>
+                    <section class="col-md-6">{!! \App\User::find($project->user_id_2)->first_name.' '.\App\User::find($project->user_id_2)->last_name !!}</section>
+                    <section class="col-md-2"></section>
+                </section>
+                <section class="row form-group">
+                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Template</label></section>
+                    <section class="col-md-6">{!! \App\Template::find($project->template_id)->name !!}</section>
+                    <section class="col-md-2"></section>
+                </section>
+
+            <?php
+            $address = App\Address::find($project->address_id);
+
+                ?>
+                <section class="row form-group">
+                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Build Address</label></section>
+                    <section class="col-md-6">{!! $address->lot.', '.$address->no.', '.$address->street_name.', '.$address->town.', '.$address->state; !!}</section>
                     <section class="col-md-2"></section>
                 </section>
 
                 <section class="row form-group">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Pronto Code</label></section>
-                    <section class="col-md-6">{!! $product->pronto_code !!}</section>
-                    <section class="col-md-2"></section>
-                </section>
-
-                <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Sales Price ($)</label></section>
-                    <section class="col-md-6"><small>$</small>{!! $product->builders_price !!}</section>
+                    <section class="col-md-2"><label>Budget</label></section>
+                    <section class="col-md-6"><small>$</small>{!! $project->budget !!}</section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Discount (%)</label></section>
-                    <section class="col-md-6">{!! $product->discount !!}<small>%</small></section>
+                    <section class="col-md-2"><label>Energy Consumption</label></section>
+                    <section class="col-md-6">{!! $project->energy_consumption !!}<small>%</small></section>
                     <section class="col-md-2"></section>
                 </section>
-                <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Quantity</label></section>
-                    <section class="col-md-6">{!! $product->quantity !!} </section>
-                    <section class="col-md-2"></section>
-                </section>
-                <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Energy Consumption (W)</label></section>
-                    <section class="col-md-6">{!! $product->energy_consumption !!} <small>w</small> </section>
-                    <section class="col-md-2"></section>
-                </section>
-
 
             </form>
         </section>
@@ -93,10 +90,10 @@
     <button data-ref="sub-menu-items" data-index="1" class="breadcrumb-btn cursor-normal" type="submit" id="1-bc">
             <span class="bc-img-wrap"><img class="breadcrumb-main-icon"
                                            src="{{ URL::asset('resources/images/home_ico_black.png') }}"></span><span
-                class="breadcrumb-text">Products</span></button>
+                class="breadcrumb-text">Projects</span></button>
     <i class="fa fa-chevron-right breadcrumb-icn " id="1-ic"></i>
 
     <button data-ref="sub-menu-items" data-index="2" class="breadcrumb-btn font-blue" type="submit" id="2-bc"><span
-                class="breadcrumb-text">{!! $product->name !!}</span></button>
+                class="breadcrumb-text">{!! $project->job !!}</span></button>
     <i class="fa fa-chevron-right breadcrumb-icn font-blue" id="3-ic"></i>
 @stop

@@ -22,7 +22,7 @@
                             aria-label="Product Name: activate to sort column ascending">Address
                         </th>
                         <th class="sorting" tabindex="0" aria-controls="product-table-view" rowspan="1" colspan="1"
-                            aria-label="Product Name: activate to sort column ascending">Icon
+                            aria-label="Product Name: activate to sort column ascending">Client
                         </th>
                         <th>
                             Actions
@@ -35,25 +35,33 @@
                         <tr data-product-id="2" role="row">
                             <td data-id="2-id" class="sorting_1">{!! $i++ !!}</td>
                             <td data-id="2-code">{!! $project->job !!}</td>
-                            <td data-id="2-name">{!! $project->description !!}</td>
-                            <td data-id="2-name"></td>
-                            <td data-id="2-actions"><a class="action-btn btn-app" href="{!! url('products/'.$project->id) !!}"
-                                                       data-toggle="tooltip" data-placement="top" title=""
-                                                       data-original-title="View Product"><i
-                                            class="fa fa-folder-open-o green-font"></i></a>
-                                <a class="action-btn btn-app" data-product-id="2" id="2-edit-action" href="{!! url('products/'.$project->id.'/edit') !!}"
-                                   data-toggle="tooltip" data-placement="top" title=""
-                                   data-original-title="Edit Product"><i class="fa fa-edit green-font"></i></a>
+                            <?php
+                                    $address = App\Address::find($project->address_id);
+                                    $a = $address->lot.', '.$address->no.', '.$address->street_name.', '.$address->town.', '.$address->state;
+                                $a = substr($a,0,30);
 
-                                <form method="GET" action="{!! url('products/'.$project->id.'/delete') !!}" accept-charset="UTF-8" style="display:inline">
+                                    $client_1 = App\User::find($project->user_id_1);
+                                    $client_1 = $client_1->first_name.' '.$client_1->last_name;
+                                    ?>
+                            <td data-id="2-name">{!! $a !!}</td>
+                            <td data-id="2-name">{!!  $client_1 !!}</td>
+                            <td data-id="2-actions"><a class="action-btn btn-app" href="{!! url('projects/'.$project->id) !!}"
+                                                       data-toggle="tooltip" data-placement="top" title=""
+                                                       data-original-title="View Project"><i
+                                            class="fa fa-folder-open-o green-font"></i></a>
+                                <a class="action-btn btn-app" data-product-id="2" id="2-edit-action" href="{!! url('projects/'.$project->id.'/edit') !!}"
+                                   data-toggle="tooltip" data-placement="top" title=""
+                                   data-original-title="Edit Project"><i class="fa fa-edit green-font"></i></a>
+
+                                <form method="GET" action="{!! url('projects/'.$project->id.'/delete') !!}" accept-charset="UTF-8" style="display:inline">
                                     <a class="action-btn btn-app"
                                        data-product-id="2"
                                        data-placement="top"
                                        title=""
                                        data-toggle="modal"
                                        data-target="#confirmDelete"
-                                       data-title="Delete Product"
-                                       data-message="Are you sure you want to delete this Product ?"
+                                       data-title="Delete Project"
+                                       data-message="Are you sure you want to delete this Project ?"
                                        data-original-title="Remove User"><i class="fa fa-times red-font"></i></a>
                                 </form>
                             </td>
@@ -88,7 +96,7 @@
     <button data-ref="sub-menu-items" data-index="1" class="breadcrumb-btn font-blue" type="submit" id="1-bc">
             <span class="bc-img-wrap"><img class="breadcrumb-main-icon"
                                            src="{{ URL::asset('resources/images/home_ico_black.png') }}"></span><span
-                class="breadcrumb-text">Products</span></button>
+                class="breadcrumb-text">Projects</span></button>
     <i class="fa fa-chevron-right breadcrumb-icn " id="1-ic"></i>
 
 @stop

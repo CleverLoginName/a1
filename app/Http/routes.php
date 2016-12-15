@@ -49,6 +49,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('projects', 'ProjectsController');
     Route::get('projects/{id}/delete', 'ProjectsController@destroy');
+    Route::post('projects/{id}/edit', 'ProjectsController@update');
 
     Route::get('temp', 'TempController@index');
     Route::get('/products1', 'TempController@products');
