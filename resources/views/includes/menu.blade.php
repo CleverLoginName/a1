@@ -2,6 +2,10 @@
     .nav > li > a {
         padding: 10px 15px 15px 35px;
     }
+
+    .hid{
+        display:none;
+    }
 </style>
 
 <ul class="nav nav-list sidebar-menu">
@@ -17,7 +21,7 @@
             <span class="main-menu-item-text">Projects</span>
             <span class="menu-selected-item"></span>
         </a>
-        <ul class="nav nav-list tree">
+        <ul class="nav nav-list tree hid">
                 <li>
                     <a class="main-menu-item" id="Products" href="{!! url("/projects/create") !!}">
                         <img class="main-menu-icon" src="{{ URL::asset('resources/images/products_ico_white.png') }}">
@@ -39,7 +43,7 @@
             <span class="menu-selected-item"></span>
         </a>
 
-        <ul class="nav nav-list tree">
+        <ul class="nav nav-list tree hid">
             @if(Auth::user()->can('create-products'))
                 <li>
                     <a class="main-menu-item" id="Products" href="{!! url("/products/create") !!}">
@@ -79,7 +83,7 @@
         </a>
 
 
-        <ul class="nav nav-list tree">
+        <ul class="nav nav-list tree hid">
             <li>
                 <a class="main-menu-item" id="Users" href="{!! url("/templates/create") !!}">
                     <img class="main-menu-icon" src="{{ URL::asset('resources/images/products_ico_white.png') }}">
@@ -103,7 +107,7 @@
         </a>
 
 
-        <ul class="nav nav-list tree">
+        <ul class="nav nav-list tree hid">
             <li>
                 <a class="main-menu-item" id="Users" href="{!! url("/users/create") !!}">
                     <img class="main-menu-icon" src="{{ URL::asset('resources/images/products_ico_white.png') }}">

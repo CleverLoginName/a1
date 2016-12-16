@@ -83,7 +83,9 @@ class ProjectsController extends Controller
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails())
             return Redirect::to('/projects/create')
-                ->withErrors($validator);
+                ->withErrors($validator)
+                ->withInput();
+               // ->with('data',$request->all());
 
         $address = new Address();
         $address->no = '';

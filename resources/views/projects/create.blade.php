@@ -25,115 +25,108 @@
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Job# / Consultant</label></section>
                     <section class="col-md-3">
-                        <input class="form-control required" id="job"
-                               name="job" aria-required="true" type="text" placeholder="Job#">
+
+                        {!! Form::text('job',null,['class'=>'form-control required','placeholder'=>"Job#",'id'=>'job']) !!}
                     </section>
-                    <section class="col-md-5"><input class="form-control required" id="consultant"
-                                                     name="consultant" aria-required="true" type="text" placeholder="Consultant"></section>
+                    <section class="col-md-5">
+                        {!! Form::text('consultant',null,['class'=>'form-control required','placeholder'=>"Consultant",'id'=>'consultant']) !!}
+                    </section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Client Name 1</label></section>
                     <section class="col-md-2">
-                        <select class="form-control required"
-                                id="prod-frm-sub-cat" name="title_1" aria-required="true"
-                                aria-invalid="true">
-                            <option value="Mr.">Mr</option>
-                            <option value="Miss.">Miss</option>
-                            <option value="Mrs.">Mrs</option>
-                        </select>
+
+                        {!! Form::select('title_1', ['Mr.' => 'Mr', 'Miss.' => 'Miss', 'Mrs.' => 'Mrs'],null,['id'=>'title_1','class'=>'form-control required']) !!}
                     </section>
-                    <section class="col-md-3"><input class="form-control required" id="first_name_1"
-                                                      name="first_name_1" aria-required="true" type="text" placeholder="First Name"></section>
-                    <section class="col-md-3"><input class="form-control required" id="last_name_1"
-                                                     name="last_name_1" aria-required="true" type="text" placeholder="Last Name"></section>
+                    <section class="col-md-3">
+                        {!! Form::text('first_name_1',null,['class'=>'form-control required','placeholder'=>"First Name",'id'=>'first_name_1']) !!}
+                    </section>
+                    <section class="col-md-3">
+                        {!! Form::text('last_name_1',null,['class'=>'form-control required','placeholder'=>"Last Name",'id'=>'last_name_1']) !!}
+                    </section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"></section>
                     <section class="col-md-4">
-                        <input class="form-control required" id="mobile_1"
-                               name="mobile_1" aria-required="true" type="text" placeholder="Mobile">
+                        {!! Form::text('mobile_1',null,['class'=>'form-control required','placeholder'=>"Mobile",'id'=>'mobile_1']) !!}
                     </section>
                     <section class="col-md-4">
-                        <input class="form-control required" id="email_1"
-                               name="email_1" aria-required="true" type="text" placeholder="E-Mail">
+                        {!! Form::email('email_1',null,['class'=>'form-control required','placeholder'=>"E-Mail",'id'=>'email_1']) !!}
                     </section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Client Name 2</label></section>
                     <section class="col-md-2">
-                        <select class="form-control required"
-                                id="prod-frm-sub-cat" name="title_2" aria-required="true"
-                                aria-invalid="true">
-                            <option value="Mr.">Mr</option>
-                            <option value="Miss.">Miss</option>
-                            <option value="Mrs.">Mrs</option>
-                        </select>
+                        {!! Form::select('title_2', ['Mr.' => 'Mr', 'Miss.' => 'Miss', 'Mrs.' => 'Mrs'],null,['id'=>'title_2','class'=>'form-control required']) !!}
                     </section>
-                    <section class="col-md-3"><input class="form-control required" id="first_name_2"
-                                                      name="first_name_2" aria-required="true" type="text" placeholder="First Name"></section>
-                    <section class="col-md-3"><input class="form-control required" id="last_name_2"
-                                                     name="last_name_2" aria-required="true" type="text" placeholder="Last Name"></section>
+                    <section class="col-md-3">
+                        {!! Form::text('first_name_2',null,['class'=>'form-control required','placeholder'=>"First Name",'id'=>'first_name_2']) !!}
+                    </section>
+                    <section class="col-md-3">
+                        {!! Form::text('last_name_2',null,['class'=>'form-control required','placeholder'=>"Last Name",'id'=>'last_name_2']) !!}
+                    </section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"></section>
                     <section class="col-md-4">
-                        <input class="form-control required" id="mobile_2"
-                               name="mobile_2" aria-required="true" type="text" placeholder="Mobile">
+                        {!! Form::text('mobile_2',null,['class'=>'form-control required','placeholder'=>"Mobile",'id'=>'mobile_2']) !!}
                     </section>
                     <section class="col-md-4">
-                        <input class="form-control required" id="email_2"
-                               name="email_2" aria-required="true" type="text" placeholder="E-Mail">
+                        {!! Form::email('email_2',null,['class'=>'form-control required','placeholder'=>"E-Mail",'id'=>'email_2']) !!}
                     </section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Design Template</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="template"
-                                                     name="template" aria-required="true" type="text"></section>
-                    <section class="col-md-2"><input class="form-control required" id="scale"
-                                                     name="scale" aria-required="true" type="text" placeholder="Scale" disabled="disabled"></section>
+                    <section class="col-md-6">
+                        {!! Form::text('template',null,['class'=>'form-control required','placeholder'=>"Template",'id'=>'template']) !!}
+                    </section>
+                    <section class="col-md-2">
+                        {!! Form::text('scale',null,['class'=>'form-control required','placeholder'=>"Scale",'id'=>'scale', 'disabled'=>'disabled']) !!}
+                    </section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Build Address</label></section>
-                    <section class="col-md-2"><input class="form-control required" id="lot"
-                                                     name="lot" aria-required="true" type="text" placeholder="Lot#">
+                    <section class="col-md-2">
+                        {!! Form::text('lot',null,['class'=>'form-control required','placeholder'=>"Lot#",'id'=>'lot']) !!}
                     </section>
-                    <section class="col-md-2"><input class="form-control required" id="no_unit"
-                                                     name="no_unit" aria-required="true" type="text" placeholder="No/Unit">
+                    <section class="col-md-2">
+                        {!! Form::text('no_unit',null,['class'=>'form-control required','placeholder'=>"No/Unit",'id'=>'no_unit']) !!}
                     </section>
-                    <section class="col-md-4"><input class="form-control required" id="street_name"
-                                                     name="street_name" aria-required="true" type="text" placeholder="Street Name">
+                    <section class="col-md-4">
+                        {!! Form::text('street_name',null,['class'=>'form-control required','placeholder'=>"Street Name",'id'=>'street_name']) !!}
                     </section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label></label></section>
-                    <section class="col-md-4"><input class="form-control required" id="town" name="town" aria-required="true" type="text" placeholder="Suburb/Town">
+                    <section class="col-md-4">
+                        {!! Form::text('town',null,['class'=>'form-control required','placeholder'=>"Suburb/Town",'id'=>'town']) !!}
                     </section>
-                    <section class="col-md-2"><input class="form-control required" id="postal_code"
-                                                     name="postal_code" aria-required="true" type="text" placeholder="Postal Code">
+                    <section class="col-md-2">
+                        {!! Form::text('postal_code',null,['class'=>'form-control required','placeholder'=>"Postal Code",'id'=>'postal_code']) !!}
                     </section>
-                    <section class="col-md-2"><input class="form-control required" id="state"
-                                                     name="state" aria-required="true" type="text" placeholder="State">
+                    <section class="col-md-2">
+                        {!! Form::text('state',null,['class'=>'form-control required','placeholder'=>"State",'id'=>'state']) !!}
                     </section>
 
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Budget/Energy</label></section>
-                    <section class="col-md-2"><input class="form-control required" id="budget"
-                                                     name="budget" aria-required="true" type="text" placeholder="$ Budget(If App)">
+                    <section class="col-md-2">
+                        {!! Form::text('budget',null,['class'=>'form-control required','placeholder'=>"$ Budget(If App)",'id'=>'budget']) !!}
                     </section>
-                    <section class="col-md-2"><input class="form-control required" id="energy_consumption"
-                                                     name="energy_consumption" aria-required="true" type="text" placeholder="Total Energy per SQM">
+                    <section class="col-md-2">
+                        {!! Form::text('energy_consumption',null,['class'=>'form-control required','placeholder'=>"Total Energy per SQM",'id'=>'energy_consumption']) !!}
                     </section>
-                    <section class="col-md-4"><input class="form-control required" id="rating"
-                                                     name="rating" aria-required="true" type="text" placeholder="Rating" disabled="disabled">
+                    <section class="col-md-4">
+                        {!! Form::text('rating',null,['class'=>'form-control required','placeholder'=>"Rating",'id'=>'rating', 'disabled'=>'disabled']) !!}
                     </section>
                 </section>
                 <section class="row form-group">
@@ -143,7 +136,7 @@
                         House
                     </section>
                     <section class="col-md-1">
-                        <input class="form-control required" id="house" name="house" aria-required="true" type="text" placeholder="5w per SQM" disabled="disabled">
+                        {!! Form::text('house',null,['class'=>'form-control required','placeholder'=>"5w per SQM",'id'=>'house', 'disabled'=>'disabled']) !!}
                     </section>
 
                     <section class="col-md-1"></section>
@@ -152,7 +145,7 @@
                         Garage
                     </section>
                     <section class="col-md-1">
-                        <input class="form-control required" id="garage" name="garage" aria-required="true" type="text" placeholder="3w per SQM" disabled="disabled">
+                        {!! Form::text('garage',null,['class'=>'form-control required','placeholder'=>"3w per SQM",'id'=>'garage', 'disabled'=>'disabled']) !!}
                     </section>
 
                     <section class="col-md-1"></section>
@@ -161,7 +154,7 @@
                         House
                     </section>
                     <section class="col-md-1">
-                        <input class="form-control required" id="porch" name="porch" aria-required="true" type="text" placeholder="4w per SQM" disabled="disabled">
+                        {!! Form::text('porch',null,['class'=>'form-control required','placeholder'=>"4w per SQM",'id'=>'porch', 'disabled'=>'disabled']) !!}
                     </section>
 
 
