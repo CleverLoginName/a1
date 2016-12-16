@@ -57,7 +57,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('projects/{id}/edit', 'ProjectsController@update');
 
     Route::get('temp', 'TempController@index');
-    Route::get('/products1', 'TempController@products');
+    Route::get('/products1', 'TempController@products1');
     Route::post('/save', 'TempController@save');
     Route::get('/load', 'TempController@load');
 
