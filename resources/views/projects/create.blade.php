@@ -151,7 +151,7 @@
                     <section class="col-md-1"></section>
 
                     <section class="col-md-1">
-                        House
+                        Porch
                     </section>
                     <section class="col-md-1">
                         {!! Form::text('porch',null,['class'=>'form-control required','placeholder'=>"4w per SQM",'id'=>'porch', 'disabled'=>'disabled']) !!}

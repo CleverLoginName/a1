@@ -1,6 +1,11 @@
 <?php
 
 
+
+Route::get('rest/api/products', 'TempController@products');
+Route::get('rest/api/canvas/{id}', 'TempController@loadOne');
+Route::post('rest/api/canvas', 'TempController@save');
+
 Route::auth();
 
 
@@ -49,6 +54,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('projects', 'ProjectsController');
     Route::get('projects/{id}/delete', 'ProjectsController@destroy');
+    Route::post('projects/{id}/edit', 'ProjectsController@update');
 
     Route::get('temp', 'TempController@index');
     Route::get('/products1', 'TempController@products');
@@ -66,7 +72,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('projects/{id}/canvas/templates/load-latest', 'ProjectsController@loadPlanDataInCanvas');
 
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-
 
 
 });
