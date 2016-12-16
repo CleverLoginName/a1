@@ -33,7 +33,7 @@ class TempController extends Controller
 						"data": [
 							{
 								"description": "Chandelier Lamp",
-								"name": "chandelier",
+								"name": "product 1",
 								"price": 200,
 								"path": "/img/chandelier-lamp.png",
 								"wattage": 100,
@@ -43,7 +43,7 @@ class TempController extends Controller
 							},
 							{
 								"description": "Desk Lamp",
-								"name": "deskLamp1",
+								"name": "product 2",
 								"price": 300,
 								"path": "/img/deskLamp1.png",
 								"wattage": 75,
@@ -53,7 +53,7 @@ class TempController extends Controller
 							},
 							{
 								"description": "Hanging Linght",
-								"name": "hangingLight",
+								"name": "product 3",
 								"price": 400,
 								"path": "/img/hangingLight.png",
 								"wattage": 150,
@@ -69,7 +69,7 @@ class TempController extends Controller
 						"data": [
 							{
 								"description": "Chandelier Lamp",
-								"name": "chandelier",
+								"name": "product 4",
 								"price": 200,
 								"path": "/img/chandelier-lamp.png",
 								"wattage": 100,
@@ -79,7 +79,7 @@ class TempController extends Controller
 							},
 							{
 								"description": "Desk Lamp",
-								"name": "deskLamp1",
+								"name": "product 5",
 								"price": 300,
 								"path": "/img/deskLamp1.png",
 								"wattage": 75,
@@ -89,7 +89,7 @@ class TempController extends Controller
 							},
 							{
 								"description": "Hanging Linght",
-								"name": "hangingLight",
+								"name": "product 6",
 								"price": 400,
 								"path": "/img/hangingLight.png",
 								"wattage": 150,
@@ -111,7 +111,7 @@ class TempController extends Controller
 						"data": [
 							{
 								"description": "Chandelier Lamp",
-								"name": "chandelier",
+								"name": "product 7",
 								"price": 200,
 								"path": "/img/chandelier-lamp.png",
 								"wattage": 100,
@@ -121,7 +121,7 @@ class TempController extends Controller
 							},
 							{
 								"description": "Desk Lamp",
-								"name": "deskLamp1",
+								"name": "product 8",
 								"price": 300,
 								"path": "/img/deskLamp1.png",
 								"wattage": 75,
@@ -131,7 +131,7 @@ class TempController extends Controller
 							},
 							{
 								"description": "Hanging Linght",
-								"name": "hangingLight",
+								"name": "product 9",
 								"price": 400,
 								"path": "/img/hangingLight.png",
 								"wattage": 150,
@@ -147,7 +147,7 @@ class TempController extends Controller
 						"data": [
 							{
 								"description": "Chandelier Lamp",
-								"name": "chandelier",
+								"name": "product 10",
 								"price": 200,
 								"path": "/img/chandelier-lamp.png",
 								"wattage": 100,
@@ -157,7 +157,7 @@ class TempController extends Controller
 							},
 							{
 								"description": "Desk Lamp",
-								"name": "deskLamp1",
+								"name": "product 11",
 								"price": 300,
 								"path": "/img/deskLamp1.png",
 								"wattage": 75,
@@ -167,7 +167,7 @@ class TempController extends Controller
 							},
 							{
 								"description": "Hanging Linght",
-								"name": "hangingLight",
+								"name": "product 12",
 								"price": 400,
 								"path": "/img/hangingLight.png",
 								"wattage": 150,
