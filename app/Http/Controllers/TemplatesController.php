@@ -24,7 +24,9 @@ class TemplatesController extends Controller
      */
     public function index()
     {
-
+        $templates = Template::all();
+        return view('templates.index')
+            ->with('templates', $templates);
     }
 
     /**
@@ -189,7 +191,9 @@ class TemplatesController extends Controller
 
     public function show($id)
     {
-        //
+        $template = Template::find($id);
+        return view('templates.show')
+            ->with('template', $template);
     }
 
     /**
@@ -200,7 +204,9 @@ class TemplatesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $template = Template::find($id);
+        return view('templates.edit')
+            ->with('template', $template);
     }
 
     public function editPlanInCanvas($id)
@@ -243,7 +249,33 @@ class TemplatesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = array(
+            'name'   => 'required',
+            'scale'    => 'required',
+            'energy_rating'    => 'required',
+            'house_watts_per_sqm'    => 'required',
+            'garage_watts_per_sqm'    => 'required',
+            'porch_watts_per_sqm'    => 'required',
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails())
+            return Redirect::to('/templates/create')
+                ->withErrors($validator);
+
+        $template = Template::find($id);
+        $template->name = $request->get('name');
+        $template->scale = $request->get('scale');
+        $template->energy_rating = $request->get('energy_rating');
+        $template->sqm_house = $request->get('house_watts_per_sqm');
+        $template->sqm_porch = $request->get('porch_watts_per_sqm');
+        $template->sqm_garage = $request->get('garage_watts_per_sqm');
+        $template->save();
+
+        Flash::success('Template Updated', 'Template has been updated successfully.');
+
+        return view('templates.edit')
+            ->with('template', $template);
     }
 
     /**

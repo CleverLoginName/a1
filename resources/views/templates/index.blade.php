@@ -19,7 +19,7 @@
                             aria-label="Product Code: activate to sort column ascending">Name
                         </th>
                         <th class="sorting" tabindex="0" aria-controls="product-table-view" rowspan="1" colspan="1"
-                            aria-label="Product Name: activate to sort column ascending">Description
+                            aria-label="Product Name: activate to sort column ascending">Scale
                         </th>
                         <th>
                             Actions
@@ -28,29 +28,29 @@
                     </thead>
                     <tbody>
                     <?php $i = 1; ?>
-                    @foreach($catalogs as $catalog)
+                    @foreach($templates as $template)
                         <tr data-product-id="2" role="row">
                             <td data-id="2-id" class="sorting_1">{!! $i++ !!}</td>
-                            <td data-id="2-code">{!! $catalog->name !!}</td>
-                            <td data-id="2-name">{!! $catalog->description !!}</td>
-                            <td data-id="2-actions"><a class="action-btn btn-app" href="{!! url('catalogs/'.$catalog->id) !!}"
+                            <td data-id="2-code">{!! $template->name !!}</td>
+                            <td data-id="2-name">1 : {!! $template->scale !!}</td>
+                            <td data-id="2-actions"><a class="action-btn btn-app" href="{!! url('templates/'.$template->id) !!}"
                                                        data-toggle="tooltip" data-placement="top" title=""
-                                                       data-original-title="View Catalog"><i
+                                                       data-original-title="View Template"><i
                                             class="fa fa-folder-open-o green-font"></i></a>
-                                <a class="action-btn btn-app" data-product-id="2" id="2-edit-action" href="{!! url('catalogs/'.$catalog->id.'/edit') !!}"
+                                <a class="action-btn btn-app" data-product-id="2" id="2-edit-action" href="{!! url('templates/'.$template->id.'/edit') !!}"
                                    data-toggle="tooltip" data-placement="top" title=""
-                                   data-original-title="Edit Catalog"><i class="fa fa-edit green-font"></i></a>
+                                   data-original-title="Edit Template"><i class="fa fa-edit green-font"></i></a>
 
-                                <form method="GET" action="{!! url('catalogs/'.$catalog->id.'/delete') !!}" accept-charset="UTF-8" style="display:inline">
+                                <form method="GET" action="{!! url('templates/'.$template->id.'/delete') !!}" accept-charset="UTF-8" style="display:inline">
                                     <a class="action-btn btn-app"
                                        data-product-id="2"
                                        data-placement="top"
                                        title=""
                                        data-toggle="modal"
                                        data-target="#confirmDelete"
-                                       data-title="Delete Catalog"
-                                       data-message="Are you sure you want to delete this catalog ?"
-                                       data-original-title="Remove Catalog"><i class="fa fa-times red-font"></i></a>
+                                       data-title="Delete Template"
+                                       data-message="Are you sure you want to delete this template ?"
+                                       data-original-title="Remove Template"><i class="fa fa-times red-font"></i></a>
                                 </form>
                             </td>
                         </tr>
@@ -84,7 +84,7 @@
     <button data-ref="sub-menu-items" data-index="1" class="breadcrumb-btn font-blue" type="submit" id="1-bc">
             <span class="bc-img-wrap"><img class="breadcrumb-main-icon"
                                            src="{{ URL::asset('resources/images/home_ico_black.png') }}"></span><span
-                class="breadcrumb-text">Catalogs</span></button>
+                class="breadcrumb-text">Templates</span></button>
     <i class="fa fa-chevron-right breadcrumb-icn " id="1-ic"></i>
 
 @stop

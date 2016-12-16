@@ -51,14 +51,6 @@
                                 class="dashboard-item-count">25 </span></section>
                 </section>
             </section>
-            <section class="row" style="margin-bottom:10px;"><a href="help-topics">
-                    <section class="col-md-4 dashboard-widget-col">
-                        <section class="dashboard-widget"><span
-                                    class="dahsboard-item-icon dashboard-item-help"></span><span
-                                    class="dashboard-item-name">Help Topics </span><span
-                                    class="dashboard-item-count">46</span></section>
-                    </section>
-                </a></section>
         </section>
     </section>
 @stop
