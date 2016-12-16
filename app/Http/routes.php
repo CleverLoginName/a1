@@ -13,9 +13,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/', function () {
         return view('dashboards.index');
     });
-    Route::get('/dashboard', function() {
-        return view('dashboards.index');
-    });
+    Route::get('/dashboard', 'DashboardsController@index');
+    
 
     Route::get('/users/permissions', 'UsersController@rolesNPermissions');
     Route::post('/users/permissions', 'UsersController@updateRolesNPermissions');

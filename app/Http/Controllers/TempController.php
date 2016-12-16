@@ -102,11 +102,11 @@ class TempController extends Controller
 				]
 			},
 			{
-				"catagory_id": 1,
+				"catagory_id": 2,
 				"category_name": "Air conditioning",
 				"data": [
 					{
-						"sub_catagory_id": 1,
+						"sub_catagory_id": 3,
 						"sub_category_name": "Inverter",
 						"data": [
 							{
@@ -142,7 +142,7 @@ class TempController extends Controller
 						]
 					},
 					{
-						"sub_catagory_id": 2,
+						"sub_catagory_id": 4,
 						"sub_category_name": "Non Inverter",
 						"data": [
 							{
