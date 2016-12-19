@@ -7,6 +7,7 @@ use App\SubCategory;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Szykra\Notifications\Flash;
@@ -141,5 +142,14 @@ class SubCategoriesController extends Controller
         $subCategory->delete();
         Flash::success('Sub-Category Deleted', 'Sub-Category has been deleted successfully.');
         return redirect()->action('SubCategoriesController@index');
+    }
+
+
+
+    public function subCategoriesByCategoryId(){
+        $categoryId = Input::get('id');
+        $subCategories = SubCategory::where('category_id','=',$categoryId)->get();
+        return $subCategories;
+
     }
 }

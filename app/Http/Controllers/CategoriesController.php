@@ -7,6 +7,7 @@ use App\Category;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Szykra\Notifications\Flash;
@@ -136,5 +137,12 @@ class CategoriesController extends Controller
         $category->delete();
         Flash::error('Category Deleted', 'Category has been deleted successfully.');
         return redirect()->action('CategoriesController@index');
+    }
+
+    public function categoriesByCatalogId(){
+        $catalogId = Input::get('id');
+        $categories = Category::where('catalog_id','=',$catalogId)->get();
+        return $categories;
+
     }
 }

@@ -2,6 +2,7 @@
 
 
 @section('main-content')
+    <section id="vue">
     <section class="box new-item-wrapper">
         <section class="box-header"></section>
         <section class="box-body">
@@ -24,11 +25,11 @@
                     <section class="col-md-2"><label>Catalog</label></section>
                     <section class="col-md-6">
                         <select class="form-control required"
-                                id="prod-frm-sub-cat" name="catalog_id" aria-required="true"
+                                id="prod-frm-sub-cat" name="catalog_id" aria-required="true" v-model="catalog" @change="catalogChange()"
                                 aria-invalid="true">
-                            @foreach($catalogs as $catalog)
-                                <option value="{!! $catalog->id !!}">{!! $catalog->name !!}</option>
-                            @endforeach
+                                <option v-for="catalog in catalog_options" value="@{{ catalog.id }}">
+                                    @{{ catalog.name }}
+                                </option>
                         </select>
                     </section>
                     <section class="col-md-2"><a href="{!! url('/catalogs/create') !!}">Can't find? Add New</a> </section>
@@ -38,11 +39,11 @@
                     <section class="col-md-2"><label>Category</label></section>
                     <section class="col-md-6">
                         <select class="form-control required"
-                                id="prod-frm-sub-cat" name="category_id" aria-required="true"
+                                id="prod-frm-sub-cat" name="category_id" aria-required="true" v-model="category" :disabled="category_disabled" @change="categoryChange()"
                                 aria-invalid="true">
-                            @foreach($categories as $category)
-                                <option value="{!! $category->id !!}">{!! $category->name !!}</option>
-                            @endforeach
+                            <option v-for="category in category_options" value="@{{ category.id }}  ">
+                                @{{ category.name }}
+                            </option>
                         </select>
                     </section>
                     <section class="col-md-2"><a href="{!! url('/categories/create') !!}">Can't find? Add New</a></section>
@@ -52,11 +53,11 @@
                     <section class="col-md-2"><label>Sub-Category</label></section>
                     <section class="col-md-6">
                         <select class="form-control required"
-                                id="prod-frm-sub-cat" name="sub_category_id" aria-required="true"
+                                id="prod-frm-sub-cat" name="sub_category_id" aria-required="true" v-model="sub_category" :disabled="sub_category_disabled" @change="subCategoryChange()"
                                 aria-invalid="true">
-                            @foreach($subCategories as $subCategory)
-                                <option value="{!! $subCategory->id !!}">{!! $subCategory->name !!}</option>
-                            @endforeach
+                            <option v-for="sub_category in sub_category_options" value="@{{ sub_category.id }}  ">
+                                @{{ sub_category.name }}
+                            </option>
                         </select>
                     </section>
                     <section class="col-md-2"><a href="{!! url('/sub-categories/create') !!}">Can't find? Add New</a></section>
@@ -156,6 +157,7 @@
             </form>
         </section>
     </section>
+    </section>
 @stop
 
 
@@ -186,4 +188,68 @@
     <button data-ref="sub-menu-items" data-index="2" class="breadcrumb-btn font-blue" type="submit" id="2-bc"><span
                 class="breadcrumb-text">New</span></button>
     <i class="fa fa-chevron-right breadcrumb-icn font-blue" id="3-ic"></i>
+@stop
+
+
+@section('post-js')
+{{ Html::script('js/vue.js') }}
+{{ Html::script('js/vue-resource.js') }}
+<script>
+    var global_data = {
+        catalog: 1,
+        category: 1,
+        sub_category: 1,
+        category_disabled: true,
+        sub_category_disabled: true,
+        fields_disabled: true,
+        catalog_options: JSON.parse('{!! $catalogs !!}'),
+        category_options: JSON.parse('{!! $categories !!}'),
+        sub_category_options:'',
+    }
+
+
+    new Vue({
+        el: '#vue',
+        data: global_data,
+        methods:{
+            catalogChange:function () {
+                this.$http.get('/categories-by-catalog?id='+global_data.catalog )
+                    .then(function(data){
+                        global_data.category_options= [];
+                        global_data.category_options = data.body;
+
+                        global_data.category_disabled = false;
+                        global_data.sub_category_disabled = true;
+
+
+                    });
+            },
+            categoryChange:function () {
+                this.$http.get('/subcategories-by-category?id='+global_data.category )
+                        .then(function(data){
+                            global_data.sub_category_options= [];
+                            global_data.sub_category_options = data.body;
+
+                            global_data.sub_category_disabled = false;
+
+
+
+                        });
+            },
+            subCategoryChange:function () {
+                this.$http.get('/subcategories-by-category?id='+global_data.category )
+                        .then(function(data){
+                            global_data.sub_category_options= [];
+                            global_data.sub_category_options = data.body;
+
+                            global_data.sub_category_disabled = false;
+
+
+
+                        });
+            }
+        }
+    })
+
+</script>
 @stop

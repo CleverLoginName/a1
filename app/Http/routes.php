@@ -71,6 +71,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('projects/{id}/canvas/templates/load-latest', 'ProjectsController@loadPlanDataInCanvas');
 
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+    Route::get('categories-by-catalog', 'CategoriesController@categoriesByCatalogId');
+    Route::get('/subcategories-by-category', 'SubCategoriesController@subCategoriesByCategoryId');
 
 
 });

@@ -43,7 +43,7 @@ class ProductsController extends Controller
         $categories = Category::all();
         $catalogs = Catalog::all();
         return view('products.create')
-            ->with('catalogs', $catalogs)
+            ->with('catalogs', $catalogs->toArray())
             ->with('categories', $categories)
             ->with('subCategories', $subCategories);
     }
