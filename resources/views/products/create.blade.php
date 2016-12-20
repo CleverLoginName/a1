@@ -9,6 +9,7 @@
             <form class="row new-item-from-wrapper" role="form" method="post" id="new-prod-form"
                   enctype="multipart/form-data" novalidate="novalidate" action="{!! url('/products') !!}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="is_composite" value="{{ $is_composite }}">
                 <section class="row form-group">
                     <section class="col-md-12">
                         @if ($errors->has())
@@ -62,7 +63,18 @@
                     </section>
                     <section class="col-md-2"><a href="{!! url('/sub-categories/create') !!}">Can't find? Add New</a></section>
                 </section>
-                @if(session('sub_category_id') === null)
+                <section class="row form-group">
+                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Symbol</label></section>
+                    <section class="col-md-6"><select class="form-control required" id="name"
+                                                     name="name">
+                            @foreach($symbols as $symbol)
+                                <option value="{!! $symbol->id !!}">{!! $symbol->name !!}</option>
+                                @endforeach
+
+                        </select></section>
+                    <section class="col-md-2"></section>
+                </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Name</label></section>
@@ -119,36 +131,7 @@
                                                      name="discount" aria-required="true" type="text"></section>
                     <section class="col-md-2"></section>
                 </section>
-                <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Quantity</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="quantity"
-                                                     name="quantity" aria-required="true" type="text"></section>
-                    <section class="col-md-2"></section>
-                </section>
-                <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Energy Consumption (W)</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="energy_consumption"
-                                                     name="energy_consumption" aria-required="true" type="text"></section>
-                    <section class="col-md-2"></section>
-                </section>
-                <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Width</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="width"
-                                                     name="width" aria-required="true" type="text"></section>
-                    <section class="col-md-2"></section>
-                </section>
-                <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Height</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="height"
-                                                     name="height" aria-required="true" type="text"></section>
-                    <section class="col-md-2"></section>
-                </section>
 
-                @else
 
                     @foreach($fields as $field)
 
@@ -158,9 +141,9 @@
                             <section class="col-md-6">
 
                                 @if($field['type'] == 'text')
-                                <input class="form-control required" id="{!! $field['id'] !!}" name="{!! $field['id'] !!}" aria-required="true" type="text" :disabled="fields_disabled">
+                                <input class="form-control required" id="{!! $field['id'] !!}" name="custom_field_{!! $field['id'] !!}" aria-required="true" type="text" :disabled="fields_disabled">
                                 @elseif($field['type'] == 'textarea')
-                                    <textarea class="form-control required" id="{!! $field['id'] !!}" name="{!! $field['id'] !!}" aria-required="true" :disabled="fields_disabled"> </textarea>
+                                    <textarea class="form-control required" id="{!! $field['id'] !!}" name="custom_field_{!! $field['id'] !!}" aria-required="true" :disabled="fields_disabled"> </textarea>
                                 @elseif($field['type'] == 'select')
                                 @elseif($field['type'] == 'radio')
                                 @elseif($field['type'] == 'checkbox')
@@ -172,8 +155,6 @@
 
                     @endforeach
 
-
-                @endif
 
 
 

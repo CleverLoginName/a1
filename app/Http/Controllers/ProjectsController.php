@@ -55,6 +55,15 @@ class ProjectsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function email_exists($email){
+        $users = DB::table('users')->where('email','=',$email)->count();
+        if ($users > 0){
+            return true;
+        }
+        return false;
+    }
+
     public function store(Request $request)
     {
       //  dd($request->all());
@@ -80,8 +89,19 @@ class ProjectsController extends Controller
             'energy_consumption'    => 'required',
             'budget'    => 'required'
         );
-
+        session(["email_1"=>$request->get('email_1'),"email_2"=>$request->get('email_2')]);
         $validator = Validator::make($request->all(), $rules);
+
+        $validator->after(function($validator) {
+            if ($this->email_exists(session('email_1'))) {
+                $validator->errors()->add('email_1', 'Email 1 Already in the DB');
+            }
+            if ($this->email_exists(session('email_2'))) {
+                $validator->errors()->add('email_2', 'Email 2 Already in the DB');
+            }
+        });
+
+
         if ($validator->fails())
             return Redirect::to('/projects/create')
                 ->withErrors($validator)
@@ -148,9 +168,12 @@ class ProjectsController extends Controller
         }
 
         $projectPlans = ProjectPlan::where('project_id','=',$project->id)->get();
+        $projectPlansCount = ProjectPlan::where('project_id','=',$project->id)->count();
+        if($projectPlansCount > 0){
+            session(['project_id' => $project->id ]);
+            session(['project_plan_id' => $projectPlans[0]->id ]);
+        }
 
-        session(['project_id' => $project->id ]);
-        session(['project_plan_id' => $projectPlans[0]->id ]);
         Flash::success('Project Added', 'Project has been added successfully.');
         return view('canvas.index_project')
             ->with('showPop', true)

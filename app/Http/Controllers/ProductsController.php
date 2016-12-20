@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Catalog;
 use App\Category;
+use App\Customdata;
 use App\CustomFieldSubCategory;
 use App\CustomFieldType;
 use App\Product;
+use App\ProductSymbol;
 use App\Project;
 use App\SubCategory;
 use App\SubCategoryProduct;
@@ -14,6 +16,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Szykra\Notifications\Flash;
@@ -55,12 +58,15 @@ class ProductsController extends Controller
         $subCategories = SubCategory::all();
         $categories = Category::all();
         $catalogs = Catalog::all();
+        $symbols = ProductSymbol::all();
 
 
         if(session('sub_category_id') == null){
             return view('products.create')
                 ->with('catalogs', $catalogs)
                 ->with('categories', $categories)
+                ->with('symbols',  $symbols)
+                ->with('is_composite',  false)
                 ->with('subCategories', $subCategories);
         }else{
 
@@ -75,10 +81,55 @@ class ProductsController extends Controller
                 ];
 
             }
+            $symbols = ProductSymbol::where('category_id','=',session('category_id'))->get();
             return view('products.create')
                 ->with('catalogs', $catalogs)
                 ->with('categories', $categories)
                 ->with('fields', $out)
+                ->with('is_composite',  false)
+                ->with('symbols', $symbols)
+                ->with('subCategories', $subCategories);
+        }
+
+
+
+
+    }
+    public function createCompositeProduct()
+    {
+        $subCategories = SubCategory::all();
+        $categories = Category::all();
+        $catalogs = Catalog::all();
+        $symbols = ProductSymbol::all();
+
+
+        if(session('sub_category_id') == null){
+            return view('products.create')
+                ->with('catalogs', $catalogs)
+                ->with('categories', $categories)
+                ->with('symbols',  $symbols)
+                ->with('is_composite',  true)
+                ->with('subCategories', $subCategories);
+        }else{
+
+            $customFields = CustomFieldSubCategory::where('sub_category_id','=',session('sub_category_id'))->get();
+            $out = [];
+            foreach ($customFields as $customField){
+                $out[] = [
+                    'id'=>$customField->id,
+                    'name'=>$customField->name,
+                    'type'=>CustomFieldType::find($customField->custom_field_type_id)->name,
+                    'is_mandatory'=>$customField->is_mandatory
+                ];
+
+            }
+            $symbols = ProductSymbol::where('category_id','=',session('category_id'))->get();
+            return view('products.create')
+                ->with('catalogs', $catalogs)
+                ->with('categories', $categories)
+                ->with('fields', $out)
+                ->with('is_composite',  true)
+                ->with('symbols', $symbols)
                 ->with('subCategories', $subCategories);
         }
 
@@ -96,7 +147,7 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { dd($request->all());
+    {// dd($request->all());
 
         $rules = array(
             'name'   => 'required',
@@ -107,10 +158,6 @@ class ProductsController extends Controller
             'builders_price'      => 'required',
             'sales_price'      => 'required',
             'discount'      => 'required',
-            'quantity'      => 'required',
-            'energy_consumption'      => 'required',
-            'width'      => 'required',
-            'height'      => 'required',
         );
 
         $validator = Validator::make($request->all(), $rules);
@@ -128,18 +175,41 @@ class ProductsController extends Controller
         $product->builders_price = $request->get('builders_price');
         $product->sales_price = $request->get('sales_price');
         $product->discount = $request->get('discount');
-        $product->quantity = $request->get('quantity');
-        $product->energy_consumption = $request->get('energy_consumption');
-        $product->width = $request->get('width');
-        $product->height = $request->get('height');
         $product->save();
+
+        foreach ($request->all() as $key => $value) {
+            if (strpos($key, 'custom_field') !== false) {
+                $custom_field_sub_category_id = substr($key, 13);
+                $customData = new Customdata();
+                $customData->product_id = $product->id;
+                $customData->custom_field_sub_category_id = $custom_field_sub_category_id;
+                $customData->value = $value;
+                $customData->save();
+            }
+        }
 
         $subcategoeyProduct = new SubCategoryProduct();
         $subcategoeyProduct->sub_category_id =$request->get('sub_category_id');
         $subcategoeyProduct->product_id = $product->id;
         $subcategoeyProduct->save();
+        
+        $products = Product::all();
+
+        if($request->get('is_composite') == true){
+            Flash::success('Composite Product Added', 'Composite Product has been added successfully.');
+            return view('products.drag_n_drop')
+                ->with('product_id',$product->id )
+                ->with('products',$products );
+        }
+
         Flash::success('Product Added', 'Product has been added successfully.');
         return redirect()->action('ProductsController@index');
+
+    }
+
+
+    public function updateDragndrop(){
+        dd(Input::all());
     }
 
     /**

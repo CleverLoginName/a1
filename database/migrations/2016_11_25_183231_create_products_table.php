@@ -15,19 +15,14 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->text('description');
-            $table->string('builder_code');
-            $table->string('pronto_code');
+            $table->text('description')->nullable();
+            $table->string('builder_code')->nullable();
+            $table->string('pronto_code')->nullable();
             $table->string('image')->nullable();
-            $table->string('image_3d')->nullable();
-            $table->string('width')->nullable();
-            $table->string('height')->nullable();
-            $table->string('manufacturing_product_code');
-            $table->integer('builders_price');
-            $table->integer('sales_price');
-            $table->integer('discount');
-            $table->integer('quantity');
-            $table->integer('energy_consumption');
+            $table->string('manufacturing_product_code')->nullable();
+            $table->integer('builders_price')->nullable();
+            $table->integer('sales_price')->nullable();
+            $table->integer('discount')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

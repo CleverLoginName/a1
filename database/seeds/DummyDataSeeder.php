@@ -363,14 +363,9 @@ class DummyDataSeeder extends Seeder
                 'pronto_code' => $faker->text(10),
                 'manufacturing_product_code' => $faker->text(10),
                 'image' => $faker->imageUrl(640,480,null,true,null),
-                'image_3d' => $faker->imageUrl(640,480,null,true,null),
-                'width' => $faker->randomFloat(0.0, 50.0),
                 'builders_price' => $faker->numberBetween(0,10000),
                 'discount' => $faker->numberBetween(0,100),
-                'quantity' => $faker->numberBetween(0,50),
-                'energy_consumption' => $faker->randomFloat(null,0,10),
-                'sales_price' => $faker->numberBetween(0,10000),
-                'height' => $faker->randomFloat(0.0, 50.0)
+                'sales_price' => $faker->numberBetween(0,10000)
             ]);
 
             DB::table('sub_category_products')->insert(['sub_category_id' => 4 ,'product_id' => $i]);
@@ -390,20 +385,10 @@ class DummyDataSeeder extends Seeder
         ]);
 
         DB::table('custom_field_sub_categories')->insert([
-            ['name' => 'Manufacturing Product Code','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
-            ['name' => 'Builders Product Code','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
-            ['name' => 'Pronto Code','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
-            ['name' => 'Name','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
-            ['name' => 'Description','custom_field_type_id' => 2,'is_mandatory' => true,'sub_category_id' => 4],
-            ['name' => 'Builders Price ($)','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
-            ['name' => 'Sales Price ($)','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
-            ['name' => 'Discount (%)','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
             ['name' => 'Energy Consumption (W)','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
             ['name' => 'Width','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
             ['name' => 'Height','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
             ['name' => 'Depth','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
-            ['name' => 'Supplier','custom_field_type_id' => 3,'is_mandatory' => true,'sub_category_id' => 4],
-            ['name' => 'Electric Symbol','custom_field_type_id' => 3,'is_mandatory' => true,'sub_category_id' => 4],
         ]);
 
         DB::table('custom_field_sub_category_options')->insert([

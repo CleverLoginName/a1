@@ -36,7 +36,7 @@
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Watt Per SQM</label></section>
+                    <section class="col-md-2"><label>Watts Per SQM</label></section>
                     <section class="col-md-6">
                         <section class="col-md-12">
                             <section class="row form-group">
@@ -173,7 +173,9 @@
 
  function calTotal(){
      var total = 0;
-     total = parseInt($( "#house_watts_per_sqm" ).val())+parseInt($( "#garage_watts_per_sqm" ).val())+parseInt($( "#porch_watts_per_sqm" ).val());
+     total = (parseInt($( "#house_watts_per_sqm" ).val()) || 0)+
+             (parseInt($( "#garage_watts_per_sqm" ).val()) || 0)+
+             (parseInt($( "#porch_watts_per_sqm" ).val()) || 0);
      $('#total').html(total+'W');
  }
         $( "#house_watts_per_sqm" ).keyup(function() {
