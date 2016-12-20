@@ -32,6 +32,7 @@ class TempController extends Controller
 						"sub_category_name": "LED",
 						"data": [
 							{
+							    "id":1,
 								"description": "Chandelier Lamp",
 								"name": "product 1",
 								"price": 200,
@@ -42,6 +43,7 @@ class TempController extends Controller
 								"category": "Hanging_Lights"
 							},
 							{
+							"id":2,
 								"description": "Desk Lamp",
 								"name": "product 2",
 								"price": 300,
@@ -51,7 +53,7 @@ class TempController extends Controller
 								"catalogue": "Lights",
 								"category": "Desk_Lamp"
 							},
-							{
+							{"id":3,
 								"description": "Hanging Linght",
 								"name": "product 3",
 								"price": 400,
@@ -67,7 +69,7 @@ class TempController extends Controller
 						"sub_catagory_id": 2,
 						"sub_category_name": "Fluorescent",
 						"data": [
-							{
+							{"id":4,
 								"description": "Chandelier Lamp",
 								"name": "product 4",
 								"price": 200,
@@ -77,7 +79,7 @@ class TempController extends Controller
 								"catalogue": "Lights",
 								"category": "Hanging_Lights"
 							},
-							{
+							{"id":5,
 								"description": "Desk Lamp",
 								"name": "product 5",
 								"price": 300,
@@ -87,7 +89,7 @@ class TempController extends Controller
 								"catalogue": "Lights",
 								"category": "Desk_Lamp"
 							},
-							{
+							{"id":6,
 								"description": "Hanging Linght",
 								"name": "product 6",
 								"price": 400,
@@ -109,7 +111,7 @@ class TempController extends Controller
 						"sub_catagory_id": 3,
 						"sub_category_name": "Inverter",
 						"data": [
-							{
+							{"id":7,
 								"description": "Chandelier Lamp",
 								"name": "product 7",
 								"price": 200,
@@ -119,7 +121,7 @@ class TempController extends Controller
 								"catalogue": "Lights",
 								"category": "Hanging_Lights"
 							},
-							{
+							{"id":8,
 								"description": "Desk Lamp",
 								"name": "product 8",
 								"price": 300,
@@ -129,7 +131,7 @@ class TempController extends Controller
 								"catalogue": "Lights",
 								"category": "Desk_Lamp"
 							},
-							{
+							{"id":9,
 								"description": "Hanging Linght",
 								"name": "product 9",
 								"price": 400,
@@ -145,7 +147,7 @@ class TempController extends Controller
 						"sub_catagory_id": 4,
 						"sub_category_name": "Non Inverter",
 						"data": [
-							{
+							{"id":10,
 								"description": "Chandelier Lamp",
 								"name": "product 10",
 								"price": 200,
@@ -155,7 +157,7 @@ class TempController extends Controller
 								"catalogue": "Lights",
 								"category": "Hanging_Lights"
 							},
-							{
+							{"id":11,
 								"description": "Desk Lamp",
 								"name": "product 11",
 								"price": 300,
@@ -165,7 +167,7 @@ class TempController extends Controller
 								"catalogue": "Lights",
 								"category": "Desk_Lamp"
 							},
-							{
+							{"id":12,
 								"description": "Hanging Linght",
 								"name": "product 12",
 								"price": 400,
