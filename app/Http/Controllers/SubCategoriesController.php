@@ -148,6 +148,8 @@ class SubCategoriesController extends Controller
 
     public function subCategoriesByCategoryId(){
         $categoryId = Input::get('id');
+        session(['category_id' => $categoryId ]);
+        session(['sub_category_id' =>null ]);
         $subCategories = SubCategory::where('category_id','=',$categoryId)->get();
         return $subCategories;
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Catalog;
 use App\Category;
+use App\CustomFieldSubCategory;
+use App\CustomFieldType;
 use App\Product;
 use App\Project;
 use App\SubCategory;
@@ -53,10 +55,36 @@ class ProductsController extends Controller
         $subCategories = SubCategory::all();
         $categories = Category::all();
         $catalogs = Catalog::all();
-        return view('products.create')
-            ->with('catalogs', $catalogs)
-            ->with('categories', $categories)
-            ->with('subCategories', $subCategories);
+
+
+        if(session('sub_category_id') == null){
+            return view('products.create')
+                ->with('catalogs', $catalogs)
+                ->with('categories', $categories)
+                ->with('subCategories', $subCategories);
+        }else{
+
+            $customFields = CustomFieldSubCategory::where('sub_category_id','=',session('sub_category_id'))->get();
+            $out = [];
+            foreach ($customFields as $customField){
+                $out[] = [
+                    'id'=>$customField->id,
+                    'name'=>$customField->name,
+                    'type'=>CustomFieldType::find($customField->custom_field_type_id)->name,
+                    'is_mandatory'=>$customField->is_mandatory
+                ];
+
+            }
+            return view('products.create')
+                ->with('catalogs', $catalogs)
+                ->with('categories', $categories)
+                ->with('fields', $out)
+                ->with('subCategories', $subCategories);
+        }
+
+
+
+
     }
     
     
@@ -68,7 +96,7 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { dd($request->all());
 
         $rules = array(
             'name'   => 'required',

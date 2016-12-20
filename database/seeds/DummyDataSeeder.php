@@ -346,13 +346,11 @@ class DummyDataSeeder extends Seeder
         DB::table('categories')->insert(['name' => 'Water heating','description'  => 'Electrical description','catalog_id' => 1]);
         DB::table('categories')->insert(['name' => 'Window fan','description'  => 'Electrical description','catalog_id' => 1]);
         DB::table('categories')->insert(['name' => 'Television' ,'description' => 'Electrical description','catalog_id' => 1]);
-
-
-        DB::table('sub_categories')->insert(['name' => 'LED','description'  => 'LED description','category_id' => 5]);
+        
         DB::table('sub_categories')->insert(['name' => 'INCANDESCENT' ,'description' => 'INCANDESCENT description','category_id' => 5]);
         DB::table('sub_categories')->insert(['name' => 'FLUORESCENT' ,'description' => 'FLUORESCENT description','category_id' => 5]);
         DB::table('sub_categories')->insert(['name' => 'HIGH-INTENSITY DISCHARGE' ,'description' => 'HIGH-INTENSITY DISCHARGE description','category_id' => 5]);
-
+        DB::table('sub_categories')->insert(['name' => 'LED','description'  => 'LED description','category_id' => 5]);
 
 
 
@@ -375,11 +373,47 @@ class DummyDataSeeder extends Seeder
                 'height' => $faker->randomFloat(0.0, 50.0)
             ]);
 
-            DB::table('sub_category_products')->insert(['sub_category_id' => 1 ,'product_id' => $i]);
+            DB::table('sub_category_products')->insert(['sub_category_id' => 4 ,'product_id' => $i]);
         }
 
 
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+
+        DB::table('custom_field_types')->insert([
+            ['name' => 'text'],
+            ['name' => 'textarea'],
+            ['name' => 'select'],
+            ['name' => 'radio'],
+            ['name' => 'checkbox']
+        ]);
+
+        DB::table('custom_field_sub_categories')->insert([
+            ['name' => 'Manufacturing Product Code','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
+            ['name' => 'Builders Product Code','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
+            ['name' => 'Pronto Code','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
+            ['name' => 'Name','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
+            ['name' => 'Description','custom_field_type_id' => 2,'is_mandatory' => true,'sub_category_id' => 4],
+            ['name' => 'Builders Price ($)','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
+            ['name' => 'Sales Price ($)','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
+            ['name' => 'Discount (%)','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
+            ['name' => 'Energy Consumption (W)','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
+            ['name' => 'Width','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
+            ['name' => 'Height','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
+            ['name' => 'Depth','custom_field_type_id' => 1,'is_mandatory' => true,'sub_category_id' => 4],
+            ['name' => 'Supplier','custom_field_type_id' => 3,'is_mandatory' => true,'sub_category_id' => 4],
+            ['name' => 'Electric Symbol','custom_field_type_id' => 3,'is_mandatory' => true,'sub_category_id' => 4],
+        ]);
+
+        DB::table('custom_field_sub_category_options')->insert([
+            ['custom_field_sub_category_id' => 13,'name' => 'Sony'],
+            ['custom_field_sub_category_id' => 13,'name' => 'Philips'],
+            ['custom_field_sub_category_id' => 13,'name' => 'Panasonic'],
+            ['custom_field_sub_category_id' => 14,'name' => 'Down Light'],
+            ['custom_field_sub_category_id' => 14,'name' => 'Flood Light'],
+            ['custom_field_sub_category_id' => 14,'name' => 'Spot Light'],
+        ]);
+
     }
 }

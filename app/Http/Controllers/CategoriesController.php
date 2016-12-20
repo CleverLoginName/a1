@@ -141,6 +141,9 @@ class CategoriesController extends Controller
 
     public function categoriesByCatalogId(){
         $catalogId = Input::get('id');
+        session(['catalog_id' => $catalogId ]);
+        session(['category_id' => null ]);
+        session(['sub_category_id' =>null ]);
         $categories = Category::where('catalog_id','=',$catalogId)->get();
         return $categories;
 

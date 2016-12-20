@@ -73,6 +73,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     Route::get('categories-by-catalog', 'CategoriesController@categoriesByCatalogId');
     Route::get('/subcategories-by-category', 'SubCategoriesController@subCategoriesByCategoryId');
+    Route::get('/fields-by-subcategory', 'CustomFieldsController@fieldsBySubCategoryId');
 
 
 });

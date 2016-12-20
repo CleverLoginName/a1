@@ -62,6 +62,7 @@
                     </section>
                     <section class="col-md-2"><a href="{!! url('/sub-categories/create') !!}">Can't find? Add New</a></section>
                 </section>
+                @if(session('sub_category_id') === null)
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Name</label></section>
@@ -146,6 +147,38 @@
                                                      name="height" aria-required="true" type="text"></section>
                     <section class="col-md-2"></section>
                 </section>
+
+                @else
+
+                    @foreach($fields as $field)
+
+                        <section class="row form-group">
+                            <section class="col-md-2"></section>
+                            <section class="col-md-2"><label>{!! $field['name'] !!}</label></section>
+                            <section class="col-md-6">
+
+                                @if($field['type'] == 'text')
+                                <input class="form-control required" id="{!! $field['id'] !!}" name="{!! $field['id'] !!}" aria-required="true" type="text" :disabled="fields_disabled">
+                                @elseif($field['type'] == 'textarea')
+                                    <textarea class="form-control required" id="{!! $field['id'] !!}" name="{!! $field['id'] !!}" aria-required="true" :disabled="fields_disabled"> </textarea>
+                                @elseif($field['type'] == 'select')
+                                @elseif($field['type'] == 'radio')
+                                @elseif($field['type'] == 'checkbox')
+                                @endif
+
+                            </section>
+                            <section class="col-md-2"></section>
+                        </section>
+
+                    @endforeach
+
+
+                @endif
+
+
+
+
+
                 <section class="row box-footer" id="form-footer">
                     <button type="submit"
                             class="btn add-item-btn">Add <img src="resources/images/spinning-circles.svg"
@@ -195,16 +228,38 @@
 {{ Html::script('js/vue.js') }}
 {{ Html::script('js/vue-resource.js') }}
 <script>
+
     var global_data = {
-        catalog: 1,
-        category: 1,
-        sub_category: 1,
-        category_disabled: true,
-        sub_category_disabled: true,
-        fields_disabled: true,
+
         catalog_options: JSON.parse('{!! $catalogs !!}'),
-        category_options: JSON.parse('{!! $categories !!}'),
-        sub_category_options:'',
+
+        @if(session('catalog_id') == null)
+            catalog: 1,
+        @else
+            catalog: parseInt('{!! session('catalog_id') !!}}'),
+        @endif
+        @if(session('category_id') == null)
+            category: 1,
+            category_disabled: true,
+            category_options: '',
+        @else
+            category: parseInt('{!! session('category_id') !!}}'),
+            category_disabled: false,
+            category_options: JSON.parse('{!! $categories !!}'),
+        @endif
+        @if(session('category_id') == null)
+            sub_category: 1,
+            sub_category_disabled: true,
+            sub_category_options:'',
+        @else
+            sub_category_options:JSON.parse('{!! $subCategories !!}'),
+            sub_category: parseInt('{!! session('sub_category_id') !!}}'),
+            sub_category_disabled: false,
+        @endif
+
+        fields_disabled: false,
+
+
     }
 
 
@@ -217,10 +272,12 @@
                     .then(function(data){
                         global_data.category_options= [];
                         global_data.category_options = data.body;
-
+                        global_data.category = 1;
                         global_data.category_disabled = false;
                         global_data.sub_category_disabled = true;
+                        global_data.fields_disabled= true;
 
+                        global_data.sub_category_options= [];
 
                     });
             },
@@ -232,18 +289,19 @@
 
                             global_data.sub_category_disabled = false;
 
-
+                            global_data.fields_disabled= true;
 
                         });
             },
             subCategoryChange:function () {
-                this.$http.get('/subcategories-by-category?id='+global_data.category )
+                this.$http.get('/fields-by-subcategory?sub_category_id='+global_data.sub_category )
                         .then(function(data){
-                            global_data.sub_category_options= [];
-                            global_data.sub_category_options = data.body;
+                            //global_data.sub_category_options= [];
+                            //global_data.sub_category_options = data.body;
 
-                            global_data.sub_category_disabled = false;
-
+                            //global_data.sub_category_disabled = false;
+                            global_data.fields_disabled= false;
+                            location.reload();
 
 
                         });
