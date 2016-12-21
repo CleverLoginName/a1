@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Catalog;
 use App\Temp;
 use Illuminate\Http\Request;
 
