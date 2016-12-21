@@ -75,10 +75,6 @@ class ProductsController extends Controller
             $out[] = $tmp;}
         }
         
-        
-        
-
-
         return view('products.index')
             ->with('products', $out);
     }
@@ -276,7 +272,7 @@ class ProductsController extends Controller
 
         Flash::success('Product Added', 'Product has been added successfully.');
         //return redirect()->action('ProductsController@index');
-        return view('products.show_end')
+        return view('products.show')
             ->with('product', $product);
 
     }
