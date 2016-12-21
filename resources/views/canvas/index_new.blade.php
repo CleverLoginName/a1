@@ -22,7 +22,7 @@
 
 
 </head>
-<body onload="init();">
+<body>
 <!--Tool bar started-->
 <div id="parent" style="">
     <div id="sidebar" class="col-md-3 col-lg-3 col-sm-3 col-xs-3" style="background-color: #E7E7E7">
@@ -400,8 +400,6 @@
 
 		<div id="container">
 			<!--<div style="height:50px; width:100%;"></div>-->
-
-			<canvas id="top-canvas"></canvas>
 			<canvas id="ruler-canvas" style="border:1px solid #fff; position:absolute; top: 0;left: 0;"></canvas>
 			<canvas id="bg-canvas"></canvas>
 			<canvas id="draw-tool-canvas"></canvas>
@@ -602,6 +600,12 @@
 
 
 <script>
+
+	$(function() {
+		init();
+	});
+
+
     var i = 0;
     var dragging = false;
     $('#dragbar').mousedown(function(e){

@@ -1074,8 +1074,6 @@ function getOffsetCenterPoint(x1,y1,x2,y2){
 
 /* Call draw functions to draw all objects in the stack */
 function drawAllObjects(){
-	canvas = document.getElementById("top-canvas");
-	context = canvas.getContext('2d');
 	context.clearRect(0,0,canvas.width, canvas.height);
 	contextOrig.clearRect(0,0,canvasOrig.width, canvasOrig.height);
 	drawRuler();
