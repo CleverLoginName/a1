@@ -259,8 +259,6 @@
     $('#tool-items-ul li').removeClass('active');
 
 });*/
-
-/////////////////////////
                 var canvas = document.getElementById("top-canvas");
                 var ctx = canvas.getContext("2d");
 
