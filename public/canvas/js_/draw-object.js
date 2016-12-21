@@ -509,68 +509,9 @@ Square.prototype.getPolygon = function(){
 	return poly;
 }
 
-/***BOM Functionalities **/
-
-function getRawCount(x){
-    x.rowIndex
-
-}
-
-/***Create Rows in BOM Table ***/
-function addRow(name,price,discount,energy,visible) {
-
-    this.productName = name;
-    this.price = price;
-    this.discount = discount;
-    this.energy =energy;
-    this.visible = visible;
-
-    var table = document.getElementById("productInfo");
-
-    var rowCount = table.rows.length;
-    var row = table.insertRow(rowCount);
-    var checkedStatus = visible ? "checked" :  "";
-    console.log("checkedStatus: "+checkedStatus+" vibL: "+visible);
-    row.insertCell(0).innerHTML= productName;
-    row.insertCell(1).innerHTML= price;
-    row.insertCell(2).innerHTML= discount;
-    row.insertCell(3).innerHTML= energy;
-    row.insertCell(4).innerHTML= '<input type="checkbox" '+checkedStatus+' name="'+name+'" value = "Delete" onClick="Javacsript:setBulbStatus(this)">';
-}
-
-/***Add Values to BOM table ***/
-function addToTable(bulb){
-    addRow(bulb.name,'$200','4%','100',bulb.visibility);
-}
-
-/***Set Visibility on Design Canvas ***/
-function setBulbStatus(inputElement){
-    drawElements.find(function(bulb){
-        if (bulb.getType() == ObjectType.LIGHT_BULB && inputElement.name == bulb.getName()){
-            //alert('call for Lights');
-            bulb.setVisibility(inputElement.checked);
-            drawAllObjects();
-            return true;
-        }
-
-        if (bulb.getType() == ObjectType.LIGHT_SWITCH && inputElement.name == bulb.getName()){
-            alert('call for switches');
-            bulb.setVisibility(inputElement.checked);
-            drawAllObjects();
-            return true;
-        }
-    });
-}
-
-/***End BOM Functionalities **/
 
 
-
-
-
-
-
-/* LightBulb object inherit from Draw Object
+/* LightBulb object inherit from Draw Object 
  */
 LightBulb.prototype = new DrawObject();
 LightBulb.prototype.constructor = LightBulb;
@@ -1202,63 +1143,6 @@ DrawText.prototype.setPoints = function(sX, sY, eX, eY){
 	
 	this.objStartY = parseInt(tmpSY);
 	this.objEndX = parseInt(tmpEX);
-}
-
-function addRow(name,price,discount,energy,visible) {
-    
-    this.productName = name;
-    this.price = price;
-    this.discount = discount;
-    this.energy =energy;
-    this.visible = visible;
-
-    var table = document.getElementById("productInfo");
- 
-    var rowCount = table.rows.length;
-    var row = table.insertRow(rowCount);
-    var checkedStatus = visible ? "checked" :  "";
-    //console.log("checkedStatus: "+checkedStatus+" vibL: "+visible);
-    row.insertCell(0).innerHTML= productName;
-    row.insertCell(1).innerHTML= price;
-    row.insertCell(2).innerHTML= discount;
-    row.insertCell(3).innerHTML= energy;
-    row.insertCell(4).innerHTML= '<input type="checkbox" '+checkedStatus+' name="'+name+'" value = "Delete" onClick="Javacsript:setBulbStatus(this)">';
- }
-
-function addToTable(bulb){
-	//alert(bulb.visibility);
-	addRow(bulb.name,'$200','4%','100',bulb.visibility);
-}
-
-function addToSwitchTable(bulb){
-	//alert(bulb.visibility);
-	addRow(bulb.name,'$200','4%','100',bulb.s_visibility);
-}
-
-function setBulbStatus(inputElement){
-	drawElements.find(function(bulb){
-		if (bulb.getType() == ObjectType.LIGHT_BULB && inputElement.name == bulb.getName()){
-			//alert('call for Lights');
-			bulb.setVisibility(inputElement.checked);
-			drawAllObjects();
-			return true;
-		}
-		
-		if (bulb.getType() == ObjectType.LIGHT_SWITCH && inputElement.name == bulb.getName()){
-			alert('call for switches');
-			bulb.setVisibility(inputElement.checked);
-			drawAllObjects();
-			return true;
-		}
-	});
-}
-
-LightBulb.prototype.setVisibility = function(visibility){
-	this.visibility  = visibility;
-}
-
-LightBulb.prototype.getVisibility = function(){
-	return this.visibility;
 }
 
 

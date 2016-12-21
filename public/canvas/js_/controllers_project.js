@@ -89,7 +89,7 @@ var angle, elev, power, type, b_tooltip, s_angle, s_elev, s_power, s_bname, s_ty
 
 //var single_item = document.getElementsByClassName('single-item');
 
-$(".product-container").on("click", ".single-item", function (e) {
+$("#product-container").on("click", ".single-item", function (e) {
 
     var getItemType = $(this).attr("attr");
 
@@ -246,10 +246,10 @@ $(function () {
         if (fileName != "") {
             $.ajax({
                 type: 'POST',
-                url: 'save',
+                url: 'canvas/templates/updates',
                 data: 'file_data=' + JSON.stringify(saveData),
                 success: function (msg) {
-                    console.log(drawElements);
+                    //console.log(drawElements);
                     //window.open(msg, '_blank');
                 },
                 error: function () {
@@ -370,10 +370,10 @@ function loadSavedFile(fileName) {
     });
 }
 
-$('#load').click(function () {
+$(function () {
     $.ajax({
         type: 'GET',
-        url: '/load',
+        url: 'canvas/templates/load-latest',
         success: function (msg) {
             var fileDetails = JSON.parse(msg);
 
@@ -434,65 +434,25 @@ $('#mouse-action-menu li').click(function () {
     }
 });
 
-$('#can-tool-btn-save').click(function () {
-    console.log(this);
-    var notes = $('#can-tool-product-note').val();
-    if (notes != undefined) {
-        addNoteToSelectedProduct(notes);    
-    } 
-});
-
 $('#tool-items-ul a').click(function () {
     clearObjStatusesAndSetToDraw();
 });
 
 
-$("#sidebar").resizable();
-$('#sidebar').resize(function() {
-    $('#design-area').width($("#parent").width() - $("#sidebar").width());
-    adjustCanvas();
-});
-
 // Changing the canvas width and height according to window resize
 $(window).resize(function () {
-    $('#design-area').width($("#parent").width() - $("#sidebar").width());
-    $('#sidebar').height($("#parent").height());
     adjustCanvas();
     drawAllObjects();
-    adjustSidebar();
 });
 
 function adjustCanvas() {
-    var canvas_offset = $(canvasOrig).offset();
-    var width =  $(window).width() - canvas_offset.left;
-    var height = $(window).height() - canvas_offset.top;
-    rulerCanvas.width = width;
-    rulerCanvas.height = height;
-    canvasOrig.width = width;
-    canvasOrig.height = height;
-    canvas.width = width;
-    canvas.height = height;
-    bg_Canvas.width = width;
-    bg_Canvas.height = height;
+    rulerCanvas.width = $(window).width() - 3;
+    rulerCanvas.height = $(window).height() - 70;
+    canvasOrig.width = $(window).width() - 3;
+    canvasOrig.height = $(window).height() - 70;
+    canvas.width = $(canvasOrig).width();
+    canvas.height = $(canvasOrig).height();
 
-    $('#container').height(height);
-    // adjustSidebar();
-
-    // rulerCanvas.width = $(window).width() - 3;
-    // rulerCanvas.height = $(window).height() - 70;
-    // canvasOrig.width = $(window).width() - 3;
-    // canvasOrig.height = $(window).height() - 70;
-    // canvas.width = $(canvasOrig).width();
-    // canvas.height = $(canvasOrig).height();
-}
-
-adjustSidebar()
-function adjustSidebar(){
-    $('#sidebar').height(window.innerHeight);
-    $('#main-pnnel-drag').height(window.innerHeight*70/100);
-    $('#bom-area').height(window.innerHeight*30/100);
-
-    $('#bom-area').width($('#main-pnnel-drag').width());
-    $('.body-main').css("height",(window.innerHeight*70/100));
-    //			document.getElementById("sidebar").setAttribute("style","height:"+screen.height+"px");
+    bg_Canvas.width = canvasOrig.width;
+    bg_Canvas.height = canvasOrig.height;
 }

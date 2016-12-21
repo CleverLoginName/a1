@@ -271,10 +271,10 @@ $(function () {
                 });
             }
             var res = me._getMaxZIndex();
-            // me.$el.css('z-index', res['z-index'] + 1);
+            me.$el.css('z-index', res['z-index'] + 1);
             me._onPanelClick();
 
-            // me.$el.addClass('panel-unpin');
+            me.$el.addClass('panel-unpin');
             $('body').append(me.$el);
 
             var panelWidth = me._getAvailableWidth(me.$el.width());
@@ -308,11 +308,11 @@ $(function () {
          */
         togglePin: function () {
             var me = this;
-            // if (this.isPinned()) {
-            //     this.unpin();
-            // } else {
-            //     this.pin();
-            // }
+            if (this.isPinned()) {
+                this.unpin();
+            } else {
+                this.pin();
+            }
             return me;
         },
 
@@ -601,9 +601,9 @@ $(function () {
                 //if panel is pinned we also remove its style attribute and we
                 //append panel in its parent element
                 if (!me.$el.hasClass('panel-unpin')) {
-                    // me.$el.removeAttr('style');
-                    // me._insertInParent();
-                    // me._enableSorting();
+                    me.$el.removeAttr('style');
+                    me._insertInParent();
+                    me._enableSorting();
                 } else {
                     if (me.$options.draggable) {
                         me.enableDrag();
@@ -664,7 +664,7 @@ $(function () {
                     $('body').css('overflow', 'auto');
                 }
                 me._triggerEvent('onClose');
-                // me.$el.remove();
+                me.$el.remove();
                 var footer = me._getFooterForMinimizedPanels();
                 if (footer.children().length === 0) {
                     footer.remove();

@@ -14,13 +14,13 @@ body {
 }
 
 .tool-items-ul {
-    padding: 0px;
+    padding: 10px;
 }
 
 .tool-items-ul li {
     list-style: none;
-    float: none;
-    margin-left: 1px;
+    float: left;
+    margin-left: 15px;
 }
 
 .image-item {
@@ -98,7 +98,7 @@ body {
 .items-ul li {
     list-style: none;
     color: #5a5757;
-    margin-left: 0px !important;
+    margin-left: -40px !important;
     margin-bottom: -17px;
 }
 
@@ -123,6 +123,7 @@ body {
 .single-item {
     padding: 1px;
     color: #000000;
+    height: 88px;
     margin-bottom: 13px;
 
     -moz-user-select: none; /* Firefox */
@@ -138,6 +139,7 @@ body {
     margin-bottom: 5px;
     background: #fff;
     height: 62px;
+    padding: 18px;
 }
 
 .product-line2 {
@@ -235,6 +237,7 @@ tbody {
 }
 
 .pro-logo {
+margin-bottom: 10px;
 }
 
 .main-lab button {
@@ -442,6 +445,7 @@ tbody {
 }
 
 .product-container{
+    height: 166px;
     overflow: scroll;
     padding-left: 5px;
     padding-right: 5px;
@@ -465,6 +469,7 @@ tbody {
 
 }
 #sidebar{
+    overflow-y: hidden;
     float: left;
     /*width: 23%;*/
     /*min-height:100%;*/
@@ -490,14 +495,8 @@ tbody {
 .text-in-side-menue{
     font-size: 12px;
     color: #FFFFFF;
-    padding-left: 60px !important;
 }
 
-.text-sub-cat{
-    font-size: 12px;
-    color: #FFFFFF;
-    padding-left: 50px !important;
-}
 .back-ground-colour-inner{
     background-color:#51748c;
 }
@@ -508,9 +507,7 @@ tbody {
 }
 
 .test2{
-    background-color:#2c414f !important ;
-    border-bottom: 1px solid white !important;
-    /*border-bottom-color: white;*/
+    background-color:#51748c !important ;
     color: white !important;
 }
 
@@ -520,7 +517,7 @@ tbody {
 }
 
 .titel-text-size{
-    font-size: 17px;
+    font-size: 13px;
 }
 
 
@@ -531,7 +528,7 @@ tbody {
     color: #000000;
     height: 88px;
     /*margin-bottom: 5px;*/
-    margin-bottom: 10px;
+    margin-bottom: 13px;
 
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* Internet Explorer */
@@ -546,11 +543,13 @@ tbody {
     margin-bottom: 5px;
     background: #fff;
     height: 62px;
+    padding: 18px;
 }
 
 
 #product-container{
     height: 166px;
+    overflow: scroll;
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -570,7 +569,6 @@ tbody {
 
 .level-3{
     display: none;
-    list-style-type: none!important;
 }
 
 #listContainer{
@@ -665,6 +663,7 @@ tbody {
 }
 
 .product-container{
+    height: 166px;
     overflow: scroll;
     padding-left: 5px;
     padding-right: 5px;
@@ -699,27 +698,25 @@ tbody {
 }
 
 .pro-detail-container {
-    text-align: left; !important;
-    /*padding: 5px;*/
+    padding: 5px;
     padding-right: 2px;
     margin-left: 0 !important;
 }
 .pro-price-container {
-    text-align: left !important;
-    /*padding: 5px;*/
+    width: 63px !important;
+    padding: 5px;
 }
 .pro-detail-container, .pro-price-container {
-    
-   align-items: center;
+    float: right;
+    width: 90px;
     color: #FFF;
-    //background-color: rgba(255, 254, 254, 0.37);
-    margin left: 2px;
-    margin right: 2px;
-    height: 100px;
+    background-color: rgba(255, 254, 254, 0.37);
+    margin: 2px;
+    height: 88px;
 }
 
 .pro-detail-container span, .pro-price-container span {
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .set-red {
@@ -734,12 +731,12 @@ tbody {
     background: rgba(53, 94, 122, 0.86);
     height: auto;
     width: 300px;
+    margin: 47px;
     box-shadow: #000 1px 1px 9px;
-    /*z-index: 37;*/
+    z-index: 37;
     overflow-y: auto;
     overflow-x: auto;
     cursor: auto;
-    margin: 0!important;
     position: relative;
 }
 
@@ -763,86 +760,36 @@ tbody {
 }
 
 
-#catlog-1 ul li {
-    list-style:none;
-    padding-left:0!important;
-    padding-right: 0!important;
-}
 
 
 
 
-.ading-left-padding{
-    padding-left:0px!important;
-}
-
-.line-hight{
-    line-height: 15px!important;
-}
-
-  #parent {
-  position: absolute;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-#sidebar {
-  position: relative;
-  float: left;
-  height: 100%;
-  width: 30%;
-  
-}
-
-.without-margin{
-    margin-left: 0 !important;
-    margin-top: 0 !important;
-    margin-bottom:0 !important; 
-    margin-right: 0 !important;}
-
-#design-area {
-  position: relative;
-  float: left;
-  height: 100%;
-  width: 70%;
-}
-
-.ui-icon-gripsmall-diagonal-se { 
-     visibility: hidden;
-}
-.hide-catelog{
-    display: none !important;
-}
-
-
-.span-border{
-    border-style: solid;
-}
-
-
-
-.strokeme {
-    color: white;
-    /*text-shadow:
-    -1px -1px 0 red,
-    1px -1px 0 red,
-    -1px 1px 0 red,
-    1px 1px 0 red;  */
-}
 
 
 
 
-.border-left-add{
-    
-    border-left: 1px solid #000 !important;
-}
 
 
-.togel-button-background{
-    color: white;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

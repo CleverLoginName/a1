@@ -63,7 +63,7 @@
 	/*border:1px solid black;*/
 	position: absolute;
 	top: 0px;
-	left: 0px;
+	left: 0px;		
 }
 
 #scale-ratio-display,#zoom-ratio-display {
@@ -128,21 +128,10 @@ canvas {
 	background: #fff;
 }
 
-td.noborder {
-	border: 0;
-	padding: 5px;
-}
-
 .canvas-tooltip-span {
 	display:none;
 	z-index: 100;
     position: fixed;
-	background: rgb(81,116,140);
-	color: #FFF;
-	border:1px solid #000;
-	border-radius: 15px;
-	padding: 10px;
-	margin: 10px;
 }
 
 .tool-show {

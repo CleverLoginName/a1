@@ -1,10 +1,5 @@
 var canvasOrig, contextOrig, canvas, rulerCanvas, rulerContext, context, currentObj, changeObj, bg_Canvas
 var isIE = false;
-var isCtrlPressed = false;
-var isAltPressed = false;
-var isAngleSnappingOn = true;
-var isGridSnappingOn = false;
-var backgroundImage; 
 
 var MouseActionEnum = {
 	NONE:1,
@@ -156,12 +151,6 @@ function init(){
 		contextMenu(e);
 		return true;
 	}, false);	
-
-    canvas.addEventListener("dblclick", function (e){ 
-        perfromEscapeAction();
-        return true;
-    }, false);
-
 	
 	preloadAndCacheImages(['/img/lightdemo.png','/img/swtichdemo.PNG']);
 	drawAllObjects();
@@ -241,26 +230,6 @@ function mouseDown(e){
 		if (drawObjectType == ObjectType.CONT_WALL){
 			mouseStatus = MouseStatusEnum.CONT_DRAW;
 			console.log("MS "+mouseStatus, "SX=",startX, "SY=",startY);
-			var startX_fixed = startX / curZoom;
-			var startY_fixed = startY / curZoom;
-			wallPointsCount = wallPointsCount + 1;
-			// currentCWallPoints.push({x:startX_fixed, y:startY_fixed});
-			var filtered_pnt = getFilteredCoordinates(currentCWallPoints, startX_fixed, startY_fixed);
-			currentCWallPoints.push(filtered_pnt);
-	
-			if (wallPointsCount == 2) {
-				currentObj = new CWall();
-				currentObj.setVertices(currentCWallPoints);
-				var lastX = currentCWallPoints[currentCWallPoints.length - 1].x;
-				var lastY = currentCWallPoints[currentCWallPoints.length - 1].y;
-				currentCWallPoints.splice(0);
-				pushElementToDrawElement(currentObj);
-				//~ mouseStatus = MouseStatusEnum.UP;
-				wallPointsCount = 1;
-				// currentCWallPoints.push({x:startX_fixed, y:startY_fixed});
-				currentCWallPoints.push({x:lastX, y:lastY});
-			}
-			drawAllObjects();
 		} else {
 			mouseStatus = MouseStatusEnum.DRAW;
 			currentCWallPoints.splice(0); /* Clears any already added points in a continuous array */
@@ -406,17 +375,29 @@ function mouseMove(e){
 	if (canToolTip) {
         selObj = getSelObject(endX, endY);
     } else {
-		hideCanvasProductTooltip();
+        var tooltipSpan = document.getElementById('span-tooltip-can');
+        tooltipSpan.style.display = 'none';
     }
 
     if (selObj != null && selObj.tooltip != null) {
         if (selObjStat == true) {
             selObjStat = false;
-			showCanvasProductTooltip(e);
+
+            var tooltipSpan = document.getElementById('span-tooltip-can');
+            var toolImg = document.getElementById('can-tool-image');
+            var x = e.clientX,
+                y = e.clientY;
+
+            toolImg.src = selObj.tooltip;
+            tooltipSpan.style.top = (y + 20) + 'px';
+            tooltipSpan.style.left = (x + 20) + 'px';
+            tooltipSpan.style.display = 'block';
+
         }
     } else {
         selObjStat = true;
-		hideCanvasProductTooltip();
+        var tooltipSpan = document.getElementById('span-tooltip-can');
+        tooltipSpan.style.display = 'none';
     }
 
 	var w,h;
@@ -450,7 +431,7 @@ function mouseMove(e){
 		
 		rulerOffsetX = rulerOrigOffsetX+ (endX - clickX * curZoom);
 		rulerOffsetY = rulerOrigOffsetY+ (endY - clickY * curZoom);
-		drawBackgroundImage();
+		
 	} else if (mouseStatus == MouseStatusEnum.SCALE){
 		scaleObj.resize(this.scaleDirection, endX/curZoom, endY/curZoom, offsetX, offsetY);
 	} else if (mouseStatus == MouseStatusEnum.ROTATE){
@@ -485,28 +466,40 @@ function mouseUp(e){
 	var curZoom = this.zoom;
 	if (toolAction == ToolActionEnum.DRAW){
 		if ((mouseStatus == MouseStatusEnum.DRAW) || (mouseStatus == MouseStatusEnum.DOWN) || (mouseStatus == MouseStatusEnum.CONT_DRAW)){
-			var startX_fixed = startX / curZoom;
-			var startY_fixed = startY / curZoom;
-			var endX_fixed = endX / curZoom;
-			var endY_fixed = endY / curZoom;
+			startX = startX / curZoom;
+			startY = startY / curZoom;
+			endX = endX / curZoom;
+			endY = endY / curZoom;
 			
 			if (drawObjectType == ObjectType.SQUARE){
 				currentObj = new Square();
 			} else if (drawObjectType == ObjectType.CIRCLE){
-				w = Math.abs(endX_fixed - startX_fixed);
-				h = Math.abs(endY_fixed - startY_fixed);
+				w = Math.abs(endX - startX);
+				h = Math.abs(endY - startY);
 				if (w>h){
-					endX_fixed = startX_fixed + (endY_fixed - startY_fixed);
+					endX = startX + (endY - startY);
 				} else if (w<h){
-					endY_fixed = startY_fixed + (endX_fixed - startX_fixed);
+					endY = startY + (endX - startX);
 				}
 				currentObj = new Circle();
 			} else if (drawObjectType == ObjectType.WALL){
 				currentObj = new Wall();
 				currentObj.setWallThickness(wallThickness);
 			} else if (drawObjectType == ObjectType.CONT_WALL){
-				//Wall drawing code moved to mouseup
-			
+				
+				wallPointsCount = wallPointsCount + 1;
+				currentCWallPoints.push({x:startX, y:startY});
+				
+				if (wallPointsCount == 2) {
+					currentObj = new CWall();
+					currentObj.setVertices(currentCWallPoints);
+					currentCWallPoints.splice(0);
+					pushElementToDrawElement(currentObj);
+					//~ mouseStatus = MouseStatusEnum.UP;
+					wallPointsCount = 1;
+					currentCWallPoints.push({x:startX, y:startY});
+				}
+				
 				//~ if (checkDoubleClick == false) {
 					//~ checkDoubleClick = true;
 					//~ setTimeout(function(){
@@ -527,17 +520,15 @@ function mouseUp(e){
 				
 			} else if (drawObjectType == ObjectType.LIGHT_BULB){
 					currentObj = new LightBulb();
-					currentObj.setCoordinates(endX_fixed,endY_fixed);
+					currentObj.setCoordinates(endX,endY);
 					var lightBulbIndex = lightBulbArr.length +1;
 					currentObj.setLabel(lightBulbIndex);
 					pushElementToDrawElement(currentObj);
 					lightBulbArr.push(currentObj);
-					addToTable(currentObj);
 					populateLightBulbMenu();
 			} else if (drawObjectType == ObjectType.LIGHT_SWITCH){
 					currentObj = new LightSwitch();
-					currentObj.setCoordinates(endX_fixed, endY_fixed);
-					addToSwitchTable(currentObj);
+					currentObj.setCoordinates(endX, endY);
 					pushElementToDrawElement(currentObj);
 			} else if (drawObjectType == ObjectType.TEXT){
 				/* Checks if user double clicks */
@@ -546,11 +537,11 @@ function mouseUp(e){
 					setTimeout(function(){
 						checkDoubleClick = false;
 						if ($('#text-container').css('display') == 'none'){
-							showTextEdit(startX_fixed, startY_fixed);
+							showTextEdit(startX, startY);
 						}
 					},200);
 				} else {
-					var tmpObjIndex = getSelObjectIndex(endX, endY);
+					var tmpObjIndex = getSelObjectIndex(endX * curZoom, endY * curZoom);
 					if (tmpObjIndex != null && !isNaN(tmpObjIndex)){
 						var tmpObj = drawElements[tmpObjIndex];
 						if (tmpObj.getType() == ObjectType.TEXT){
@@ -579,7 +570,7 @@ function mouseUp(e){
 					/* No object creation here. Just show the text box */
 					break;
 				default:
-					currentObj.setPoints(startX_fixed, startY_fixed, endX_fixed, endY_fixed);
+					currentObj.setPoints(startX, startY, endX, endY);
 					pushElementToDrawElement(currentObj);
 					mouseStatus = MouseStatusEnum.UP;
 			}
@@ -659,7 +650,6 @@ function mouseUp(e){
 	} else if (toolAction == ToolActionEnum.PAN){
 		panObjectOffsets = [];
 		mouseStatus = MouseStatusEnum.UP;
-		drawBackgroundImage();
 	} else if (toolAction == ToolActionEnum.SCALE){
 		mouseStatus = MouseStatusEnum.UP;
 		if (startX != endX && startY != endY){
@@ -684,70 +674,6 @@ function mouseUp(e){
 	}
 }
 
-function hideCanvasProductTooltip(params) {
-	var tooltipSpan = document.getElementById('span-tooltip-can');
-	if(tooltipSpan.style.display != 'none')
-	{	
-		tooltipSpan.style.display = 'none';
-	}
-}
-
-function showCanvasProductTooltip(mouse_event) {
-	var tooltipSpan = document.getElementById('span-tooltip-can');
-	var toolImg = document.getElementById('can-tool-image');
-	document.getElementById('can-tool-title').innerHTML = selObj.name;
-	document.getElementById('can-tool-product-code').innerHTML = "Product Code :" + selObj.itemCode;
-	document.getElementById('can-tool-product-elevation').innerHTML = "Height " + selObj.elevation +" f/m floor";
-	document.getElementById('can-tool-product-power').innerHTML = selObj.lightpower;
-
-	if (selObj.notes != undefined) 
-	{
-		document.getElementById('can-tool-product-note').value = selObj.notes;
-	}
-
-	var x = mouse_event.clientX,
-		y = mouse_event.clientY;
-
-	toolImg.src = selObj.tooltip;
-
-	var window_width = $(window).width();  
-	var window_height = $(window).height();  
-	// var tooltip_width = tooltipSpan.clientWidth; 
-	// var tooltip_height = tooltipSpan.clientHeight; 
-
-	if( window_width - x < 250){
-		tooltipSpan.style.left = (x - 205) + 'px';
-	}
-	else {
-		tooltipSpan.style.left = (x - 5) + 'px';
-	}	
-
-	if( window_height - y < 250){
-		tooltipSpan.style.top = (y - 205) + 'px';
-	}
-	else {
-		tooltipSpan.style.top = (y + 0) + 'px';
-	}	
-	tooltipSpan.style.left = (x - 5) + 'px';
-	tooltipSpan.style.top = (y + 0) + 'px';
-	
-	tooltipSpan.style.display = 'block';
-	var tooltip_width = tooltipSpan.clientWidth; 
-	if( window_width - x < tooltip_width + 5){
-		tooltipSpan.style.left = (x - tooltip_width) + 'px';
-	}
-
-	var tooltip_height = tooltipSpan.clientHeight;
-	if( window_height - y < tooltip_height + 5){
-		tooltipSpan.style.top = (y - tooltip_height) + 'px';
-	}
-}	
-
-function addNoteToSelectedProduct(note) {
-	if (selObj != null) {
-		selObj.notes = note;
-	}
-}
 
 /* Pushes an object in to draw elements */
 function pushElementToDrawElement(e, ignoreCopyToStack){
@@ -774,43 +700,6 @@ function mouseOut(e){
 function clearObjStatusesAndSetToDraw(){
 	for (var i =0; i<drawElements.length; i++){
 		 drawElements[i].setStatus(ObjectStatus.DRAW);
-	}
-}
-
-function getFilteredCoordinates(array, x, y) {
-	var x_filtered = x;
-	var y_filtered = y;
-	if (isAngleSnappingOn) {
-		if (array.length > 0) {
-			var lastPnt = array[array.length - 1];
-			var polar = getPolarFilteredCoords(x - lastPnt.x, y - lastPnt.y);
-
-			x_filtered = lastPnt.x + polar.x;
-			y_filtered = lastPnt.y + polar.y;
-		}		
-	}
-	else if (isGridSnappingOn) {
-		//TODO
-	} else {
-		//TODO
-	}
-	return 	{ x:x_filtered, y:y_filtered };
-}
-
-function getPolarFilteredCoords(dx, dy){
-	var x_polr, ypolr;
-	var theta = Math.atan2(dy,dx);
-	var r = Math.sqrt(dx*dx + dy*dy);
-	console.log("theta before : " + theta);
-//	theta = theta - theta % (Math.PI / 12)
-	var angle_step = Math.PI / 12; //15 degrees
-	theta = Math.round(theta / angle_step) * angle_step; 
-	console.log("theta after  : " + theta);
-	x_polr = r * Math.cos(theta);
-	y_polr = r * Math.sin(theta);
-	return {
-		x: x_polr,
-		y: y_polr
 	}
 }
 
@@ -841,9 +730,7 @@ function drawCurrentObj(){
 			tmpY = e.y*curZoom ;
 			tmpCWallPoints.push ({x: tmpX, y: tmpY});
 		});
-		// drawContWall(tmpCWallPoints,context, eX, eY);
-		var filtered_pnt = getFilteredCoordinates(tmpCWallPoints, eX, eY);
-		drawContWall(tmpCWallPoints,context, filtered_pnt.x, filtered_pnt.y);
+		drawContWall(tmpCWallPoints,context, eX, eY);
 	}
 }
 
@@ -1104,24 +991,6 @@ function drawAllObjects(){
 	// console.log(drawElements);
 }
 
-function setBackgroundImage(img_src)
-{
-	backgroundImage = new Image();
-	backgroundImage.onload = function() {
-		drawBackgroundImage();
-	}
-	backgroundImage.src = img_src;
-}
-
-function drawBackgroundImage() {
-	if (backgroundImage != undefined){
-		bg_Canvas = document.getElementById("bg-canvas");
-		var ctx = bg_Canvas.getContext("2d");
-		ctx.clearRect(0, 0, bg_Canvas.width, bg_Canvas.height);
-		var curZoom = this.zoom;
-		ctx.drawImage(backgroundImage, rulerOffsetX, rulerOffsetY, backgroundImage.width * curZoom, backgroundImage.height * curZoom);
-	}
-}
 
 function getDrawElementIndexByObject(obj){
 	for (var i=0; i< drawElements.length; i++){
@@ -1132,22 +1001,21 @@ function getDrawElementIndexByObject(obj){
 
 /* Draws the square following the mouse pointer showing some information */
 function drawDrawerDetails(){
-	var left_X = endX; //endX = mouseX
-	var top_Y = endY;
-
-	var posX = endX - rulerOffsetX;
-	var posY = endY - rulerOffsetY;
+	var mouseX = endX;
+	var mouseY = endY;
+	
+	var posX = mouseX - rulerOffsetX;
+	var posY = mouseY - rulerOffsetY;
 	var curZoom = this.zoom;
 	
-	// context.lineWidth=1;
-	// context.strokeStyle = '#E0790B';
-	// context.fillStyle = '#FFFFFF';
-	// context.fillRect(left_X+1, top_Y+1, 150-1, 50-1);
-	// context.strokeRect(left_X, top_Y, 150, 50);
-	// context.fillStyle = '#000000';
-	// context.font = "15px Arial";
-	// context.fillText("X:"+(posX/curZoom).toFixed(0)+" Y:"+(posY/curZoom).toFixed(0),left_X+20, top_Y+30);
-	context.fillText("( "+(posX/curZoom).toFixed(0)+", "+(posY/curZoom).toFixed(0)+" )",left_X+20, top_Y+30);
+	context.lineWidth=1;
+	context.strokeStyle = '#E0790B';
+	context.fillStyle = '#FFFFFF';
+	context.fillRect(mouseX+1, mouseY+1, 150-1, 50-1);
+	context.strokeRect(mouseX, mouseY, 150, 50);
+	context.fillStyle = '#000000';
+	context.font = "15px Arial";
+	context.fillText("X:"+(posX/curZoom).toFixed(0)+" Y:"+(posY/curZoom).toFixed(0),mouseX+20, mouseY+30);
 }
 
 /* Draws the current scale factor details */
@@ -1162,10 +1030,6 @@ function drawZoomFactorDetails(){
 
 /* Call draw functions to draw a single object. Different parameters are set and send to the functions here */
 function drawObjectOnCanvas(obj){
-	
-	if( obj.hasOwnProperty("visibility") && !obj.getVisibility()){
-		return;
-	}
 	var x,y,w,h;
 	var pointsArr, borderArr;
 	var curZoom = this.zoom;
@@ -1285,11 +1149,6 @@ function drawObjectOnCanvas(obj){
 
 /* Call draw functions to draw light of a bulb */
 function drawLightsOnCanvas(obj){
-	
-	if( obj.hasOwnProperty("visibility") && !obj.getVisibility()){
-		//alert('called for switches');
-		return;
-	}
 	var x,y,w,h;
 	var pointsArr;
 	var curZoom = this.zoom;
@@ -1344,41 +1203,17 @@ function drawOutlinesOnCanvas(obj){
 
 /* Draws object scaler boxes of an object */
 function drawObjectScalerOnCanvas(obj){
-  	var coor = obj.getResizeCornerCoordinates();
+	var coor = obj.getResizeCornerCoordinates();
 	var curZoom  =  this.zoom;
-        objType = obj.getType();
-        if(objType == ObjectType.CONT_WALL)
-        { 
-          objVertices = obj.getVerticesArr();
-          x1 = objVertices[0].x;
-          y1 = objVertices[0].y;
-          x2 = objVertices[1].x;
-          y2 = objVertices[1].y;
-       
-          m = (y2 - y1) / (x2 - x1);
-
-	  contextOrig.fillStyle = "#FF0000";
-          if(m < 0) 
-          {
-            contextOrig.fillRect(coor.NE.SX * curZoom, coor.NE.SY * curZoom, (coor.NE.EX - coor.NE.SX) * curZoom,(coor.NE.EY - coor.NE.SY) * curZoom);
-	    contextOrig.fillRect(coor.SW.SX * curZoom, coor.SW.SY * curZoom, (coor.SW.EX - coor.SW.SX) * curZoom,(coor.SW.EY-coor.SW.SY) * curZoom);
-          }
-          else 
-          {
-	    contextOrig.fillRect(coor.SE.SX * curZoom, coor.SE.SY * curZoom,(coor.SE.EX - coor.SE.SX)  * curZoom,(coor.SE.EY - coor.SE.SY) * curZoom);
-	    contextOrig.fillRect(coor.NW.SX * curZoom, coor.NW.SY * curZoom, (coor.NW.EX - coor.NW.SX) * curZoom,(coor.NW.EY - coor.NW.SY) * curZoom);
-          }
-	  contextOrig.fillStyle = "#000000";
-        }
-        else
-        {
-          contextOrig.fillStyle = "#FF0000";
-	  contextOrig.fillRect(coor.NE.SX * curZoom, coor.NE.SY * curZoom, (coor.NE.EX - coor.NE.SX) * curZoom,(coor.NE.EY - coor.NE.SY) * curZoom);
-	  contextOrig.fillRect(coor.SE.SX * curZoom, coor.SE.SY * curZoom,(coor.SE.EX - coor.SE.SX)  * curZoom,(coor.SE.EY - coor.SE.SY) * curZoom);
-	  contextOrig.fillRect(coor.SW.SX * curZoom, coor.SW.SY * curZoom, (coor.SW.EX - coor.SW.SX) * curZoom,(coor.SW.EY-coor.SW.SY) * curZoom);
-	  contextOrig.fillRect(coor.NW.SX * curZoom, coor.NW.SY * curZoom, (coor.NW.EX - coor.NW.SX) * curZoom,(coor.NW.EY - coor.NW.SY) * curZoom);  
-          contextOrig.fillStyle = "#000000";
-        }	
+	
+	contextOrig.fillStyle = "#FF0000";
+	
+	contextOrig.fillRect(coor.NE.SX * curZoom, coor.NE.SY * curZoom, (coor.NE.EX - coor.NE.SX) * curZoom,(coor.NE.EY - coor.NE.SY) * curZoom);
+	contextOrig.fillRect(coor.SE.SX * curZoom, coor.SE.SY * curZoom,(coor.SE.EX - coor.SE.SX)  * curZoom,(coor.SE.EY - coor.SE.SY) * curZoom);
+	contextOrig.fillRect(coor.SW.SX * curZoom, coor.SW.SY * curZoom, (coor.SW.EX - coor.SW.SX) * curZoom,(coor.SW.EY-coor.SW.SY) * curZoom);
+	contextOrig.fillRect(coor.NW.SX * curZoom, coor.NW.SY * curZoom, (coor.NW.EX - coor.NW.SX) * curZoom,(coor.NW.EY - coor.NW.SY) * curZoom);
+	
+	contextOrig.fillStyle = "#000000";
 }
 
 /* Draws the rotation indicators */
@@ -2389,47 +2224,15 @@ function preloadAndCacheImages(imgArray) {
     }
 }
 
-$(document).keydown(function(e) {
-	console.log("key down :" + e.keyCode); 
-	if (e.keyCode == 17) {
-		isCtrlPressed = true;  
-	}
-	if (e.keyCode == 18) {
-		isAltPressed = true;  
-	}		
-	if (isCtrlPressed && isAltPressed) {
-		if (e.keyCode == 65) { //a
-			isAngleSnappingOn = !isAngleSnappingOn;
-		}
-		if (e.keyCode == 71) { //g
-			isGridSnappingOn = !isGridSnappingOn;
-		}
-	}
-});
-
 $(document).keyup(function(e) {
-	console.log(e.keyCode);
-    if (e.keyCode == 27) { // escape key maps to keycode `27`
-        perfromEscapeAction();
+     if (e.keyCode == 27) { // escape key maps to keycode `27`
+        mouseStatus = MouseStatusEnum.UP;
+        wallPointsCount = 0;
+        currentCWallPoints.pop();
+		currentCWallPoints.pop();
+		drawAllObjects();
     }
-	if (e.keyCode == 17) {
-		isCtrlPressed = false;  
-	}
-	if (e.keyCode == 18) {
-		isAltPressed = false;  
-	}		
 });
-
-
-function perfromEscapeAction(){
-    mouseStatus = MouseStatusEnum.UP;
-    wallPointsCount = 0;
-    currentCWallPoints.pop();
-    currentCWallPoints.pop();
-	drawAllObjects();
-}
-
-
 
 // function generatePdf(){
 // 	var txt;
