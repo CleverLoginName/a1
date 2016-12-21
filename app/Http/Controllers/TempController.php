@@ -44,7 +44,7 @@ class TempController extends Controller
 							},
 							{
 								"description": "Desk Lamp",
-								"name": "product 2",,
+								"name": "product 2",
 								"icon":"/img/symbols/HN-024.png",
 								"price": 300,
 								"path": "/img/deskLamp1.png",
@@ -55,7 +55,7 @@ class TempController extends Controller
 							},
 							{
 								"description": "Hanging Linght",
-								"name": "product 3",,
+								"name": "product 3",
 								"icon":"/img/symbols/AUT-039.png",
 								"price": 400,
 								"path": "/img/hangingLight.png",
@@ -72,7 +72,7 @@ class TempController extends Controller
 						"data": [
 							{
 								"description": "Chandelier Lamp",
-								"name": "product 4",,
+								"name": "product 4",
 								"icon":"/img/symbols/AUT-039.png",
 								"price": 200,
 								"path": "/img/chandelier-lamp.png",
@@ -83,7 +83,7 @@ class TempController extends Controller
 							},
 							{
 								"description": "Desk Lamp",
-								"name": "product 5",,
+								"name": "product 5",
 								"icon":"/img/symbols/HN-024.png",
 								"price": 300,
 								"path": "/img/deskLamp1.png",
@@ -94,7 +94,7 @@ class TempController extends Controller
 							},
 							{
 								"description": "Hanging Linght",
-								"name": "product 6",,
+								"name": "product 6",
 								"icon":"/img/symbols/AUT-039.png",
 								"price": 400,
 								"path": "/img/hangingLight.png",
@@ -117,7 +117,7 @@ class TempController extends Controller
 						"data": [
 							{
 								"description": "Chandelier Lamp",
-								"name": "product 7",,
+								"name": "product 7",
 								"icon":"/img/symbols/AUT-039.png",
 								"price": 200,
 								"path": "/img/chandelier-lamp.png",
@@ -128,7 +128,7 @@ class TempController extends Controller
 							},
 							{
 								"description": "Desk Lamp",
-								"name": "product 8",,
+								"name": "product 8",
 								"icon":"/img/symbols/AUT-039.png",
 								"price": 300,
 								"path": "/img/deskLamp1.png",
@@ -139,7 +139,7 @@ class TempController extends Controller
 							},
 							{
 								"description": "Hanging Linght",
-								"name": "product 9",,
+								"name": "product 9",
 								"icon":"/img/symbols/AUT-039.png",
 								"price": 400,
 								"path": "/img/hangingLight.png",
@@ -156,7 +156,7 @@ class TempController extends Controller
 						"data": [
 							{
 								"description": "Chandelier Lamp",
-								"name": "product 10",,
+								"name": "product 10",
 								"icon":"/img/symbols/AUT-039.png",
 								"price": 200,
 								"path": "/img/chandelier-lamp.png",
@@ -167,7 +167,7 @@ class TempController extends Controller
 							},
 							{
 								"description": "Desk Lamp",
-								"name": "product 11",,
+								"name": "product 11",
 								"icon":"/img/symbols/AUT-039.png",
 								"price": 300,
 								"path": "/img/deskLamp1.png",
@@ -178,7 +178,7 @@ class TempController extends Controller
 							},
 							{
 								"description": "Hanging Linght",
-								"name": "product 12",,
+								"name": "product 12",
 								"icon":"/img/symbols/AUT-039.png",
 								"price": 400,
 								"path": "/img/hangingLight.png",
