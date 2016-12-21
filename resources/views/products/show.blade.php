@@ -22,6 +22,12 @@
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Type</label></section>
+                    <section class="col-md-6">@if($product->is_composite) Composite Product @else Single Product @endif</section>
+                    <section class="col-md-2"></section>
+                </section>
+                <section class="row form-group">
+                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Manufacturing Product Code</label></section>
                     <section class="col-md-6">{!! $product->manufacturing_product_code !!}</section>
                     <section class="col-md-2"></section>
@@ -59,14 +65,27 @@
                     <section class="col-md-6">{!! $product->discount !!}<small>%</small></section>
                     <section class="col-md-2"></section>
                 </section>
-
-
                 <section class="row form-group">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Energy Consumption (W)</label></section>
-                    <section class="col-md-6">{!! $product->energy_consumption !!} <small>w</small> </section>
+                    <section class="col-md-2"><label>Child Products</label></section>
+                    <section class="col-md-6"></section>
                     <section class="col-md-2"></section>
                 </section>
+
+                @if($product->is_composite)
+                    <?php $itemProducts = \App\CompositeProductMap::where('parent','=',$product->id)->get();  ?>
+                @foreach($itemProducts as $itemProduct)
+                <section class="row form-group">
+                    <section class="col-md-2"></section>
+                    <section class="col-md-2"></section>
+                    <section class="col-md-8">
+                        <section class="col-md-3">{!! \App\Product::find($itemProduct->child)->name !!}</section>
+                        <section class="col-md-6"><a href="{!! url('products/'.$itemProduct->child) !!}">Link</a> </section>
+                        </section>
+                    <section class="col-md-2"></section>
+                </section>
+                        @endforeach
+                    @endif
 
 
             </form>

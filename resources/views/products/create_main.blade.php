@@ -10,7 +10,7 @@
                     <section class="col-md-4 dashboard-widget-col">
                         <section class="dashboard-widget"><span
                                     class="dahsboard-item-icon dashboard-item-user"></span><span
-                                    class="dashboard-item-name">Product </span><span
+                                    class="dashboard-item-name">Single Product</span><span
                                     class="dashboard-item-count"></span></section>
                     </section>
                         </a>

@@ -97,34 +97,27 @@
                                                      name="discount" aria-required="true" type="text" value="{!! $product->discount !!}"></section>
                     <section class="col-md-2"></section>
                 </section>
-                <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Quantity</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="quantity"
-                                                     name="quantity" aria-required="true" type="text" value="{!! $product->quantity !!}"></section>
-                    <section class="col-md-2"></section>
-                </section>
-                <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Energy Consumption (W)</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="energy_consumption"
-                                                     name="energy_consumption" aria-required="true" type="text" value="{!! $product->energy_consumption !!}"></section>
-                    <section class="col-md-2"></section>
-                </section>
-                <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Width</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="width"
-                                                     name="width" aria-required="true" type="text" value="{!! $product->width !!}"></section>
-                    <section class="col-md-2"></section>
-                </section>
-                <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Height</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="height"
-                                                     name="height" aria-required="true" type="text" value="{!! $product->height !!}"></section>
-                    <section class="col-md-2"></section>
-                </section>
+
+                @if($product->is_composite)
+                    <?php $itemProducts = \App\CompositeProductMap::where('parent','=',$product->id)->get();  ?>
+                    @foreach($itemProducts as $itemProduct)
+                        <section class="row form-group">
+                            <section class="col-md-2"></section>
+                            <section class="col-md-2"></section>
+                            <section class="col-md-8">
+                                <section class="col-md-3">
+                                    <?php $product_ = \App\Product::find($itemProduct->child); ?>
+                                    @if($product_)
+                                    {!! $product_->name !!}
+                                        @endif
+                                </section>
+                                <section class="col-md-6"><a href="{!! url('products/'.$itemProduct->child) !!}">Link</a> </section>
+                            </section>
+                            <section class="col-md-2"></section>
+                        </section>
+                    @endforeach
+                @endif
+
                 <section class="row box-footer" id="form-footer">
                     <button type="submit"
                             class="btn add-item-btn">Add <img src="resources/images/spinning-circles.svg"
@@ -132,6 +125,7 @@
                                                               id="1bf1a6a6-757b-921f-0a96-f95ffc63c6bc-new-product-loading">
                     </button>
                     <a id="prod-frm-reset" href="{!! url('products') !!}" class="btn add-item-btn" style="margin-right:10px;">Reset</a>
+                    @if($product->is_composite)<a id="prod-frm-reset" href="manage-composite-products" class="btn add-item-btn" style="margin-right:10px;">Manage</a>@endif
                 </section>
             </form>
         </section>

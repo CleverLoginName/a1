@@ -47,6 +47,14 @@
                 </ul>
 
             <ul id='right-events' class='container2 col-md-6'style="background-color: lightgray;min-height: 500px">
+                @foreach($existingComposites as $existingComposite)
+                    <?php $product= \App\Product::find($existingComposite->child); ?>
+                @if($product)
+                    <li id="{!! $product->id !!}" parent_id="{!! $product_id !!}">
+                        <h3 class="name">{!! $product->name !!}</h3>
+                    </li>
+                        @endif
+                @endforeach
                 </ul>
 
 

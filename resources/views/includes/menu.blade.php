@@ -59,19 +59,6 @@
                         <span class="main-menu-item-text">Search</span>
                     </a>
                 </li>@endif
-
-            <li>
-                <a class="main-menu-item" id="Products" href="{!! url("/packs") !!}">
-                    <img class="main-menu-icon" src="{{ URL::asset('resources/images/products_ico_white.png') }}">
-                    <span class="main-menu-item-text">Packs</span>
-                </a>
-            </li>
-            <li>
-                <a class="main-menu-item" id="Products" href="{!! url("/composite-products") !!}">
-                    <img class="main-menu-icon" src="{{ URL::asset('resources/images/products_ico_white.png') }}">
-                    <span class="main-menu-item-text">Composites</span>
-                </a>
-            </li>
         </ul>
     </li>
 

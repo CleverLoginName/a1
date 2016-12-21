@@ -26,7 +26,9 @@
                     <section class="col-md-2"><label>Products</label></section>
                     <section class="col-md-6">
                         @foreach($subCategoryProducts as $subCategoryProduct)
-                            {!! DB::table('products')->where('id','=',$subCategoryProduct->product_id)->first()->name !!}<br>
+                           <br>
+                            <section class="col-md-6"> {!! DB::table('products')->where('id','=',$subCategoryProduct->product_id)->first()->name !!}</section>
+                            <section class="col-md-6"><a href="{!! url('/products/'.$subCategoryProduct->product_id) !!}">Link</a> </section>
                         @endforeach
                     </section>
                     <section class="col-md-2"></section>

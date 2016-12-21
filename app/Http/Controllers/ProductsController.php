@@ -58,9 +58,9 @@ class ProductsController extends Controller
             $tmp['name'] = $compositeProduct->name;
             $tmp['description'] = $compositeProduct->description;
             $tmp['type'] = 'Composite Product';
-            $tmp['more_url'] = 'products/'.$product->id;
-            $tmp['edit_url'] = 'products/'.$product->id.'/edit';
-            $tmp['delete_url'] = 'products/'.$product->id.'/delete';
+            $tmp['more_url'] = 'products/'.$compositeProduct->id;
+            $tmp['edit_url'] = 'products/'.$compositeProduct->id.'/edit';
+            $tmp['delete_url'] = 'products/'.$compositeProduct->id.'/delete';
             $out[] = $tmp;
         }
         foreach ($packs as $pack){
@@ -69,9 +69,9 @@ class ProductsController extends Controller
             $tmp['name'] = $pack->name;
             $tmp['description'] = $pack->description;
             $tmp['type'] = 'Pack';
-            $tmp['more_url'] = 'sub-categories/'.$pack->id;
-            $tmp['edit_url'] = 'sub-categories/'.$pack->id.'/edit';
-            $tmp['delete_url'] = 'sub-categories/'.$pack->id.'/delete';
+            $tmp['more_url'] = 'packs/'.$pack->id;
+            $tmp['edit_url'] = 'packs/'.$pack->id.'/edit';
+            $tmp['delete_url'] = 'packs/'.$pack->id.'/delete';
             $out[] = $tmp;}
         }
         
@@ -266,6 +266,7 @@ class ProductsController extends Controller
             Flash::success('Composite Product Added', 'Composite Product has been added successfully.');
             return view('products.drag_n_drop')
                 ->with('product_id',$product->id )
+                ->with('existingComposites',[] )
                 ->with('products',$products );
         }
 
@@ -392,10 +393,6 @@ public function addPack(Request $request)
             'builders_price'      => 'required',
             'sales_price'      => 'required',
             'discount'      => 'required',
-            'quantity'      => 'required',
-            'energy_consumption'      => 'required',
-            'width'      => 'required',
-            'height'      => 'required',
         );
 
         $validator = Validator::make($request->all(), $rules);
@@ -412,12 +409,7 @@ public function addPack(Request $request)
         $product->builders_price = $request->get('builders_price');
         $product->sales_price = $request->get('sales_price');
         $product->discount = $request->get('discount');
-        $product->quantity = $request->get('quantity');
-        $product->energy_consumption = $request->get('energy_consumption');
         $product->image = $request->get('image');
-        $product->image_3d = $request->get('image_3d');
-        $product->width = $request->get('width');
-        $product->height = $request->get('height');
         $product->save();
 
         $subcategoeyProduct = SubCategoryProduct::where('product_id','=',$product->id)->first();
@@ -444,5 +436,15 @@ public function addPack(Request $request)
         $product->delete();
         Flash::error('Product Deleted', 'Product has been deleted successfully.');
         return redirect()->action('ProductsController@index');
+    }
+
+    public function manageComposites($id)
+    {
+        $existingComposites = CompositeProductMap::where('parent','=',$id)->get();
+        $products = Product::all();
+        return view('products.drag_n_drop')
+            ->with('product_id',$id )
+            ->with('existingComposites',$existingComposites )
+            ->with('products',$products );
     }
 }

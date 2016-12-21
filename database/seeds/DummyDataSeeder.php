@@ -356,6 +356,7 @@ class DummyDataSeeder extends Seeder
 
 
         for ($i=1;$i<=25;$i++){
+            $is_composite = $faker->boolean(50);
             DB::table('products')->insert([
                 'name' => 'Name for Product '.$i,
                 'description' => 'Description for Product '.$i,
@@ -366,12 +367,28 @@ class DummyDataSeeder extends Seeder
                 'builders_price' => $faker->numberBetween(0,10000),
                 'discount' => $faker->numberBetween(0,100),
                 'sales_price' => $faker->numberBetween(0,10000),
-                'is_composite' => $faker->boolean(50)
+                'is_composite' => $is_composite
             ]);
+
+            if($is_composite){
+                for ($j=1;$j<=5;$j++) {
+                    DB::table('composite_product_maps')->insert([
+                        'parent' => $i,
+                        'child' => $faker->numberBetween(1, 20)
+                    ]);
+                }
+            }
 
             DB::table('sub_category_products')->insert(['sub_category_id' => 4 ,'product_id' => $i]);
         }
 
+        for ($i=1;$i<=10;$i++){
+            $id = DB::table('sub_categories')->insertGetId(['name' => 'Pack '.$i ,'description' => 'Pack description'.$i,'category_id' => 5,'is_pack' => true]);
+
+            for ($j=1;$j<=5;$j++) {
+                DB::table('sub_category_products')->insert(['sub_category_id' => $id, 'product_id' => $j]);
+            }
+        }
 
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');

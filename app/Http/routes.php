@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('products', 'ProductsController');
     Route::get('products/{id}/delete', 'ProductsController@destroy');
+    Route::get('products/{id}/manage-composite-products', 'ProductsController@manageComposites');
     Route::get('products/create/product', 'ProductsController@createProduct');
     Route::get('products/create/composite-product', 'ProductsController@createCompositeProduct');
     Route::get('products/create/pack', 'ProductsController@createPackProduct');
