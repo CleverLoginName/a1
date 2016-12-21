@@ -89,6 +89,17 @@
                     @endif
 
 
+                <section class="row box-footer" id="form-footer">
+                    @if($product->is_composite)
+                        <a id="prod-frm-reset" href="{!! url('products/create/composite-product') !!}" class="btn add-item-btn" style="margin-right:10px;">Add Another Composite Product</a>
+                    @else
+                        <a id="prod-frm-reset" href="{!! url('products/create/product') !!}" class="btn add-item-btn" style="margin-right:10px;">Add Another Product</a>
+                    @endif
+
+                    <a id="prod-frm-reset" href="{!! url('products') !!}" class="btn add-item-btn" style="margin-right:10px;">All Products</a>
+                </section>
+
+
             </form>
         </section>
     </section>

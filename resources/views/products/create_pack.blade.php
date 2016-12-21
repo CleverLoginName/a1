@@ -72,7 +72,7 @@
                                                               class="loading-img-btn" style="display:none;"
                                                               id="1bf1a6a6-757b-921f-0a96-f95ffc63c6bc-new-product-loading">
                     </button>
-                    <a id="prod-frm-reset" href="{!! url('products') !!}" class="btn add-item-btn" style="margin-right:10px;">Reset</a>
+                    <a id="prod-frm-reset" href="{!! url('products/create/pack') !!}" class="btn add-item-btn" style="margin-right:10px;">Reset</a>
                 </section>
             </form>
         </section>

@@ -51,6 +51,11 @@
 
 
 
+                <section class="row box-footer" id="form-footer">
+                    <a id="prod-frm-reset" href="{!! url('products/create/pack') !!}" class="btn add-item-btn" style="margin-right:10px;">Add Another Pack</a>
+
+                    <a id="prod-frm-reset" href="{!! url('packs/'.$pack_id) !!}" class="btn add-item-btn" style="margin-right:10px;">View Pack</a>
+                </section>
 
             </div>
         </section>

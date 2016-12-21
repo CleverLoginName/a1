@@ -109,7 +109,7 @@ $(".product-container").on("click", ".single-item", function (e) {
         set_itemCode = this.getAttribute("data-item-code");
         lightImagePath = this.getAttribute("data-path");
 
-        document.getElementsByTagName("body")[0].style.cursor = "url('/img/cursor/bulb-icon.cur'), auto";
+        document.getElementsByTagName("body")[0].style.cursor = "url('img/cursor/bulb-icon.cur'), auto";
     }
 
     $('#tool-items-ul li').removeClass('active');
@@ -133,7 +133,7 @@ $("#product-container-switch").on("click", ".single-item", function (e) {
             
             switchPrice = this.getAttribute("data-price");
 
-            document.getElementsByTagName("body")[0].style.cursor = "url('/img/cursor/switch-icon.cur'), auto";
+            document.getElementsByTagName("body")[0].style.cursor = "url('img/cursor/switch-icon.cur'), auto";
     }
 });
 
@@ -250,7 +250,7 @@ $(function () {
                 data: 'file_data=' + JSON.stringify(saveData),
                 success: function (msg) {
                     //console.log(drawElements);
-                   // window.open(msg, '_blank');
+                    //window.open(msg, '_blank');
                 },
                 error: function () {
                     alert('Network Error !');
@@ -378,9 +378,9 @@ $(function () {
             var fileDetails = JSON.parse(msg);
 
             clearDrawElements();
-console.info(fileDetails);
+
             var metaData = fileDetails.metaData;
-            //scaleFactor = metaData.scaleFactor;
+            scaleFactor = metaData.scaleFactor;
             var objectData = fileDetails.objectData;
 
             $(objectData).each(function (i, e) {
@@ -490,14 +490,9 @@ adjustSidebar()
 function adjustSidebar(){
     $('#sidebar').height(window.innerHeight);
     $('#main-pnnel-drag').height(window.innerHeight*70/100);
-    $('#bom-area1').height(window.innerHeight*30/100);
+    $('#bom-area').height(window.innerHeight*30/100);
 
-    $('#bom-area1').width($('#sidebar').width());
-    $('#bom-area').width($('#sidebar').width());
+    $('#bom-area').width($('#main-pnnel-drag').width());
     $('.body-main').css("height",(window.innerHeight*70/100));
     //			document.getElementById("sidebar").setAttribute("style","height:"+screen.height+"px");
 }
-
-$(".toggle-button").click( function () {
-    perfromEscapeAction()
-})

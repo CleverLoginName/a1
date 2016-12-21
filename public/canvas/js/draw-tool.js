@@ -526,14 +526,14 @@ function mouseUp(e){
 				
 				
 			} else if (drawObjectType == ObjectType.LIGHT_BULB){
-					currentObj = new LightBulb();
+				/*	currentObj = new LightBulb();
 					currentObj.setCoordinates(endX_fixed,endY_fixed);
 					var lightBulbIndex = lightBulbArr.length +1;
 					currentObj.setLabel(lightBulbIndex);
 					pushElementToDrawElement(currentObj);
 					lightBulbArr.push(currentObj);
 					addToTable(currentObj);
-					populateLightBulbMenu();
+					populateLightBulbMenu();*/
 			} else if (drawObjectType == ObjectType.LIGHT_SWITCH){
 					currentObj = new LightSwitch();
 					currentObj.setCoordinates(endX_fixed, endY_fixed);

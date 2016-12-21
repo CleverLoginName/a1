@@ -141,6 +141,7 @@ $(function(){
     $('.cat-1').on('beforeUnpin.lobiPanel',function (ev,lobiPanel) {
 //            alert("hi");
         $(this).lobiPanel('maximize');
+        $('.bom-medder>.panel-heading').addClass("test1").removeClass("test2");
     }).lobiPanel();
 
     $('.cat-2').on('beforeUnpin.lobiPanel',function (ev,lobiPanel) {

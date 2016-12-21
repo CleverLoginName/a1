@@ -150,7 +150,7 @@ class SubCategoriesController extends Controller
         $categoryId = Input::get('id');
         session(['category_id' => $categoryId ]);
         session(['sub_category_id' =>null ]);
-        $subCategories = SubCategory::where('category_id','=',$categoryId)->get();
+        $subCategories = SubCategory::where('category_id','=',$categoryId)->where('is_pack','=',0)->get();
         return $subCategories;
 
     }

@@ -378,9 +378,9 @@ $(function () {
             var fileDetails = JSON.parse(msg);
 
             clearDrawElements();
-
+console.info(fileDetails);
             var metaData = fileDetails.metaData;
-            scaleFactor = metaData.scaleFactor;
+            //scaleFactor = metaData.scaleFactor;
             var objectData = fileDetails.objectData;
 
             $(objectData).each(function (i, e) {
@@ -460,7 +460,6 @@ $(window).resize(function () {
     adjustCanvas();
     drawAllObjects();
     adjustSidebar();
-    adjustSidebar();
 });
 
 function adjustCanvas() {
@@ -491,9 +490,14 @@ adjustSidebar()
 function adjustSidebar(){
     $('#sidebar').height(window.innerHeight);
     $('#main-pnnel-drag').height(window.innerHeight*70/100);
-    $('#bom-area').height(window.innerHeight*30/100);
+    $('#bom-area1').height(window.innerHeight*30/100);
 
-    $('#bom-area').width($('#main-pnnel-drag').width());
+    $('#bom-area1').width($('#sidebar').width());
+    $('#bom-area').width($('#sidebar').width());
     $('.body-main').css("height",(window.innerHeight*70/100));
     //			document.getElementById("sidebar").setAttribute("style","height:"+screen.height+"px");
 }
+
+$(".toggle-button").click( function () {
+    perfromEscapeAction()
+})

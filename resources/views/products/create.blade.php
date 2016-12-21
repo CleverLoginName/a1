@@ -66,9 +66,9 @@
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Symbol</label></section>
-                    <section class="col-md-6"><select class="form-control required" id="name"
-                                                     name="name">
-                            @foreach($symbols as $symbol)
+                    <section class="col-md-6"><select class="form-control required" id="symbol"
+                                                     name="symbol">
+                            @foreach(\App\ProductSymbol::all() as $symbol)
                                 <option value="{!! $symbol->id !!}">{!! $symbol->name !!}</option>
                                 @endforeach
 
@@ -166,7 +166,12 @@
                                                               class="loading-img-btn" style="display:none;"
                                                               id="1bf1a6a6-757b-921f-0a96-f95ffc63c6bc-new-product-loading">
                     </button>
-                    <a id="prod-frm-reset" href="{!! url('products') !!}" class="btn add-item-btn" style="margin-right:10px;">Reset</a>
+                    @if($is_composite)
+                        <a id="prod-frm-reset" href="{!! url('products/create/composite-product') !!}" class="btn add-item-btn" style="margin-right:10px;">Reset</a>
+                        @else
+                        <a id="prod-frm-reset" href="{!! url('products/create/product') !!}" class="btn add-item-btn" style="margin-right:10px;">Reset</a>
+                        @endif
+
                 </section>
             </form>
         </section>

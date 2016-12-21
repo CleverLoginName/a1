@@ -35,10 +35,11 @@
             <div class='wrapper row' id="x">
                 <div class="row">
                 <div class="col-md-12">
-                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for products">
+                    Drag & Drop the single products
                 </div>
                 </div>
-                <ul class="container1 col-md-6" id='left-events' style="background-color: lightgray;min-height: 500px;max-height: 500px;overflow: auto">
+                <ul class="container1 col-md-6" id='left-events' style="background-color: lightblue;min-height: 500px;max-height: 500px;overflow: auto">
                     @foreach($products as $product)
                         <li id="{!! $product->id !!}" parent_id="{!! $product_id !!}">
                             <h3 class="name">{!! $product->name !!}</h3>
@@ -57,10 +58,17 @@
                 @endforeach
                 </ul>
 
+                <section class="row box-footer" id="form-footer">
+                        <a id="prod-frm-reset" href="{!! url('products/create/composite-product') !!}" class="btn add-item-btn" style="margin-right:10px;">Add Another Composite Product</a>
 
+                    <a id="prod-frm-reset" href="{!! url('products/'.$product_id) !!}" class="btn add-item-btn" style="margin-right:10px;">View Products</a>
+                </section>
 
 
             </div>
+
+
+
         </section>
     </section>
     </section>

@@ -139,16 +139,16 @@
 
 	</div>
 
-	<div  style="background-color:green;  vertical-align: bottom;" >
-        <div class="panel panel-default bom-medder" id="bom-area">
+	<div  style="background-color:green;  vertical-align: bottom;">
+        <div class="panel panel-default bom-medder" id="bom-area1">
 					<div class="panel-heading test1">
-						<div class="panel-title ading-left-padding title titel-text-size">
+						<div class="panel-title ading-left-padding title titel-text-size" >
 							BOM
 						</div>
 					</div>
 					<div class="panel-body back-ground-colour-inner">
-								<div class="side-bar2" >
-			<div class="property-div">
+								<div class="side-bar2" id="bom-area">
+			<div class="property-div" >
 				<table id="productInfo" border="1" cellpadding="2">
 					<tr>
 
@@ -167,7 +167,7 @@
 </div >
     <div id="design-area" class="col-md-9 col-lg-9 col-sm-9 col-xs-9">
     <div id="address-bar">
-        <div class="headerDiv first">
+        <div class="headerDiv first border-left-add">
                 Job #: PID0001
         </div>
         <div class="headerDiv second">
@@ -182,7 +182,7 @@
 		<div class="row">
 
 		</div>
-		<div class="col-md-10 col-lg-10 col-sm-10 col-xs-10">
+		<div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 border-left-add">
 			<ul id="tool-items-ul">
 				<li class="tool-item">
 					<a href="javascript:void(0)" id="home-button">
@@ -209,6 +209,13 @@
 				</li>
 
 
+				<li class="tool-item">
+					<a href="javascript:void(0)" id="proj-comment-button">
+						<img class="image-item" 		src="{!! asset('img/tool-bar/black/project_comment.png') !!}">
+						<img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/project_comment.png') !!}">
+					</a>
+					<span class="tooltiptext">Project Comment</span>
+				</li>
 
 				<li>|</li>
 
@@ -571,8 +578,8 @@
 </span>
 
 
-{{ Html::script('canvas/js/jquery.js') }}
-{{ Html::script('canvas/js/jquery-ui.min.js') }}
+{{ Html::script('canvas/js/jquery-3.1.1.min.js') }}
+{{ Html::script('canvas/js/jquery-ui-updated.min.js') }}
 {{ Html::script('canvas/js/draw-object.js') }}
 {{ Html::script('canvas/js/draw-tool.js') }}
 {{ Html::script('canvas/js/controllers_template.js') }}
@@ -583,12 +590,8 @@
 {{ Html::script('canvas/js/left-menu.js') }}
 {{ Html::script('canvas/js/reports.js') }}
 {{ Html::script('canvas/js/scripts-expand.js') }}
-{{ Html::script('canvas/lib/jquery.1.11.min.js') }}
-{{ Html::script('canvas/lib/jquery-ui.min.js') }}
 {{ Html::script('canvas/lib/jquery.ui.touch-punch.min.js') }}
 {{ Html::script('canvas/bootstrap/js/bootstrap.min.js') }}
-{{ Html::script('canvas/dist/js/lobipanel.js') }}
-{{ Html::script('canvas/lib/highlight/highlight.pack.js') }}
 {{ Html::script('canvas/dist/js/lobipanel.js') }}
 {{ Html::script('canvas/lib/highlight/highlight.pack.js') }}
 {{ Html::script('canvas/js/data-bind.js') }}
@@ -636,162 +639,6 @@
     //			document.getElementById("sidebar").setAttribute("style","height:"+screen.height+"px");
 </script>
 <script>
-    $(function(){
-
-        $('#main-pnnel-drag').lobiPanel({
-            //Options go here
-            reload: false,
-            close: false,
-            editTitle: false,
-            sortable: true,
-            minimize:false,
-            expand:false,
-            unpin: {
-                icon: 'glyphicon glyphicon-pushpin',
-            }
-
-        });
-
-        $('.inner-class').lobiPanel({
-            reload: false,
-            close: false,
-            editTitle: false,
-            sortable: true,
-            expando:false,
-            expand:false,
-			unpin:true,
-            unpin: {
-                icon: 'glyphicon glyphicon-pushpin',
-				icon2:'glyphicon glyphicon-pushpin'
-            },
-            minimize:{
-                icon:'fa fa-minus-square-o',
-                icon2:'fa fa-plus-square-o'
-            },
-
-        });
-
-        $('.bom-medder').lobiPanel({
-            reload: false,
-            close: false,
-            editTitle: false,
-            sortable: true,
-            expando:false,
-            expand:false,
-			unpin:false,
-            minimize:{
-                icon:'fa fa-minus-square-o',
-                icon2:'fa fa-plus-square-o'
-            },
-
-
-        });
-//                catlog1
-        $('.cat-1').on('beforeMaximize.lobiPanel',function (ev,lobiPanel) {
-            $('.cat-1>.panel-heading').addClass("test1").removeClass("test2");
-
-        }).lobiPanel();
-
-        $('.cat-1').on('beforeMinimize.lobiPanel',function (ev,lobiPanel) {
-            $('.cat-1>.panel-heading').addClass("test2").removeClass("test1");
-        }).lobiPanel();
-
-
-//                catlog2
-        $('.cat-2').on('beforeMaximize.lobiPanel',function (ev,lobiPanel) {
-            $('.cat-2>.panel-heading').addClass("test1").removeClass("test2");
-
-        }).lobiPanel();
-
-        $('.cat-2').on('beforeMinimize.lobiPanel',function (ev,lobiPanel) {
-            $('.cat-2>.panel-heading').addClass("test2").removeClass("test1");
-        }).lobiPanel();
-
-//                catlog3
-        $('.cat-3').on('beforeMaximize.lobiPanel',function (ev,lobiPanel) {
-            $('.cat-3>.panel-heading').addClass("test1").removeClass("test2");
-
-        }).lobiPanel();
-
-        $('.cat-3').on('beforeMinimize.lobiPanel',function (ev,lobiPanel) {
-            $('.cat-3>.panel-heading').addClass("test2").removeClass("test1");
-        }).lobiPanel();
-
-//                catlog 4
-        $('.cat-4').on('beforeMaximize.lobiPanel',function (ev,lobiPanel) {
-            $('.cat-4>.panel-heading').addClass("test1").removeClass("test2");
-
-        }).lobiPanel();
-
-        $('.cat-4').on('beforeMinimize.lobiPanel',function (ev,lobiPanel) {
-            $('.cat-4>.panel-heading').addClass("test2").removeClass("test1");
-        }).lobiPanel();
-
-//                catlog 5
-        $('.cat-5').on('beforeMaximize.lobiPanel',function (ev,lobiPanel) {
-            $('.cat-5>.panel-heading').addClass("test1").removeClass("test2");
-
-        }).lobiPanel();
-
-        $('.cat-5').on('beforeMinimize.lobiPanel',function (ev,lobiPanel) {
-            $('.cat-5>.panel-heading').addClass("test2").removeClass("test1");
-        }).lobiPanel();
-
-
-//				catlog 6
-        $('.cat-6').on('beforeMaximize.lobiPanel',function (ev,lobiPanel) {
-            $('.cat-6>.panel-heading').addClass("test1").removeClass("test2");
-
-        }).lobiPanel();
-
-        $('.cat-6').on('beforeMinimize.lobiPanel',function (ev,lobiPanel) {
-            $('.cat-6>.panel-heading').addClass("test2").removeClass("test1");
-        }).lobiPanel();
-
-
-        $('.cat-7').on('beforeMaximize.lobiPanel',function (ev,lobiPanel) {
-            $('.cat-7>.panel-heading').addClass("test1").removeClass("test2");
-
-        }).lobiPanel();
-
-        $('.cat-7').on('beforeMinimize.lobiPanel',function (ev,lobiPanel) {
-            $('.cat-7>.panel-heading').addClass("test2").removeClass("test1");
-        }).lobiPanel();
-
-        $('.inner-class').lobiPanel('minimize');
-
-
-        $('.cat-1').on('beforeUnpin.lobiPanel',function (ev,lobiPanel) {
-//            alert("hi");
-            $(this).lobiPanel('maximize');
-        }).lobiPanel();
-
-		$('#main-pnnel-drag').on('onPin.lobiPanel',function (ev,lobiPanel) {
-            $(this).height(window.innerHeight*70/100);
-            $('.body-main').css("height",window.innerHeight*70/100);
-            $('#bom-area').css("height",window.innerHeight*30/100);
-//            $('#main-pannel-body').removeClass("inside-body-pan");
-        }).lobiPanel();
-
-        $('#main-pnnel-drag').on('beforeUnpin.lobiPanel',function (ev,lobiPanel) {
-            $(this).height(window.innerHeight*70/100);
-            $('.body-main').css("height",window.innerHeight*70/100);
-            $('#bom-area').css("height",window.innerHeight);
-//          $('#main-pannel-body').addClass("inside-body-pan");
-        }).lobiPanel();
-
-
-        $('.bom-medder').on('beforeMaximize.lobiPanel',function (ev,lobiPanel) {
-        $('.bom-medder>.panel-heading').addClass("test1").removeClass("test2");
-
-        }).lobiPanel();
-
-        $('.bom-medder').on('beforeMinimize.lobiPanel',function (ev,lobiPanel) {
-            $('.bom-medder>.panel-heading').addClass("test2").removeClass("test1");
-        }).lobiPanel();
-
-
-    });
 
 	$(function() {
 		setBackgroundImage('{!! url($bgImg) !!}');

@@ -95,19 +95,21 @@ class ProductsController extends Controller
         $subCategories = SubCategory::all();
         $categories = Category::all();
         $catalogs = Catalog::all();
+        $symbols = ProductSymbol::all();
+
         return view('products.create')
             ->with('catalogs', $catalogs->toArray())
             ->with('categories', $categories)
+            ->with('symbols', $symbols)
             ->with('subCategories', $subCategories);
     }
     
     public function createProduct()
     {
-        $subCategories = SubCategory::all();
+        $subCategories = SubCategory::where('is_pack','=',0)->get();
         $categories = Category::all();
         $catalogs = Catalog::all();
         $symbols = ProductSymbol::all();
-
 
         if(session('sub_category_id') == null){
             return view('products.create')
@@ -135,6 +137,7 @@ class ProductsController extends Controller
                 ->with('catalogs', $catalogs)
                 ->with('categories', $categories)
                 ->with('fields', $out)
+                ->with('symbols',  $symbols)
                 ->with('is_composite',  false)
                 ->with('symbols', $symbols)
                 ->with('subCategories', $subCategories);
@@ -146,7 +149,7 @@ class ProductsController extends Controller
     }
     public function createCompositeProduct()
     {
-        $subCategories = SubCategory::all();
+        $subCategories = SubCategory::where('is_pack','=',0)->get();
         $categories = Category::all();
         $catalogs = Catalog::all();
         $symbols = ProductSymbol::all();
@@ -241,6 +244,7 @@ class ProductsController extends Controller
         $product->builders_price = $request->get('builders_price');
         $product->sales_price = $request->get('sales_price');
         $product->discount = $request->get('discount');
+        $product->symbol = $request->get('symbol');
         $product->is_composite = $request->get('is_composite');
         $product->save();
 
@@ -271,7 +275,9 @@ class ProductsController extends Controller
         }
 
         Flash::success('Product Added', 'Product has been added successfully.');
-        return redirect()->action('ProductsController@index');
+        //return redirect()->action('ProductsController@index');
+        return view('products.show_end')
+            ->with('product', $product);
 
     }
 
