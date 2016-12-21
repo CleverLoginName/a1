@@ -400,6 +400,8 @@
 
 		<div id="container">
 			<!--<div style="height:50px; width:100%;"></div>-->
+
+			<canvas id="top-canvas"></canvas>
 			<canvas id="ruler-canvas" style="border:1px solid #fff; position:absolute; top: 0;left: 0;"></canvas>
 			<canvas id="bg-canvas"></canvas>
 			<canvas id="draw-tool-canvas"></canvas>
