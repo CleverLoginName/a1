@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Catalog;
 use App\Category;
+use App\CompositeProductMap;
 use App\Customdata;
 use App\CustomFieldSubCategory;
 use App\CustomFieldType;
@@ -66,6 +67,7 @@ class ProductsController extends Controller
                 ->with('catalogs', $catalogs)
                 ->with('categories', $categories)
                 ->with('symbols',  $symbols)
+                ->with('fields', [])
                 ->with('is_composite',  false)
                 ->with('subCategories', $subCategories);
         }else{
@@ -108,6 +110,7 @@ class ProductsController extends Controller
                 ->with('catalogs', $catalogs)
                 ->with('categories', $categories)
                 ->with('symbols',  $symbols)
+                ->with('fields', [])
                 ->with('is_composite',  true)
                 ->with('subCategories', $subCategories);
         }else{
@@ -132,6 +135,22 @@ class ProductsController extends Controller
                 ->with('symbols', $symbols)
                 ->with('subCategories', $subCategories);
         }
+
+
+
+
+    }
+    public function createPackProduct()
+    {
+        $categories = Category::all();
+        $catalogs = Catalog::all();
+        $symbols = ProductSymbol::all();
+        
+            return view('products.create_pack')
+                ->with('catalogs', $catalogs)
+                ->with('categories', $categories)
+                ->with('symbols', $symbols);
+        
 
 
 
@@ -209,7 +228,16 @@ class ProductsController extends Controller
 
 
     public function updateDragndrop(){
-        dd(Input::all());
+        $compositeProductMap = new CompositeProductMap();
+        $compositeProductMap->parent = Input::get('parent');
+        $compositeProductMap->child = Input::get('child');
+        $compositeProductMap->save();
+    }
+    public function removeDragndrop(){
+        $compositeProductMap = CompositeProductMap::where('parent','=',Input::get('parent'))
+            ->where('child','=',Input::get('child'))
+            ->first();
+        $compositeProductMap->delete();
     }
 
     /**

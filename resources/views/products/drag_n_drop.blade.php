@@ -31,6 +31,7 @@
     <section class="box new-item-wrapper">
         <section class="box-header"></section>
         <section class="box-body">
+            <input type="hidden" name="product_id" value="{!! $product_id !!}">
             <div class='wrapper row' id="x">
                 <div class="row">
                 <div class="col-md-12">
@@ -39,7 +40,7 @@
                 </div>
                 <ul class="container1 col-md-6" id='left-events' style="background-color: lightgray;min-height: 500px;max-height: 500px;overflow: auto">
                     @foreach($products as $product)
-                        <li id="{!! $product->id !!}">
+                        <li id="{!! $product->id !!}" parent_id="{!! $product_id !!}">
                             <h3 class="name">{!! $product->name !!}</h3>
                         </li>
                     @endforeach
@@ -98,16 +99,22 @@
 
 
         dragula([document.getElementById('left-events'), document.getElementById('right-events')], {
-            removeOnSpill: true,
+            removeOnSpill:  function (el) {
+                console.log(el);
+            },
             copy: function (el, source) {
                 return source != document.getElementById('right-events')
             },
             accepts: function (el, target) {
                 return target == document.getElementById('right-events')
-            }
+            },
         }).on('drop', function (el) {
+            var x = el.getAttribute("parent_id");
+            $.post( "/products/selected", { child: el.id,parent:x } );
+        }).on('remove', function (el) {
             //console.log(el.id);
-            $.post( "/products/selected", { select: el.id } );
+            var x = el.getAttribute("parent_id");
+            $.post( "/products/remove", { child: el.id,parent:x } );
         });
 
     });
