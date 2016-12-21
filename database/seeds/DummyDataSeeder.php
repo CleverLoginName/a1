@@ -365,7 +365,8 @@ class DummyDataSeeder extends Seeder
                 'image' => $faker->imageUrl(640,480,null,true,null),
                 'builders_price' => $faker->numberBetween(0,10000),
                 'discount' => $faker->numberBetween(0,100),
-                'sales_price' => $faker->numberBetween(0,10000)
+                'sales_price' => $faker->numberBetween(0,10000),
+                'is_composite' => $faker->boolean(50)
             ]);
 
             DB::table('sub_category_products')->insert(['sub_category_id' => 4 ,'product_id' => $i]);

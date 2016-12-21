@@ -51,19 +51,6 @@
 
                 <section class="row form-group">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Symbol</label></section>
-                    <section class="col-md-6"><select class="form-control required" id="name"
-                                                     name="name">
-                            @foreach($symbols as $symbol)
-                                <option value="{!! $symbol->id !!}">{!! $symbol->name !!}</option>
-                                @endforeach
-
-                        </select></section>
-                    <section class="col-md-2"></section>
-                </section>
-
-                <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Name</label></section>
                     <section class="col-md-6"><input class="form-control required" id="name"
                                                      name="name" aria-required="true" type="text"></section>

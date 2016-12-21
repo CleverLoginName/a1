@@ -31,9 +31,56 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $product = Product::all();
+        $products = Product::where('is_composite','=',0)->get();
+        $compositeProducts = Product::where('is_composite','=',1)->get();
+        $packs = DB::table('products')
+            ->join('sub_category_products', 'products.id', '=', 'sub_category_products.product_id')
+            ->join('sub_categories', 'sub_categories.id', '=', 'sub_category_products.sub_category_id')
+            ->select('sub_categories.*')
+            ->where('sub_categories.is_pack','=', true)
+            ->groupBy('sub_categories.id')
+            ->get();
+
+        $out = [];
+        
+        foreach ($products as $product){
+            $tmp = [];
+            $tmp['name'] = $product->name;
+            $tmp['description'] = $product->description;
+            $tmp['type'] = 'Product';
+            $tmp['more_url'] = 'products/'.$product->id;
+            $tmp['edit_url'] = 'products/'.$product->id.'/edit';
+            $tmp['delete_url'] = 'products/'.$product->id.'/delete';
+            $out[] = $tmp;
+        }
+        foreach ($compositeProducts as $compositeProduct){
+            $tmp = [];
+            $tmp['name'] = $compositeProduct->name;
+            $tmp['description'] = $compositeProduct->description;
+            $tmp['type'] = 'Composite Product';
+            $tmp['more_url'] = 'products/'.$product->id;
+            $tmp['edit_url'] = 'products/'.$product->id.'/edit';
+            $tmp['delete_url'] = 'products/'.$product->id.'/delete';
+            $out[] = $tmp;
+        }
+        foreach ($packs as $pack){
+            $tmp = [];
+            if(SubCategory::find($pack->id)){
+            $tmp['name'] = $pack->name;
+            $tmp['description'] = $pack->description;
+            $tmp['type'] = 'Pack';
+            $tmp['more_url'] = 'sub-categories/'.$pack->id;
+            $tmp['edit_url'] = 'sub-categories/'.$pack->id.'/edit';
+            $tmp['delete_url'] = 'sub-categories/'.$pack->id.'/delete';
+            $out[] = $tmp;}
+        }
+        
+        
+        
+
+
         return view('products.index')
-            ->with('products', $product);
+            ->with('products', $out);
     }
 
     /**
@@ -194,6 +241,7 @@ class ProductsController extends Controller
         $product->builders_price = $request->get('builders_price');
         $product->sales_price = $request->get('sales_price');
         $product->discount = $request->get('discount');
+        $product->is_composite = $request->get('is_composite');
         $product->save();
 
         foreach ($request->all() as $key => $value) {
@@ -226,6 +274,38 @@ class ProductsController extends Controller
 
     }
 
+public function addPack(Request $request)
+    {// dd($request->all());
+
+        $rules = array(
+            'name'   => 'required',
+            'description'    => 'required'
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails())
+            return Redirect::to('/products/create/pack')
+                ->withErrors($validator);
+
+
+        $subCategory = new SubCategory();
+        $subCategory->name = $request->get('name');
+        $subCategory->description = $request->get('description');
+        $subCategory->is_pack = true;
+        $subCategory->save();
+
+
+        $products = Product::all();
+
+        Flash::success('Pack Added', 'Pack has been added successfully.');
+        return view('products.drag_n_drop_packs')
+            ->with('pack_id',$subCategory->id )
+            ->with('products',$products );
+
+
+
+    }
+
 
     public function updateDragndrop(){
         $compositeProductMap = new CompositeProductMap();
@@ -238,6 +318,19 @@ class ProductsController extends Controller
             ->where('child','=',Input::get('child'))
             ->first();
         $compositeProductMap->delete();
+    }
+
+    public function updatePackDragndrop(){
+        $subCategoryProduct = new SubCategoryProduct();
+        $subCategoryProduct->sub_category_id = Input::get('parent');
+        $subCategoryProduct->product_id = Input::get('child');
+        $subCategoryProduct->save();
+    }
+    public function removePackDragndrop(){
+        $subCategoryProduct = SubCategoryProduct::where('sub_category_id','=',Input::get('parent'))
+            ->where('product_id','=',Input::get('child'))
+            ->first();
+        $subCategoryProduct->delete();
     }
 
     /**

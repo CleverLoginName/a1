@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->integer('builders_price')->nullable();
             $table->integer('sales_price')->nullable();
             $table->integer('discount')->nullable();
+            $table->boolean('is_composite')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

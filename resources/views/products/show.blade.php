@@ -43,21 +43,24 @@
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Sales Price ($)</label></section>
+                    <section class="col-md-6"><small>$</small>{!! $product->sales_price !!}</section>
+                    <section class="col-md-2"></section>
+                </section>
+                <section class="row form-group">
+                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Builders Price ($)</label></section>
                     <section class="col-md-6"><small>$</small>{!! $product->builders_price !!}</section>
                     <section class="col-md-2"></section>
                 </section>
+
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Discount (%)</label></section>
                     <section class="col-md-6">{!! $product->discount !!}<small>%</small></section>
                     <section class="col-md-2"></section>
                 </section>
-                <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Quantity</label></section>
-                    <section class="col-md-6">{!! $product->quantity !!} </section>
-                    <section class="col-md-2"></section>
-                </section>
+
+
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Energy Consumption (W)</label></section>

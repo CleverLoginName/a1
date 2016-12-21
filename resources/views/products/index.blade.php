@@ -22,7 +22,7 @@
                             aria-label="Product Name: activate to sort column ascending">Description
                         </th>
                         <th class="sorting" tabindex="0" aria-controls="product-table-view" rowspan="1" colspan="1"
-                            aria-label="Product Name: activate to sort column ascending">Icon
+                            aria-label="Product Name: activate to sort column ascending">Type
                         </th>
                         <th>
                             Actions
@@ -34,18 +34,18 @@
                     @foreach($products as $product)
                         <tr data-product-id="2" role="row">
                             <td data-id="2-id" class="sorting_1">{!! $i++ !!}</td>
-                            <td data-id="2-code">{!! $product->name !!}</td>
-                            <td data-id="2-name">{!! $product->description !!}</td>
-                            <td data-id="2-name"></td>
-                            <td data-id="2-actions"><a class="action-btn btn-app" href="{!! url('products/'.$product->id) !!}"
+                            <td data-id="2-code">{!! $product['name'] !!}</td>
+                            <td data-id="2-name">{!! $product['description'] !!}</td>
+                            <td data-id="2-name">{!! $product['type'] !!}</td>
+                            <td data-id="2-actions"><a class="action-btn btn-app" href="{!! url($product['more_url']) !!}"
                                                        data-toggle="tooltip" data-placement="top" title=""
                                                        data-original-title="View Product"><i
                                             class="fa fa-folder-open-o green-font"></i></a>
-                                <a class="action-btn btn-app" data-product-id="2" id="2-edit-action" href="{!! url('products/'.$product->id.'/edit') !!}"
+                                <a class="action-btn btn-app" data-product-id="2" id="2-edit-action" href="{!! url($product['edit_url']) !!}"
                                    data-toggle="tooltip" data-placement="top" title=""
                                    data-original-title="Edit Product"><i class="fa fa-edit green-font"></i></a>
 
-                                <form method="GET" action="{!! url('products/'.$product->id.'/delete') !!}" accept-charset="UTF-8" style="display:inline">
+                                <form method="GET" action="{!! url($product['delete_url']) !!}" accept-charset="UTF-8" style="display:inline">
                                     <a class="action-btn btn-app"
                                        data-product-id="2"
                                        data-placement="top"

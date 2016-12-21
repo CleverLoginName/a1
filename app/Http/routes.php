@@ -39,7 +39,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('products/create/pack', 'ProductsController@createPackProduct');
     Route::post('products/selected', 'ProductsController@updateDragndrop');
     Route::post('products/remove', 'ProductsController@removeDragndrop');
-
+    Route::post('packs/selected', 'ProductsController@updatePackDragndrop');
+    Route::post('packs/remove', 'ProductsController@removePackDragndrop');
+    Route::post('products/packs', 'ProductsController@addPack');
 
     Route::resource('packs', 'PacksController');
     Route::get('packs/{id}/delete', 'PacksController@destroy');
