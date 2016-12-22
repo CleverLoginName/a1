@@ -11,45 +11,54 @@
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Job#</label></section>
-                    <section class="col-md-6">{!! $project->job !!}</section>
+                    <section class="col-md-6">@if($project){!! $project->job !!}@endif</section>
                     <section class="col-md-2"></section>
                 </section>
+                @if(\App\User::find($project->consultant_id))
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Consultant</label></section>
                     <section class="col-md-6">{!! \App\User::find($project->consultant_id)->first_name.' '.\App\User::find($project->consultant_id)->last_name !!}</section>
                     <section class="col-md-2"></section>
                 </section>
+                @endif
+                @if(\App\User::find($project->user_id_1))
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Client 1</label></section>
                     <section class="col-md-6">{!! \App\User::find($project->user_id_1)->first_name.' '.\App\User::find($project->user_id_1)->last_name !!}</section>
                     <section class="col-md-2"></section>
                 </section>
+                @endif
+                    @if(\App\User::find($project->user_id_2))
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Client 2</label></section>
                     <section class="col-md-6">{!! \App\User::find($project->user_id_2)->first_name.' '.\App\User::find($project->user_id_2)->last_name !!}</section>
                     <section class="col-md-2"></section>
                 </section>
+                @endif
+                        @if(\App\Template::find($project->template_id))
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Template</label></section>
                     <section class="col-md-6">{!! \App\Template::find($project->template_id)->name !!}</section>
                     <section class="col-md-2"></section>
                 </section>
+                @endif
 
             <?php
             $address = App\Address::find($project->address_id);
 
                 ?>
+                @if($address)
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Build Address</label></section>
                     <section class="col-md-6">{!! $address->lot.', '.$address->no.', '.$address->street_name.', '.$address->town.', '.$address->state; !!}</section>
                     <section class="col-md-2"></section>
                 </section>
-
+                @endif
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Budget</label></section>
