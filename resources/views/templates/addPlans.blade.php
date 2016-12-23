@@ -254,7 +254,7 @@
                         formData.append('template_id', $('#template_id').val())
             },
             url: "{!! url('templates/create/plan-image') !!}",
-            acceptedFiles: '.jpg, .jpeg, .png, .svg'
+            acceptedFiles: '.jpg, .jpeg, .png, .svg, .pdf'
         });
 
         myDropzone.on("success", function (file, resp) {

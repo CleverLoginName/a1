@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
+use Spatie\PdfToImage\Pdf;
 use Szykra\Notifications\Flash;
 
 class TemplatesController extends Controller
@@ -127,10 +128,12 @@ class TemplatesController extends Controller
         //Display File Mime Type
         echo 'File Mime Type: '.$file->getMimeType();
 */
-        $randFileName = Str::random(16).'.'.$file->getClientOriginalExtension();
+        $randStr = Str::random(16);
+        $randFileName = $randStr.'.'.$file->getClientOriginalExtension();
         //Move Uploaded File
         $destinationPath = 'uploads/templates/'.$request->get('template_id').'/originals/';
         $destinationPathThumb = 'uploads/templates/'.$request->get('template_id').'/300x200/';//dd(public_path().'/'.$destinationPath);
+        $destinationPathPdf = 'uploads/templates/'.$request->get('template_id').'/pdf/';//dd(public_path().'/'.$destinationPath);
 
         File::exists('uploads') or File::makeDirectory('uploads');
         File::exists('uploads/templates') or File::makeDirectory('uploads/templates');
@@ -139,7 +142,22 @@ class TemplatesController extends Controller
         File::exists(public_path().'/'.$destinationPathThumb) or File::makeDirectory(public_path().'/'.$destinationPathThumb);
 
 
-        $file->move($destinationPath,$randFileName);
+        if('pdf' === $file->getClientOriginalExtension()){
+
+            $pdf_path = public_path().'/'.$destinationPath.'pdf/';
+            File::exists($pdf_path) or File::makeDirectory($pdf_path);
+            $file->move($pdf_path,$randFileName);
+
+            $pdf = new Pdf($pdf_path.$randFileName);
+            $pdf->setOutputFormat('png')
+                ->saveImage($destinationPath.$randStr.'.png');
+
+            $randFileName = $randStr.'.png';
+        }else{
+            $file->move($destinationPath,$randFileName);
+        }
+
+
 
         //if($request->get('save_plan')=='Y'){
             $templatePlan = new TemplatePlan();
