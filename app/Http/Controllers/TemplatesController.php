@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -287,5 +288,33 @@ class TemplatesController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function cropPlanImage($id)
+    {
+        $templatePlan = TemplatePlan::find($id);
+        if($templatePlan){
+            $img_path = $templatePlan->img;
+            $img = Image::make($img_path);
+            $width = number_format(Input::get('width'), 0, '.', '');
+            $height = number_format(Input::get('height'), 0, '.', '');
+            $x = number_format(Input::get('x'), 0, '.', '');
+            $y = number_format(Input::get('y'), 0, '.', '');
+            $rotate = number_format(Input::get('rotate'), 0, '.', '');
+            $rotate = $rotate* -1;
+
+            $img->rotate($rotate);
+            $img->crop($width,$height,$x,$y );
+            $img->save($img_path);
+
+
+            $templatesPlans = TemplatePlan::where('template_id','=',session('template')->id)->get();
+
+            Flash::success('Data Added', 'Data has been added successfully.');
+            return Redirect::to('/templates/create/add-plans');
+            return  view('templates.addPlans')
+                ->with('template',session('template'))
+                ->with('templatesPlans',$templatesPlans)
+                ->with('empty_form',false);
+        }
     }
 }

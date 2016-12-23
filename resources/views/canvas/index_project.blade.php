@@ -648,6 +648,14 @@
 
 	$(function() {
 		setBackgroundImage('{!! url($bgImg) !!}');
+
+
+		@if($showPop)
+
+        $('.template_modal').modal('show');
+
+		@endif
+
 	});
 
 

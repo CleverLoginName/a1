@@ -177,6 +177,7 @@ class ProjectsController extends Controller
         Flash::success('Project Added', 'Project has been added successfully.');
         return view('canvas.index_project')
             ->with('showPop', true)
+            ->with('bgImg', '')
             ->with('plans', $projectPlans);
 
     }

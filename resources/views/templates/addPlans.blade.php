@@ -29,8 +29,14 @@
                         <section class="row form-group">
                             <section class="col-md-6">
 
-                                <a href="{!! url('templates/create/add-plans/'.$templatesPlan->id.'/canvas') !!}"><img src="{!! asset($templatesPlan->img) !!}" class="col-md-12"/></a>
+                                <a href="{!! url('templates/create/add-plans/'.$templatesPlan->id.'/canvas') !!}"><img src="{!! asset($templatesPlan->img) !!}" class="col-md-12"/>
 
+                                </a>
+                                @php
+                                $model = "#modal_".$templatesPlan->id;
+                                @endphp
+
+                                <button class="btn btn-primary" data-target="{!! $model !!}" data-toggle="modal" >Crop / Rotate Plan</button>
                             </section>
                             <section class="col-md-6">
                                 {!! Form::open(['url' => 'templates/create/plan-data','method'=>'POST']) !!}
@@ -159,6 +165,45 @@
 
 
     </section>
+
+    @if($empty_form)
+        @foreach($templatesPlans as $templatesPlan)
+            @php
+                $model = "modal_".$templatesPlan->id;
+            @endphp
+
+    <div class="modal fade" id="{!! $model !!}" role="dialog" aria-labelledby="modalLabel" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalLabel">Cropper</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="img-container">
+                        <img id="image_{!! $templatesPlan->id !!}" src="{!! asset($templatesPlan->img) !!}" alt="Picture">
+                    </div>
+                    <button onclick="rotate_left_{!! $templatesPlan->id !!}()">Rotate Clockwise</button>
+                    <button onclick="rotate_right_{!! $templatesPlan->id !!}()">Rotate Anti-clockwisw</button>
+                </div>
+                <div class="modal-footer">
+                    {!! Form::open(['url' => 'templates/create/add-plans/'.$templatesPlan->id.'/crop', 'method' => 'post']) !!}
+                    <input type="hidden" name="width" id="width_{!! $templatesPlan->id !!}" value="">
+                    <input type="hidden" name="height" id="height_{!! $templatesPlan->id !!}" value="">
+                    <input type="hidden" name="x" id="x_{!! $templatesPlan->id !!}" value="">
+                    <input type="hidden" name="y" id="y_{!! $templatesPlan->id !!}" value="">
+                    <input type="hidden" name="rotate" id="rotate_{!! $templatesPlan->id !!}" value="">
+                    {!! Form::submit('Save & Exit') !!}
+                    {!! Form::close() !!}
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
+    @endif
+
+
 @stop
 
 
@@ -196,6 +241,7 @@
 
 @section('post-js')
     {{ Html::script('js/dropzone.js') }}
+    {{ Html::script('js/cropper.js') }}
     <script>
         Dropzone.autoDiscover = false;
         /* var myDropzone = new Dropzone("#filexx",{ url: "{!! url('templates/create/plans') !!}"});*/
@@ -218,8 +264,71 @@
 
 
     </script>
+
+
+    <script>
+        @if($empty_form)
+           @foreach($templatesPlans as $templatesPlan)
+
+        var cropBoxData_{!! $templatesPlan->id !!};
+        var canvasData_{!! $templatesPlan->id !!};
+        var cropper_{!! $templatesPlan->id !!};
+
+
+        function rotate_left_{!! $templatesPlan->id !!}() {
+            cropper_{!! $templatesPlan->id !!}.rotate(45);
+        }
+        function rotate_right_{!! $templatesPlan->id !!}() {
+            cropper_{!! $templatesPlan->id !!}.rotate(-45);
+        }
+
+           @endforeach
+           @endif
+       window.addEventListener('DOMContentLoaded', function () {
+
+            @if($empty_form)
+            @foreach($templatesPlans as $templatesPlan)
+            @php
+                $model = "modal_".$templatesPlan->id;
+            @endphp
+
+            var image_{!! $templatesPlan->id !!} = document.getElementById('image_{!! $templatesPlan->id !!}');
+            $('#modal_{!! $templatesPlan->id !!}').on('shown.bs.modal', function () {
+                cropper_{!! $templatesPlan->id !!} = new Cropper(image_{!! $templatesPlan->id !!}, {
+                    autoCropArea: 0.5,
+                    ready: function () {
+
+                        // Strict mode: set crop box data first
+                        cropper_{!! $templatesPlan->id !!}.setCropBoxData(cropBoxData_{!! $templatesPlan->id !!}).setCanvasData(canvasData_{!! $templatesPlan->id !!});
+                    },
+                    crop: function(e) {
+
+                        $('#x_{!! $templatesPlan->id !!}').val(e.detail.x);
+                        $('#y_{!! $templatesPlan->id !!}').val(e.detail.y);
+                        $('#width_{!! $templatesPlan->id !!}').val(e.detail.width);
+                        $('#height_{!! $templatesPlan->id !!}').val(e.detail.height);
+                        $('#rotate_{!! $templatesPlan->id !!}').val(e.detail.rotate);
+
+                    }
+                });
+            }).on('hidden.bs.modal', function () {
+                cropBoxData_{!! $templatesPlan->id !!} = cropper_{!! $templatesPlan->id !!}.getCropBoxData();
+                canvasData_{!! $templatesPlan->id !!} = cropper_{!! $templatesPlan->id !!}.getCanvasData();
+                cropper_{!! $templatesPlan->id !!}.destroy();
+            });
+
+
+            @endforeach
+            @endif
+
+        });
+    </script>
+
+
 @stop
 @section('post-css')
+
+    {{ Html::style('css/cropper.css') }}
     <style>
         .dz-success-mark{
             display: none !important;
