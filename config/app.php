@@ -163,6 +163,7 @@ return [
         Szykra\Notifications\NotificationServiceProvider::class,
 
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
@@ -216,7 +217,8 @@ return [
 
         'Image' => Intervention\Image\Facades\Image::class,
 
-        'Flash' => Szykra\Notifications\Flash::class
+        'Flash' => Szykra\Notifications\Flash::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 
