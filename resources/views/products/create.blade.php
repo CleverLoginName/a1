@@ -69,7 +69,7 @@
                     <section class="col-md-6"><select class="form-control required" id="symbol"
                                                      name="symbol">
                             @foreach(\App\ProductSymbol::all() as $symbol)
-                                <option value="{!! $symbol->id !!}">{!! $symbol->name !!}</option>
+                                <option value="{!! $symbol->id !!}"><span class="img-flag">{!! $symbol->name !!}</span></option>
                                 @endforeach
 
                         </select></section>
@@ -213,8 +213,16 @@
 @section('post-js')
 {{ Html::script('js/vue.js') }}
 {{ Html::script('js/vue-resource.js') }}
+{{ Html::script('js/select2.full.js') }}
 <script>
-
+    function formatSymbols (symbol) {
+        if (!symbol.id) { return symbol.text; }
+        var $symbol = $(
+                '<span><img src="/img/symbols/' + symbol.text + '.png" class="img-flag" /> ' + symbol.text + '</span>'
+        );
+        return $symbol;
+    };
+    $('#symbol').select2({ templateResult: formatSymbols});
     var global_data = {
 
         catalog_options: JSON.parse('{!! $catalogs !!}'),
@@ -296,4 +304,15 @@
     })
 
 </script>
+@stop
+
+
+@section('post-css')
+    {{ Html::style('css/select2.css') }}
+    <style type="text/css">
+        .img-flag {
+            height: 25px;
+            width: 28px;
+        }
+    </style>
 @stop

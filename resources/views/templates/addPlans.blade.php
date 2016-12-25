@@ -6,8 +6,8 @@
 
         <section class="col-md-4">
             <section class="box-header"></section>
-            <section class="box-body box" style="min-height: 250px">
-                {!! Form::open(['url' => 'templates/create/plans', 'class' => 'dropzone', 'files'=>true, 'id'=>'real-dropzone']) !!}
+            <section class="box-body box" >
+                {!! Form::open(['url' => 'templates/create/plans', 'class' => 'dropzone', 'files'=>true, 'id'=>'real-dropzone','style'=>"min-height: 250px"]) !!}
 
                 <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                 <input type="hidden" name="template_id" id="template_id" value="{!! session('template')->id !!}">
@@ -242,7 +242,32 @@
 @section('post-js')
     {{ Html::script('js/dropzone.js') }}
     {{ Html::script('js/cropper.js') }}
+    {{ Html::script('js/spin.min.js') }}
     <script>
+
+        var opts = {
+            lines: 11 // The number of lines to draw
+            , length: 18 // The length of each line
+            , width: 14 // The line thickness
+            , radius: 42 // The radius of the inner circle
+            , scale: 1 // Scales overall size of the spinner
+            , corners: 1 // Corner roundness (0..1)
+            , color: '#000' // #rgb or #rrggbb or array of colors
+            , opacity: 0.25 // Opacity of the lines
+            , rotate: 0 // The rotation offset
+            , direction: 1 // 1: clockwise, -1: counterclockwise
+            , speed: 1 // Rounds per second
+            , trail: 44 // Afterglow percentage
+            , fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+            , zIndex: 2e9 // The z-index (defaults to 2000000000)
+            , className: 'spinner' // The CSS class to assign to the spinner
+            , top: '44%' // Top position relative to parent
+            , left: '50%' // Left position relative to parent
+            , shadow: false // Whether to render a shadow
+            , hwaccel: false // Whether to use hardware acceleration
+            , position: 'absolute' // Element positioning
+        }
+
         Dropzone.autoDiscover = false;
         /* var myDropzone = new Dropzone("#filexx",{ url: "{!! url('templates/create/plans') !!}"});*/
 
@@ -260,6 +285,10 @@
         myDropzone.on("success", function (file, resp) {
            window.location.href = '{!! url('templates/create/add-plans') !!}';
 //console.log('test');
+        });
+        myDropzone.on("addedfile", function(file) {
+            var target = document.getElementById('real-dropzone')
+            var spinner = new Spinner(opts).spin(target);
         });
 
 
