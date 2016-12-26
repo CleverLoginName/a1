@@ -5,7 +5,7 @@
     <section class="box new-item-wrapper">
         <section class="box-header"></section>
         <section class="box-body">
-            <form class="row new-item-from-wrapper" role="form" method="post" id="new-prod-form"
+            <form class="row new-item-from-wrapper" role="form" method="post" id="new-prod-form" files="true"
                   enctype="multipart/form-data" novalidate="novalidate" action="{!! url('/users') !!}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <section class="row form-group">
@@ -73,6 +73,12 @@
                     <section class="col-md-2"><label>Password Confirm</label></section>
                     <section class="col-md-6"><input class="form-control required" id="password_confirm"
                                                      name="password_confirm" aria-required="true" type="password"></section>
+                    <section class="col-md-2"></section>
+                </section>
+                <section class="row form-group">
+                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Profile Image</label></section>
+                    <section class="col-md-6"> <input type="file" name="profile_pic" id="profile_pic"></section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row box-footer" id="form-footer">

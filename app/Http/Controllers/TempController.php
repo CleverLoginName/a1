@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Catalog;
+use App\Category;
+use App\SubCategory;
 use App\Temp;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
+use Psy\Util\Json;
 
 class TempController extends Controller
 {
@@ -19,6 +22,67 @@ class TempController extends Controller
     }
     public function products()
     {
+        $out = [];
+        $catalogs = Catalog::all();
+        foreach ($catalogs as $catalog){
+
+            $catalog_array = [];
+            $catalog_array['catalog_id'] = $catalog->id;
+            $catalog_array['catalog_name'] = $catalog->name;
+
+            $categories = Category::where('catalog_id','=',$catalog->id)->get();
+            foreach ($categories as $category){
+                $category_array = [];
+                $category_array['category_id'] = $category->id;
+                $category_array['category_name'] = $category->name;
+
+                $subCategories = SubCategory::where('category_id','=',$category->id)->get();
+                foreach ($subCategories as $subCategory){
+                    $sub_category_array = [];
+                    $sub_category_array['sub_category_id'] = $subCategory->id;
+                    $sub_category_array['sub_category_name'] = $subCategory->name;
+                    $sub_category_array['is_pack'] = $subCategory->is_pack;
+
+                    //foreach
+                    $products = DB::table('products')
+                        ->join('sub_category_products', 'sub_category_products.product_id', '=', 'products.id')
+                        ->join('sub_categories', 'sub_category_products.sub_category_id', '=', 'sub_categories.id')
+                        ->join('product_symbols', 'products.symbol', '=', 'product_symbols.id')
+                        ->select('products.*','product_symbols.path','product_symbols.name as symbol_name')
+                        ->where('sub_categories.id','=',$subCategory->id)
+                        ->get();
+                    foreach ($products as $product){
+                        //custom Fields
+                        $custom_fields = DB::table('custom_data')
+                            ->join('custom_field_sub_categories', 'custom_data.custom_field_sub_category_id', '=', 'custom_field_sub_categories.id')
+                            ->select('custom_data.value','custom_field_sub_categories.name')
+                            ->where('custom_data.product_id','=',$product->id)
+                            ->get();
+                        $product_array = [];
+                        $product_array['name'] = $product->name;
+                        $product_array['description'] = $product->description;
+                        $product_array['icon'] = $product->path;
+                        $product_array['path'] = $product->image;
+                        $product_array['productCode'] = $product->symbol_name;
+                        foreach ($custom_fields as $key => $value){
+                            $product_array[$value->name] = $value->value;
+                        }
+
+                        $sub_category_array['data'][] = $product_array;
+                    }
+
+                    $category_array['data'][] = $sub_category_array;
+
+
+
+                }
+                $catalog_array['data'][] = $category_array;
+            }
+            $out[] = $catalog_array;
+        }
+
+
+        return $out;
         return '[
 	{
 		"catalog_id": 1,

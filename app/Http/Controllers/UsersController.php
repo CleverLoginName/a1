@@ -5,15 +5,19 @@ namespace App\Http\Controllers;
 use App\Permission;
 use App\Role;
 use App\User;
+use Creativeorange\Gravatar\Facades\Gravatar;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 use Szykra\Notifications\Flash;
 
 class UsersController extends Controller
@@ -61,6 +65,7 @@ class UsersController extends Controller
         if ($validator->fails())
             return Redirect::to('/users/create')
                 ->withErrors($validator);
+
         $user = new User();
         $user->first_name = $request->get('first_name');
         $user->last_name = $request->get('last_name');
@@ -72,6 +77,37 @@ class UsersController extends Controller
         $role = DB::table('roles')->where('id',$request->get('role_id'))->first()->name;
         $role = $request->get('role_id');
         $user->roles()->attach($role);
+
+
+        File::exists('uploads') or File::makeDirectory('uploads');
+        File::exists('uploads/profile_pics') or File::makeDirectory('uploads/profile_pics');
+        File::exists('uploads/profile_pics/'.$user->id) or File::makeDirectory('uploads/profile_pics/'.$user->id);
+        File::exists('uploads/profile_pics/'.$user->id.'/originals/') or File::makeDirectory('uploads/profile_pics/'.$user->id.'/originals/');
+
+        $user_ = User::find($user->id);
+        $profile_pic = $request->file('profile_pic');
+        $randStr = Str::random(16);
+
+        //Move Uploaded File
+        $destinationPath = 'uploads/profile_pics/'.$user->id.'/originals/';
+        if($profile_pic){
+            $randFileName = $randStr.'.'.$profile_pic->getClientOriginalExtension();
+            $profile_pic->move($destinationPath,$randFileName);
+        }else{
+            //Gravatar::fallback('http://lorempixel.com/640/480/?86099')->get($user->email);
+            $img = Image::make(Gravatar::fallback('/uploads/profile_pics/default.jpg')->get($user->email));
+            //$img->resize(320, 240);
+            $randFileName = $randStr.'.png';
+            $img->save($destinationPath.$randFileName);
+        }
+
+
+        $user_->profile_pic = $destinationPath.$randFileName;
+
+
+
+        $user_->save();
+
 
         Flash::success('User Added', 'User has been added successfully.');
 

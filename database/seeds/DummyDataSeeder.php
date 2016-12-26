@@ -253,7 +253,7 @@ class DummyDataSeeder extends Seeder
         $user->email = "admin@seebo.com.au";
         $user->mobile = "1231231231";
         $user->password = Hash::make('123');
-        $user->profile_pic = 'profile_pic/1/seebo.png';
+        $user->profile_pic = '/uploads/profile_pics/default.jpg';
         $user->save();
 
         $user = new User();
@@ -262,7 +262,7 @@ class DummyDataSeeder extends Seeder
         $user->email = "con@seebo.com.au";
         $user->mobile = "1231231231";
         $user->password = Hash::make('123');
-        $user->profile_pic = 'profile_pic/1/seebo.png';
+        $user->profile_pic = '/uploads/profile_pics/default.jpg';
         $user->save();
 
 
@@ -693,5 +693,11 @@ DB::table('product_symbols')->insert(['path' =>'/img/symbols/TRIM.png', 'name' =
 DB::table('product_symbols')->insert(['path' =>'/img/symbols/TUX.png', 'name' =>'TUX','category_id'=>1]);
 DB::table('product_symbols')->insert(['path' =>'/img/symbols/TV_POINT.png', 'name' =>'TV_POINT','category_id'=>1]);
 DB::table('product_symbols')->insert(['path' =>'/img/symbols/WSC_PP.png', 'name' =>'WSC_PP','category_id'=>1]);
+
+        for ($i=1;$i<=25;$i++){
+            $id = DB::table('templates')->insertGetId(['name' => 'Template '.$i ,'energy_rating' => $faker->randomElement(['1','3','5','8']),'scale' => $faker->randomElement(['50','100','150','200']),'sqm_house' => $faker->numberBetween(10,100),'sqm_porch' => $faker->numberBetween(10,100),'sqm_garage' => $faker->numberBetween(10,100)]);
+
+        }
+
     }
 }

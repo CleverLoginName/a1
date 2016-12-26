@@ -171,85 +171,147 @@
         </section>
     </section>
 
-    <div class="modal fade consultant_modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div id="consultants">
 
-                    <!-- class="search" automagically makes an input a search field. -->
-                    <input class="search" placeholder="Search" />
-                    <!-- class="sort" automagically makes an element a sort buttons. The date-sort value decides what to sort by. -->
-                    <button class="sort" data-sort="name">
-                        Sort
-                    </button>
 
-                    <!-- Child elements of container with class="list" becomes list items -->
-                    <ul class="list">
-                        @foreach($consultants as $consultant)
 
-                        <li>
-                            <div class="row form-group">
-                                <section class="col-md-4">
-                                    <div class="row">
-                                        IMG
-                                    </div>
-                                    <div class="row">
-                                        <button class="assign" data-consultant-id="{!! $consultant->id !!}" data-consultant-name="{!! $consultant->first_name.' '.$consultant->first_name !!}">Assign</button>
-                                    </div>
-                                </section>
-                                <section class="col-md-8">
-                                    <div class="row">
-                                    <h3 class="name">{!! $consultant->first_name.' '.$consultant->first_name !!}</h3>
-                                        </div>
-                                    <div class="row">
-                                    test
-                                        </div>
-                                </section>
-                            </div>
 
-                        </li>
-                        @endforeach
-                    </ul>
+
+
+    <!-- ========================= MODEL POPUP STARTS ============================ -->
+
+    <!-- Modal -->
+    <div class="modal fade common_popup consultant_modal" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content clearfix">
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title ttl_consultants">Consultants:</h4>
 
                 </div>
+
+
+                <div class="modal-body" id="consultants">
+
+                    <div class="form-group">
+                        <div class="col-xs-10 col-sm-10 col-md-12 col-lg-5 common_searchBox">
+                            <select class="form-control">
+                                <option>Search By</option>
+                                <option>1</option>
+                                <option>2</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-10 col-sm-10 col-md-12 col-lg-5 common_searchBox">
+                            <input type="text" class="form-control search" id="budget" placeholder="Search">
+                        </div>
+                        <div class="col-xs-2 col-sm-2 col-md-12 col-lg-2 common_searchButton">
+                            <a href="#" class="btn_search"></a>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 model_search_results consultant_results_bg clearfix">
+                        <ul>
+                            @foreach($consultants as $consultant)
+                            <li class="list">
+                                <div class="consultant_wrapper clearfix">
+                                    <div class="col-md-4 img_consultant">
+                                        <img src="{!! asset($consultant->profile_pic) !!}" class="col-md-12"/>
+                                        <button class="btn_assign assign" data-consultant-id="{!! $consultant->id !!}" data-consultant-name="{!! $consultant->first_name.' '.$consultant->first_name !!}">Assign</button>
+                                    </div>
+                                    <div class="col-md-8 desc_consultant">
+                                        <h5>{!! $consultant->first_name !!}</h5>
+                                        <p>Department</p>
+                                        <ul>
+                                            <li>{!! 'Username' !!}</li>
+                                            <li>Job Title </li>
+                                            <li>{!! $consultant->mobile !!}</li>
+                                            <li>Email address</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                                @endforeach
+                        </ul>
+                    </div>
+
+
+                </div>
+
             </div>
+
         </div>
     </div>
 
-    <div class="modal fade template_modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div id="templates">
+    <!-- ========================= MODEL POPUP ============================ -->
 
-                    <!-- class="search" automagically makes an input a search field. -->
-                    <input class="search" placeholder="Search" />
-                    <!-- class="sort" automagically makes an element a sort buttons. The date-sort value decides what to sort by. -->
-                    <button class="sort" data-sort="name_1">
-                        Sort
-                    </button>
 
-                    <!-- Child elements of container with class="list" becomes list items -->
-                    <ul class="list">
-                        @foreach($templates as $template)
 
-                        <li>
 
-                            <h3 class="name_1 template-item"
-                                data-template-id="{!! $template->id !!}"
-                                data-template-name="{!! $template->name !!}"
-                                data-template-scale="{!! $template->scale !!}"
-                                data-template-energy-rating="{!! $template->energy_rating !!}"
-                                data-template-sqm-house="{!! $template->sqm_house !!}"
-                                data-template-sqm-porch="{!! $template->sqm_porch !!}"
-                                data-template-sqm-garage="{!! $template->sqm_garage !!}"
-                            >{!! $template->name !!}</h3>
 
-                        </li>
-                        @endforeach
-                    </ul>
+
+
+    <!-- Modal -->
+    <div class="modal fade common_popup new_Project_popup template_modal" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content clearfix">
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Design Template:</h4>
 
                 </div>
+
+
+                <div class="modal-body" id="templates">
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 common_searchBox">
+                            <input placeholder="Search" id="budget" class="form-control search"/>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 model_search_results clearfix">
+                        <ul class="list">
+                            @php
+                            $ii = 0;
+                            @endphp
+                            @foreach($templates as $template)
+
+                                <li  class="template-item"
+                                        data-template-id="{!! $template->id !!}"
+                                        data-template-name="{!! $template->name !!}"
+                                        data-template-scale="{!! $template->scale !!}"
+                                        data-template-energy-rating="{!! $template->energy_rating !!}"
+                                        data-template-sqm-house="{!! $template->sqm_house !!}"
+                                        data-template-sqm-porch="{!! $template->sqm_porch !!}"
+                                        data-template-sqm-garage="{!! $template->sqm_garage !!}"
+                                    >   @if($ii %4 ==0 )<a> @endif
+                                            <span class="name">{!! $template->name !!}</span>
+                                        @if($ii %4 ==0 ) </a> @endif
+
+                                </li>
+                                @php
+                                    $ii++;
+                                @endphp
+                            @endforeach
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center btn_load">
+                        <div class="form-group">
+                            <div class="col-md-12 col-lg-2  pull-right clearfix">
+                                <input name="Save" type="button" class="btn_save" id="Save" value="Load" data-toggle="modal" data-target="#myModal">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
     </div>
 @stop
@@ -334,3 +396,7 @@
     });
 </script>
 @stop
+@section('post-css')
+    {!! Html::style('css/common.css') !!}
+@stop
+

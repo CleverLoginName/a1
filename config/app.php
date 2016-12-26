@@ -165,6 +165,8 @@ return [
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
 
+        'Creativeorange\Gravatar\GravatarServiceProvider'
+
     ],
 
     /*
@@ -219,6 +221,8 @@ return [
 
         'Flash' => Szykra\Notifications\Flash::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+
+        'Gravatar' => 'Creativeorange\Gravatar\Facades\Gravatar',
 
     ],
 
