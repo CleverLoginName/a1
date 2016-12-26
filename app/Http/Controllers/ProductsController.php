@@ -13,6 +13,7 @@ use App\ProductSymbol;
 use App\Project;
 use App\SubCategory;
 use App\SubCategoryProduct;
+use App\Supplier;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -92,11 +93,13 @@ class ProductsController extends Controller
         $categories = Category::all();
         $catalogs = Catalog::all();
         $symbols = ProductSymbol::all();
+        $supplier = Supplier::all();
 
         return view('products.create')
             ->with('catalogs', $catalogs->toArray())
             ->with('categories', $categories)
             ->with('symbols', $symbols)
+            ->with('suppliers', $supplier)
             ->with('subCategories', $subCategories);
     }
     
@@ -106,6 +109,7 @@ class ProductsController extends Controller
         $categories = Category::all();
         $catalogs = Catalog::all();
         $symbols = ProductSymbol::all();
+        $suppliers = Supplier::all();
 
         if(session('sub_category_id') == null){
             return view('products.create')
@@ -113,6 +117,7 @@ class ProductsController extends Controller
                 ->with('categories', $categories)
                 ->with('symbols',  $symbols)
                 ->with('fields', [])
+                ->with('suppliers', $suppliers)
                 ->with('is_composite',  false)
                 ->with('subCategories', $subCategories);
         }else{
@@ -133,6 +138,7 @@ class ProductsController extends Controller
                 ->with('catalogs', $catalogs)
                 ->with('categories', $categories)
                 ->with('fields', $out)
+                ->with('suppliers', $suppliers)
                 ->with('symbols',  $symbols)
                 ->with('is_composite',  false)
                 ->with('symbols', $symbols)
@@ -149,13 +155,14 @@ class ProductsController extends Controller
         $categories = Category::all();
         $catalogs = Catalog::all();
         $symbols = ProductSymbol::all();
-
+        $suppliers = Supplier::all();
 
         if(session('sub_category_id') == null){
             return view('products.create')
                 ->with('catalogs', $catalogs)
                 ->with('categories', $categories)
                 ->with('symbols',  $symbols)
+                ->with('suppliers', $suppliers)
                 ->with('fields', [])
                 ->with('is_composite',  true)
                 ->with('subCategories', $subCategories);
@@ -177,6 +184,7 @@ class ProductsController extends Controller
                 ->with('catalogs', $catalogs)
                 ->with('categories', $categories)
                 ->with('fields', $out)
+                ->with('suppliers', $suppliers)
                 ->with('is_composite',  true)
                 ->with('symbols', $symbols)
                 ->with('subCategories', $subCategories);
@@ -190,11 +198,13 @@ class ProductsController extends Controller
     {
         $categories = Category::all();
         $catalogs = Catalog::all();
+        $suppliers = Supplier::all();
         $symbols = ProductSymbol::all();
         
             return view('products.create_pack')
                 ->with('catalogs', $catalogs)
                 ->with('categories', $categories)
+                ->with('suppliers', $suppliers)
                 ->with('symbols', $symbols);
         
 
@@ -240,6 +250,7 @@ class ProductsController extends Controller
         $product->builders_price = $request->get('builders_price');
         $product->sales_price = $request->get('sales_price');
         $product->discount = $request->get('discount');
+        $product->supplier_id = $request->get('supplier_id');
         $product->symbol = $request->get('symbol');
         $product->is_composite = $request->get('is_composite');
         $product->save();
@@ -272,7 +283,7 @@ class ProductsController extends Controller
 
         Flash::success('Product Added', 'Product has been added successfully.');
         //return redirect()->action('ProductsController@index');
-        return view('products.show')
+        return view('products.create_main')
             ->with('product', $product);
 
     }
@@ -361,6 +372,7 @@ public function addPack(Request $request)
         $catalogs = Catalog::all();
         $product = Product::find($id);
         $subCategories = SubCategory::all();
+        $suppliers = Supplier::all();
         $selectedSubCategory = DB::table('sub_category_products')
             ->join('sub_categories', 'sub_categories.id', '=', 'sub_category_products.sub_category_id')
             ->where('product_id','=',$product->id)
@@ -373,6 +385,7 @@ public function addPack(Request $request)
             ->with('subCategories', $subCategories)
         ->with('catalogs', $catalogs)
         ->with('categories', $categories)
+            ->with('suppliers', $suppliers)
         ->with('subCategories', $subCategories);
     }
 
@@ -411,6 +424,7 @@ public function addPack(Request $request)
         $product->builders_price = $request->get('builders_price');
         $product->sales_price = $request->get('sales_price');
         $product->discount = $request->get('discount');
+        $product->supplier_id = $request->get('supplier_id');
         $product->image = $request->get('image');
         $product->save();
 

@@ -696,7 +696,10 @@ DB::table('product_symbols')->insert(['path' =>'/img/symbols/WSC_PP.png', 'name'
 
         for ($i=1;$i<=25;$i++){
             $id = DB::table('templates')->insertGetId(['name' => 'Template '.$i ,'energy_rating' => $faker->randomElement(['1','3','5','8']),'scale' => $faker->randomElement(['50','100','150','200']),'sqm_house' => $faker->numberBetween(10,100),'sqm_porch' => $faker->numberBetween(10,100),'sqm_garage' => $faker->numberBetween(10,100)]);
+        }
 
+        for ($i=1;$i<=10;$i++){
+            $id = DB::table('suppliers')->insertGetId(['name' => 'Supplier Name '.$i]);
         }
 
     }

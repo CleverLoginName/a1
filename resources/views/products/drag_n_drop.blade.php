@@ -30,46 +30,62 @@
     <section id="vue">
     <section class="box new-item-wrapper">
         <section class="box-header"></section>
-        <section class="box-body">
-            <input type="hidden" name="product_id" value="{!! $product_id !!}">
-            <div class='wrapper row' id="x">
-                <div class="row">
-                <div class="col-md-12">
-                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for products">
-                    Drag & Drop the single products
+
+
+
+    <div class="form_container">
+        <form class="form-horizontal">
+
+            <div class="form-group">
+
+                <input type="hidden" name="product_id" value="{!! $product_id !!}">
+                <div class='wrapper row' id="x">
+                <label for="budget" class="col-xs-12 col-lg-2 control-label">Search Product</label>
+                <div class="col-md-12 col-lg-10">
+                    <input type="text"  class="form-control"  id="myInput" onkeyup="myFunction()" placeholder="Search for products">
                 </div>
-                </div>
-                <ul class="container1 col-md-6" id='left-events' style="background-color: lightblue;min-height: 500px;max-height: 500px;overflow: auto">
+
+
+
+                <div class="col-md-12 col-lg-5 col-lg-offset-2 dragArea">
+                    <ul class="container1 col-md-12" id='left-events' style="min-height: 500px;max-height: 500px;overflow: auto">
+
                     @foreach($products as $product)
-                        <li id="{!! $product->id !!}" parent_id="{!! $product_id !!}">
-                            <h3 class="name">{!! $product->name !!}</h3>
-                        </li>
-                    @endforeach
-                </ul>
+                            <li id="{!! $product->id !!}" parent_id="{!! $product_id !!}">
+                                <span class="name"><img src="{!! \App\ProductSymbol::find($product->symbol)->path !!}" width="35px"/>{!! $product->name !!}</span>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
 
-            <ul id='right-events' class='container2 col-md-6'style="background-color: lightgray;min-height: 500px">
-                @foreach($existingComposites as $existingComposite)
-                    <?php $product= \App\Product::find($existingComposite->child); ?>
-                @if($product)
-                    <li id="{!! $product->id !!}" parent_id="{!! $product_id !!}">
-                        <h3 class="name">{!! $product->name !!}</h3>
-                    </li>
-                        @endif
-                @endforeach
-                </ul>
+                <!-- -------------- Drag and drop area starts -------------------- -->
+                <div class="col-md-12 col-lg-5 ">
 
-                <section class="row box-footer" id="form-footer">
-                        <a id="prod-frm-reset" href="{!! url('products/create/composite-product') !!}" class="btn add-item-btn" style="margin-right:10px;">Add Another Composite Product</a>
-
-                    <a id="prod-frm-reset" href="{!! url('products/'.$product_id) !!}" class="btn add-item-btn" style="margin-right:10px;">View Products</a>
-                </section>
-
+                    <ul id='right-events' class='container2 col-md-12 dropArea'style="min-height: 500px">
+                        @foreach($existingComposites as $existingComposite)
+                            <?php $product= \App\Product::find($existingComposite->child); ?>
+                            @if($product)
+                                <li id="{!! $product->id !!}" parent_id="{!! $product_id !!}">
+                                    <h3 class="name">{!! $product->name !!}</h3>
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
+                </div>
+                <!-- -------------- Drag and drop area ends -------------------- -->
+                </div>
 
             </div>
 
+            <!-- -------- Buttons Start ---------- -->
+            <div class="wr_btn clearfix">
+                <input name="Save" type="button" class="btn_save" id="Save" value="Add Another Pack" >
+                <input name="Save" type="button" class="btn_save" id="Save" value="View Pack" >
+            </div>
+            <!-- -------- Buttons End ---------- -->
 
+        </form>
 
-        </section>
     </section>
     </section>
 @stop
@@ -158,4 +174,8 @@
     }
 
 </script>
+@stop
+
+@section('post-css')
+    {{ Html::style('css/common.css') }}
 @stop

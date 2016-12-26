@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->integer('sales_price')->nullable();
             $table->integer('discount')->nullable();
             $table->integer('symbol')->nullable();
+            $table->integer('supplier_id')->nullable();
             $table->boolean('is_composite')->nullable();
             $table->softDeletes();
             $table->timestamps();

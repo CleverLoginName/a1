@@ -77,6 +77,18 @@
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Supplier</label></section>
+                    <section class="col-md-6"><select class="form-control required" id="supplier_id"
+                                                     name="supplier_id">
+                            @foreach($suppliers as $supplier)
+                                <option value="{!! $supplier->id !!}">{!! $supplier->name !!}</option>
+                                @endforeach
+
+                        </select></section>
+                    <section class="col-md-2"></section>
+                </section>
+                <section class="row form-group">
+                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Name</label></section>
                     <section class="col-md-6"><input class="form-control required" id="name"
                                                      name="name" aria-required="true" type="text"></section>
