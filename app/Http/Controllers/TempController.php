@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Catalog;
 use App\Category;
+use App\CategoryType;
 use App\SubCategory;
 use App\Temp;
 use Illuminate\Http\Request;
@@ -18,26 +19,36 @@ class TempController extends Controller
     {
         //$temp = Temp::all()->last();
         return view('tmp.index');
-           // ->with('catalogs', $catalogs);
+        // ->with('catalogs', $catalogs);
     }
+
     public function products()
     {
         $out = [];
         $catalogs = Catalog::all();
-        foreach ($catalogs as $catalog){
+        foreach ($catalogs as $catalog) {
 
             $catalog_array = [];
             $catalog_array['catalog_id'] = $catalog->id;
             $catalog_array['catalog_name'] = $catalog->name;
 
-            $categories = Category::where('catalog_id','=',$catalog->id)->get();
-            foreach ($categories as $category){
+            $categories = Category::where('catalog_id', '=', $catalog->id)->get();
+            $ii = 0;
+            foreach ($categories as $category) {
                 $category_array = [];
                 $category_array['category_id'] = $category->id;
                 $category_array['category_name'] = $category->name;
 
-                $subCategories = SubCategory::where('category_id','=',$category->id)->get();
-                foreach ($subCategories as $subCategory){
+                // To-Do
+                if(($ii % 2) == 0){
+                    $category_array['category_type'] = 'Switches';
+                }else{
+                    $category_array['category_type'] = 'Lights';
+                }
+
+
+                $subCategories = SubCategory::where('category_id', '=', $category->id)->get();
+                foreach ($subCategories as $subCategory) {
                     $sub_category_array = [];
                     $sub_category_array['sub_category_id'] = $subCategory->id;
                     $sub_category_array['sub_category_name'] = $subCategory->name;
@@ -48,15 +59,15 @@ class TempController extends Controller
                         ->join('sub_category_products', 'sub_category_products.product_id', '=', 'products.id')
                         ->join('sub_categories', 'sub_category_products.sub_category_id', '=', 'sub_categories.id')
                         ->join('product_symbols', 'products.symbol', '=', 'product_symbols.id')
-                        ->select('products.*','product_symbols.path','product_symbols.name as symbol_name')
-                        ->where('sub_categories.id','=',$subCategory->id)
+                        ->select('products.*', 'product_symbols.path', 'product_symbols.name as symbol_name')
+                        ->where('sub_categories.id', '=', $subCategory->id)
                         ->get();
-                    foreach ($products as $product){
+                    foreach ($products as $product) {
                         //custom Fields
                         $custom_fields = DB::table('custom_data')
                             ->join('custom_field_sub_categories', 'custom_data.custom_field_sub_category_id', '=', 'custom_field_sub_categories.id')
-                            ->select('custom_data.value','custom_field_sub_categories.name')
-                            ->where('custom_data.product_id','=',$product->id)
+                            ->select('custom_data.value', 'custom_field_sub_categories.name')
+                            ->where('custom_data.product_id', '=', $product->id)
                             ->get();
                         $product_array = [];
                         $product_array['name'] = $product->name;
@@ -64,7 +75,7 @@ class TempController extends Controller
                         $product_array['icon'] = $product->path;
                         $product_array['path'] = $product->image;
                         $product_array['productCode'] = $product->symbol_name;
-                        foreach ($custom_fields as $key => $value){
+                        foreach ($custom_fields as $key => $value) {
                             $product_array[$value->name] = $value->value;
                         }
 
@@ -72,7 +83,6 @@ class TempController extends Controller
                     }
 
                     $category_array['data'][] = $sub_category_array;
-
 
 
                 }
@@ -324,17 +334,22 @@ class TempController extends Controller
 "category": "Prise_TV"
 }]';
     }
-    
-    public function save(Request $request){
+
+    public function save(Request $request)
+    {
         $temp = new Temp();
         $temp->data = $request->get('file_data');
         $temp->save();
         return $temp->id;
     }
-    public function load(){
+
+    public function load()
+    {
         return DB::table('temps')->orderBy('id', 'desc')->first()->data;
     }
-    public function loadOne($id){
-        return DB::table('temps')->where('id','=',$id)->first()->data;
+
+    public function loadOne($id)
+    {
+        return DB::table('temps')->where('id', '=', $id)->first()->data;
     }
 }
