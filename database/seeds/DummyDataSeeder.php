@@ -382,6 +382,33 @@ class DummyDataSeeder extends Seeder
 
             DB::table('sub_category_products')->insert(['sub_category_id' => 4 ,'product_id' => $i]);
         }
+        for ($i=1;$i<=25;$i++){
+            $is_composite = $faker->boolean(50);
+            DB::table('products')->insert([
+                'name' => 'Name for Product '.$i,
+                'description' => 'Description for Product '.$i,
+                'builder_code' => $faker->text(10),
+                'pronto_code' => $faker->text(10),
+                'manufacturing_product_code' => $faker->text(10),
+                'image' => $faker->imageUrl(640,480,null,true,null),
+                'builders_price' => $faker->numberBetween(0,10000),
+                'discount' => $faker->numberBetween(0,100),
+                'symbol' => $faker->numberBetween(0,100),
+                'sales_price' => $faker->numberBetween(0,10000),
+                'is_composite' => $is_composite
+            ]);
+
+            if($is_composite){
+                for ($j=1;$j<=5;$j++) {
+                    DB::table('composite_product_maps')->insert([
+                        'parent' => $i,
+                        'child' => $faker->numberBetween(1, 20)
+                    ]);
+                }
+            }
+
+            DB::table('sub_category_products')->insert(['sub_category_id' => 5 ,'product_id' => $i]);
+        }
 
         for ($i=1;$i<=10;$i++){
             $id = DB::table('sub_categories')->insertGetId(['name' => 'Pack '.$i ,'description' => 'Pack description'.$i,'category_id' => 5,'is_pack' => true]);
@@ -701,6 +728,14 @@ DB::table('product_symbols')->insert(['path' =>'/img/symbols/WSC_PP.png', 'name'
         for ($i=1;$i<=10;$i++){
             $id = DB::table('suppliers')->insertGetId(['name' => 'Supplier Name '.$i]);
         }
+
+
+        DB::table('category_types')->insert(['name' =>'Lights']);
+        DB::table('category_types')->insert(['name' =>'Switches']);
+        DB::table('category_types')->insert(['name' =>'Power Points']);
+        DB::table('category_types')->insert(['name' =>'Data Points']);
+        DB::table('category_types')->insert(['name' =>'AV Points']);
+        DB::table('category_types')->insert(['name' =>' Heating Panel']);
 
     }
 }
