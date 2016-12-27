@@ -28,7 +28,9 @@
                         <select class="form-control required"
                                 id="prod-frm-sub-cat" name="catalog_id" aria-required="true" v-model="catalog" @change="catalogChange()"
                                 aria-invalid="true">
-                                <option v-for="catalog in catalog_options" value="@{{ catalog.id }}">
+                        <option selected disabled>Please select a Catalog</option>
+
+                        <option v-for="catalog in catalog_options" value="@{{ catalog.id }}">
                                     @{{ catalog.name }}
                                 </option>
                         </select>
@@ -42,6 +44,7 @@
                         <select class="form-control required"
                                 id="prod-frm-sub-cat" name="category_id" aria-required="true" v-model="category" :disabled="category_disabled" @change="categoryChange()"
                                 aria-invalid="true">
+                        <option value="" selected>Please select a Category</option>
                             <option v-for="category in category_options" value="@{{ category.id }}  ">
                                 @{{ category.name }}
                             </option>
@@ -56,6 +59,7 @@
                         <select class="form-control required"
                                 id="prod-frm-sub-cat" name="sub_category_id" aria-required="true" v-model="sub_category" :disabled="sub_category_disabled" @change="subCategoryChange()"
                                 aria-invalid="true">
+                        <option value="" selected>Please select a Sub-Category</option>
                             <option v-for="sub_category in sub_category_options" value="@{{ sub_category.id }}  ">
                                 @{{ sub_category.name }}
                             </option>
@@ -242,14 +246,14 @@
         @if(session('catalog_id') == null)
             catalog: 1,
         @else
-            catalog: parseInt('{!! session('catalog_id') !!}}'),
+            catalog: parseInt('{!! session('catalog_id') !!}'),
         @endif
         @if(session('category_id') == null)
             category: 1,
             category_disabled: true,
             category_options: '',
         @else
-            category: parseInt('{!! session('category_id') !!}}'),
+            category: parseInt('{!! session('category_id') !!}'),
             category_disabled: false,
             category_options: JSON.parse('{!! $categories !!}'),
         @endif
@@ -259,7 +263,7 @@
             sub_category_options:'',
         @else
             sub_category_options:JSON.parse('{!! $subCategories !!}'),
-            sub_category: parseInt('{!! session('sub_category_id') !!}}'),
+            sub_category: parseInt('{!! session('sub_category_id') !!}'),
             sub_category_disabled: false,
         @endif
 
@@ -278,7 +282,7 @@
                     .then(function(data){
                         global_data.category_options= [];
                         global_data.category_options = data.body;
-                        global_data.category = 1;
+                        global_data.category = 0;
                         global_data.category_disabled = false;
                         global_data.sub_category_disabled = true;
                         global_data.fields_disabled= true;
