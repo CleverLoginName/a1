@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use Szykra\Notifications\Flash;
 
@@ -65,6 +66,31 @@ class SubCategoriesController extends Controller
         Flash::success('Sub-Category Added', 'Sub-Category has been added successfully.');
 
         return redirect()->action('SubCategoriesController@index');
+    }
+
+
+    public function ajaxStore(Request $request)
+    {//dd($request->all());
+        $rules = array(
+            'modal_category_id' => 'required',
+            'sub_category_name'   => 'required',
+            'sub_category_description'    => 'required',
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails())
+            return $validator->errors();
+
+        $subCategory = new SubCategory();
+        $subCategory->name = $request->get('sub_category_name');
+        $subCategory->category_id = $request->get('modal_category_id');
+        $subCategory->description = $request->get('sub_category_description');
+        $subCategory->save();
+        $subCategories = SubCategory::where('category_id','=',$subCategory->category_id)->get();
+        //return $catalogs;
+        return Response::json(['sub_categories'=>$subCategories, 'insert_id'=>$subCategory->id]);
+        //Flash::success('Catalog Added', 'Catalog has been added successfully.');
+        // return redirect()->action('CatalogsController@index');
     }
 
     /**

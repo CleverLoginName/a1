@@ -6,36 +6,37 @@
     <section class="box new-item-wrapper">
         <section class="box-header"></section>
         <section class="box-body">
-            <form class="row new-item-from-wrapper" role="form" method="post" id="new-prod-form"
+            <form  files="true" class="row new-item-from-wrapper" role="form" method="post" id="new-prod-form"
                   enctype="multipart/form-data" novalidate="novalidate" action="{!! url('/products') !!}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="is_composite" value="{{ $is_composite }}">
-                <section class="row form-group">
+              <!--<section class="row form-group">
                     <section class="col-md-12">
                         @if ($errors->has())
                             <div class="alert alert-danger">
+
                                 @foreach ($errors->all() as $error)
                                     {{ $error }}<br>
                                 @endforeach
                             </div>
                         @endif
                     </section>
-                </section>
+                </section>-->
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Catalog</label></section>
                     <section class="col-md-6">
                         <select class="form-control required"
-                                id="prod-frm-sub-cat" name="catalog_id" aria-required="true" v-model="catalog" @change="catalogChange()"
+                                id="prod-frm-sub-cat" name="catalog_id" id="catalog_id" aria-required="true" v-model="catalog" @change="catalogChange()"
                                 aria-invalid="true">
-                        <option selected disabled>Please select a Catalog</option>
+                        @if(session('catalog_id') === null)<option selected disabled>Please select a Catalog</option>@endif
 
                         <option v-for="catalog in catalog_options" value="@{{ catalog.id }}">
                                     @{{ catalog.name }}
                                 </option>
                         </select>
                     </section>
-                    <section class="col-md-2"><a href="{!! url('/catalogs/create') !!}">Can't find? Add New</a> </section>
+                    <section class="col-md-2"><a id="addCatalog">Can't find? Add New</a> </section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
@@ -44,13 +45,13 @@
                         <select class="form-control required"
                                 id="prod-frm-sub-cat" name="category_id" aria-required="true" v-model="category" :disabled="category_disabled" @change="categoryChange()"
                                 aria-invalid="true">
-                        <option value="" selected>Please select a Category</option>
+                        @if(session('category_id') === null)<option value="" selected disabled>Please select a Category</option>@endif
                             <option v-for="category in category_options" value="@{{ category.id }}  ">
                                 @{{ category.name }}
                             </option>
                         </select>
                     </section>
-                    <section class="col-md-2"><a href="{!! url('/categories/create') !!}">Can't find? Add New</a></section>
+                    <section class="col-md-2"><a  id="addCategory">Can't find? Add New</a></section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
@@ -59,105 +60,132 @@
                         <select class="form-control required"
                                 id="prod-frm-sub-cat" name="sub_category_id" aria-required="true" v-model="sub_category" :disabled="sub_category_disabled" @change="subCategoryChange()"
                                 aria-invalid="true">
-                        <option value="" selected>Please select a Sub-Category</option>
+                        @if(session('sub_category_id') === null)<option value="" selected>Please select a Sub-Category</option>@endif
                             <option v-for="sub_category in sub_category_options" value="@{{ sub_category.id }}  ">
                                 @{{ sub_category.name }}
                             </option>
                         </select>
                     </section>
-                    <section class="col-md-2"><a href="{!! url('/sub-categories/create') !!}">Can't find? Add New</a></section>
+                    <section class="col-md-2"><a id="addsubCategory">Can't find? Add New</a></section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Symbol</label></section>
-                    <section class="col-md-6"><select class="form-control required" id="symbol"
-                                                     name="symbol">
-                            @foreach(\App\ProductSymbol::all() as $symbol)
-                                <option value="{!! $symbol->id !!}"><span class="img-flag">{!! $symbol->name !!}</span></option>
-                                @endforeach
+                    <section class="col-md-6" style="max-height: 150px; overflow-y: auto">
 
-                        </select></section>
+                        <select class="image-picker show-html" id="symbol"
+                                name="symbol">
+                            @foreach(\App\ProductSymbol::all() as $symbol)
+                                <option data-img-src="{!! $symbol->path !!}" value="{!! $symbol->id !!}">{!! $symbol->name !!}</option>
+                            @endforeach
+                        </select>
+
+                    </section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Supplier</label></section>
+                    <section class="col-md-2"><label>Supplier Name</label></section>
                     <section class="col-md-6"><select class="form-control required" id="supplier_id"
                                                      name="supplier_id">
                             @foreach($suppliers as $supplier)
+                                <option selected disabled>Please select a Supplier</option>
                                 <option value="{!! $supplier->id !!}">{!! $supplier->name !!}</option>
                                 @endforeach
 
                         </select></section>
                     <section class="col-md-2"></section>
                 </section>
-                <section class="row form-group">
+                <section class="row form-group @if ($errors->has('name')) has-error @endif">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Name</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="name"
-                                                     name="name" aria-required="true" type="text"></section>
+                    <section class="col-md-6">
+                        {!! Form::text('name', null,['id'=>'name','class'=>"form-control"]) !!}
+                        @if ($errors->has('name')) <p class="error_message">{{ $errors->first('name') }}</p> @endif
+                    </section>
                     <section class="col-md-2"></section>
                 </section>
-                <section class="row form-group">
+                <section class="row form-group @if ($errors->has('description')) has-error @endif">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Description</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="description"
-                                                     name="description" aria-required="true" type="text"></section>
+                    <section class="col-md-6">
+                        {!! Form::text('description', null,['id'=>'description','class'=>"form-control"]) !!}
+                        @if ($errors->has('description')) <p class="error_message">{{ $errors->first('description') }}</p> @endif</section>
                     <section class="col-md-2"></section>
                 </section>
-                <section class="row form-group">
+                <section class="row form-group @if ($errors->has('manufacturing_product_code')) has-error @endif">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Manufacturing Product Code</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="manufacturing_product_code"
-                                                     name="manufacturing_product_code" aria-required="true" type="text"></section>
+                    <section class="col-md-6">
+                        {!! Form::text('manufacturing_product_code', null,['id'=>'manufacturing_product_code','class'=>"form-control"]) !!}
+                        @if ($errors->has('manufacturing_product_code')) <p class="error_message">{{ $errors->first('manufacturing_product_code') }}</p> @endif</section>
                     <section class="col-md-2"></section>
                 </section>
-                <section class="row form-group">
+                <section class="row form-group @if ($errors->has('builder_code')) has-error @endif">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Builders Product Code</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="builder_code"
-                                                     name="builder_code" aria-required="true" type="text"></section>
+                    <section class="col-md-6">
+                        {!! Form::text('builder_code', null,['id'=>'builder_code','class'=>"form-control"]) !!}
+                        @if ($errors->has('builder_code')) <p class="error_message">{{ $errors->first('builder_code') }}</p> @endif</section>
                     <section class="col-md-2"></section>
                 </section>
-                <section class="row form-group">
+                <section class="row form-group @if ($errors->has('pronto_code')) has-error @endif">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Pronto Code</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="pronto_code"
-                                                     name="pronto_code" aria-required="true" type="text"></section>
-                    <section class="col-md-2"></section>
-                </section>
-                <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Builders Price ($)</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="builders_price"
-                                                     name="builders_price" aria-required="true" type="text"></section>
+                    <section class="col-md-2"><label>Contractor code</label></section>
+                    <section class="col-md-6">
+                        {!! Form::text('pronto_code', null,['id'=>'pronto_code','class'=>"form-control"]) !!}
+                        @if ($errors->has('pronto_code')) <p class="error_message">{{ $errors->first('pronto_code') }}</p> @endif
+                    </section>
                     <section class="col-md-2"></section>
                 </section>
-                <section class="row form-group">
+                <section class="row form-group @if ($errors->has('builders_price')) has-error @endif">
                     <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Sales Price ($)</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="sales_price"
-                                                     name="sales_price" aria-required="true" type="text"></section>
+                    <section class="col-md-2"><label>Builders Price inc GST ($)</label></section>
+                    <section class="col-md-6">
+                        {!! Form::text('builders_price', null,['id'=>'builders_price','class'=>"form-control"]) !!}
+
+                        @if ($errors->has('builders_price')) <p class="error_message">{{ $errors->first('builders_price') }}</p> @endif
+                    </section>
                     <section class="col-md-2"></section>
                 </section>
-                <section class="row form-group">
+                <section class="row form-group @if ($errors->has('sales_price')) has-error @endif">
+                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Supplier Price inc GST ($)</label></section>
+                    <section class="col-md-6">
+                        {!! Form::text('sales_price', null,['id'=>'sales_price','class'=>"form-control"]) !!}
+                        @if ($errors->has('sales_price')) <p class="error_message">{{ $errors->first('sales_price') }}</p> @endif
+                    </section>
+                    <section class="col-md-2"></section>
+                </section>
+                <section class="row form-group @if ($errors->has('discount')) has-error @endif">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Discount (%)</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="discount"
-                                                     name="discount" aria-required="true" type="text"></section>
+                    <section class="col-md-6">
+                        {!! Form::text('discount', null,['id'=>'discount','class'=>"form-control"]) !!}
+                        @if ($errors->has('discount')) <p class="error_message">{{ $errors->first('discount') }}</p> @endif
+                    </section>
+                    <section class="col-md-2"></section>
+                </section>
+                <section class="row form-group @if ($errors->has('image')) has-error @endif">
+                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Product Image</label></section>
+                    <section class="col-md-6">
+                        {!! Form::file('image',['id'=>'discount','class'=>"form-control"]) !!}
+                        @if ($errors->has('image')) <p class="error_message">{{ $errors->first('image') }}</p> @endif
+                    </section>
                     <section class="col-md-2"></section>
                 </section>
 
 
                     @foreach($fields as $field)
 
-                        <section class="row form-group">
+                        <section class="row form-group @if ($errors->has($field['name'])) has-error @endif">
                             <section class="col-md-2"></section>
                             <section class="col-md-2"><label>{!! $field['name'] !!}</label></section>
                             <section class="col-md-6">
 
-                                @if($field['type'] == 'text')
-                                <input class="form-control required" id="{!! $field['id'] !!}" name="custom_field_{!! $field['id'] !!}" aria-required="true" type="text" :disabled="fields_disabled">
+                                @if($field['type'] == 'text') {!! Form::text($field['name'], null,['id'=>$field['name'],'class'=>"form-control",':disabled'=>"fields_disabled"]) !!}
+                                    @if ($errors->has($field['name'])) <p class="error_message">{{ $errors->first($field['name']) }}</p> @endif
                                 @elseif($field['type'] == 'textarea')
                                     <textarea class="form-control required" id="{!! $field['id'] !!}" name="custom_field_{!! $field['id'] !!}" aria-required="true" :disabled="fields_disabled"> </textarea>
                                 @elseif($field['type'] == 'select')
@@ -192,6 +220,262 @@
             </form>
         </section>
     </section>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade common_popup new_Project_popup catalog_modal" id="catalogModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content clearfix">
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Catalog:</h4>
+
+                </div>
+
+
+                <div class="modal-body" id="templates">
+                    <form class="row new-item-from-wrapper" role="form" method="post" id="new-prod-form"
+                                                             enctype="multipart/form-data" novalidate="novalidate" action="{!! url('/catalogs') !!}">
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="box new-item-wrapper">
+                                <section class="box-header"></section>
+                                <section class="box-body">
+
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <section class="row form-group">
+                                            <section class="col-md-2"></section>
+                                            <section class="col-md-2"><label>Name</label></section>
+                                            <section class="col-md-6"><input class="form-control required" id="catalog_name"
+                                                                             name="catalog_name" aria-required="true" type="text"></section>
+                                           <section class="col-md-2"></section>
+                                        </section>
+                                        <section class="row form-group">
+                                            <section class="col-md-2"></section>
+                                            <section class="col-md-2"><label>Description</label></section>
+                                            <section class="col-md-6"><input class="form-control required" id="catalog_description"
+                                                                             name="catalog_description" aria-required="true" type="text"></section>
+                                            <section class="col-md-2"></section>
+                                        </section>
+                                        <!--<section class="row form-group">
+                                            <section class="col-md-2"></section>
+                                            <section class="col-md-2"><label>Type</label></section>
+                                            <section class="col-md-6"><select class="form-control required" id="category_type"
+                                                                              name="category_type">
+                                                    @foreach($categoryTypes as $categoryType)
+                                                        <option value="{!! $categoryType->id !!}">{!! $categoryType->name !!}</option>
+                                                    @endforeach
+
+                                                </select></section>
+                                            <section class="col-md-2"></section>
+                                        </section>
+                                        <section class="row form-group">
+                                            <section class="col-md-2"></section>
+                                            <section class="col-md-2"><label>Colour</label></section>
+                                            <section class="col-md-6"><input class="form-control required" id="category_colour"
+                                                                             name="category_colour" aria-required="true" type="color"></section>
+                                            <section class="col-md-2"></section>
+                                        </section>-->
+
+
+                                </section>
+                            </section>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center btn_load">
+                        <div class="form-group">
+                            <div class="col-md-12 col-lg-2  pull-right clearfix">
+                                <input name="Save" type="button" class="btn_save" @click="newCatalog()" value="Save">
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade common_popup new_Project_popup category_modal" id="categoryModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content clearfix">
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Category:</h4>
+
+                </div>
+
+
+                <div class="modal-body" id="templates">
+                    <form class="row new-item-from-wrapper" role="form" method="post" id="new-prod-form"
+                                                             enctype="multipart/form-data" novalidate="novalidate" action="{!! url('/categories') !!}">
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="box new-item-wrapper">
+                                <section class="box-header"></section>
+                                <section class="box-body">
+
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <section class="row form-group">
+                                        <section class="col-md-2"></section>
+                                        <section class="col-md-2"><label>Catalog</label></section>
+                                        <section class="col-md-6">
+                                            <select class="form-control required" name="modal_catalog_id" id="modal_catalog_id" aria-required="true"
+                                            aria-invalid="true">
+                                            @if(session('catalog_id') === null)<option selected disabled>Please select a Catalog</option>@endif
+
+                                            <option v-for="catalog in catalog_options" value="@{{ catalog.id }}">
+                                                @{{ catalog.name }}
+                                            </option>
+                                            </select>
+                                        </section>
+                                        <section class="col-md-2"></section>
+                                    </section>
+
+                                        <section class="row form-group">
+                                            <section class="col-md-2"></section>
+                                            <section class="col-md-2"><label>Name</label></section>
+                                            <section class="col-md-6"><input class="form-control required" id="category_name"
+                                                                             name="category_name" aria-required="true" type="text"></section>
+                                           <section class="col-md-2"></section>
+                                        </section>
+                                        <section class="row form-group">
+                                            <section class="col-md-2"></section>
+                                            <section class="col-md-2"><label>Description</label></section>
+                                            <section class="col-md-6"><input class="form-control required" id="category_description"
+                                                                             name="category_description" aria-required="true" type="text"></section>
+                                            <section class="col-md-2"></section>
+                                        </section>
+                                        <section class="row form-group">
+                                            <section class="col-md-2"></section>
+                                            <section class="col-md-2"><label>Type</label></section>
+                                            <section class="col-md-6"><select class="form-control required" id="category_type"
+                                                                              name="category_type">
+                                                    @foreach($categoryTypes as $categoryType)
+                                                        <option value="{!! $categoryType->id !!}">{!! $categoryType->name !!}</option>
+                                                    @endforeach
+
+                                                </select></section>
+                                            <section class="col-md-2"></section>
+                                        </section>
+                                        <section class="row form-group">
+                                            <section class="col-md-2"></section>
+                                            <section class="col-md-2"><label>Colour</label></section>
+                                            <section class="col-md-6"><input class="form-control required" id="category_colour"
+                                                                             name="category_colour" aria-required="true" type="color"></section>
+                                            <section class="col-md-2"></section>
+                                        </section>
+
+
+                                </section>
+                            </section>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center btn_load">
+                        <div class="form-group">
+                            <div class="col-md-12 col-lg-2  pull-right clearfix">
+                                <input name="Save" type="button" class="btn_save" @click="newCategory()" value="Save">
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade common_popup new_Project_popup subCategory_modal" id="subCategoryModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content clearfix">
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Sub-Category:</h4>
+
+                </div>
+
+
+                <div class="modal-body" id="templates">
+                    <form class="row new-item-from-wrapper" role="form" method="post" id="new-prod-form"
+                                                             enctype="multipart/form-data" novalidate="novalidate" action="{!! url('/categories') !!}">
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="box new-item-wrapper">
+                                <section class="box-header"></section>
+                                <section class="box-body">
+
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <section class="row form-group">
+                                        <section class="col-md-2"></section>
+                                        <section class="col-md-2"><label>Category</label></section>
+                                        <section class="col-md-6">
+                                            <select class="form-control required"
+                                                    id="modal_category_id" name="modal_category_id" aria-required="true" v-model="category" :disabled="category_disabled" @change="categoryChange()"
+                                            aria-invalid="true">
+                                            @if(session('category_id') === null)<option value="" selected disabled>Please select a Category</option>@endif
+                                            <option v-for="category in category_options" value="@{{ category.id }}  ">
+                                                @{{ category.name }}
+                                            </option>
+                                            </select>
+                                        </section>
+                                    </section>
+
+                                        <section class="row form-group">
+                                            <section class="col-md-2"></section>
+                                            <section class="col-md-2"><label>Name</label></section>
+                                            <section class="col-md-6"><input class="form-control required" id="sub_category_name"
+                                                                             name="sub_category_name" aria-required="true" type="text"></section>
+                                           <section class="col-md-2"></section>
+                                        </section>
+                                        <section class="row form-group">
+                                            <section class="col-md-2"></section>
+                                            <section class="col-md-2"><label>Description</label></section>
+                                            <section class="col-md-6"><input class="form-control required" id="sub_category_description"
+                                                                             name="sub_category_description" aria-required="true" type="text"></section>
+                                            <section class="col-md-2"></section>
+                                        </section>
+                                </section>
+                            </section>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center btn_load">
+                        <div class="form-group">
+                            <div class="col-md-12 col-lg-2  pull-right clearfix">
+                                <input name="Save" type="button" class="btn_save" @click="newSubCategory()" value="Save">
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
     </section>
 @stop
 
@@ -220,9 +504,14 @@
                 class="breadcrumb-text">Products</span></button>
     <i class="fa fa-chevron-right breadcrumb-icn " id="1-ic"></i>
 
-    <button data-ref="sub-menu-items" data-index="2" class="breadcrumb-btn font-blue" type="submit" id="2-bc"><span
+    <button data-ref="sub-menu-items" data-index="2" class="breadcrumb-btn cursor-normal" type="submit" id="2-bc"><span
                 class="breadcrumb-text">New</span></button>
     <i class="fa fa-chevron-right breadcrumb-icn font-blue" id="3-ic"></i>
+    @if($is_composite)
+    <button data-ref="sub-menu-items" data-index="2" class="breadcrumb-btn font-blue" type="submit" id="2-bc"><span
+                class="breadcrumb-text">Composite Product</span></button>
+    <i class="fa fa-chevron-right breadcrumb-icn font-blue" id="3-ic"></i>
+    @endif
 @stop
 
 
@@ -230,15 +519,18 @@
 {{ Html::script('js/vue.js') }}
 {{ Html::script('js/vue-resource.js') }}
 {{ Html::script('js/select2.full.js') }}
+{{ Html::script('js/image-picker.js') }}
 <script>
-    function formatSymbols (symbol) {
+   /* function formatSymbols (symbol) {
         if (!symbol.id) { return symbol.text; }
         var $symbol = $(
                 '<span><img src="/img/symbols/' + symbol.text + '.png" class="img-flag" /> ' + symbol.text + '</span>'
         );
         return $symbol;
     };
-    $('#symbol').select2({ templateResult: formatSymbols});
+    $('#symbol').select2({ templateResult: formatSymbols});*/
+   $("#symbol").imagepicker();
+
     var global_data = {
 
         catalog_options: JSON.parse('{!! $catalogs !!}'),
@@ -267,8 +559,7 @@
             sub_category_disabled: false,
         @endif
 
-        fields_disabled: false,
-
+        fields_disabled: false
 
     }
 
@@ -315,20 +606,232 @@
 
 
                         });
+            },
+            newCatalog:function () {
+
+                var formData = new FormData();
+                formData.append('catalog_name', $("#catalog_name").val());
+                formData.append('catalog_description',  $("#catalog_description").val());
+
+                this.$http.post('/ajax/catalogs',formData)
+                        .then(function(data) {
+                            if (data.body.catalogs != null){
+                                global_data.catalog_options = data.body.catalogs;
+                            global_data.catalog = data.body.insert_id;
+                            $('.catalog_modal').modal('hide');
+                            global_data.category = 0;
+                            global_data.category_disabled = false;
+                            global_data.sub_category_disabled = true;
+                            global_data.fields_disabled = true;
+
+                            global_data.sub_category_options = [];
+
+                                new PNotify({
+                                    title: 'Catalog Saved',
+                                    title_escape: false,
+                                    text: 'Catalog Saved Successfully',
+                                    text_escape: false,
+                                    styling: "bootstrap3",
+                                    type: "success",
+                                    icon: true,
+                                    addclass: "stack-bottomright",
+                                    delay:1500
+                                });
+
+                        }else{
+                                if(data.body.catalog_name != null)
+                                new PNotify({
+                                    title: 'Catalog Name',
+                                    title_escape: false,
+                                    text: data.body.catalog_name,
+                                    text_escape: false,
+                                    styling: "bootstrap3",
+                                    type: "error",
+                                    icon: true,
+                                    addclass: "stack-bottomright",
+                                    delay:1500
+                                });
+                                if(data.body.catalog_description != null)
+                                new PNotify({
+                                    title: 'Catalog Description',
+                                    title_escape: false,
+                                    text: data.body.catalog_description,
+                                    text_escape: false,
+                                    styling: "bootstrap3",
+                                    type: "error",
+                                    icon: true,
+                                    addclass: "stack-bottomright",
+                                    delay:1500
+                                });
+                            }
+                        });
+            },
+            newCategory:function () {
+
+                var formData = new FormData();
+                formData.append('modal_catalog_id', $("#modal_catalog_id").val());
+                formData.append('category_name', $("#category_name").val());
+                formData.append('category_description',  $("#category_description").val());
+                formData.append('category_type',  $("#category_type").val());
+                formData.append('category_colour',  $("#category_colour").val());
+
+                this.$http.post('/ajax/categories',formData)
+                        .then(function(data) {
+                            if (data.body.categories != null){
+                                global_data.category_options = data.body.categories;
+                            global_data.category = data.body.insert_id;
+                            $('.category_modal').modal('hide');
+                            global_data.sub_category_disabled = false;
+                            global_data.category_disabled = false;
+                            global_data.fields_disabled = true;
+
+                            global_data.sub_category_options = [];
+
+                                new PNotify({
+                                    title: 'Category Saved',
+                                    title_escape: false,
+                                    text: 'Category Saved Successfully',
+                                    text_escape: false,
+                                    styling: "bootstrap3",
+                                    type: "success",
+                                    icon: true,
+                                    addclass: "stack-bottomright",
+                                    delay:1500
+                                });
+
+                        }else{
+                                if(data.body.category_name != null)
+                                new PNotify({
+                                    title: 'Category Name',
+                                    title_escape: false,
+                                    text: data.body.category_name,
+                                    text_escape: false,
+                                    styling: "bootstrap3",
+                                    type: "error",
+                                    icon: true,
+                                    addclass: "stack-bottomright",
+                                    delay:1500
+                                });
+                                if(data.body.category_description != null)
+                                new PNotify({
+                                    title: 'Category Description',
+                                    title_escape: false,
+                                    text: data.body.category_description,
+                                    text_escape: false,
+                                    styling: "bootstrap3",
+                                    type: "error",
+                                    icon: true,
+                                    addclass: "stack-bottomright",
+                                    delay:1500
+                                });
+                            }
+                        });
+            },
+            newSubCategory:function () {
+
+                var formData = new FormData();
+                formData.append('modal_category_id', $("#modal_category_id").val());
+                formData.append('sub_category_name', $("#sub_category_name").val());
+                formData.append('sub_category_description',  $("#sub_category_description").val());
+
+                this.$http.post('/ajax/sub-categories',formData)
+                        .then(function(data) {
+                            if (data.body.sub_categories != null){
+                                global_data.sub_category_options = data.body.sub_categories;
+                            global_data.sub_category = data.body.insert_id;
+                            $('.subCategory_modal').modal('hide');
+                            global_data.fields_disabled = false;
+
+
+                                new PNotify({
+                                    title: 'Sub-Category Saved',
+                                    title_escape: false,
+                                    text: 'Sub-Category Saved Successfully',
+                                    text_escape: false,
+                                    styling: "bootstrap3",
+                                    type: "success",
+                                    icon: true,
+                                    addclass: "stack-bottomright",
+                                    delay:1500
+                                });
+
+                        }else{
+                                if(data.body.sub_category_name != null)
+                                new PNotify({
+                                    title: 'Sub-Category Name',
+                                    title_escape: false,
+                                    text: data.body.sub_category_name,
+                                    text_escape: false,
+                                    styling: "bootstrap3",
+                                    type: "error",
+                                    icon: true,
+                                    addclass: "stack-bottomright",
+                                    delay:1500
+                                });
+                                if(data.body.sub_category_description != null)
+                                new PNotify({
+                                    title: 'Category Description',
+                                    title_escape: false,
+                                    text: data.body.sub_category_description,
+                                    text_escape: false,
+                                    styling: "bootstrap3",
+                                    type: "error",
+                                    icon: true,
+                                    addclass: "stack-bottomright",
+                                    delay:1500
+                                });
+                            }
+                        });
             }
         }
     })
 
+    $('#addCatalog').on('click', function () {
+        $('.catalog_modal').modal('show');
+    });
+    $('#addCategory').on('click', function () {
+        $('.category_modal').modal('show');
+    });
+    $('#addsubCategory').on('click', function () {
+        $('.subCategory_modal').modal('show');
+    });
+
 </script>
+
+
+
+
 @stop
 
 
 @section('post-css')
     {{ Html::style('css/select2.css') }}
+    {{ Html::style('css/image-picker.css') }}
     <style type="text/css">
         .img-flag {
-            height: 25px;
-            width: 28px;
+            /*height: 70px;
+            width: 70px;*/
         }
+        ul.thumbnails.image_picker_selector li .thumbnail img{
+            width: 50px;
+            /*min-height: 50px;*/
+        }
+        ul.thumbnails.image_picker_selector li .thumbnail.selected{
+            min-height: 50px;
+
+           /* min-height: 50px;
+
+            width: 50px;*/
+        }
+        ul.thumbnails.image_picker_selector li{
+           /* margin: 0px 0px 0px 0px;*/
+        }
+        ul.thumbnails.image_picker_selector li .thumbnail{
+            /*padding: 0px;*/
+        }
+        ul.thumbnails.image_picker_selector li .thumbnail{
+            border-bottom:0px !important;
+        }
+
     </style>
 @stop

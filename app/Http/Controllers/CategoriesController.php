@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use Szykra\Notifications\Flash;
 
@@ -65,6 +66,36 @@ class CategoriesController extends Controller
         Flash::success('Category Added', 'Category has been added successfully.');
         return redirect()->action('CategoriesController@index');
     }
+
+
+    public function ajaxStore(Request $request)
+    {//dd($request->all());
+        $rules = array(
+            'category_name'   => 'required',
+            'modal_catalog_id'   => 'required',
+            'category_description'  => 'required',
+            'category_type'    => 'required',
+            'category_colour'    => 'required',
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails())
+            return $validator->errors();
+
+        $category = new Category();
+        $category->catalog_id = $request->get('modal_catalog_id');
+        $category->name = $request->get('category_name');
+        $category->description = $request->get('category_description');
+        $category->type = $request->get('category_type');
+        $category->colour = $request->get('category_colour');
+        $category->save();
+        $categories = Category::where('catalog_id','=',$category->catalog_id)->get();
+        //return $catalogs;
+        return Response::json(['categories'=>$categories, 'insert_id'=>$category->id]);
+        //Flash::success('Catalog Added', 'Catalog has been added successfully.');
+        // return redirect()->action('CatalogsController@index');
+    }
+
 
     /**
      * Display the specified resource.

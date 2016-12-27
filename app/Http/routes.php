@@ -87,6 +87,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/fields-by-subcategory', 'CustomFieldsController@fieldsBySubCategoryId');
     Route::get('export/excel-format/products','ExcelFormatExportsController@productsExport');
 
+    Route::post('ajax/catalogs', 'CatalogsController@ajaxStore');
+    Route::post('/ajax/categories', 'CategoriesController@ajaxStore');
+    Route::post('/ajax/sub-categories', 'SubCategoriesController@ajaxStore');
+
 });
 
 

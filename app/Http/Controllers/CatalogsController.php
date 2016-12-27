@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use Szykra\Notifications\Flash;
 
@@ -60,6 +61,28 @@ class CatalogsController extends Controller
         $catalog->save();
         Flash::success('Catalog Added', 'Catalog has been added successfully.');
         return redirect()->action('CatalogsController@index');
+    }
+
+    public function ajaxStore(Request $request)
+    {//dd($request->all());
+        $rules = array(
+            'catalog_name'   => 'required',
+            'catalog_description'    => 'required',
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails())
+            return $validator->errors();
+
+        $catalog = new Catalog();
+        $catalog->name = $request->get('catalog_name');
+        $catalog->description = $request->get('catalog_description');
+        $catalog->save();
+        $catalogs = Catalog::all();
+        //return $catalogs;
+        return Response::json(['catalogs'=>$catalogs, 'insert_id'=>$catalog->id]);
+        //Flash::success('Catalog Added', 'Catalog has been added successfully.');
+       // return redirect()->action('CatalogsController@index');
     }
 
     /**

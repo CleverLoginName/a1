@@ -15,6 +15,7 @@
 {{ Html::style('resources/css/chosen.css') }}
 {{ Html::style('resources/css/dhtmlxscheduler.css') }}
 {{ Html::style('pnotify.custom.min.css') }}
+{{ Html::style('css/common.css') }}
 <link rel="apple-touch-icon" sizes="57x57" href="resources/images/apple-icon-57x57.png') }}">
 <link rel="apple-touch-icon" sizes="60x60" href="resources/images/apple-icon-60x60.png') }}">
 <link rel="apple-touch-icon" sizes="72x72" href="resources/images/apple-icon-72x72.png') }}">

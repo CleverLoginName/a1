@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Catalog;
 use App\Category;
+use App\CategoryType;
 use App\CompositeProductMap;
 use App\Customdata;
 use App\CustomFieldSubCategory;
@@ -18,9 +19,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use Szykra\Notifications\Flash;
 
 class ProductsController extends Controller
@@ -110,6 +113,7 @@ class ProductsController extends Controller
         $catalogs = Catalog::all();
         $symbols = ProductSymbol::all();
         $suppliers = Supplier::all();
+        $categoryTypes = CategoryType::all();
 
         if(session('sub_category_id') == null){
             return view('products.create')
@@ -118,6 +122,7 @@ class ProductsController extends Controller
                 ->with('symbols',  $symbols)
                 ->with('fields', [])
                 ->with('suppliers', $suppliers)
+                ->with('categoryTypes', $categoryTypes)
                 ->with('is_composite',  false)
                 ->with('subCategories', $subCategories);
         }else{
@@ -139,6 +144,7 @@ class ProductsController extends Controller
                 ->with('categories', $categories)
                 ->with('fields', $out)
                 ->with('suppliers', $suppliers)
+                ->with('categoryTypes', $categoryTypes)
                 ->with('symbols',  $symbols)
                 ->with('is_composite',  false)
                 ->with('symbols', $symbols)
@@ -156,12 +162,14 @@ class ProductsController extends Controller
         $catalogs = Catalog::all();
         $symbols = ProductSymbol::all();
         $suppliers = Supplier::all();
+        $categoryTypes = CategoryType::all();
 
         if(session('sub_category_id') == null){
             return view('products.create')
                 ->with('catalogs', $catalogs)
                 ->with('categories', $categories)
                 ->with('symbols',  $symbols)
+                ->with('categoryTypes', $categoryTypes)
                 ->with('suppliers', $suppliers)
                 ->with('fields', [])
                 ->with('is_composite',  true)
@@ -185,6 +193,7 @@ class ProductsController extends Controller
                 ->with('categories', $categories)
                 ->with('fields', $out)
                 ->with('suppliers', $suppliers)
+                ->with('categoryTypes', $categoryTypes)
                 ->with('is_composite',  true)
                 ->with('symbols', $symbols)
                 ->with('subCategories', $subCategories);
@@ -225,6 +234,10 @@ class ProductsController extends Controller
     {// dd($request->all());
 
         $rules = array(
+            'catalog_id'   => 'required',
+            'category_id'   => 'required',
+            'symbol'   => 'required',
+            'sub_category_id'   => 'required',
             'name'   => 'required',
             'description'    => 'required',
             'manufacturing_product_code' => 'required',
@@ -233,12 +246,14 @@ class ProductsController extends Controller
             'builders_price'      => 'required',
             'sales_price'      => 'required',
             'discount'      => 'required',
+            'image'      => 'required',
         );
 
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails())
             return Redirect::to('/products/create/product')
-                ->withErrors($validator);
+                ->withErrors($validator)
+        ->withInput();
 
 
         $product = new Product();
@@ -270,7 +285,26 @@ class ProductsController extends Controller
         $subcategoeyProduct->sub_category_id =$request->get('sub_category_id');
         $subcategoeyProduct->product_id = $product->id;
         $subcategoeyProduct->save();
-        
+
+
+
+        File::exists('uploads') or File::makeDirectory('uploads');
+        File::exists('uploads/products') or File::makeDirectory('uploads/products');
+        File::exists('uploads/products/'.$product->id) or File::makeDirectory('uploads/products/'.$product->id);
+        File::exists('uploads/products/'.$product->id.'/originals') or File::makeDirectory('uploads/products/'.$product->id.'/originals');
+
+
+        $randStr = Str::random(16);
+        $destinationPath = 'uploads/products/'.$product->id.'/originals/';
+        $productImage = $request->file('image');
+        if($productImage){
+            $randFileName = $randStr.'.'.$productImage->getClientOriginalExtension();
+            $productImage->move($destinationPath,$randFileName);
+        }
+
+        $product->image = $destinationPath.$randFileName;
+        $product->save();
+
         $products = Product::all();
 
         if($request->get('is_composite') == true){
@@ -281,8 +315,12 @@ class ProductsController extends Controller
                 ->with('products',$products );
         }
 
+        session(['catalog_id' => null ]);
+        session(['category_id' => null ]);
+        session(['sub_category_id' =>null ]);
+
         Flash::success('Product Added', 'Product has been added successfully.');
-        //return redirect()->action('ProductsController@index');
+        return redirect()->action('ProductsController@create');
         return view('products.create_main')
             ->with('product', $product);
 

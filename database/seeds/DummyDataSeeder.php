@@ -358,15 +358,15 @@ class DummyDataSeeder extends Seeder
         for ($i=1;$i<=25;$i++){
             $is_composite = $faker->boolean(50);
             DB::table('products')->insert([
-                'name' => 'Name for Product '.$i,
-                'description' => 'Description for Product '.$i,
+                'name' => $faker->sentence(2),
+                'description' =>$faker->sentence(6),
                 'builder_code' => $faker->text(10),
                 'pronto_code' => $faker->text(10),
                 'manufacturing_product_code' => $faker->text(10),
                 'image' => $faker->imageUrl(640,480,null,true,null),
                 'builders_price' => $faker->numberBetween(0,10000),
                 'discount' => $faker->numberBetween(0,100),
-                'symbol' => $faker->numberBetween(0,100),
+                'symbol' => $faker->numberBetween(0,250),
                 'sales_price' => $faker->numberBetween(0,10000),
                 'is_composite' => $is_composite
             ]);
@@ -383,20 +383,20 @@ class DummyDataSeeder extends Seeder
             DB::table('sub_category_products')->insert(['sub_category_id' => 4 ,'product_id' => $i]);
         }
 
-        DB::table('sub_categories')->insert(['name' => 'Tmp' ,'description' => 'tmp description','category_id' => 6]);
+        DB::table('sub_categories')->insert(['name' => 'Tmp','description' =>'tmp description','category_id' => 6]);
 
         for ($i=1;$i<=25;$i++){
             $is_composite = $faker->boolean(50);
             DB::table('products')->insert([
-                'name' => 'Name for Product '.$i,
-                'description' => 'Description for Product '.$i,
+                'name' => $faker->sentence(2),
+                'description' =>$faker->sentence(6),
                 'builder_code' => $faker->text(10),
                 'pronto_code' => $faker->text(10),
                 'manufacturing_product_code' => $faker->text(10),
                 'image' => $faker->imageUrl(640,480,null,true,null),
                 'builders_price' => $faker->numberBetween(0,10000),
                 'discount' => $faker->numberBetween(0,100),
-                'symbol' => $faker->numberBetween(0,100),
+                'symbol' => $faker->numberBetween(0,250),
                 'sales_price' => $faker->numberBetween(0,10000),
                 'is_composite' => $is_composite
             ]);
