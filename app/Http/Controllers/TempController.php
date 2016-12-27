@@ -45,6 +45,7 @@ class TempController extends Controller
                 }else{
                     $category_array['category_type'] = 'Lights';
                 }
+                $ii++;
 
 
                 $subCategories = SubCategory::where('category_id', '=', $category->id)->get();
