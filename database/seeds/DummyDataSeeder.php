@@ -382,6 +382,9 @@ class DummyDataSeeder extends Seeder
 
             DB::table('sub_category_products')->insert(['sub_category_id' => 4 ,'product_id' => $i]);
         }
+
+        DB::table('sub_categories')->insert(['name' => 'Tmp' ,'description' => 'tmp description','category_id' => 6]);
+
         for ($i=1;$i<=25;$i++){
             $is_composite = $faker->boolean(50);
             DB::table('products')->insert([
