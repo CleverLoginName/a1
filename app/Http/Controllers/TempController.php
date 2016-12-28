@@ -47,7 +47,7 @@ class TempController extends Controller
                     $sub_category_array['sub_category_id'] = $subCategory->id;
                     $sub_category_array['sub_category_name'] = $subCategory->name;
                     $sub_category_array['is_pack'] = $subCategory->is_pack;
-                    $sub_category_array['builders_price'] = $subCategory->builders_price;
+                    $sub_category_array['builder_price'] = $subCategory->builder_price;
                     $sub_category_array['supplier_price'] = $subCategory->supplier_price;
                     $sub_category_array['contractor_price'] = $subCategory->contractor_price;
 
