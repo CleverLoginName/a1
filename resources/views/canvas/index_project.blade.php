@@ -141,7 +141,7 @@
 					BOM
 				</div>
 				</div>
-				<div class="panel-body back-ground-colour-inner">
+				<div class="panel-body back-ground-colour-inner" style="padding: 0px;">
 				<div class="side-bar2" id="bom-area">
 					<div class="property-div" >
 						<table id="productInfo" border="1" cellpadding="2">

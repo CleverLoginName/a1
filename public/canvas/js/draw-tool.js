@@ -71,7 +71,7 @@ var currentCWallPoints = new Array();
 // Eraser related
 var currentMasterEraserPoints = new Array();
 var currentEraserPoints = new Array();
-var eraserColor = '#ff0000';
+var eraserColor = '#ffffff';
 var eraserSize = 15;
 
 var clickTimeout = 1000; /* in milli seconds */

@@ -502,7 +502,7 @@ function adjustSidebar(){
     $('.body-main').css("height",(window.innerHeight*70/100));
     //			document.getElementById("sidebar").setAttribute("style","height:"+screen.height+"px");
 }
-
+/*
 $('#plans-button').click( function(){
     if ($('#temp-fileinput').length == 0) {
         $('<input id="temp-fileinput" type="file" name="somename" size="chars">').appendTo('body');
@@ -520,7 +520,7 @@ $('#plans-button').click( function(){
     }
     $('#temp-fileinput').hide();
     $('#temp-fileinput').click();
-});
+});*/
 
 $(".toggle-button").click( function () {
     perfromEscapeAction()
