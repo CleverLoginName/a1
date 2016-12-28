@@ -169,7 +169,8 @@ class TemplatesController extends Controller
             $templatePlan->img_300x200 = $destinationPath.$randFileName;
             $templatePlan->template_id = session('template')->id;
             $templatePlan->client_file_name = $file->getClientOriginalName();
-            $templatePlan->client_file_size = $file->getSize();
+            $templatePlan->client_file_size = 0;
+           // $templatePlan->client_file_size = $file->getSize();
             $templatePlan->save();
         //}
 
