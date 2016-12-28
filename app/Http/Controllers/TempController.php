@@ -75,6 +75,7 @@ class TempController extends Controller
                         $product_array['sale_price'] = $product->sales_price;
                         $product_array['builder_price'] = $product->builders_price;
                         $product_array['productCode'] = $product->symbol_name;
+                        $product_array['type'] = $category->type;
                         foreach ($custom_fields as $key => $value) {
                             $product_array[$value->name] = $value->value;
                         }
