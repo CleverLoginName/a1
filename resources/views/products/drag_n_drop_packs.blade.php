@@ -27,39 +27,60 @@
         }
     </style>
 
+
     <section id="vue">
-    <section class="box new-item-wrapper">
-        <section class="box-header"></section>
-        <section class="box-body">
-            <input type="hidden" name="pack_id" value="{!! $pack_id !!}">
-            <div class='wrapper row' id="x">
-                <div class="row">
-                <div class="col-md-12">
-                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-                </div>
-                </div>
-                <ul class="container1 col-md-6" id='left-events' style="background-color: lightgray;min-height: 500px;max-height: 500px;overflow: auto">
-                    @foreach($products as $product)
-                        <li id="{!! $product->id !!}" parent_id="{!! $pack_id !!}">
-                            <h3 class="name">{!! $product->name !!}</h3>
-                        </li>
-                    @endforeach
-                </ul>
-
-            <ul id='right-events' class='container2 col-md-6'style="background-color: lightgray;min-height: 500px">
-                </ul>
+        <section class="box new-item-wrapper">
+            <section class="box-header"></section>
 
 
 
-                <section class="row box-footer" id="form-footer">
-                    <a id="prod-frm-reset" href="{!! url('products/create/pack') !!}" class="btn add-item-btn" style="margin-right:10px;">Add Another Pack</a>
+            <div class="form_container">
+                <form class="form-horizontal">
 
-                    <a id="prod-frm-reset" href="{!! url('packs/'.$pack_id) !!}" class="btn add-item-btn" style="margin-right:10px;">View Pack</a>
-                </section>
+                    <div class="form-group">
 
+                        <input type="hidden" name="pack_id" value="{!! $pack_id !!}">
+                        <div class='wrapper row' id="x">
+                            <label for="budget" class="col-xs-12 col-lg-2 control-label">Search Product</label>
+                            <div class="col-md-12 col-lg-10">
+                                <input type="text"  class="form-control"  id="myInput" onkeyup="myFunction()" placeholder="Search for products">
+                            </div>
+
+
+
+                            <div class="col-md-12 col-lg-5 col-lg-offset-2 dragArea">
+                                <ul class="container1 col-md-12" id='left-events' style="min-height: 500px;max-height: 500px;overflow: auto">
+
+                                    @foreach($products as $product)
+                                        <li id="{!! $product->id !!}" parent_id="{!! $pack_id !!}">
+                                            <span class="name"><img src="{!! \App\ProductSymbol::find($product->symbol)->path !!}" width="35px"/>{!! $product->name !!}</span>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+
+                            <!-- -------------- Drag and drop area starts -------------------- -->
+                            <div class="col-md-12 col-lg-5 ">
+
+                                <ul id='right-events' class='container2 col-md-12 dropArea'style="min-height: 500px;max-height: 500px;overflow: auto">
+
+                                </ul>
+                            </div>
+                            <!-- -------------- Drag and drop area ends -------------------- -->
+                        </div>
+
+                    </div>
+
+                    <!-- -------- Buttons Start ---------- -->
+                    <div class="wr_btn clearfix">
+                        <input name="Save" type="button" class="btn_save" id="Save" value="Add Another Pack" >
+                        <input name="Save" type="button" class="btn_save" id="Save" value="View Pack" >
+                    </div>
+                    <!-- -------- Buttons End ---------- -->
+
+                </form>
             </div>
         </section>
-    </section>
     </section>
 @stop
 

@@ -20,9 +20,8 @@
                     </section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Pack</label></section>
-                    <section class="col-md-6">
+                    <section class="col-md-8">
                         <select class="form-control required"
                                 id="prod-frm-sub-cat" name="category_id" aria-required="true"
                                 aria-invalid="true">
@@ -34,24 +33,21 @@
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Name</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="name"
+                    <section class="col-md-8"><input class="form-control required" id="name"
                                                      name="name" aria-required="true" type="text"></section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Description</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="description"
+                    <section class="col-md-8"><input class="form-control required" id="description"
                                                      name="description" aria-required="true" type="text"></section>
                     <section class="col-md-2"></section>
                 </section>
 
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Products</label></section>
-                    <section class="col-md-6">
+                    <section class="col-md-8">
                         @foreach($products as $product)
                             {!! Form::checkbox('products[]', $product->id ,false) !!} {!! $product->name !!}<br>
                         @endforeach

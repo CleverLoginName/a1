@@ -239,13 +239,6 @@ class ProductsController extends Controller
             'symbol'   => 'required',
             'sub_category_id'   => 'required',
             'name'   => 'required',
-            'description'    => 'required',
-            'manufacturing_product_code' => 'required',
-            'builder_code'    => 'required',
-            'pronto_code'      => 'required',
-            'builders_price'      => 'required',
-            'sales_price'      => 'required',
-            'discount'      => 'required',
             'image'      => 'required',
         );
 

@@ -61,7 +61,7 @@
                 <!-- -------------- Drag and drop area starts -------------------- -->
                 <div class="col-md-12 col-lg-5 ">
 
-                    <ul id='right-events' class='container2 col-md-12 dropArea'style="min-height: 500px">
+                    <ul id='right-events' class='container2 col-md-12 dropArea'style="min-height: 500px;max-height: 500px;overflow: auto"">
                         @foreach($existingComposites as $existingComposite)
                             <?php $product= \App\Product::find($existingComposite->child); ?>
                             @if($product)
@@ -85,7 +85,7 @@
             <!-- -------- Buttons End ---------- -->
 
         </form>
-
+</div>
     </section>
     </section>
 @stop

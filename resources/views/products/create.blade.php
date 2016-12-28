@@ -23,9 +23,8 @@
                     </section>
                 </section>-->
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Catalog</label></section>
-                    <section class="col-md-6">
+                    <section class="col-md-8">
                         <select class="form-control required"
                                 id="prod-frm-sub-cat" name="catalog_id" id="catalog_id" aria-required="true" v-model="catalog" @change="catalogChange()"
                                 aria-invalid="true">
@@ -39,9 +38,8 @@
                     <section class="col-md-2"><a id="addCatalog">Can't find? Add New</a> </section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Category</label></section>
-                    <section class="col-md-6">
+                    <section class="col-md-8">
                         <select class="form-control required"
                                 id="prod-frm-sub-cat" name="category_id" aria-required="true" v-model="category" :disabled="category_disabled" @change="categoryChange()"
                                 aria-invalid="true">
@@ -54,9 +52,8 @@
                     <section class="col-md-2"><a  id="addCategory">Can't find? Add New</a></section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Sub-Category</label></section>
-                    <section class="col-md-6">
+                    <section class="col-md-8">
                         <select class="form-control required"
                                 id="prod-frm-sub-cat" name="sub_category_id" aria-required="true" v-model="sub_category" :disabled="sub_category_disabled" @change="subCategoryChange()"
                                 aria-invalid="true">
@@ -69,9 +66,8 @@
                     <section class="col-md-2"><a id="addsubCategory">Can't find? Add New</a></section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Symbol</label></section>
-                    <section class="col-md-6" style="max-height: 150px; overflow-y: auto">
+                    <section class="col-md-8" style="max-height: 150px; overflow-y: auto">
 
                         <select class="image-picker show-html" id="symbol"
                                 name="symbol">
@@ -85,9 +81,8 @@
                 </section>
 
                 <section class="row form-group @if ($errors->has('name')) has-error @endif">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Name</label></section>
-                    <section class="col-md-6">
+                    <section class="col-md-8">
                         {!! Form::text('name', null,['id'=>'name','class'=>"form-control"]) !!}
                         @if ($errors->has('name')) <p class="error_message">{{ $errors->first('name') }}</p> @endif
                     </section>
@@ -95,20 +90,17 @@
                 </section>
 
                 <section class="row form-group @if ($errors->has('image')) has-error @endif">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Product Image</label></section>
-                    <section class="col-md-6">
+                    <section class="col-md-8">
                         {!! Form::file('image',['id'=>'discount','class'=>"form-control"]) !!}
                         @if ($errors->has('image')) <p class="error_message">{{ $errors->first('image') }}</p> @endif
                     </section>
                     <section class="col-md-2"></section>
                 </section>
-
-                @if((session('sub_category_id') && !session('is_composite')))
+                @if(!session('is_composite'))
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Supplier Name</label></section>
-                    <section class="col-md-6"><select class="form-control required" id="supplier_id"
+                    <section class="col-md-8"><select class="form-control required" id="supplier_id"
                                                       name="supplier_id" :disabled="fields_disabled">
                             <option selected disabled>Please select a Supplier</option>
                             @foreach($suppliers as $supplier)
@@ -120,42 +112,37 @@
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group @if ($errors->has('description')) has-error @endif">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Description</label></section>
-                    <section class="col-md-6">
+                    <section class="col-md-8">
                         {!! Form::text('description', null,['id'=>'description','class'=>"form-control"]) !!}
                         @if ($errors->has('description')) <p class="error_message">{{ $errors->first('description') }}</p> @endif</section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group @if ($errors->has('manufacturing_product_code')) has-error @endif">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Manufacturing Product Code</label></section>
-                    <section class="col-md-6">
+                    <section class="col-md-8">
                         {!! Form::text('manufacturing_product_code', null,['id'=>'manufacturing_product_code','class'=>"form-control"]) !!}
                         @if ($errors->has('manufacturing_product_code')) <p class="error_message">{{ $errors->first('manufacturing_product_code') }}</p> @endif</section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group @if ($errors->has('builder_code')) has-error @endif">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Builders Product Code</label></section>
-                    <section class="col-md-6">
+                    <section class="col-md-8">
                         {!! Form::text('builder_code', null,['id'=>'builder_code','class'=>"form-control"]) !!}
                         @if ($errors->has('builder_code')) <p class="error_message">{{ $errors->first('builder_code') }}</p> @endif</section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group @if ($errors->has('pronto_code')) has-error @endif">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Contractor code</label></section>
-                    <section class="col-md-6">
+                    <section class="col-md-8">
                         {!! Form::text('pronto_code', null,['id'=>'pronto_code','class'=>"form-control"]) !!}
                         @if ($errors->has('pronto_code')) <p class="error_message">{{ $errors->first('pronto_code') }}</p> @endif
                     </section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group @if ($errors->has('builders_price')) has-error @endif">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Builders Price inc GST ($)</label></section>
-                    <section class="col-md-6">
+                    <section class="col-md-8">
                         {!! Form::text('builders_price', null,['id'=>'builders_price','class'=>"form-control"]) !!}
 
                         @if ($errors->has('builders_price')) <p class="error_message">{{ $errors->first('builders_price') }}</p> @endif
@@ -163,18 +150,16 @@
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group @if ($errors->has('sales_price')) has-error @endif">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Supplier Price inc GST ($)</label></section>
-                    <section class="col-md-6">
+                    <section class="col-md-8">
                         {!! Form::text('sales_price', null,['id'=>'sales_price','class'=>"form-control"]) !!}
                         @if ($errors->has('sales_price')) <p class="error_message">{{ $errors->first('sales_price') }}</p> @endif
                     </section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group @if ($errors->has('discount')) has-error @endif">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Discount (%)</label></section>
-                    <section class="col-md-6">
+                    <section class="col-md-8">
                         {!! Form::text('discount', null,['id'=>'discount','class'=>"form-control"]) !!}
                         @if ($errors->has('discount')) <p class="error_message">{{ $errors->first('discount') }}</p> @endif
                     </section>
@@ -185,9 +170,8 @@
                     @foreach($fields as $field)
 
                         <section class="row form-group @if ($errors->has($field['name'])) has-error @endif">
-                            <section class="col-md-2"></section>
                             <section class="col-md-2"><label>{!! $field['name'] !!}</label></section>
-                            <section class="col-md-6">
+                            <section class="col-md-8">
 
                                 @if($field['type'] == 'text') {!! Form::text($field['name'], null,['id'=>$field['name'],'class'=>"form-control",':disabled'=>"fields_disabled"]) !!}
                                     @if ($errors->has($field['name'])) <p class="error_message">{{ $errors->first($field['name']) }}</p> @endif
@@ -256,21 +240,21 @@
                                         <section class="row form-group">
                                             <section class="col-md-2"></section>
                                             <section class="col-md-2"><label>Name</label></section>
-                                            <section class="col-md-6"><input class="form-control required" id="catalog_name"
+                                            <section class="col-md-8"><input class="form-control required" id="catalog_name"
                                                                              name="catalog_name" aria-required="true" type="text"></section>
                                            <section class="col-md-2"></section>
                                         </section>
                                         <section class="row form-group">
                                             <section class="col-md-2"></section>
                                             <section class="col-md-2"><label>Description</label></section>
-                                            <section class="col-md-6"><input class="form-control required" id="catalog_description"
+                                            <section class="col-md-8"><input class="form-control required" id="catalog_description"
                                                                              name="catalog_description" aria-required="true" type="text"></section>
                                             <section class="col-md-2"></section>
                                         </section>
                                         <!--<section class="row form-group">
                                             <section class="col-md-2"></section>
                                             <section class="col-md-2"><label>Type</label></section>
-                                            <section class="col-md-6"><select class="form-control required" id="category_type"
+                                            <section class="col-md-8"><select class="form-control required" id="category_type"
                                                                               name="category_type">
                                                     @foreach($categoryTypes as $categoryType)
                                                         <option value="{!! $categoryType->id !!}">{!! $categoryType->name !!}</option>
@@ -282,7 +266,7 @@
                                         <section class="row form-group">
                                             <section class="col-md-2"></section>
                                             <section class="col-md-2"><label>Colour</label></section>
-                                            <section class="col-md-6"><input class="form-control required" id="category_colour"
+                                            <section class="col-md-8"><input class="form-control required" id="category_colour"
                                                                              name="category_colour" aria-required="true" type="color"></section>
                                             <section class="col-md-2"></section>
                                         </section>-->
@@ -336,7 +320,7 @@
                                     <section class="row form-group">
                                         <section class="col-md-2"></section>
                                         <section class="col-md-2"><label>Catalog</label></section>
-                                        <section class="col-md-6">
+                                        <section class="col-md-8">
                                             <select class="form-control required" name="modal_catalog_id" id="modal_catalog_id" aria-required="true"
                                             aria-invalid="true">
                                             @if(session('catalog_id') === null)<option selected disabled>Please select a Catalog</option>@endif
@@ -352,21 +336,21 @@
                                         <section class="row form-group">
                                             <section class="col-md-2"></section>
                                             <section class="col-md-2"><label>Name</label></section>
-                                            <section class="col-md-6"><input class="form-control required" id="category_name"
+                                            <section class="col-md-8"><input class="form-control required" id="category_name"
                                                                              name="category_name" aria-required="true" type="text"></section>
                                            <section class="col-md-2"></section>
                                         </section>
                                         <section class="row form-group">
                                             <section class="col-md-2"></section>
                                             <section class="col-md-2"><label>Description</label></section>
-                                            <section class="col-md-6"><input class="form-control required" id="category_description"
+                                            <section class="col-md-8"><input class="form-control required" id="category_description"
                                                                              name="category_description" aria-required="true" type="text"></section>
                                             <section class="col-md-2"></section>
                                         </section>
                                         <section class="row form-group">
                                             <section class="col-md-2"></section>
                                             <section class="col-md-2"><label>Type</label></section>
-                                            <section class="col-md-6"><select class="form-control required" id="category_type"
+                                            <section class="col-md-8"><select class="form-control required" id="category_type"
                                                                               name="category_type">
                                                     @foreach($categoryTypes as $categoryType)
                                                         <option value="{!! $categoryType->id !!}">{!! $categoryType->name !!}</option>
@@ -378,7 +362,7 @@
                                         <section class="row form-group">
                                             <section class="col-md-2"></section>
                                             <section class="col-md-2"><label>Colour</label></section>
-                                            <section class="col-md-6"><input class="form-control required" id="category_colour"
+                                            <section class="col-md-8"><input class="form-control required" id="category_colour"
                                                                              name="category_colour" aria-required="true" type="color"></section>
                                             <section class="col-md-2"></section>
                                         </section>
@@ -434,7 +418,7 @@
                                     <section class="row form-group">
                                         <section class="col-md-2"></section>
                                         <section class="col-md-2"><label>Category</label></section>
-                                        <section class="col-md-6">
+                                        <section class="col-md-8">
                                             <select class="form-control required"
                                                     id="modal_category_id" name="modal_category_id" aria-required="true" v-model="category" :disabled="category_disabled" @change="categoryChange()"
                                             aria-invalid="true">
@@ -449,14 +433,14 @@
                                         <section class="row form-group">
                                             <section class="col-md-2"></section>
                                             <section class="col-md-2"><label>Name</label></section>
-                                            <section class="col-md-6"><input class="form-control required" id="sub_category_name"
+                                            <section class="col-md-8"><input class="form-control required" id="sub_category_name"
                                                                              name="sub_category_name" aria-required="true" type="text"></section>
                                            <section class="col-md-2"></section>
                                         </section>
                                         <section class="row form-group">
                                             <section class="col-md-2"></section>
                                             <section class="col-md-2"><label>Description</label></section>
-                                            <section class="col-md-6"><input class="form-control required" id="sub_category_description"
+                                            <section class="col-md-8"><input class="form-control required" id="sub_category_description"
                                                                              name="sub_category_description" aria-required="true" type="text"></section>
                                             <section class="col-md-2"></section>
                                         </section>
