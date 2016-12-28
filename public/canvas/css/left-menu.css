@@ -699,7 +699,7 @@ tbody {
 }
 
 .pro-detail-container {
-    text-align: left; !important;
+    text-align: left !important;
     /*padding: 5px;*/
     padding-right: 2px;
     margin-left: 0 !important;
@@ -709,10 +709,9 @@ tbody {
     /*padding: 5px;*/
 }
 .pro-detail-container, .pro-price-container {
-    
-   align-items: center;
+    align-items: center;
     color: #FFF;
-    //background-color: rgba(255, 254, 254, 0.37);
+    /*background-color: rgba(255, 254, 254, 0.37);*/
     margin-left: 2px;
     margin-right: 2px;
     height: 100px;
@@ -810,7 +809,7 @@ tbody {
 }
 
 .ui-icon-gripsmall-diagonal-se { 
-     visibility: hidden;
+     /*visibility: hidden;*/
 }
 .hide-catelog{
     display: none !important;
@@ -845,6 +844,9 @@ tbody {
     color: white;
 }
 
-.panel-body {
-    padding: 0px !important;
+
+.boddy-defalt-hight{
+    height: 100px !important;
 }
+
+

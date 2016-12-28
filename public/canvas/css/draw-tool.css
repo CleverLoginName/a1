@@ -55,7 +55,11 @@
 
 #draw-tool-canvas {
 	/*background:#FFF;*/
-	border:1px solid black;
+	border:1px solid black;	
+}
+
+.hide-canvas {
+	visibility: hidden;
 }
 
 #bg-canvas {

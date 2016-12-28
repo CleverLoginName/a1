@@ -40,7 +40,7 @@
                     <div class="form-group">
 
                         <input type="hidden" name="pack_id" value="{!! $pack_id !!}">
-                        <div class='wrapper row' id="x">
+                        <div>
                             <label for="budget" class="col-xs-12 col-lg-2 control-label">Search Product</label>
                             <div class="col-md-12 col-lg-10">
                                 <input type="text"  class="form-control"  id="myInput" onkeyup="myFunction()" placeholder="Search for products">

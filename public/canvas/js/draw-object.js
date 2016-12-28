@@ -175,6 +175,7 @@ DrawObject.prototype.setPoints = function(sX, sY, eX, eY){
     this.objStartY = top;
     this.objEndX = right;
     this.objEndY = bottom;
+    var iconPath;
 }
 
 DrawObject.prototype.getStatus = function(){
@@ -208,6 +209,10 @@ DrawObject.prototype.getObjWidth = function(){
 DrawObject.prototype.getObjHeight = function(){
     return (this.objEndY - this.objStartY);
 }
+
+
+
+
 
 /* Returns whether any given point is inside the object. Useful in detection object user clicks for dragging, etc...
  */
@@ -586,18 +591,18 @@ function LightBulb(){
     this.objType = ObjectType.LIGHT_BULB;
     this.scalerSize = 10;
 
-	this.rayLength = 200;
-//console.log(this);
-	if (typeof bname !== 'undefined') {this.name = bname;}else{this.name = '';}
-	if (typeof power !== 'undefined') {this.lightpower = power;}else{this.lightpower = '';}
-	//if (typeof bulbPrice !== 'undefined') {this.price = bulbPrice;}else{this.price = '';}
-	if (typeof b_tooltip !== 'undefined') { this.tooltip = b_tooltip;}else{ this.tooltip = '';}
-	//if (typeof lightImagePath !== 'undefined') { this.imgPath= lightImagePath;}else{ this.imgPath= '';}
-	//if (typeof visibility !== 'undefined') { this.visibility = true;}else{this.visibility = '';}
+    if (typeof bname !== 'undefined') {this.name = bname;}else{this.name = '';}
+    if (typeof power !== 'undefined') {this.lightpower = power;}else{this.lightpower = '';}
+    if (typeof b_tooltip !== 'undefined') { this.tooltip = b_tooltip;}else{ this.tooltip = '';}
     this.visibility = true;
-    //if (typeof set_itemCode !== 'undefined') { this.itemCode = set_itemCode;}else{this.itemCode = '';}
-	if (typeof elev !== 'undefined') { this.elevation = elev;}else{this.elevation = '';}
-	if (typeof angle !== 'undefined') { this.angle = angle;}else{this.angle = '';}
+    if (typeof elev !== 'undefined') { this.elevation = elev;}else{this.elevation = '';}
+    if (typeof angle !== 'undefined') { this.angle = angle;}else{this.angle = '';}
+    this.tooltip = true;
+    this.iconpath = bulb_icon;
+
+   // this.price = bulbPrice;
+    //this.itemCode = set_itemCode;
+   // this.imgPath= lightImagePath;
 
     this.connections = [];
     this.label = "Anonymous";
@@ -606,6 +611,8 @@ function LightBulb(){
     this.rayLength = 0;
 }
 
+
+
 /* Set image path */
 LightBulb.prototype.setImgPath = function (path) {
     this.imgPath = path;
@@ -613,7 +620,7 @@ LightBulb.prototype.setImgPath = function (path) {
 
 /* Get image path */
 LightBulb.prototype.getImgPath = function () {
-	return this.imgPath;
+    return this.imgPath;
 }
 
 /* Set image path */
@@ -638,6 +645,16 @@ LightBulb.prototype.setCoordinates = function(x,y){
     this.objEndX =  parseInt(x) + parseInt(this.radius);
     this.objStartY =   parseInt(y) - parseInt(this.radius);
     this.objEndY =  parseInt(y) + parseInt(this.radius);
+}
+
+
+LightBulb.prototype.getIconPath = function(){
+    return (this.iconpath);
+}
+
+LightBulb.prototype.setIconPath = function(path){
+    this.iconpath = path;
+
 }
 
 LightBulb.prototype.setProductInfo = function(productInfo){
@@ -1052,69 +1069,67 @@ CWall.prototype.resize = function (direction, newX, newY, offsetX, offsetY){
     var tmpStartX, tmpStartY, tmpEndX, tmpEndY;
     var xScale, yScale;
 
-	/* The scalling operation is different w.r.t. the corner selected */
+    var scale;
+    this.setPointsFromVertices();
+    var x0, y0, x1, y1, xn, yn;
     switch (direction){
         case ObjectDirection.NE :
+            xn = newX + offsetX;
+            yn = newY - offsetY;
+            
+            x0 = this.objStartX;
+            y0 = this.objEndY;
 
-            this.setPointsFromVertices();
-
-            xScale = (newX+offsetX - this.objStartX) / (this.objEndX - this.objStartX);
-            yScale = (newY-offsetY - this.objEndY) / (this.objStartY - this.objEndY);
-
-
-            if (xScale >0 && yScale >0){
-                for (var i = 0; i< this.objVerticesArr.length; i++){
-                    this.objVerticesArr[i].x = this.objStartX + (this.objVerticesArr[i].x - this.objStartX) * xScale;
-                    this.objVerticesArr[i].y = this.objEndY + (this.objVerticesArr[i].y - this.objEndY) * yScale;
-                }
-                this.setPointsFromVertices();
-            }
+            x1 = this.objEndX;
+            y1 = this.objStartY;
             break;
+
         case ObjectDirection.SE :
-            this.setPointsFromVertices();
+            xn = newX + offsetX;
+            yn = newY + offsetY;
+            
+            x0 = this.objStartX;
+            y0 = this.objStartY;
 
-            xScale = (newX+offsetX - this.objStartX) / (this.objEndX - this.objStartX);
-            yScale = (newY+offsetY - this.objStartY) / (this.objEndY - this.objStartY);
-
-            if (xScale > 0 && yScale >0){
-                for (var i = 0; i< this.objVerticesArr.length; i++){
-                    this.objVerticesArr[i].x = this.objStartX + (this.objVerticesArr[i].x - this.objStartX) * xScale;
-                    this.objVerticesArr[i].y = this.objStartY + (this.objVerticesArr[i].y - this.objStartY) * yScale;
-                }
-            }
-            this.setPointsFromVertices();
-
+            x1 = this.objEndX;
+            y1 = this.objEndY;
             break;
+
         case ObjectDirection.SW :
-            this.setPointsFromVertices();
+            xn = newX - offsetX;
+            yn = newY + offsetY;
+            
+            x0 = this.objEndX;
+            y0 = this.objStartY;
 
-            xScale = (newX-offsetX - this.objEndX) / (this.objStartX - this.objEndX);
-            yScale = (newY+offsetY - this.objStartY) / (this.objEndY - this.objStartY);
-
-            if (xScale > 0 && yScale > 0){
-                for (var i = 0; i< this.objVerticesArr.length; i++){
-                    this.objVerticesArr[i].x = this.objEndX + (this.objVerticesArr[i].x - this.objEndX) * xScale;
-                    this.objVerticesArr[i].y = this.objStartY + (this.objVerticesArr[i].y - this.objStartY) * yScale;
-                }
-            }
-            this.setPointsFromVertices();
-
+            x1 = this.objStartX;
+            y1 = this.objEndY;
             break;
+
         case ObjectDirection.NW :
-            this.setPointsFromVertices();
+            xn = newX - offsetX;
+            yn = newY - offsetY;
+            
+            x0 = this.objEndX;
+            y0 = this.objEndY;
 
-            xScale = (newX-offsetX - this.objEndX) / (this.objStartX - this.objEndX);
-            yScale = (newY-offsetY - this.objEndY) / (this.objStartY - this.objEndY);
-
-            if (xScale > 0 && yScale > 0){
-                for (var i = 0; i< this.objVerticesArr.length; i++){
-                    this.objVerticesArr[i].x = this.objEndX + (this.objVerticesArr[i].x - this.objEndX) * xScale;
-                    this.objVerticesArr[i].y = this.objEndY + (this.objVerticesArr[i].y - this.objEndY) * yScale;
-                }
-            }
-            this.setPointsFromVertices();
+            x1 = this.objStartX;
+            y1 = this.objStartY;
             break;
+
     }
+
+    xScale = (x1 != x0) ? (xn - x0) / (x1 - x0) : 0;
+    yScale = (y1 != y0) ? (yn - y0) / (y1 - y0) : 0;
+    console.log("xScale :" + xScale + "yScale :" + yScale);
+    scale = (xScale > yScale) ? xScale : yScale;  
+    if (scale > 0 ){
+        for (var i = 0; i< this.objVerticesArr.length; i++){
+            this.objVerticesArr[i].x = x0 + (this.objVerticesArr[i].x - x0) * scale;
+            this.objVerticesArr[i].y = y0 + (this.objVerticesArr[i].y - y0) * scale;
+        }
+    }
+    this.setPointsFromVertices();
 }
 
 /* Scales up or down the object by a given factor */

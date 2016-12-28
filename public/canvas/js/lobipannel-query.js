@@ -140,25 +140,58 @@ $(function(){
 
     $('.cat-1').on('beforeUnpin.lobiPanel',function (ev,lobiPanel) {
 //            alert("hi");
+        $(this).addClass("unpin-pannel-hight");
+        $(this).find('.panel-body').addClass("unpin-pannel-hight-body");
         $(this).lobiPanel('maximize');
-        $('.bom-medder>.panel-heading').addClass("test1").removeClass("test2");
+    }).lobiPanel();
+
+    $('.cat-1').on('beforePin.lobiPanel',function (ev,lobiPanel) {
+        $(this).removeClass("unpin-pannel-hight");
+        $(this).find('.panel-body').removeClass("unpin-pannel-hight-body");
+        $(this).lobiPanel('maximize');
     }).lobiPanel();
 
     $('.cat-2').on('beforeUnpin.lobiPanel',function (ev,lobiPanel) {
 //            alert("hi");
+        $(this).addClass("unpin-pannel-hight");
+        $(this).find('.panel-body').addClass("unpin-pannel-hight-body");
+        $(this).lobiPanel('maximize');
+    }).lobiPanel();
+
+    $('.cat-2').on('beforePin.lobiPanel',function (ev,lobiPanel) {
+//            alert("hi");
+        $(this).removeClass("unpin-pannel-hight");
+        $(this).find('.panel-body').removeClass("unpin-pannel-hight-body");
         $(this).lobiPanel('maximize');
     }).lobiPanel();
 
     $('.cat-3').on('beforeUnpin.lobiPanel',function (ev,lobiPanel) {
 //            alert("hi");
+        $(this).addClass("unpin-pannel-hight");
+        $(this).find('.panel-body').addClass("unpin-pannel-hight-body");
+        $(this).lobiPanel('maximize');
+    }).lobiPanel();
+
+    $('.cat-3').on('beforePin.lobiPanel',function (ev,lobiPanel) {
+//            alert("hi");
+        $(this).removeClass("unpin-pannel-hight");
+        $(this).find('.panel-body').removeClass("unpin-pannel-hight-body");
         $(this).lobiPanel('maximize');
     }).lobiPanel();
 
     $('.cat-4').on('beforeUnpin.lobiPanel',function (ev,lobiPanel) {
 //            alert("hi");
+        $(this).addClass("unpin-pannel-hight");
+        $(this).find('.panel-body').addClass("unpin-pannel-hight-body");
         $(this).lobiPanel('maximize');
     }).lobiPanel();
 
+    $('.cat-4').on('beforePin.lobiPanel',function (ev,lobiPanel) {
+//            alert("hi");
+        $(this).removeClass("unpin-pannel-hight");
+        $(this).find('.panel-body').removeClass("unpin-pannel-hight-body");
+        $(this).lobiPanel('maximize');
+    }).lobiPanel();
 
     $('#main-pnnel-drag').on('onPin.lobiPanel',function (ev,lobiPanel) {
         $(this).height(window.innerHeight*70/100);

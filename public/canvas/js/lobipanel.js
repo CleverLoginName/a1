@@ -1578,7 +1578,6 @@ $(function () {
         },
         _saveState: function (state, params) {
             var me = this;
-            console.log("Save state ", state, params);
             if (!me.hasRandomId && me.$options.stateful) {
                 me.storage.state = state;
                 if (params) {

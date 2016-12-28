@@ -17,6 +17,7 @@
     {{ Html::style('canvas/demo/demo.css') }}
     {{ Html::style('canvas/css/rating-stars.css') }}
     {{ Html::style('canvas/css/custom-css.css') }}
+    {{ Html::style('canvas/css/lobipannel-styles.css') }}
 
 
 
@@ -27,16 +28,9 @@
 <div id="parent" style="">
     <div id="sidebar" class="col-md-3 col-lg-3 col-sm-3 col-xs-3" style="background-color: #E7E7E7">
 	<div style=" background-color:#E7E7E7; ">
-
-
-
-
-
-
 		<div class="panel panel-default  body-main inside-body-pan" style="background-color: #51748c;"id="main-pnnel-drag" >
 			<div class="panel-heading back-ground-colour-inner">
 					<div class="panel-title back-ground-colour-inner row line-hight" style="padding-right: 10px;width: 280px">
-
 						<div class="row left-align"  style="margin-top: 40px;margin-bottom: 3px">
 							<div class="col-md-2=1 col-lg-2 col-sm-2 col-xs-2"   >
 								<img class="pro-logo" src="{!! asset('img/logooo.png') !!}" align="center">
@@ -54,35 +48,24 @@
 									<input type="radio" name="group-1" id="group-1-3" value="2" /><label for="group-1-3"></label>
 									<input type="radio" name="group-1" id="group-1-4"  value="1" /><label for="group-1-4"></label>
 									<input type="radio" name="group-1" id="group-1-5"  value="1" /><label for="group-1-4"></label>
-								</form></div>
-
+								</form>
+							</div>
 						</div>
 						<div class="row" style=" margin-bottom:2px; margin-top:2px;"  >
-
 							<div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 text-in-side-menue title">Max Energy :</div>
-
 							<div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 text-sub-cat" id="max-energy">XXX5</div>
-
 						</div>
 						<div class="row" style=" margin-bottom:2px; margin-top:2px;" >
 							<div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 text-in-side-menue title" >Design Energy :</div>
 							<div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 text-sub-cat" id="design-energy">XXX5</div>
-
 						</div>
 						<div class="row" style=" margin-bottom:2px; margin-top:2px;" >
 							<div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 text-in-side-menue title">Variation cost :</div>
 							<div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 text-sub-cat" id="variation-cost">XXX5</div>
-
 						</div>
-
 					</div>
-
 				</div>
-
-
-			<div class="panel-body back-ground-colour-inner main-body-tag inside-body-pan" id="main-pannel-body" style="overflow: auto" >
-
-
+			<div class="panel-body back-ground-colour-inner main-body-tag inside-body-pan" id="main-pannel-body" style="padding:0px;overflow: auto" >
 				<div class="panel panel-default inner-class cat-1 hide-catelog" id="main-0">
 					<div class="panel-heading ">
 						<div class="panel-title ading-left-padding title titel-text-size" >
@@ -126,45 +109,57 @@
 						</div>
 					</div>
 					<div class="panel-body back-ground-colour-inner inside-body-pan body-inner" style="overflow-x: hidden;overflow-y:auto;">
+						<div class="row" style=" margin-bottom:4px; margin-top:4px;" id="catlog-2">
+							<ul class="level-2" style="">
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default inner-class cat-4 hide-catelog" id="main-3">
+					<div class="panel-heading">
+						<div class="panel-title ading-left-padding title titel-text-size">
+							<div id="3">
+
+							</div>
+						</div>
+					</div>
+					<div class="panel-body back-ground-colour-inner inside-body-pan body-inner" style="overflow-x: hidden;overflow-y:auto;">
 						<div class="row" style=" margin-bottom:4px; margin-top:4px;" id="catlog-3">
 							<ul class="level-2" style="">
 							</ul>
-
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
-
 	</div>
 
 	<div  style="background-color:green;  vertical-align: bottom;">
-        <div class="panel panel-default bom-medder" id="bom-area1">
-					<div class="panel-heading test1">
-						<div class="panel-title ading-left-padding title titel-text-size" >
-							BOM
-						</div>
-					</div>
-					<div class="panel-body back-ground-colour-inner">
-								<div class="side-bar2" id="bom-area">
-			<div class="property-div" >
-				<table id="productInfo" border="1" cellpadding="2">
-					<tr>
-
-						<td><b>Name</b></td>
-						<td><b>Price</b></td>
-						<td><b>Discount</b></td>
-						<td><b>Energy(W)</b></td>
-						<td><b>Visible</b></td>
-					</tr>
-				</table>
-			</div>
-		</div>
+		<div class="panel panel-default bom-medder" id="bom-area1">
+			<div class="panel-heading test1">
+				<div class="panel-title ading-left-padding title titel-text-size" >
+					BOM
+				</div>
+				</div>
+				<div class="panel-body back-ground-colour-inner">
+				<div class="side-bar2" id="bom-area">
+					<div class="property-div" >
+						<table id="productInfo" border="1" cellpadding="2">
+							<tr>
+								<td><b>Name</b></td>
+								<td><b>Price</b></td>
+								<td><b>Discount</b></td>
+								<td><b>Energy(W)</b></td>
+								<td><b>Visible</b></td>
+							</tr>
+						</table>
 					</div>
 				</div>
+			</div>
+		</div>
 	</div>
 </div >
+
     <div id="design-area" class="col-md-9 col-lg-9 col-sm-9 col-xs-9">
     <div id="address-bar">
         <div class="headerDiv first border-left-add">
@@ -318,57 +313,6 @@
 					</a>
 					<span class="tooltiptext">Zoom out</span>
 				</li>
-				<!--<li class="tool-item">-->
-				<!--<a href="javascript:void(0);" id="zoom-reset" class="zoom-control" data-action="zoom-reset">-->
-				<!--<img class="image-item" 		src="{!! asset('img/tool-bar/black/zoom_reset.png') !!}">-->
-				<!--<img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/zoom_reset.png') !!}">-->
-				<!--</a>-->
-				<!--<span class="tooltiptext">Zoom reset</span>-->
-				<!--</li>-->
-				<!---->
-				<!--<li class="tool-item">-->
-				<!--<a href="javascript:void(0);" id="scale-up" class="scale-item-control" data-action="scale-up">-->
-				<!--<img class="image-item" 		src="{!! asset('img/tool-bar/black/scale_up.png') !!}">-->
-				<!--<img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/scale_up.png') !!}">-->
-				<!--</a>-->
-				<!--<span class="tooltiptext">Scale Up</span>-->
-				<!--</li>-->
-				<!--<li class="tool-item">-->
-				<!--<a href="javascript:void(0);" id="scale-down" class="scale-item-control" data-action="scale-down">-->
-				<!--<img class="image-item" 		src="{!! asset('img/tool-bar/black/scale_down.png') !!}">-->
-				<!--<img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/scale_down.png') !!}">-->
-				<!--</a>-->
-				<!--<span class="tooltiptext">Scale Down</span>-->
-				<!--</li>-->
-				<!--				<li class="tool-item">
-                                    <a href="javascript:void(0);" id="scale-reset" class="scale-item-control" data-action="scale-reset"><img
-                                            class="image-item"
-                                            src="{!! asset('img/tool-bar/repeat.png') !!}"></a>
-                                    <span class="tooltiptext">Scale reset</span>
-                                </li>
-                                 -->
-
-
-                <!--<li class="tool-item">
-                    <a href="javascript:void(0);" id="rotate">
-                        <img class="image-item" src="{!! asset('img/tool-bar/rotate.png') !!}">
-                    </a>
-                    <span class="tooltiptext">Rotate</span>
-                </li>-->
-                <!--
-                                <li class="tool-item">
-                                    <a href="javascript:void(0);" id="prive_vice" onclick="javascript:print_report_price_vice();">
-                                        <img class="image-item" src="{!! asset('img/tool-bar/icon_drawer.png') !!}">
-                                    </a>
-                                    <span class="tooltiptext">Report price vice</span>
-                                </li>
-
-                                <li class="tool-item">
-                                    <a href="javascript:void(0);" id="product_vice" onclick="javascript:print_report_product_vice();">
-                                        <img class="image-item" src="{!! asset('img/tool-bar/icon_drawer_alt.png') !!}">
-                                    </a>
-                                    <span class="tooltiptext">Report product vice</span>
-                                </li>-->
 			</ul>
 		</div>
 		<div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
@@ -402,7 +346,7 @@
 			<!--<div style="height:50px; width:100%;"></div>-->
 			<canvas id="ruler-canvas" style="border:1px solid #fff; position:absolute; top: 0;left: 0;"></canvas>
 			<canvas id="bg-canvas"></canvas>
-			<canvas id="draw-tool-canvas"></canvas>
+			<canvas id="draw-tool-canvas" class="hide-canvas"></canvas>
 			<!-- <div id="scale-ratio-display">&nbsp;</div>
             <div id="zoom-ratio-display">&nbsp;</div> -->
 		</div>
@@ -536,50 +480,49 @@
 				<!-- <button type="button" id="b-cancel" class="btn-error">Cancel</button> -->
 			</div>
 		</div>
-	</div></div>
+	</div>
+	</div>
 </div>
 
-
-
-		<span class="canvas-tooltip-span" id="span-tooltip-can">
-			<table class="noborder">
-				<tbody>
-					<tr>
-						<th id="can-tool-title"></th>
-						<td rowspan="2" class="noborder">
-							<img id="can-tool-image" alt="" src=""/>
-						</td>
-					</tr>
-					<tr>
-						<td id="can-tool-product-code" class="noborder"></td>
-					</tr>
-					<tr>
-						<td class="noborder">Fit-Off Dimensions:
-							<ul>
-								<li id="can-tool-product-elevation"></li>
-								<li id="can-tool-product-location"></li>
-							</ul>
-						</td>
-						<td align="center" class="noborder"><h4 id="can-tool-product-power"></h4><h5>watts</h5></td>
-					</tr>
-					<tr>
-						<td colspan="2" class="noborder">
-							<input type="text" id="can-tool-product-note" style="color:black; width:100%;" placeholder="Notes"/>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2" align="right" class="noborder">
-							<!--<button type="button" id="can-tool-btn-cancel" class="btn btn-primary">Edit</button>-->
-							<button type="button" id="can-tool-btn-save" class="btn btn-primary">Save</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+<span class="canvas-tooltip-span" id="span-tooltip-can">
+	<table class="noborder">
+		<tbody>
+			<tr>
+				<th id="can-tool-title"></th>
+				<td rowspan="2" class="noborder">
+					<img id="can-tool-image" alt="" src=""/>
+				</td>
+			</tr>
+			<tr>
+				<td id="can-tool-product-code" class="noborder"></td>
+			</tr>
+			<tr>
+				<td class="noborder">Fit-Off Dimensions:
+					<ul>
+						<li id="can-tool-product-elevation"></li>
+						<li id="can-tool-product-location"></li>
+					</ul>
+				</td>
+				<td align="center" class="noborder"><h4 id="can-tool-product-power"></h4><h5>watts</h5></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="noborder">
+					<input type="text" id="can-tool-product-note" style="color:black; width:100%;" placeholder="Notes"/>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="right" class="noborder">
+					<!--<button type="button" id="can-tool-btn-cancel" class="btn btn-primary">Edit</button>-->
+					<button type="button" id="can-tool-btn-save" class="btn btn-primary">Save</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </span>
 
 
-{{ Html::script('canvas/js/jquery-3.1.1.min.js') }}
-{{ Html::script('canvas/js/jquery-ui-updated.min.js') }}
+{{ Html::script('canvas/js/jquery-3.1.1.js') }}
+{{ Html::script('canvas/js/jquery-ui.js') }}
 {{ Html::script('canvas/js/draw-object.js') }}
 {{ Html::script('canvas/js/draw-tool.js') }}
 {{ Html::script('canvas/js/controllers_template.js') }}
@@ -603,61 +546,14 @@
 
 	$(function() {
 		init();
-	});
-
-
-    var i = 0;
-    var dragging = false;
-    $('#dragbar').mousedown(function(e){
-        e.preventDefault();
-
-        dragging = true;
-        var main = $('#main');
-        var ghostbar = $('<div>',
-                {id:'ghostbar',
-                    css: {
-                        height: main.outerHeight(),
-                        top: main.offset().top,
-                        left: main.offset().left
-                    }
-                }).appendTo('body');
-
-        $(document).mousemove(function(e){
-            ghostbar.css("left",e.pageX+2);
-        });
-    });
-
-    $(document).mouseup(function(e){
-        if (dragging)
-        {
-            $('#sidebar').css("width",e.pageX+2);
-            $('#main').css("left",e.pageX+2);
-            $('#ghostbar').remove();
-            $(document).unbind('mousemove');
-            dragging = false;
-        }
-    });
-</script>
-
-
-<script>
-    $('#sidebar').height(screen.height);
-    //			document.getElementById("sidebar").setAttribute("style","height:"+screen.height+"px");
-</script>
-<script>
-
-	$(function() {
 		setBackgroundImage('{!! url($bgImg) !!}');
 	});
+	$('#plans-button').on('click', function () {
 
-
-    $('#plans-button').on('click', function () {
-
-        $('.template_modal').modal('show');
-    });
+		$('.template_modal').modal('show');
+	});
 
 </script>
-
 
 
 <div class="modal fade template_modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">

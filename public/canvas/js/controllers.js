@@ -25,6 +25,11 @@ $('#drag').click(function () {
     document.getElementsByTagName("body")[0].style.cursor = "auto";
 });
 
+$('#eraser').click(function () {
+    toolAction = ToolActionEnum.ERASE;
+    document.getElementsByTagName("body")[0].style.cursor = "auto";
+});
+
 $('#scale').click(function () {
     toolAction = ToolActionEnum.SCALE;
     document.getElementsByTagName("body")[0].style.cursor = "auto";
@@ -85,7 +90,7 @@ $("#switch-prop-close").on("click", function () {
 
 // DROP ITEM TO THE CANVAS
 
-var angle, elev, power, type, b_tooltip, s_angle, s_elev, s_power, s_bname, s_type, s_tooltip;
+var angle, elev, power, type, b_tooltip, s_angle, s_elev, s_power, s_bname, s_type, s_tooltip,bulb_icon;
 
 //var single_item = document.getElementsByClassName('single-item');
 
@@ -102,12 +107,12 @@ $(".product-container").on("click", ".single-item", function (e) {
         power = this.getAttribute("data-power");
 
         bname = this.getAttribute("data-name");
-
         type = this.getAttribute("attr");
         b_tooltip = this.getAttribute("data-tooltip");
         bulbPrice = this.getAttribute("data-price");
         set_itemCode = this.getAttribute("data-item-code");
         lightImagePath = this.getAttribute("data-path");
+        bulb_icon  = this.getAttribute("data-path1");
 
         document.getElementsByTagName("body")[0].style.cursor = "url('img/cursor/bulb-icon.cur'), auto";
     }
@@ -249,8 +254,7 @@ $(function () {
                 url: 'save',
                 data: 'file_data=' + JSON.stringify(saveData),
                 success: function (msg) {
-                    console.log(drawElements);
-                    //window.open(msg, '_blank');
+                    window.open(msg, '_blank');
                 },
                 error: function () {
                     alert('Network Error !');
@@ -327,7 +331,6 @@ $(function () {
 
     /* Scale up,down,reset control */
     $('.scale-item-control').click(function () {
-        console.log("dsdsds");
         var action = $(this).attr('data-action');
 
         switch (action) {
@@ -490,9 +493,30 @@ adjustSidebar()
 function adjustSidebar(){
     $('#sidebar').height(window.innerHeight);
     $('#main-pnnel-drag').height(window.innerHeight*70/100);
-    $('#bom-area').height(window.innerHeight*30/100);
+    $('#bom-area1').height(window.innerHeight*30/100);
 
-    $('#bom-area').width($('#main-pnnel-drag').width());
+    $('#bom-area1').width($('#main-pnnel-drag').width());
+    $('#bom-area1').width($('#sidebar').width());
+    $('#bom-area').width($('#sidebar').width());
     $('.body-main').css("height",(window.innerHeight*70/100));
     //			document.getElementById("sidebar").setAttribute("style","height:"+screen.height+"px");
 }
+
+$('#plans-button').click( function(){
+    if ($('#temp-fileinput').length == 0) {
+        $('<input id="temp-fileinput" type="file" name="somename" size="chars">').appendTo('body');
+
+        $('#temp-fileinput').change(function(){
+            var file = this.files[0];
+            var reader = new FileReader();
+            reader.onloadend = function(){
+                setBackgroundImage(reader.result);
+            }
+            if(file){
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+    $('#temp-fileinput').hide();
+    $('#temp-fileinput').click();
+});
