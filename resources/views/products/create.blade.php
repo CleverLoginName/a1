@@ -93,6 +93,18 @@
                     </section>
                     <section class="col-md-2"></section>
                 </section>
+
+                <section class="row form-group @if ($errors->has('image')) has-error @endif">
+                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Product Image</label></section>
+                    <section class="col-md-6">
+                        {!! Form::file('image',['id'=>'discount','class'=>"form-control"]) !!}
+                        @if ($errors->has('image')) <p class="error_message">{{ $errors->first('image') }}</p> @endif
+                    </section>
+                    <section class="col-md-2"></section>
+                </section>
+
+                @if((session('sub_category_id') && !session('is_composite')))
                 <section class="row form-group">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Supplier Name</label></section>
@@ -168,15 +180,6 @@
                     </section>
                     <section class="col-md-2"></section>
                 </section>
-                <section class="row form-group @if ($errors->has('image')) has-error @endif">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Product Image</label></section>
-                    <section class="col-md-6">
-                        {!! Form::file('image',['id'=>'discount','class'=>"form-control"]) !!}
-                        @if ($errors->has('image')) <p class="error_message">{{ $errors->first('image') }}</p> @endif
-                    </section>
-                    <section class="col-md-2"></section>
-                </section>
 
 
                     @foreach($fields as $field)
@@ -203,7 +206,7 @@
 
 
 
-
+                @endif
 
 
                 <section class="row box-footer" id="form-footer">
@@ -219,6 +222,7 @@
                         @endif
 
                 </section>
+
             </form>
         </section>
     </section>
@@ -513,6 +517,10 @@
     <button data-ref="sub-menu-items" data-index="2" class="breadcrumb-btn font-blue" type="submit" id="2-bc"><span
                 class="breadcrumb-text">Composite Product</span></button>
     <i class="fa fa-chevron-right breadcrumb-icn font-blue" id="3-ic"></i>
+        @else
+        <button data-ref="sub-menu-items" data-index="2" class="breadcrumb-btn font-blue" type="submit" id="2-bc"><span
+                    class="breadcrumb-text">Single Product</span></button>
+        <i class="fa fa-chevron-right breadcrumb-icn font-blue" id="3-ic"></i>
     @endif
 @stop
 

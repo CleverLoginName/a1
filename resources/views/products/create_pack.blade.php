@@ -63,6 +63,27 @@
                                                      name="description" aria-required="true" type="text"></section>
                     <section class="col-md-2"></section>
                 </section>
+                <section class="row form-group">
+                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Builder Price</label></section>
+                    <section class="col-md-6"><input class="form-control required" id="builder_price"
+                                                     name="builder_price" aria-required="true" type="text"></section>
+                    <section class="col-md-2"></section>
+                </section>
+                <section class="row form-group">
+                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Supplier Price</label></section>
+                    <section class="col-md-6"><input class="form-control required" id="supplier_price"
+                                                     name="supplier_price" aria-required="true" type="text"></section>
+                    <section class="col-md-2"></section>
+                </section>
+                <section class="row form-group">
+                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Contractor Price</label></section>
+                    <section class="col-md-6"><input class="form-control required" id="contractor_price"
+                                                     name="contractor_price" aria-required="true" type="text"></section>
+                    <section class="col-md-2"></section>
+                </section>
 
 
 

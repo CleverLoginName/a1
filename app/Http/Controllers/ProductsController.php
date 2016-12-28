@@ -307,6 +307,10 @@ class ProductsController extends Controller
 
         $products = Product::all();
 
+        session(['catalog_id' => null ]);
+        session(['category_id' => null ]);
+        session(['sub_category_id' =>null ]);
+
         if($request->get('is_composite') == true){
             Flash::success('Composite Product Added', 'Composite Product has been added successfully.');
             return view('products.drag_n_drop')
@@ -315,9 +319,7 @@ class ProductsController extends Controller
                 ->with('products',$products );
         }
 
-        session(['catalog_id' => null ]);
-        session(['category_id' => null ]);
-        session(['sub_category_id' =>null ]);
+
 
         Flash::success('Product Added', 'Product has been added successfully.');
         return redirect()->action('ProductsController@create');
@@ -344,6 +346,9 @@ public function addPack(Request $request)
         $subCategory->name = $request->get('name');
         $subCategory->description = $request->get('description');
         $subCategory->is_pack = true;
+        $subCategory->builder_price = $request->get('builder_price');
+        $subCategory->supplier_price = $request->get('supplier_price');
+        $subCategory->contractor_price = $request->get('contractor_price');
         $subCategory->save();
 
 

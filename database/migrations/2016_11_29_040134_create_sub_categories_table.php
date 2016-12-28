@@ -18,6 +18,9 @@ class CreateSubCategoriesTable extends Migration
             $table->text('description');
             $table->integer('category_id');
             $table->boolean('is_pack');
+            $table->integer('builder_price')->nullable();
+            $table->integer('supplier_price')->nullable();
+            $table->integer('contractor_price')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

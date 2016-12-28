@@ -33,19 +33,12 @@ class TempController extends Controller
             $catalog_array['catalog_name'] = $catalog->name;
 
             $categories = Category::where('catalog_id', '=', $catalog->id)->get();
-            $ii = 0;
             foreach ($categories as $category) {
                 $category_array = [];
                 $category_array['category_id'] = $category->id;
                 $category_array['category_name'] = $category->name;
-
-                // To-Do
-                if(($ii % 2) == 0){
-                    $category_array['category_type'] = 'Switches';
-                }else{
-                    $category_array['category_type'] = 'Lights';
-                }
-                $ii++;
+                $category_array['category_type'] = $category->type;
+                $category_array['category_colour'] = $category->colour;
 
 
                 $subCategories = SubCategory::where('category_id', '=', $category->id)->get();
@@ -54,6 +47,9 @@ class TempController extends Controller
                     $sub_category_array['sub_category_id'] = $subCategory->id;
                     $sub_category_array['sub_category_name'] = $subCategory->name;
                     $sub_category_array['is_pack'] = $subCategory->is_pack;
+                    $sub_category_array['builders_price'] = $subCategory->builders_price;
+                    $sub_category_array['supplier_price'] = $subCategory->supplier_price;
+                    $sub_category_array['contractor_price'] = $subCategory->contractor_price;
 
                     //foreach
                     $products = DB::table('products')
