@@ -372,7 +372,7 @@ class DummyDataSeeder extends Seeder
         }
 
         for ($i=1;$i<=10;$i++){
-            $id = DB::table('sub_categories')->insertGetId(['name' => 'Pack '.$i ,'description' => 'Pack description'.$i,'category_id' => 5,'is_pack' => true,'builders_price' => $faker->numberBetween(100,1000),'supplier_price' => $faker->numberBetween(100,1000),'contractor_price' => $faker->numberBetween(100,1000)]);
+            $id = DB::table('sub_categories')->insertGetId(['name' => 'Pack '.$i ,'description' => 'Pack description'.$i,'category_id' => 5,'is_pack' => true,'builder_price' => $faker->numberBetween(100,1000),'supplier_price' => $faker->numberBetween(100,1000),'contractor_price' => $faker->numberBetween(100,1000)]);
 
             for ($j=1;$j<=5;$j++) {
                 DB::table('sub_category_products')->insert(['sub_category_id' => $id, 'product_id' => $j]);
