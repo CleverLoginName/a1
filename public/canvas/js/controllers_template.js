@@ -255,8 +255,17 @@ $(function () {
                 url: 'canvas/templates/updates',
                 data: 'file_data=' + JSON.stringify(saveData),
                 success: function (msg) {
-                    //console.log(drawElements);
-                   // window.open(msg, '_blank');
+                    new PNotify({
+                        title: 'Data Saved',
+                        title_escape: false,
+                        text: 'Plan data saved',
+                        text_escape: false,
+                        styling: "bootstrap3",
+                        type: "success",
+                        icon: true,
+                        addclass: "stack-bottomright",
+                        delay:1500
+                    });
                 },
                 error: function () {
                     alert('Network Error !');

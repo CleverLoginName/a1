@@ -18,7 +18,7 @@
     {{ Html::style('canvas/css/rating-stars.css') }}
     {{ Html::style('canvas/css/custom-css.css') }}
     {{ Html::style('canvas/css/lobipannel-styles.css') }}
-
+	{{ Html::style('pnotify.custom.min.css') }}
 
 
 
@@ -539,7 +539,7 @@
 {{ Html::script('canvas/lib/highlight/highlight.pack.js') }}
 {{ Html::script('canvas/js/data-bind.js') }}
 {{ Html::script('canvas/js/lobipannel-query.js') }}
-
+{{ Html::script('pnotify.custom.min.js') }}
 
 
 <script>

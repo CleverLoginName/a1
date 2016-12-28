@@ -69,8 +69,8 @@
                                 Total
                             </section>
                             <section class="col-md-8">
-                            <span id="total"></span>
-
+                                <input class="form-control required" id="total"
+                                       name="total" aria-required="true" type="text" placeholder="Total" disabled>
                                 <input type="hidden" name="energy_rating" id="energy_rating" value="1">
                             </section>
                             </section>
@@ -174,7 +174,7 @@
      total = (parseInt($( "#house_watts_per_sqm" ).val()) || 0)+
              (parseInt($( "#garage_watts_per_sqm" ).val()) || 0)+
              (parseInt($( "#porch_watts_per_sqm" ).val()) || 0);
-     $('#total').html(total+'W');
+     $('#total').val(total+'W');
  }
         $( "#house_watts_per_sqm" ).keyup(function() {
             calTotal();
