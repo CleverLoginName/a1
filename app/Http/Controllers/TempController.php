@@ -67,10 +67,13 @@ class TempController extends Controller
                             ->where('custom_data.product_id', '=', $product->id)
                             ->get();
                         $product_array = [];
+                        $product_array['id'] = $product->id;
                         $product_array['name'] = $product->name;
                         $product_array['description'] = $product->description;
                         $product_array['icon'] = $product->path;
                         $product_array['path'] = $product->image;
+                        $product_array['sale_price'] = $product->sales_price;
+                        $product_array['builder_price'] = $product->builders_price;
                         $product_array['productCode'] = $product->symbol_name;
                         foreach ($custom_fields as $key => $value) {
                             $product_array[$value->name] = $value->value;
