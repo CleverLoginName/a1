@@ -6,7 +6,7 @@
     <!-- -------- Left Content Area Starts ---------- -->
     <div class="col-xs -12 col-sm- 12 col-md-9 col-lg-12 content_left">
 
-        <div class="form_container ">
+        <div class="form_container clearfix">
 
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 file_uploader">
                 {!! Form::open(['url' => 'templates/create/plans', 'class' => 'dropzone', 'files'=>true, 'id'=>'real-dropzone']) !!}
@@ -111,7 +111,7 @@
                             {!! Form::open(['url' => 'templates/create/plan-data','method'=>'POST']) !!}
                             {{Form::hidden('id',$templatesPlan->id)}}
                     <li> {!! Form::open(['url' => 'templates/create/plan-data','method'=>'POST']) !!}
-                        <div class="consultant_wrapper ">
+                        <div class="consultant_wrapper clearfix">
                             <div class="col-md-4 img_consultant">
                                 <img src="{!! asset($templatesPlan->img_300x200) !!}"/> </div>
                             <div class="col-md-8 desc_plan">

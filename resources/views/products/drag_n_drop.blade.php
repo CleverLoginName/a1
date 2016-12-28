@@ -52,7 +52,7 @@
 
                     @foreach($products as $product)
                             <li id="{!! $product->id !!}" parent_id="{!! $product_id !!}">
-                                <span class="name"><img src="{!! \App\ProductSymbol::find($product->symbol)->path !!}" width="35px"/>{!! $product->name !!}</span>
+                                <span class="name"><img src="@if(\App\ProductSymbol::find($product->symbol)){!! \App\ProductSymbol::find($product->symbol)->path !!}@endif" width="35px"/>{!! $product->name !!}</span>
                             </li>
                         @endforeach
                     </ul>
@@ -79,8 +79,7 @@
 
             <!-- -------- Buttons Start ---------- -->
             <div class="wr_btn clearfix">
-                <input name="Save" type="button" class="btn_save" id="Save" value="Add Another Pack" >
-                <input name="Save" type="button" class="btn_save" id="Save" value="View Pack" >
+                <a href="{!! url('products/create') !!}" name="Save" type="button" class="btn_save" id="Save" value="Done" >Done</a>
             </div>
             <!-- -------- Buttons End ---------- -->
 
@@ -117,6 +116,9 @@
 
     <button data-ref="sub-menu-items" data-index="2" class="breadcrumb-btn font-blue" type="submit" id="2-bc"><span
                 class="breadcrumb-text">New</span></button>
+    <i class="fa fa-chevron-right breadcrumb-icn font-blue" id="3-ic"></i>
+    <button data-ref="sub-menu-items" data-index="2" class="breadcrumb-btn font-blue" type="submit" id="2-bc"><span
+                class="breadcrumb-text">Composite Product</span></button>
     <i class="fa fa-chevron-right breadcrumb-icn font-blue" id="3-ic"></i>
 @stop
 
