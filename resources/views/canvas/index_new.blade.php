@@ -180,7 +180,7 @@
 		<div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 border-left-add">
 			<ul id="tool-items-ul">
 				<li class="tool-item">
-					<a href="javascript:void(0)" id="home-button">
+					<a href="{!! url('templates/create/add-plans') !!}" id="home-button">
 						<img class="image-item" 		src="{!! asset('img/tool-bar/black/home.png') !!}">
 						<img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/home.png') !!}">
 					</a>
@@ -325,7 +325,7 @@
 					<span class="tooltiptext">Help</span>
 				</li>
 				<li class="tool-item">
-					<a href="javascript:void(0)" id="logout-button">
+					<a href="{!! url('/logout') !!}" id="logout-button">
 						<img class="image-item" 		src="{!! asset('img/tool-bar/black/logOffIcon.png') !!}">
 						<img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/logOffIcon.png') !!}">
 					</a>
@@ -556,35 +556,47 @@
 </script>
 
 
-<div class="modal fade template_modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div id="templates">
-                <!-- Child elements of container with class="list" becomes list items -->
-                <ul class="list">
-                    @foreach($plans as $plan)
 
-                        <li>
-                            <div class="row">
-                                <div class="col-md-6"><img src="{!! asset($plan->img) !!}" class="col-md-12"></div>
-                                <div class="col-md-6">
-                                    <a href="{!! url('templates/create/add-plans/'.$plan->id.'/canvas') !!}">Open</a>
-                                </div>
-                            </div>
 
-                            <h3 class="name_1 template-item"
-                                data-template-id="{!! $plan->id !!}"
-                                data-template-name="{!! $plan->design !!}"
-                            >{!! $plan->design !!}</h3>
 
-                        </li>
-                    @endforeach
-                </ul>
+<!-- ========================= MODEL POPUP STARTS ============================ -->
 
-            </div>
-        </div>
-    </div>
+<!-- Modal -->
+<div class="modal fade common_popup new_Project_popup template_modal" id="myModal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content clearfix">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title ttl_consultants">Project Plans:</h4>
+			</div>
+			<div class="modal-body">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 model_search_results consultant_results_bg clearfix">
+					<ul class="list">
+						@foreach($plans as $plan)
+						<li>
+							<div class="consultant_wrapper clearfix">
+								<div class="col-md-8 img_consultant">
+									<img src="{!! asset($plan->img) !!}" class="img-responsive"/>
+								</div>
+								<div class="col-md-4 desc_consultant">
+									<a class="btn_assign" href="{!! url('templates/create/add-plans/'.$plan->id.'/canvas') !!}">Open</a>
+								</div>
+							</div>
+						</li>
+						@endforeach
+					</ul>
+				</div>
+
+
+			</div>
+
+		</div>
+
+	</div>
 </div>
+
+<!-- ========================= MODEL POPUP ============================ -->
+
 </body>
 
 </html>

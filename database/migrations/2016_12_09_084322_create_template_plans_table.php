@@ -18,6 +18,8 @@ class CreateTemplatePlansTable extends Migration
             $table->integer('level');
             $table->string('img');
             $table->string('img_300x200');
+            $table->string('client_file_name');
+            $table->string('client_file_size');
             $table->integer('catalog_id');
             $table->integer('template_id');
             $table->text('template_data');

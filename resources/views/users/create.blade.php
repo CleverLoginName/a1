@@ -20,37 +20,32 @@
                     </section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>First Name</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="first_name"
+                    <section class="col-md-8"><input class="form-control required" id="first_name"
                                                      name="first_name" aria-required="true" type="text"></section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Last Name</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="last_name"
+                    <section class="col-md-8"><input class="form-control required" id="last_name"
                                                      name="last_name" aria-required="true" type="text"></section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>E-mail</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="email"
+                    <section class="col-md-8"><input class="form-control required" id="email"
                                                      name="email" aria-required="true" type="text"></section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Mobile</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="mobile"
+                    <section class="col-md-8"><input class="form-control required" id="mobile"
                                                      name="mobile" aria-required="true" type="text"></section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>User Role</label></section>
-                    <section class="col-md-6">
+                    <section class="col-md-8">
                         <select class="form-control required"
                                 id="prod-frm-sub-cat" name="role_id" aria-required="true"
                                 aria-invalid="true">
@@ -62,23 +57,20 @@
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Password</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="password"
+                    <section class="col-md-8"><input class="form-control required" id="password"
                                                      name="password" aria-required="true" type="password"></section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Password Confirm</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="password_confirm"
+                    <section class="col-md-8"><input class="form-control required" id="password_confirm"
                                                      name="password_confirm" aria-required="true" type="password"></section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Profile Image</label></section>
-                    <section class="col-md-6"> <input type="file" name="profile_pic" id="profile_pic"></section>
+                    <section class="col-md-8"> <input type="file" name="profile_pic" id="profile_pic"></section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row box-footer" id="form-footer">

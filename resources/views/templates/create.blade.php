@@ -20,9 +20,8 @@
                     </section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Template Name</label></section>
-                    <section class="col-md-6"><input class="form-control required" id="name"
+                    <section class="col-md-8"><input class="form-control required" id="name"
                                                      name="name" aria-required="true" type="text" placeholder="House Design Plan Template Name"></section>
                     <section class="col-md-2">
                         <select class="form-control required"
@@ -35,9 +34,8 @@
                         </select></section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Watts Per SQM</label></section>
-                    <section class="col-md-6">
+                    <section class="col-md-8">
                         <section class="col-md-12">
                             <section class="row form-group">
                                 <section class="col-md-4">

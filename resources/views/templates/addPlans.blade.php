@@ -2,207 +2,187 @@
 
 
 @section('main-content')
-    <section class="box new-item-wrapper">
 
-        <section class="col-md-4">
-            <section class="box-header"></section>
-            <section class="box-body box" >
-                {!! Form::open(['url' => 'templates/create/plans', 'class' => 'dropzone', 'files'=>true, 'id'=>'real-dropzone','style'=>"min-height: 250px"]) !!}
+    <!-- -------- Left Content Area Starts ---------- -->
+    <div class="col-xs -12 col-sm- 12 col-md-9 col-lg-12 content_left">
 
+        <div class="form_container ">
+
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 file_uploader">
+                {!! Form::open(['url' => 'templates/create/plans', 'class' => 'dropzone', 'files'=>true, 'id'=>'real-dropzone']) !!}
+                <div class="form-group">
+                    <label class="col-xs-12 col-lg-12 control-label">Upload Plan File Drop it Here</label>
+                    <label for="profile_pic" class="col-xs-12 col-lg-12 control-label browse_file">Browse</label>
+                </div>
                 <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                 <input type="hidden" name="template_id" id="template_id" value="{!! session('template')->id !!}">
                 {!! Form::close() !!}
-            </section>
-        </section>
-<?php
+            </div>
+            <?php
             $catalogs = \App\Catalog::all();
             $levels = [
-                'Basement','Ground Floor','1st Floor','2nd Floor','3rd Floor','4th Floor','5th Floor'
+                    'Basement','Ground Floor','1st Floor','2nd Floor','3rd Floor','4th Floor','5th Floor'
             ];
             ?>
 
-        <section class="col-md-8">
-            <section class="box-header"></section>
-            <section class="box-body">
-                @if($empty_form)
-                    @foreach($templatesPlans as $templatesPlan)
-                        <section class="row form-group">
-                            <section class="col-md-6">
+            <div class="col-xs-12 col-sm-12 col-md-10<h3></h3> col-lg-10 model_search_results new_template_uploader consultant_results_bg ">
+                <ul>
+                    @if($empty_form)
+                        @foreach($templatesPlans as $templatesPlan)
 
-                                <a href="{!! url('templates/create/add-plans/'.$templatesPlan->id.'/canvas') !!}"><img src="{!! asset($templatesPlan->img) !!}" class="col-md-12"/>
+                            <li>
+                                <div class="consultant_wrapper ">
+                                    <div class="col-md-4 img_consultant">
+                                        <p>{!! \App\Template::find($templatesPlan->template_id)->name.'_'.$levels[($templatesPlan->level-1)].'_'.$catalogs[($templatesPlan->catalog_id-1)]->name !!}</p>
+                                        <a href="{!! url('templates/create/add-plans/'.$templatesPlan->id.'/canvas') !!}">
+                                            <img src="{!! asset($templatesPlan->img_300x200) !!}" class="col-md-8"/>
+                                    </a>
+                                    </div>
+                                    <div class="col-md-8 desc_plan">
+                                        <h5>Save Template Plan</h5>
+                                        <p>TheUploadedFile {!! $templatesPlan->client_file_name !!} : file {!! $templatesPlan->client_file_size !!}.kbs </p>
 
-                                </a>
-                                @php
-                                $model = "#modal_".$templatesPlan->id;
-                                @endphp
+                                        <div class="col-md-12 margin_top_20">
+                                            {!! Form::open(['url' => 'templates/create/plan-data','method'=>'POST']) !!}
+                                            {{Form::hidden('id',$templatesPlan->id)}}
+                                            <div class="form-group">
+                                                <label for="first_name1" class="col-xs-12 col-lg-2 control-label">Design</label>
+                                                <div class="col-md-12 col-lg-10">
+                                                    @if($templatesPlan->design != '')
+                                                        <input class="form-control required" id="design"
+                                                               name="design" aria-required="true" type="text" placeholder="" value="{!! $templatesPlan->design !!}">
+                                                    @else
+                                                        <input class="form-control required" id="design"
+                                                               name="design" aria-required="true" type="text" placeholder="" value="{!!  \App\Template::find($templatesPlan->template_id)->name !!}">
+                                                    @endif
+                                                </div>
 
-                                <button class="btn btn-primary" data-target="{!! $model !!}" data-toggle="modal" >Crop / Rotate Plan</button>
-                            </section>
-                            <section class="col-md-6">
-                                {!! Form::open(['url' => 'templates/create/plan-data','method'=>'POST']) !!}
+                                                <label for="first_name1" class="col-xs-12 col-lg-2 control-label">Level </label>
+                                                <div class="col-md-12 col-lg-10">
+                                                    <?php  $i = 0;$j = 0; ?>
+                                                    <select class="form-control required"
+                                                            id="prod-frm-sub-cat" name="level" aria-required="true"
+                                                            aria-invalid="true">
+                                                        @foreach($levels as $level)
+                                                            <?php ++$i; ?>
 
-                                {{Form::hidden('id',$templatesPlan->id)}}
-                                <section class="row form-group">
-                                    <section class="col-md-12"><h4>Save Template Plan</h4></section>
-                                </section>
-                                <section class="row form-group">
-                                    <section class="col-md-4">Design</section>
-                                    <section class="col-md-8">
-                                        @if($templatesPlan->design != '')
-                                            <input class="form-control required" id="design"
-                                                   name="design" aria-required="true" type="text" placeholder="" value="{!! $templatesPlan->design !!}">
-                                                   @else
-                                                    <input class="form-control required" id="design"
-                                            name="design" aria-required="true" type="text" placeholder="" value="">
-                                        @endif
-                                        </section>
-                                </section>
-                                <section class="row form-group">
-                                    <section class="col-md-4">Level</section>
-                                    <section class="col-md-8">
-<?php  $i = 0;$j = 0; ?>
-                                        <select class="form-control required"
-                                                id="prod-frm-sub-cat" name="level" aria-required="true"
-                                                aria-invalid="true">
-                                            @foreach($levels as $level)
-                                                <?php ++$i; ?>
+                                                            @if($templatesPlan->level == $i)
+                                                                <option value="{!! $i !!}" selected="selected">{!! $level !!}</option>
+                                                            @else
+                                                                <option value="{!! $i !!}">{!! $level !!}</option>
+                                                            @endif
+                                                        @endforeach
+                                                    </select>
+
+                                                </div>
+
+                                                <label for="first_name1" class="col-xs-12 col-lg-2 control-label">Catalogue  </label>
+                                                <div class="col-md-12 col-lg-10">
+                                                    <select class="form-control required"
+                                                            id="catalog_id" name="catalog_id" aria-required="true"
+                                                            aria-invalid="true">
+                                                        @foreach($catalogs as $catalog)
+                                                            <?php ++$j; ?>
+
+                                                            @if($templatesPlan->catalog_id == $j)
+                                                                <option value="{!! $catalog->id !!}" selected="selected">{!! $catalog->name !!}</option>
+                                                            @else
+                                                                <option value="{!! $catalog->id !!}">{!! $catalog->name !!}</option>
+                                                            @endif
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12 ">
+                                                <input name="Save" type="submit" class="btn_save" id="Save" value="Save">
+                                                <a href="{!! url('templates/create/add-plans/'.$templatesPlan->id.'/delete') !!}" name="Reset" class="btn_reset" style="color: white" id="Reset" value="Delete">Delete</a>
+                                            </div>
+                                            {!! Form::close() !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+                        @endforeach
+                    @else
+                        @foreach($templatesPlans as $templatesPlan)
+                            {!! Form::open(['url' => 'templates/create/plan-data','method'=>'POST']) !!}
+                            {{Form::hidden('id',$templatesPlan->id)}}
+                    <li> {!! Form::open(['url' => 'templates/create/plan-data','method'=>'POST']) !!}
+                        <div class="consultant_wrapper ">
+                            <div class="col-md-4 img_consultant">
+                                <img src="{!! asset($templatesPlan->img_300x200) !!}"/> </div>
+                            <div class="col-md-8 desc_plan">
+                                <h5>Save Template Plan</h5>
+                                <p>TheUploadedFile name.pdf : file size.kbs </p>
+
+                                <div class="col-md-12 margin_top_20">
+                                    <div class="form-group">
+                                        <label for="first_name1" class="col-xs-12 col-lg-2 control-label">Design</label>
+                                        <div class="col-md-12 col-lg-10">
+                                            @if($templatesPlan->design != '')
+                                                <input class="form-control required" id="design"
+                                                       name="design" aria-required="true" type="text" placeholder="" value="{!! $templatesPlan->design !!}">
+                                            @else
+                                                <input class="form-control required" id="design"
+                                                       name="design" aria-required="true" type="text" placeholder="" value="">
+                                            @endif
+                                        </div>
+
+                                        <label for="first_name1" class="col-xs-12 col-lg-2 control-label">Level </label>
+                                        <div class="col-md-12 col-lg-10">
+                                            <select class="form-control required"
+                                                    id="prod-frm-sub-cat" name="level" aria-required="true"
+                                                    aria-invalid="true">
+                                                @foreach($levels as $level)
+                                                    <?php ++$i; ?>
 
                                                     @if($templatesPlan->level == $i)
                                                         <option value="{!! $i !!}" selected="selected">{!! $level !!}</option>
-                                                        @else
+                                                    @else
                                                         <option value="{!! $i !!}">{!! $level !!}</option>
-                                                        @endif
-                                            @endforeach
-                                        </select>
-
-
-                                    </section>
-                                </section>
-                                <section class="row form-group">
-                                    <section class="col-md-4">Catalog</section>
-                                    <section class="col-md-8">
-                                        <select class="form-control required"
-                                                id="catalog_id" name="catalog_id" aria-required="true"
-                                                aria-invalid="true">
-                                        @foreach($catalogs as $catalog)
-                                            <?php ++$j; ?>
-
-                                            @if($templatesPlan->catalog_id == $j)
-                                                <option value="{!! $catalog->id !!}" selected="selected">{!! $catalog->name !!}</option>
-                                            @else
-                                                <option value="{!! $catalog->id !!}">{!! $catalog->name !!}</option>
-                                            @endif
-                                        @endforeach
+                                                    @endif
+                                                @endforeach
                                             </select>
-                                    </section>
-                                </section>
-                                <section class="row form-group">
-                                    <section class="col-md-12">
-                                        <section class="col-md-6">
-                                        <button type="submit" style="float: right"
-                                                class="btn add-item-btn">Save <img
-                                                    src="resources/images/spinning-circles.svg"
-                                                    class="loading-img-btn" style="display:none;"
-                                                    id="1bf1a6a6-757b-921f-0a96-f95ffc63c6bc-new-product-loading">
-                                        </button></section>
-                                            <section class="col-md-6" ><a style="float: left"class="btn add-item-btn" href="{!! url('templates/create/add-plans/'.$templatesPlan->id.'/delete') !!}">Delete <img
-                                                    src="resources/images/spinning-circles.svg"
-                                                    class="loading-img-btn" style="display:none;">
-                                        </a></section>
-                                    </section>
-                                </section>
-                                {!! Form::close() !!}
-                            </section>
-                        </section>
-                    @endforeach
-                @else
-                    @foreach($templatesPlans as $templatesPlan)
-                        <section class="row form-group">
-                            <section class="col-md-6">
 
-                                <img src="{!! asset($templatesPlan->img_300x200) !!}"/>
+                                        </div>
 
-                            </section>
-                            <section class="col-md-6">
-                                {!! Form::open(['url' => 'templates/create/plan-data','method'=>'POST']) !!}
+                                        <label for="first_name1" class="col-xs-12 col-lg-2 control-label">Catalogue  </label>
+                                        <div class="col-md-12 col-lg-10">
+                                            <select class="form-control required"
+                                                    id="catalog_id" name="catalog_id" aria-required="true"
+                                                    aria-invalid="true">
+                                                @foreach($catalogs as $catalog)
+                                                    <?php ++$j; ?>
 
-                                {{Form::hidden('id',$templatesPlan->id)}}
-                                <section class="row form-group">
-                                    <section class="col-md-4">Design</section>
-                                    <section class="col-md-8">
-                                        <input class="form-control required" id="design"
-                                               name="design" aria-required="true" type="text" placeholder="" value="{!! $templatesPlan->design !!}"></section>
-                                </section>
-                                <section class="row form-group">
-                                    <section class="col-md-4">Level</section>
-                                    <section class="col-md-8"><input class="form-control required" id="level"
-                                                                     name="level" aria-required="true" type="text"
-                                                                     placeholder="" value="{!! $templatesPlan->level !!}"></section>
-                                </section>
-                                <section class="row form-group">
-                                    <section class="col-md-4">Catalog</section>
-                                    <section class="col-md-8"><input class="form-control required" id="catalog_id"
-                                                                     name="catalog_id" aria-required="true" type="text"
-                                                                     placeholder="" value="{!! $templatesPlan->catalog_id !!}"></section>
-                                </section>
-                                <section class="row form-group">
-                                    <section class="col-md-12">
-                                        <button type="submit"
-                                                class="btn add-item-btn">Add <img
-                                                    src="resources/images/spinning-circles.svg"
-                                                    class="loading-img-btn" style="display:none;"
-                                                    id="1bf1a6a6-757b-921f-0a96-f95ffc63c6bc-new-product-loading">
-                                        </button>
-                                    </section>
-                                </section>
-                                {!! Form::close() !!}
-                            </section>
-                        </section>
-                    @endforeach
-                @endif
-            </section>
-        </section>
+                                                    @if($templatesPlan->catalog_id == $j)
+                                                        <option value="{!! $catalog->id !!}" selected="selected">{!! $catalog->name !!}</option>
+                                                    @else
+                                                        <option value="{!! $catalog->id !!}">{!! $catalog->name !!}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
 
-
-    </section>
-
-    @if($empty_form)
-        @foreach($templatesPlans as $templatesPlan)
-            @php
-                $model = "modal_".$templatesPlan->id;
-            @endphp
-
-    <div class="modal fade" id="{!! $model !!}" role="dialog" aria-labelledby="modalLabel" tabindex="-1">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="modalLabel">Cropper</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="img-container">
-                        <img id="image_{!! $templatesPlan->id !!}" src="{!! asset($templatesPlan->img) !!}" alt="Picture">
-                    </div>
-                    <button onclick="rotate_left_{!! $templatesPlan->id !!}()">Rotate Clockwise</button>
-                    <button onclick="rotate_right_{!! $templatesPlan->id !!}()">Rotate Anti-clockwisw</button>
-                </div>
-                <div class="modal-footer">
-                    {!! Form::open(['url' => 'templates/create/add-plans/'.$templatesPlan->id.'/crop', 'method' => 'post']) !!}
-                    <input type="hidden" name="width" id="width_{!! $templatesPlan->id !!}" value="">
-                    <input type="hidden" name="height" id="height_{!! $templatesPlan->id !!}" value="">
-                    <input type="hidden" name="x" id="x_{!! $templatesPlan->id !!}" value="">
-                    <input type="hidden" name="y" id="y_{!! $templatesPlan->id !!}" value="">
-                    <input type="hidden" name="rotate" id="rotate_{!! $templatesPlan->id !!}" value="">
-                    {!! Form::submit('Save & Exit') !!}
-                    {!! Form::close() !!}
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+                                    <div class="col-md-12 ">
+                                        <input name="Save" type="button" class="btn_save" id="Save" value="Save">
+                                        <input name="Reset" type="reset" class="btn_reset" id="Reset" value="Delete">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                            {!! Form::close() !!}
+                        @endforeach
+                    @endif
+                </ul>
             </div>
         </div>
     </div>
-    @endforeach
-    @endif
-
+    <!-- -------- Left Content Area Ends ---------- -->
 
 @stop
 

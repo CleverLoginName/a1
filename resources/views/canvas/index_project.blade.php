@@ -180,7 +180,7 @@
 		<div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 border-left-add">
 			<ul id="tool-items-ul">
 				<li class="tool-item">
-					<a href="javascript:void(0)" id="home-button">
+					<a href="{!! url('/projects') !!}" id="home-button">
 						<img class="image-item" 		src="{!! asset('img/tool-bar/black/home.png') !!}">
 						<img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/home.png') !!}">
 					</a>
@@ -325,7 +325,7 @@
 					<span class="tooltiptext">Help</span>
 				</li>
 				<li class="tool-item">
-					<a href="javascript:void(0)" id="logout-button">
+					<a href="{!! url('/logout') !!}" id="logout-button">
 						<img class="image-item" 		src="{!! asset('img/tool-bar/black/logOffIcon.png') !!}">
 						<img class="image-item-hover" 	src="{!! asset('img/tool-bar/blue/logOffIcon.png') !!}">
 					</a>

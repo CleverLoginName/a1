@@ -22,27 +22,25 @@
                     </section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Job# / Consultant</label></section>
-                    <section class="col-md-3">
+                    <section class="col-md-2">
 
                         {!! Form::text('job',null,['class'=>'form-control required','placeholder'=>"Job#",'id'=>'job']) !!}
                     </section>
-                    <section class="col-md-5">
+                    <section class="col-md-8">
                         {!! Form::text('consultant',null,['class'=>'form-control required','placeholder'=>"Consultant",'id'=>'consultant']) !!}
                     </section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Client Name 1</label></section>
+                    <section class="col-md-2"><label>Client Detail 1</label></section>
                     <section class="col-md-2">
 
-                        {!! Form::select('title_1', ['Mr.' => 'Mr', 'Miss.' => 'Miss', 'Mrs.' => 'Mrs'],null,['id'=>'title_1','class'=>'form-control required']) !!}
+                        {!! Form::select('title_1', ['Mr.' => 'Mr', 'Miss.' => 'Miss', 'Mrs.' => 'Mrs', 'Ms.' => 'Ms'],null,['id'=>'title_1','class'=>'form-control required']) !!}
                     </section>
-                    <section class="col-md-3">
+                    <section class="col-md-4">
                         {!! Form::text('first_name_1',null,['class'=>'form-control required','placeholder'=>"First Name",'id'=>'first_name_1']) !!}
                     </section>
-                    <section class="col-md-3">
+                    <section class="col-md-4">
                         {!! Form::text('last_name_1',null,['class'=>'form-control required','placeholder'=>"Last Name",'id'=>'last_name_1']) !!}
                     </section>
                 </section>
@@ -57,15 +55,14 @@
                     </section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Client Name 2</label></section>
+                    <section class="col-md-2"><label>Client Detail 2</label></section>
                     <section class="col-md-2">
-                        {!! Form::select('title_2', ['Mr.' => 'Mr', 'Miss.' => 'Miss', 'Mrs.' => 'Mrs'],null,['id'=>'title_2','class'=>'form-control required']) !!}
+                        {!! Form::select('title_2', ['Mr.' => 'Mr', 'Miss.' => 'Miss', 'Mrs.' => 'Mrs', 'Ms.' => 'Ms'],null,['id'=>'title_2','class'=>'form-control required']) !!}
                     </section>
-                    <section class="col-md-3">
+                    <section class="col-md-4">
                         {!! Form::text('first_name_2',null,['class'=>'form-control required','placeholder'=>"First Name",'id'=>'first_name_2']) !!}
                     </section>
-                    <section class="col-md-3">
+                    <section class="col-md-4">
                         {!! Form::text('last_name_2',null,['class'=>'form-control required','placeholder'=>"Last Name",'id'=>'last_name_2']) !!}
                     </section>
                 </section>
@@ -80,17 +77,15 @@
                     </section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Design Template</label></section>
-                    <section class="col-md-6">
+                    <section class="col-md-7">
                         {!! Form::text('template',null,['class'=>'form-control required','placeholder'=>"Template",'id'=>'template']) !!}
                     </section>
-                    <section class="col-md-2">
+                    <section class="col-md-3">
                         {!! Form::text('scale',null,['class'=>'form-control required','placeholder'=>"Scale",'id'=>'scale', 'disabled'=>'disabled']) !!}
                     </section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Build Address</label></section>
                     <section class="col-md-2">
                         {!! Form::text('lot',null,['class'=>'form-control required','placeholder'=>"Lot#",'id'=>'lot']) !!}
@@ -98,31 +93,38 @@
                     <section class="col-md-2">
                         {!! Form::text('no_unit',null,['class'=>'form-control required','placeholder'=>"No/Unit",'id'=>'no_unit']) !!}
                     </section>
-                    <section class="col-md-4">
+                    <section class="col-md-6">
                         {!! Form::text('street_name',null,['class'=>'form-control required','placeholder'=>"Street Name",'id'=>'street_name']) !!}
                     </section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label></label></section>
-                    <section class="col-md-4">
+                    <section class="col-md-5">
                         {!! Form::text('town',null,['class'=>'form-control required','placeholder'=>"Suburb/Town",'id'=>'town']) !!}
                     </section>
                     <section class="col-md-2">
                         {!! Form::text('postal_code',null,['class'=>'form-control required','placeholder'=>"Postal Code",'id'=>'postal_code']) !!}
                     </section>
-                    <section class="col-md-2">
-                        {!! Form::text('state',null,['class'=>'form-control required','placeholder'=>"State",'id'=>'state']) !!}
+                    <section class="col-md-3">
+                        {!! Form::select('state', ['VIC' => 'VIC',
+                         'TAS' => 'TAS',
+                         'Mrs' => 'Mrs',
+                         'NSW' => 'NSW',
+                         'WA' => 'WA',
+                         'NT' => 'NT',
+                         'QLD' => 'QLD',
+                         'SA' => 'SA',
+                         ],null,['id'=>'state','class'=>'form-control required','placeholder'=>"State"]) !!}
+
                     </section>
 
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Budget/Energy</label></section>
-                    <section class="col-md-2">
+                    <section class="col-md-3">
                         {!! Form::text('budget',null,['class'=>'form-control required','placeholder'=>"$ Budget(If App)",'id'=>'budget']) !!}
                     </section>
-                    <section class="col-md-2">
+                    <section class="col-md-3">
                         {!! Form::text('energy_consumption',null,['class'=>'form-control required','placeholder'=>"Total Energy per SQM",'id'=>'energy_consumption']) !!}
                     </section>
                     <section class="col-md-4">
@@ -130,30 +132,29 @@
                     </section>
                 </section>
                 <section class="row form-group">
-                    <section class="col-md-2"></section>
                     <section class="col-md-2"><label></label></section>
                     <section class="col-md-1">
                         House
                     </section>
-                    <section class="col-md-1">
+                    <section class="col-md-2">
                         {!! Form::text('house',null,['class'=>'form-control required','placeholder'=>"5w per SQM",'id'=>'house', 'disabled'=>'disabled']) !!}
                     </section>
 
-                    <section class="col-md-1"></section>
 
                     <section class="col-md-1">
                         Garage
                     </section>
-                    <section class="col-md-1">
+                    <section class="col-md-2">
                         {!! Form::text('garage',null,['class'=>'form-control required','placeholder'=>"3w per SQM",'id'=>'garage', 'disabled'=>'disabled']) !!}
                     </section>
+                    <section class="col-md-1">
 
-                    <section class="col-md-1"></section>
+                    </section>
 
                     <section class="col-md-1">
                         Porch
                     </section>
-                    <section class="col-md-1">
+                    <section class="col-md-2">
                         {!! Form::text('porch',null,['class'=>'form-control required','placeholder'=>"4w per SQM",'id'=>'porch', 'disabled'=>'disabled']) !!}
                     </section>
 
@@ -196,18 +197,8 @@
                 <div class="modal-body" id="consultants">
 
                     <div class="form-group">
-                        <div class="col-xs-10 col-sm-10 col-md-12 col-lg-5 common_searchBox">
-                            <select class="form-control">
-                                <option>Search By</option>
-                                <option>1</option>
-                                <option>2</option>
-                            </select>
-                        </div>
-                        <div class="col-xs-10 col-sm-10 col-md-12 col-lg-5 common_searchBox">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 common_searchBox">
                             <input type="text" class="form-control search" id="budget" placeholder="Search">
-                        </div>
-                        <div class="col-xs-2 col-sm-2 col-md-12 col-lg-2 common_searchButton">
-                            <a href="#" class="btn_search"></a>
                         </div>
                     </div>
 
@@ -221,13 +212,14 @@
                                         <button class="btn_assign assign" data-consultant-id="{!! $consultant->id !!}" data-consultant-name="{!! $consultant->first_name.' '.$consultant->first_name !!}">Assign</button>
                                     </div>
                                     <div class="col-md-8 desc_consultant">
-                                        <h5>{!! $consultant->first_name !!}</h5>
+                                        <h5><span class="name">{!! $consultant->first_name.' '.$consultant->last_name !!}</span></h5>
                                         <p>Department</p>
                                         <ul>
-                                            <li>{!! 'Username' !!}</li>
                                             <li>Job Title </li>
                                             <li>{!! $consultant->mobile !!}</li>
-                                            <li>Email address</li>
+                                            <li>{!! $consultant->email !!}</li>
+                                            <li></li>
+                                            <li></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -394,6 +386,10 @@
 
         $('.template_modal').modal('hide');
     });
+    $('#town').bind('keyup', function () {
+        $("#town").val(($("#town").val()).toUpperCase());
+    });
+
 </script>
 @stop
 @section('post-css')

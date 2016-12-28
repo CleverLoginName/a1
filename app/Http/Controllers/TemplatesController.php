@@ -163,11 +163,13 @@ class TemplatesController extends Controller
             $templatePlan = new TemplatePlan();
             $templatePlan->design = '';
             $templatePlan->level = 1;
-            $templatePlan->catalog_id =  0;
-            $templatePlan->template_data =  0;
+            $templatePlan->catalog_id =  1;
+            $templatePlan->template_data =  1;
             $templatePlan->img = $destinationPath.$randFileName;
             $templatePlan->img_300x200 = $destinationPath.$randFileName;
             $templatePlan->template_id = session('template')->id;
+            $templatePlan->client_file_name = $file->getClientOriginalName();
+            $templatePlan->client_file_size = $file->getSize();
             $templatePlan->save();
         //}
 
@@ -204,7 +206,7 @@ class TemplatesController extends Controller
     public function deletePlanInCanvas($id){
         $templatePlan = TemplatePlan::find($id);
         $templatePlan->delete();
-        Flash::success('Data Added', 'Plan has been deleted successfully.');
+        Flash::success('Plan Deleted', 'Plan has been deleted successfully.');
         return Redirect::to('/templates/create/add-plans');
     }
 
