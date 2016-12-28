@@ -83,19 +83,7 @@
                     </section>
                     <section class="col-md-2"></section>
                 </section>
-                <section class="row form-group">
-                    <section class="col-md-2"></section>
-                    <section class="col-md-2"><label>Supplier Name</label></section>
-                    <section class="col-md-6"><select class="form-control required" id="supplier_id"
-                                                     name="supplier_id">
-                            @foreach($suppliers as $supplier)
-                                <option selected disabled>Please select a Supplier</option>
-                                <option value="{!! $supplier->id !!}">{!! $supplier->name !!}</option>
-                                @endforeach
 
-                        </select></section>
-                    <section class="col-md-2"></section>
-                </section>
                 <section class="row form-group @if ($errors->has('name')) has-error @endif">
                     <section class="col-md-2"></section>
                     <section class="col-md-2"><label>Name</label></section>
@@ -103,6 +91,20 @@
                         {!! Form::text('name', null,['id'=>'name','class'=>"form-control"]) !!}
                         @if ($errors->has('name')) <p class="error_message">{{ $errors->first('name') }}</p> @endif
                     </section>
+                    <section class="col-md-2"></section>
+                </section>
+                <section class="row form-group">
+                    <section class="col-md-2"></section>
+                    <section class="col-md-2"><label>Supplier Name</label></section>
+                    <section class="col-md-6"><select class="form-control required" id="supplier_id"
+                                                      name="supplier_id" :disabled="fields_disabled">
+                            <option selected disabled>Please select a Supplier</option>
+                            @foreach($suppliers as $supplier)
+
+                                <option value="{!! $supplier->id !!}">{!! $supplier->name !!}</option>
+                            @endforeach
+
+                        </select></section>
                     <section class="col-md-2"></section>
                 </section>
                 <section class="row form-group @if ($errors->has('description')) has-error @endif">
