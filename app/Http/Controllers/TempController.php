@@ -37,7 +37,12 @@ class TempController extends Controller
                 $category_array = [];
                 $category_array['category_id'] = $category->id;
                 $category_array['category_name'] = $category->name;
-                $category_array['category_type'] = $category->type;
+                $category_type = CategoryType::where('id','=',$category->type)->first();
+                if($category_type){
+                    $category_array['category_type'] = $category_type->name;
+                }else{
+                    $category_array['category_type'] = null;
+                }
                 $category_array['category_colour'] = $category->colour;
 
 
@@ -75,7 +80,12 @@ class TempController extends Controller
                         $product_array['sale_price'] = $product->sales_price;
                         $product_array['builder_price'] = $product->builders_price;
                         $product_array['productCode'] = $product->symbol_name;
-                        $product_array['type'] = $category->type;
+                        if($category_type){
+                            $product_array['type'] = $category_type->name;
+                        }else{
+                            $product_array['type'] = null;
+                        }
+
                         foreach ($custom_fields as $key => $value) {
                             $product_array[$value->name] = $value->value;
                         }
