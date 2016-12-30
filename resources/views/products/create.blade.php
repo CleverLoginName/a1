@@ -66,6 +66,7 @@
                     <section class="col-md-2"><a id="addsubCategory">Can't find? Add New</a></section>
                 </section>
                 <section class="row form-group">
+                    <section class="col-md-12 clearfix">
                     <section class="col-md-2"><label>Symbol</label></section>
                     <section class="col-md-8" style="max-height: 150px; overflow-y: auto">
 
@@ -78,6 +79,7 @@
 
                     </section>
                     <section class="col-md-2"></section>
+                    </section>
                 </section>
 
                 <section class="row form-group @if ($errors->has('name')) has-error @endif">
