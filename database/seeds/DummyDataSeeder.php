@@ -326,7 +326,8 @@ class DummyDataSeeder extends Seeder
                 'discount' => $faker->numberBetween(0,100),
                 'symbol' => $faker->numberBetween(0,250),
                 'sales_price' => $faker->numberBetween(0,10000),
-                'is_composite' => $is_composite
+                'is_composite' => $is_composite,
+                'supplier_id'=>$faker->numberBetween(1,10)
             ]);
 
 
@@ -360,7 +361,8 @@ class DummyDataSeeder extends Seeder
                 'discount' => $faker->numberBetween(0,100),
                 'symbol' => $faker->numberBetween(0,250),
                 'sales_price' => $faker->numberBetween(0,10000),
-                'is_composite' => $is_composite
+                'is_composite' => $is_composite,
+                'supplier_id'=>$faker->numberBetween(1,10)
             ]);
 
             if($is_composite){

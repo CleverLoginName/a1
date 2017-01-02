@@ -6,6 +6,7 @@ use App\Catalog;
 use App\Category;
 use App\CategoryType;
 use App\SubCategory;
+use App\Supplier;
 use App\Temp;
 use Illuminate\Http\Request;
 
@@ -80,6 +81,7 @@ class TempController extends Controller
                         $product_array['sale_price'] = $product->sales_price;
                         $product_array['builder_price'] = $product->builders_price;
                         $product_array['productCode'] = $product->symbol_name;
+                        $product_array['supplier'] = Supplier::find($product->supplier_id)->name;
                         if($category_type){
                             $product_array['type'] = $category_type->name;
                         }else{
