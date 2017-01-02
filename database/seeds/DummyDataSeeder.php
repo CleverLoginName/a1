@@ -305,10 +305,10 @@ class DummyDataSeeder extends Seeder
         DB::table('categories')->insert(['name' => 'Power Point','description'  => 'Electrical description','catalog_id' => 1,'colour' => '#960000','type' => 3]);
 
         
-        DB::table('sub_categories')->insert(['name' => 'INCANDESCENT' ,'description' => 'INCANDESCENT description','category_id' => 5]);
-        DB::table('sub_categories')->insert(['name' => 'FLUORESCENT' ,'description' => 'FLUORESCENT description','category_id' => 5]);
-        DB::table('sub_categories')->insert(['name' => 'HIGH-INTENSITY DISCHARGE' ,'description' => 'HIGH-INTENSITY DISCHARGE description','category_id' => 5]);
-        DB::table('sub_categories')->insert(['name' => 'LED','description'  => 'LED description','category_id' => 5]);
+        DB::table('sub_categories')->insert(['name' => 'INCANDESCENT' ,'description' => 'INCANDESCENT description','category_id' => 1]);
+        DB::table('sub_categories')->insert(['name' => 'FLUORESCENT' ,'description' => 'FLUORESCENT description','category_id' => 1]);
+        DB::table('sub_categories')->insert(['name' => 'HIGH-INTENSITY DISCHARGE' ,'description' => 'HIGH-INTENSITY DISCHARGE description','category_id' => 1]);
+        DB::table('sub_categories')->insert(['name' => 'LED','description'  => 'LED description','category_id' => 1]);
 
 
 
@@ -329,6 +329,10 @@ class DummyDataSeeder extends Seeder
                 'is_composite' => $is_composite
             ]);
 
+
+            DB::table('custom_data')->insert(['product_id' => $i ,'custom_field_sub_category_id' => 4,'value'=>$faker->sentence(2)]);
+            DB::table('custom_data')->insert(['product_id' => $i ,'custom_field_sub_category_id' => 1,'value'=>$faker->randomElement([25,50,75,100])]);
+
             if($is_composite){
                 for ($j=1;$j<=5;$j++) {
                     DB::table('composite_product_maps')->insert([
@@ -341,7 +345,7 @@ class DummyDataSeeder extends Seeder
             DB::table('sub_category_products')->insert(['sub_category_id' => 4 ,'product_id' => $i]);
         }
 
-        DB::table('sub_categories')->insert(['name' => 'Tmp','description' =>'tmp description','category_id' => 6]);
+        DB::table('sub_categories')->insert(['name' => 'Tmp','description' =>'tmp description','category_id' => 4]);
 
         for ($i=1;$i<=25;$i++){
             $is_composite = $faker->boolean(50);
