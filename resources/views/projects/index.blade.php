@@ -111,7 +111,9 @@
     {{ Html::script('resources/js/plugins/datatables/dataTables.bootstrap.js') }}
     <script>
         $(document).ready(function () {
-            $('#product-table-view').DataTable();
+            $('#product-table-view').DataTable({
+                "iDisplayLength": 50
+            });
         });
     </script>
 

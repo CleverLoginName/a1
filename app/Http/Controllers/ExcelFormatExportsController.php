@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Catalog;
 use App\SubCategory;
 use Illuminate\Http\Request;
 
@@ -41,6 +42,42 @@ class ExcelFormatExportsController extends Controller
             foreach ($subcategories as $subcategory){
                 $excel->sheet($subcategory->name, function($sheet) use ($subcategory)  {
                     $sheet->loadView('excel_exports.products_import')->with('sub_category',$subcategory);
+                });
+            }
+        })->download('xls');
+    }
+    public function allProductsExport(){
+
+        Excel::create('Products List', function($excel) {
+            $catalogs = Catalog::all();
+            foreach ($catalogs as $catalog){
+                $excel->sheet($catalog->name, function($sheet) use ($catalog)  {
+                    $sheet->loadView('excel_exports.products_list')->with('catalog',$catalog);
+                });
+            }
+        })->download('xls');
+    }
+
+
+    public function compositeProductsExport(){
+      
+        Excel::create('Composite-Products', function($excel) {
+            $subcategories = SubCategory::where('is_pack','=',false)->get();
+            foreach ($subcategories as $subcategory){
+                $excel->sheet($subcategory->name, function($sheet) use ($subcategory)  {
+                    $sheet->loadView('excel_exports.products_import')->with('sub_category',$subcategory);
+                });
+            }
+        })->download('xls');
+    }
+
+    public function packsExport(){
+
+        Excel::create('Packs', function($excel) {
+            $catalogs = Catalog::all();
+            foreach ($catalogs as $catalog){
+                $excel->sheet($catalog->name, function($sheet) use ($catalog)  {
+                    $sheet->loadView('excel_exports.packs_import')->with('catalog',$catalog);
                 });
             }
         })->download('xls');

@@ -64,7 +64,7 @@
 
     <li class="templates">
         <a class="main-menu-item tree-toggle" id="Templates">
-            <img class="main-menu-icon" src="{{ URL::asset('resources/images/project_ico_white.png') }}">
+            <img class="main-menu-icon" src="{{ URL::asset('/img/tool-bar/black/plan.png') }}">
             <span class="main-menu-item-text">Templates</span>
             <span class="menu-selected-item"></span>
         </a>

@@ -215,11 +215,6 @@ class ProductsController extends Controller
                 ->with('categories', $categories)
                 ->with('suppliers', $suppliers)
                 ->with('symbols', $symbols);
-        
-
-
-
-
     }
     
     

@@ -327,7 +327,7 @@ class DummyDataSeeder extends Seeder
                 'symbol' => $faker->numberBetween(0,250),
                 'sales_price' => $faker->numberBetween(0,10000),
                 'is_composite' => $is_composite,
-                'supplier_id'=>$faker->numberBetween(1,10)
+                'supplier_id2   '=>$faker->numberBetween(1,10)
             ]);
 
 
